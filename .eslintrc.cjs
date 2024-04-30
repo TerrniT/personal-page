@@ -20,7 +20,7 @@ module.exports = {
 	  "no-trailing-spaces": ["warn"],
 	  "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
 	  "vue/multi-word-component-names": ["error", {
-			ignores: ["error", "Error"]
+			ignores: ["error", "Error", "index", "default", "auth"]
 	  }]
 	},
 	ignorePatterns: ['dist', 'node_modules', 'build', 'coverage', 'docs', 'test'],
