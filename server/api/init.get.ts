@@ -37,6 +37,12 @@ const pageData: PageData = DEFAULT_PAGE_DATA as PageData;
 async function getSkills() {
   const data = await notion.databases.query({
     database_id: skills_database_id,
+	sorts: [
+		{
+		  property: 'level',
+		  direction: 'descending'
+	  	}
+	  ]
   })
 
   return data
@@ -58,7 +64,7 @@ async function getWorks() {
 		  property: 'created_at',
 		  direction: 'ascending'
 	  	}
-	 ]
+	  ]
 	})
 
 	return data
@@ -118,7 +124,7 @@ getSkills().then((data) => {
 })
 
 getWorks().then((data) => {
-	const COUNT = 3
+	const COUNT = 10
 
 	const articles = data.results.filter((item) => item.properties.type.select.name === 'article')
 

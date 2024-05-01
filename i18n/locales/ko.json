@@ -1,0 +1,15 @@
+{
+	"hello": "안녕",
+	"elsewhere": "다른 곳",
+	"link_home": "메인",
+	"link_work": "업무",
+	"link_articles": "기사",
+	"link_uses": "내 용도",
+	"link_contact": "연락처",
+	"link_photos": "사진",
+	"select_language": "언어 선택",
+	"select_theme": "테마 선택",
+	"theme_system": "시스템",
+	"theme_light": "조명",
+	"theme_dark": "어두운"
+}

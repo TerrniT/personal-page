@@ -1,0 +1,15 @@
+{
+	"hello": "Hi",
+	"elsewhere": "Elsewhere",
+	"link_home": "Home",
+	"link_work": "Work",
+	"link_articles": "Articles",
+	"link_uses": "Uses",
+	"link_contact": "Contact",
+	"link_photos": "Photos",
+	"select_language": "Select a language",
+	"select_theme": "Select a theme",
+	"theme_system": "System",
+	"theme_light": "Light",
+	"theme_dark": "Dark"
+}

@@ -1,0 +1,15 @@
+{
+	"hello": "Hallo",
+	"elsewhere": "Elders",
+	"link_home": "Home",
+	"link_work": "Werk",
+	"link_articles": "Artikelen",
+	"link_uses": "Mijn toepassingen",
+	"link_contact": "Contacten",
+	"link_photos": "Foto's",
+	"select_language": "Selecteer taal",
+	"select_theme": "Selecteer thema",
+	"theme_system": "Systeem",
+	"theme_light": "Licht",
+	"theme_dark": "Donker"
+}

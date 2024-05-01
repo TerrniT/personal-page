@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen py-8 px-4 sticky top-0 flex flex-col justify-between">
+  <div class="h-screen py-8 px-4 sticky top-0 flex flex-col justify-between w-[220px]">
     <div>
       <NuxtLink to="/">
         <NuxtImg
@@ -16,12 +16,17 @@
           :to="link.href"
           class="hover:text-foreground text-muted-foreground transition-colors duration-150 ease-linear"
         >
-          {{ link.label }}
+          <template v-if="link.locale_key">
+            {{ $t(link.locale_key) }}
+          </template>
+          <template v-else>
+            {{ link.label }}
+          </template>
         </NuxtLink>
       </div>
 
       <div class="flex flex-col gap-y-2 px-2 mt-12">
-        <span class="text-muted-foreground font-medium">ELSEWHERE</span>
+        <span class="text-muted-foreground font-medium uppercase text-sm"> {{ $t('elsewhere') }}</span>
         <NuxtLink
           v-for="link in socialLinks"
           :key="link.label"
@@ -39,63 +44,8 @@
     </div>
 
     <div class="px-2 flex flex-col gap-y-3">
-      <UiHoverCard>
-        <UiHoverCardTrigger as-child>
-          <UiButton
-            aria-label="change language"
-            variant="ghost"
-            class="p-1 size-8 hover:bg-secondary"
-          >
-            <IconsLanguageIcon class="size-6" />
-          </UiButton>
-        </UiHoverCardTrigger>
-        <UiHoverCardContent class="mx-2 w-60">
-          <div class="flex justify-between space-x-4">
-            <div class="space-y-1">
-              <h4 class="text-sm font-semibold">
-                @vuejs
-              </h4>
-              <p class="text-sm">
-                Progressive JavaScript framework for building modern web interfaces.
-              </p>
-              <div class="flex items-center pt-2">
-                <span class="text-xs text-muted-foreground">
-                  Joined January 2014
-                </span>
-              </div>
-            </div>
-          </div>
-        </UiHoverCardContent>
-      </UiHoverCard>
-
-      <UiHoverCard>
-        <UiHoverCardTrigger as-child>
-          <UiButton
-            aria-label="change theme"
-            variant="ghost"
-            class="p-1 size-8 hover:bg-secondary"
-          >
-            <IconsThemeIcon class="size-5" />
-          </UiButton>
-        </UiHoverCardTrigger>
-        <UiHoverCardContent class="mx-2 w-60">
-          <div class="flex justify-between space-x-4">
-            <div class="space-y-1">
-              <h4 class="text-sm font-semibold">
-                @vuejs
-              </h4>
-              <p class="text-sm">
-                Progressive JavaScript framework for building modern web interfaces.
-              </p>
-              <div class="flex items-center pt-2">
-                <span class="text-xs text-muted-foreground">
-                  Joined January 2014
-                </span>
-              </div>
-            </div>
-          </div>
-        </UiHoverCardContent>
-      </UiHoverCard>
+      <LayoutLanguageChange />
+      <LayoutThemeChange />
     </div>
   </div>
 </template>
@@ -105,7 +55,8 @@ import IconsGithubIcon from '@/components/icons/GithubIcon.vue';
 
 interface Link {
 	label: string
-	href: string
+	href: string,
+	locale_key?: string
 }
 
 type SocialLink = Link & {icon: unknown}
@@ -113,27 +64,38 @@ type SocialLink = Link & {icon: unknown}
 const links: Link[] = [
 	{
 		label: 'Home',
-		href: '/'
+		href: '/',
+		locale_key: 'link_home'
 	},
 	{
 		label: 'Work',
-		href: '/work'
+		href: '/work',
+		locale_key: 'link_work'
 	},
 	{
 		label: 'Articles',
-		href: '/articles'
+		href: '/articles',
+		locale_key: 'link_articles'
+	},
+	{
+		label: 'Designs',
+		href: '/designs',
+		locale_key: 'link_designs'
 	},
 	{
 		label: 'Uses',
-		href: '/uses'
+		href: '/uses',
+		locale_key: 'link_uses'
 	},
 	{
 		label: 'Contact',
-		href: '/contact'
+		href: '/contact',
+		locale_key: 'link_contact'
 	},
 	{
 		label: 'Photos',
-		href: '/photos'
+		href: '/photos',
+		locale_key: 'link_photos'
 	},
 ]
 
