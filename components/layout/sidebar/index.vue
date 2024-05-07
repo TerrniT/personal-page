@@ -1,13 +1,7 @@
 <template>
-  <div class="h-screen py-8 px-4 sticky top-0 flex flex-col justify-between w-[220px]">
+  <div class="h-screen py-8 px-4 sticky top-0 md:flex flex-col justify-between w-[220px] hidden">
     <div>
-      <NuxtLink to="/">
-        <NuxtImg
-          src="/cat_logo.png"
-          class="w-16 h-16 sepia-0 hover:sepia transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer"
-          alt="cat logo"
-        />
-      </NuxtLink>
+      <LayoutLogo />
 
       <div class="flex flex-col gap-y-2 px-2 mt-4">
         <NuxtLink
@@ -77,11 +71,11 @@ const links: Link[] = [
 		href: '/articles',
 		locale_key: 'link_articles'
 	},
-	{
-		label: 'Designs',
-		href: '/designs',
-		locale_key: 'link_designs'
-	},
+	// {
+	// 	label: 'Designs',
+	// 	href: '/designs',
+	// 	locale_key: 'link_designs'
+	// },
 	{
 		label: 'Uses',
 		href: '/uses',
@@ -97,6 +91,11 @@ const links: Link[] = [
 		href: '/photos',
 		locale_key: 'link_photos'
 	},
+	{
+		label: 'Friends',
+		href: '/friends',
+		locale_key: 'link_friends'
+	},
 ]
 
 // from api init
@@ -110,7 +109,6 @@ const socialLinks: SocialLink[] = [
 		label: 'GitHub',
 		href: 'https://github.com/nyannyan-dev',
 		icon: IconsGithubIcon
-
 	},
 	{
 		label: 'LinkedIn',
@@ -121,7 +119,6 @@ const socialLinks: SocialLink[] = [
 		label: 'Youtube',
 		href: 'https://www.youtube.com/@nyannyan_dev',
 		icon: IconsGithubIcon
-
 	}
 ]
 </script>

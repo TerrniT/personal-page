@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="flex gap-x-4">
+    <div class="flex flex-col gap-x-4 items-center">
       <div class="flex flex-col my-auto gap-y-4">
         <div class="text-5xl font-bold flex gap-x-3">
           <span class="text-foreground underline underline-offset-4">
@@ -20,7 +20,7 @@
         class="size-72"
       />
     </div>
-    <div class="mt-10">
+    <div class="md:mt-10 mt-20">
       <h4 class="text-foreground font-medium text-2xl">
         Numbers
       </h4>
@@ -48,12 +48,12 @@
           class="border-b border-border rounded-sm py-2 flex flex-row justify-between items-center"
         >
           <div class="flex flex-row gap-x-2 items-center">
-            <span class="text-primary bg-muted rounded-md p-0.5 text-xs">#{{ article.languages[0].name.slice(0,2) }}</span>
-            <h3 class="text-base text-foreground font-medium">
+            <span class="text-muted-foreground bg-muted rounded-md p-0.5 hidden md:block md:text-xs">#{{ article.languages[0].name.slice(0,2) }}</span>
+            <h3 class="md:text-base text-sm text-foreground font-medium ">
               {{ article.label }}
             </h3>
           </div>
-          <div class="flex flex-row gap-x-3 text-muted-foreground text-sm">
+          <div class="md:flex md:flex-row gap-x-3 text-muted-foreground text-sm hidden">
             <div class="flex flex-row gap-x-2">
               <span
                 v-for="topic in article.topics"
@@ -70,8 +70,7 @@
       </div>
     </div>
 
-
-    <div class="grid grid-cols-3 gap-x-2">
+    <div class="grid md:grid-cols-3 grid-cols-1 gap-y-6 md:gap-x-2">
       <div>
         <h4 class="text-foreground font-medium text-2xl underline underline-offset-4 mt-3">
           Hard skills

@@ -3,7 +3,7 @@
     <h1 class="text-5xl font-bold">
       Photos
     </h1>
-    <span>This page is under construction</span>
+    <LayoutConstructBanner />
   </div>
 </template>
 

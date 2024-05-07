@@ -3,7 +3,7 @@
     <h1 class="text-5xl font-bold">
       My uses
     </h1>
-    <span>This page is under construction</span>
+    <LayoutConstructBanner />
   </div>
 </template>
 

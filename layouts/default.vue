@@ -1,6 +1,7 @@
 <template>
-  <div class="flex w-full h-[200vh] bg-background relative">
+  <div class="flex flex-col md:flex-row w-full h-[200vh] bg-background relative">
     <LayoutSidebar />
+    <LayoutMobileNavbar />
     <LayoutContainer>
       <NuxtPage />
       <!-- <div class="grid grid-cols-2 grid-rows-2 gap-3 mt-12">
