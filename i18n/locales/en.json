@@ -12,5 +12,7 @@
 	"select_theme": "Select a theme",
 	"theme_system": "System",
 	"theme_light": "Light",
-	"theme_dark": "Dark"
+	"theme_dark": "Dark",
+	"construct_title": "Page in progress",
+	"construct_description": "This page is still uncompleted. I'm working on it"
 }

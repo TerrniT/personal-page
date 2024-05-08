@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-y-4 text-foreground">
     <h1 class="text-5xl font-bold">
-      My uses
+      {{ $t('link_uses') }}
     </h1>
     <LayoutConstructBanner />
   </div>

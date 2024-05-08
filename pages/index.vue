@@ -163,10 +163,12 @@
 </template>
 
 <script setup lang="ts">
-import { type PageData, type SkillLevel } from '../shared/types/main'
+import { type SkillLevel } from '../shared/types/main'
 
+const store = useHero()
+const {pageData: data} = storeToRefs(store)
 
-const { data } = await useFetch<PageData>('/api/init')
+await store.fetchHero()
 
 if(!data.value) {
  throw createError({
@@ -210,5 +212,4 @@ const levelColors: {indicator: string, type: 'language' | 'expertise', label: Sk
 	type: 'language'
   },
 ]
-
 </script>

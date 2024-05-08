@@ -28,9 +28,11 @@
 
     <div>
       <h3 class="text-foreground font-medium md:text-base text-lg">
-        Work in progress
+        {{ $t("construct_title") }}
       </h3>
-      <span class="text-muted-foreground font-mono">This page is still uncompleted. I'm working on it</span>
+      <span class="text-muted-foreground font-mono">
+        {{ $t("construct_description") }}
+      </span>
     </div>
   </div>
 </template>

@@ -6,7 +6,8 @@ export default defineNuxtConfig({
       '@nuxtjs/tailwindcss',
       "@nuxt/image",
       '@nuxtjs/color-mode',
-      "@nuxtjs/i18n"
+      "@nuxtjs/i18n",
+	  "@pinia/nuxt",
     ],
 	css: ['/assets/css/tailwind.css', '/assets/css/app.scss'],
 	postcss: {
@@ -14,6 +15,9 @@ export default defineNuxtConfig({
 		  tailwindcss: {},
 		  autoprefixer: {},
 		}
+	},
+	pinia: {
+		storesDirs: ['./stores/**'],
 	},
 	colorMode: {
 	  preference: 'system', // default value of $colorMode.preference

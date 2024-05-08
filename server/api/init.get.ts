@@ -8,7 +8,6 @@ const notion = new Client({ auth: process.env.NOTION_INTEGRATION_SECRET })
 const hero_page_id = process.env.NOTION_HERO_CONTENT_ID || ''
 const skills_database_id = process.env.NOTION_SKILLS_DB_ID || ''
 const works_database_id = process.env.NOTION_WORKS_DB_ID || ''
-const links_database_id = process.env.NOTION_LINKS_DB_ID || ''
 
 
 const DEFAULT_PAGE_DATA: PageData = {
@@ -28,8 +27,7 @@ const DEFAULT_PAGE_DATA: PageData = {
 		articles: [],
 		recent_articles: [],
 		recent_projects: []
-	},
-	links: []
+	}
 }
 
 const pageData: PageData = DEFAULT_PAGE_DATA as PageData;
@@ -49,13 +47,6 @@ async function getSkills() {
 }
 
 
-async function getLinks() {
-	const data = await notion.databases.query({
-	  database_id: links_database_id,
-	})
-
-	return data
-}
 async function getWorks() {
 	const data = await notion.databases.query({
 	  database_id: works_database_id,
@@ -94,18 +85,6 @@ getHeroContent().then((data) => {
 		})
 	}
 })
-
-getLinks().then((data) => {
-	data.results.forEach((item) => {
-		pageData.links.push({
-			icon: item.icon ? item.icon.external.url : '',
-			name: item.properties.name.title[0].plain_text,
-			link: item.properties.link.url || '',
-			type: item.properties.type.select ? item.properties.type.select.name : ''
-		})
-	})
-})
-
 
 getSkills().then((data) => {
 	data.results.forEach((item) => {

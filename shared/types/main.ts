@@ -1,11 +1,13 @@
 import {type ImageUrl, type Uuid} from './kernel'
 
-export interface Links {
+export interface Link {
 	icon: ImageUrl
 	name: string
 	link: string
 	type: 'contact' | 'social'
 }
+
+export type Links = Link[]
 export interface WorkItem <T> {
 	label: string
 	topics: {
@@ -51,7 +53,7 @@ export interface PageData {
 		recent_articles: WorkItem<'article'>[]
 		articles: WorkItem<'article'>[]
 	}
-	links: Links[]
+	// links: Links
 }
 
 

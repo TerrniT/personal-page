@@ -13,6 +13,7 @@
     "@notionhq/client": "^2.2.15",
     "@nuxt/image": "^1.6.0",
     "@nuxtjs/i18n": "^8.3.1",
+    "@pinia/nuxt": "^0.5.1",
     "@radix-icons/vue": "^1.0.0",
     "class-variance-authority": "^0.7.0",
     "nuxt": "^3.11.1",

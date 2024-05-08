@@ -12,5 +12,7 @@
 	"select_theme": "Vælg tema",
 	"theme_system": "System",
 	"theme_light": "Lys",
-	"theme_dark": "Mørk"
+	"theme_dark": "Mørk",
+	"construct_title": "Side i udvikling",
+	"construct_description": "Dette side er i øjeblikket ikke færdig. Jeg laver det nu"
 }

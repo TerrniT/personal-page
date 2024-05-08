@@ -12,5 +12,7 @@
 	"select_theme": "选择主题",
 	"theme_system": "系统主题色",
 	"theme_light": "白光",
-	"theme_dark": "黑暗"
+	"theme_dark": "黑暗",
+	"construct_title": "正在构建",
+	"construct_description": "这个页面还没有完全完成。我正在努力完成它"
 }
