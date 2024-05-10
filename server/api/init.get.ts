@@ -12,8 +12,8 @@ const works_database_id = process.env.NOTION_WORKS_DB_ID || ''
 
 const DEFAULT_PAGE_DATA: PageData = {
 	hero_content: {
-		heading: "",
-		description: "",
+		// heading: "",
+		// description: "",
 		image: "",
 		number_blocks: [],
 	},
@@ -72,13 +72,9 @@ async function getHeroContent() {
 getHeroContent().then((data) => {
 	if(data && data.results.length > 0) {
 		data.results.forEach((item) => {
-			if(item.type === 'heading_1') {
-				pageData.hero_content.heading = item.heading_1.rich_text[0].plain_text as string
-			} else if(item.type === 'bulleted_list_item') {
+			if(item.type === 'bulleted_list_item') {
 				const formattedItem = (item.bulleted_list_item.rich_text[0].plain_text as string).split('|')
 				pageData.hero_content.number_blocks.push({label: formattedItem[0], description: formattedItem[1]})
-			} else if(item.type === 'paragraph' && item.paragraph.rich_text.length > 0) {
-				pageData.hero_content.description = item.paragraph.rich_text[0].plain_text as string
 			} else if(item.type === 'image') {
 				pageData.hero_content.image = item.image.file.url
 			}

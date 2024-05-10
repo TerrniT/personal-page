@@ -1,18 +1,9 @@
 <template>
   <div class="">
     <div class="flex flex-col gap-x-4 items-center">
-      <div class="flex flex-col my-auto gap-y-4">
-        <div class="text-5xl font-bold flex gap-x-3">
-          <span class="text-foreground underline underline-offset-4">
-            {{ $t('hero.title') + '!' }}
-          </span>
-          <h1 class="text-foreground">
-            {{ data?.hero_content.heading }}
-          </h1>
-        </div>
-        <span class="text-base text-muted-foreground">
-          {{ data?.hero_content.description }}
-        </span>
+      <div class="flex flex-col w-full justify-start my-auto gap-y-4">
+        <LayoutHeading page-key="hero" />
+        <LayoutDescription page-key="hero" />
       </div>
       <NuxtImg
         :src="data?.hero_content.image"

@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-5xl font-bold">
+  <h1 class="text-5xl font-bold text-foreground">
     {{ $t(`${pageKey}.title`) }}
   </h1>
 </template>
