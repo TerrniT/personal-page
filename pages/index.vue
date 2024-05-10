@@ -4,13 +4,13 @@
       <div class="flex flex-col my-auto gap-y-4">
         <div class="text-5xl font-bold flex gap-x-3">
           <span class="text-foreground underline underline-offset-4">
-            {{ $t('hello') + '!' }}
+            {{ $t('hero.title') + '!' }}
           </span>
           <h1 class="text-foreground">
             {{ data?.hero_content.heading }}
           </h1>
         </div>
-        <span class="text-base text-foreground">
+        <span class="text-base text-muted-foreground">
           {{ data?.hero_content.description }}
         </span>
       </div>
@@ -58,7 +58,7 @@
               <span
                 v-for="topic in article.topics"
                 :key="topic.id"
-                class="text-muted-foreground text-sm uppercase"
+                class="text-muted-foreground text-sm uppercase text-nowrap"
               >
                 {{ topic.name }}
               </span>
@@ -163,7 +163,7 @@
 </template>
 
 <script setup lang="ts">
-import { type SkillLevel } from '../shared/types/main'
+import { type SkillLevel } from '../shared/types/hero'
 
 const store = useHero()
 const {pageData: data} = storeToRefs(store)
@@ -177,8 +177,7 @@ if(!data.value) {
   data: {
     myCustomField: true
   }
-})
-}
+})}
 
 const levelColors: {indicator: string, type: 'language' | 'expertise', label: SkillLevel}[] = [
 {

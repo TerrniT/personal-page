@@ -28,10 +28,10 @@
 
     <div>
       <h3 class="text-foreground font-medium md:text-base text-lg">
-        {{ $t("construct_title") }}
+        {{ $t("construct_banner.title") }}
       </h3>
       <span class="text-muted-foreground font-mono">
-        {{ $t("construct_description") }}
+        {{ $t("construct_banner.description") }}
       </span>
     </div>
   </div>

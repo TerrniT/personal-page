@@ -1,18 +1,45 @@
 {
-	"hello": "안녕",
-	"elsewhere": "다른 곳",
-	"link_home": "메인",
-	"link_work": "업무",
-	"link_articles": "기사",
-	"link_uses": "내 용도",
-	"link_contact": "연락처",
-	"link_photos": "사진",
-	"link_friends": "어두운",
-	"select_language": "언어 선택",
-	"select_theme": "테마 선택",
-	"theme_system": "시스템",
-	"theme_light": "조명",
-	"theme_dark": "어두운",
-	"construct_title": "이 페이지는 개발 중입니다",
-	"construct_description": "이 페이지는 아직 완성되지 않았습니다. 작업 중입니다"
+	"hero": {
+		"title": "안녕"
+	},
+	"work": {
+		"title": "업무"
+	},
+	"articles": {
+		"title": "기사"
+	},
+	"uses": {
+		"title": "내 용도"
+	},
+	"contact": {
+		"title": "연락처"
+	},
+	"photos": {
+		"title": "사진"
+	},
+	"friends": {
+		"title": "친구",
+		"description": "제 여정에 없어서는 안 될 친구 및 동료로 구성된 활기찬 커뮤니티에 오신 것을 환영합니다! 이곳에서 각자의 독특한 관점, 재능, 열정을 대표하는 다양한 인맥 네트워크를 발견할 수 있습니다.",
+		"cta": "여러분도 여기에 들어오시겠어요? 서로에 대해 알아보세요, 여기 제 링크가 있습니다:",
+		"cta_link": "여기"
+	},
+	"nav": {
+		"elsewhere": "다른 곳",
+		"link_home": "메인",
+		"link_work": "업무",
+		"link_articles": "기사",
+		"link_uses": "내 용도",
+		"link_contact": "연락처",
+		"link_photos": "사진",
+		"link_friends": "친구 ",
+		"select_language": "언어 선택",
+		"select_theme": "테마 선택",
+		"theme_system": "시스템",
+		"theme_light": "조명",
+		"theme_dark": "어두운"
+	},
+	"construct_banner": {
+		"title": "이 페이지는 개발 중입니다",
+		"description": "이 페이지는 아직 완성되지 않았습니다. 작업 중입니다"
+	}
 }

@@ -11,7 +11,7 @@
           class="hover:text-foreground text-muted-foreground transition-colors duration-150 ease-linear"
         >
           <template v-if="link.locale_key">
-            {{ $t(link.locale_key) }}
+            {{ $t('nav.' + link.locale_key) }}
           </template>
           <template v-else>
             {{ link.label }}
@@ -23,7 +23,7 @@
         v-if="socialLinks"
         class="flex flex-col gap-y-2 px-2 mt-12"
       >
-        <span class="text-muted-foreground font-medium uppercase text-sm"> {{ $t('elsewhere') }}</span>
+        <span class="text-muted-foreground font-medium uppercase text-sm"> {{ $t('nav.elsewhere') }}</span>
         <NuxtLink
           v-for="link in socialLinks"
           :key="link.name"

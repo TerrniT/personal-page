@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Client } from "@notionhq/client";
-import  { PageData } from '../../shared/types/main'
+import  { PageData } from '../../shared/types/hero'
 import { ImageUrl } from '../../shared/types/kernel'
 
 const notion = new Client({ auth: process.env.NOTION_INTEGRATION_SECRET })

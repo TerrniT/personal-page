@@ -9,7 +9,7 @@
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent class="mx-3 w-56 bg-secondary border-border">
         <UiDropdownMenuLabel class="text-foreground">
-          {{ $t('select_theme') }}
+          {{ $t('nav.select_theme') }}
         </UiDropdownMenuLabel>
         <UiDropdownMenuSeparator class="bg-border" />
         <UiDropdownMenuRadioGroup
@@ -23,7 +23,7 @@
             class="text-foreground"
           >
             <template v-if="theme.locale_key">
-              {{ $t(theme.locale_key) }}
+              {{ $t('nav.' + theme.locale_key) }}
             </template>
             <template v-else>
               {{ theme.label }}

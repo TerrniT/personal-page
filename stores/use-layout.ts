@@ -36,11 +36,6 @@ export const useLayout = defineStore('layout', () => {
 			locale_key: 'link_uses'
 		},
 		{
-			label: 'Contact',
-			href: '/contact',
-			locale_key: 'link_contact'
-		},
-		{
 			label: 'Photos',
 			href: '/photos',
 			locale_key: 'link_photos'
@@ -49,6 +44,11 @@ export const useLayout = defineStore('layout', () => {
 			label: 'Friends',
 			href: '/friends',
 			locale_key: 'link_friends'
+		},
+		{
+			label: 'Contact',
+			href: '/contact',
+			locale_key: 'link_contact'
 		},
 	])
 

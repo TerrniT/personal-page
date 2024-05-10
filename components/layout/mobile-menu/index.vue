@@ -43,7 +43,7 @@
               @click="sheetModal = false"
             >
               <template v-if="link.locale_key">
-                {{ $t(link.locale_key) }}
+                {{ $t('nav.' + link.locale_key) }}
               </template>
               <template v-else>
                 {{ link.label }}

@@ -1,18 +1,45 @@
 {
-	"hello": "Hi",
-	"elsewhere": "Elsewhere",
-	"link_home": "Home",
-	"link_work": "Work",
-	"link_articles": "Articles",
-	"link_uses": "Uses",
-	"link_contact": "Contact",
-	"link_photos": "Photos",
-	"link_friends": "Friends",
-	"select_language": "Select a language",
-	"select_theme": "Select a theme",
-	"theme_system": "System",
-	"theme_light": "Light",
-	"theme_dark": "Dark",
-	"construct_title": "Page in progress",
-	"construct_description": "This page is still uncompleted. I'm working on it"
+	"hero": {
+		"title": "Hi"
+	},
+	"work": {
+		"title": "Work"
+	},
+	"articles": {
+		"title": "Articles"
+	},
+	"uses": {
+		"title": "Uses"
+	},
+	"contact": {
+		"title": "Contact"
+	},
+	"photos": {
+		"title": "Photos"
+	},
+	"friends": {
+		"title": "Friends",
+		"description": "Welcome to the vibrant community of friends and colleagues who are an integral part of my journey! Here you can discover a diverse network of connections, each representing unique perspectives, talents, and passions.",
+		"cta": "Would you like to get in here too ? Let's get to know each other, here are my links:",
+		"cta_link": "Here"
+	},
+	"nav": {
+		"elsewhere": "Elsewhere",
+		"link_home": "Home",
+		"link_work": "Work",
+		"link_articles": "Articles",
+		"link_uses": "Uses",
+		"link_contact": "Contact",
+		"link_photos": "Photos",
+		"link_friends": "Friends",
+		"select_language": "Select a language",
+		"select_theme": "Select a theme",
+		"theme_system": "System",
+		"theme_light": "Light",
+		"theme_dark": "Dark"
+	},
+	"construct_banner": {
+		"title": "Page in progress",
+		"description": "This page is still uncompleted. I'm working on it"
+	}
 }

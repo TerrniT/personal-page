@@ -1,18 +1,45 @@
 {
-	"hello": "Hallo",
-	"elsewhere": "Elders",
-	"link_home": "Home",
-	"link_work": "Werk",
-	"link_articles": "Artikelen",
-	"link_uses": "Mijn toepassingen",
-	"link_contact": "Contacten",
-	"link_photos": "Foto's",
-	"link_friends": "Vrienden",
-	"select_language": "Selecteer taal",
-	"select_theme": "Selecteer thema",
-	"theme_system": "Systeem",
-	"theme_light": "Licht",
-	"theme_dark": "Donker",
-	"construct_title": "Pagina in ontwikkeling",
-	"construct_description": "Deze pagina is nog niet volledig. Ik werk er nu mee"
+	"hero": {
+		"title": "Hallo"
+	},
+	"work": {
+		"title": "Werk"
+	},
+	"articles": {
+		"title": "Artikelen"
+	},
+	"uses": {
+		"title": "Mijn toepassingen"
+	},
+	"contact": {
+		"title": "Contacten"
+	},
+	"photos": {
+		"title": "Fotos"
+	},
+	"friends": {
+		"title": "Vrienden",
+		"description": "Welkom bij de levendige gemeenschap van vrienden en collega's die een integraal deel uitmaken van mijn reis! Hier kun je een divers netwerk van connecties ontdekken, die elk unieke perspectieven, talenten en passies vertegenwoordigen.",
+		"cta": "Wil je hier ook aan meedoen? Laten we elkaar leren kennen, hier zijn mijn links:",
+		"cta_link": "Hier"
+	},
+	"nav": {
+		"elsewhere": "Elders",
+		"link_home": "Home",
+		"link_work": "Werk",
+		"link_articles": "Artikelen",
+		"link_uses": "Mijn toepassingen",
+		"link_contact": "Contacten",
+		"link_photos": "Fotos",
+		"link_friends": "Vrienden",
+		"select_language": "Selecteer taal",
+		"select_theme": "Selecteer thema",
+		"theme_system": "Systeem",
+		"theme_light": "Licht",
+		"theme_dark": "Donker"
+	},
+	"construct_banner": {
+		"title": "Pagina in ontwikkeling",
+		"description": "Deze pagina is nog niet volledig. Ik werk er nu mee"
+	}	
 }

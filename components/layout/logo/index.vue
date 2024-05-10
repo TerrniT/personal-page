@@ -1,6 +1,8 @@
 <template>
   <div>
-    <NuxtLink to="/">
+    <NuxtLink
+      :to="localePath('/')"
+    >
       <NuxtImg
         src="/cat_logo.png"
         class="w-16 h-16 sepia-0 hover:sepia transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer"
@@ -11,5 +13,5 @@
 </template>
 
 <script setup lang="ts">
-
+const localePath = useLocalePath()
 </script>

@@ -9,7 +9,7 @@
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent class="mx-3 w-56 bg-secondary border-border">
         <UiDropdownMenuLabel class="text-foreground">
-          {{ $t('select_language') }}
+          {{ $t('nav.select_language') }}
         </UiDropdownMenuLabel>
         <UiDropdownMenuSeparator class="bg-border" />
         <UiDropdownMenuGroup v-model="local">

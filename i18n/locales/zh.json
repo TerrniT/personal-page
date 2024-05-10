@@ -1,18 +1,45 @@
 {
-	"hello": "嗨",
-	"elsewhere": "在别处",
-	"link_home": "主页",
-	"link_work": "作品",
-	"link_articles": "文章",
-	"link_uses": "我的用途",
-	"link_contact": "联系方式",
-	"link_photos": "照片",
-	"link_friends": "朋友",
-	"select_language": "选择语言",
-	"select_theme": "选择主题",
-	"theme_system": "系统主题色",
-	"theme_light": "白光",
-	"theme_dark": "黑暗",
-	"construct_title": "正在构建",
-	"construct_description": "这个页面还没有完全完成。我正在努力完成它"
+	"hero": {
+		"title": "嗨"
+	},
+	"work": {
+		"title": "作品"
+	},
+	"articles": {
+		"title": "文章"
+	},
+	"uses": {
+		"title": "我的用途"
+	},
+	"contact": {
+		"title": "联系方式"
+	},
+	"photos": {
+		"title": "照片"
+	},
+	"friends": {
+		"title": "朋友",
+		"description": "欢迎来到这个充满活力的社区，这里的朋友和同事是我人生旅途中不可或缺的一部分！在这里，您可以发现一个多样化的关系网络，每个人都代表着独特的视角、才能和热情",
+		"cta": "您也想加入我们吗？让我们互相认识一下吧，这是我的链接",
+		"cta_link": "这里"
+	},
+	"nav": {
+		"elsewhere": "在别处",
+		"link_home": "主页",
+		"link_work": "作品",
+		"link_articles": "文章",
+		"link_uses": "我的用途",
+		"link_contact": "联系方式",
+		"link_photos": "照片",
+		"link_friends": "朋友",
+		"select_language": "选择语言",
+		"select_theme": "选择主题",
+		"theme_system": "系统主题色",
+		"theme_light": "白光",
+		"theme_dark": "黑暗"
+	},
+	"construct_banner": {
+		"title": "正在构建",
+		"description": "这个页面还没有完全完成。我正在努力完成它"
+	}
 }

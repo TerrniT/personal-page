@@ -1,4 +1,4 @@
-import { type PageData } from '../shared/types/main'
+import { type PageData } from '../shared/types/hero'
 
 export const useHero = defineStore('hero', () => {
 	const pageData = ref<PageData | null>()
@@ -15,4 +15,4 @@ export const useHero = defineStore('hero', () => {
 		pageData,
 		fetchHero,
 	}
-  })
+})
