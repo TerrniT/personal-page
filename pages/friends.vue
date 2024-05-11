@@ -6,7 +6,7 @@
       <span>{{ $t('friends.cta') }}</span>
       <NuxtLink
         :to="localePath('/contact')"
-        class="hover:text-primary text-primary/90 underline-offset-1 underline decoration-dashed text-start  transition-colors duration-150 ease-linear"
+        class="hover:text-primary text-primary/90 underline-offset-4 hover:underline decoration-dashed text-start  transition-colors duration-150 ease-linear"
       >
         {{ $t('friends.cta_link') }}
       </NuxtLink>

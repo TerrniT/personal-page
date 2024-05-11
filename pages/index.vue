@@ -12,9 +12,7 @@
       />
     </div>
     <div class="md:mt-10 mt-20">
-      <h4 class="text-foreground font-medium text-2xl">
-        Numbers
-      </h4>
+      <LayoutHeadingH2 page-key="hero.content.numbers" />
       <div class="grid grid-cols-3 gap-3 p-3 ">
         <div
           v-for="item in data?.hero_content.number_blocks"
@@ -29,14 +27,12 @@
       </div>
     </div>
     <div class="my-24">
-      <h4 class="text-foreground font-medium text-2xl">
-        Recent articles
-      </h4>
+      <LayoutHeadingH2 page-key="hero.content.recent_articles" />
       <div class="flex flex-col mt-3">
         <div
           v-for="article in data?.works.recent_articles"
           :key="article.created_at"
-          class="border-b border-border rounded-sm py-2 flex flex-row justify-between items-center"
+          class="border-b border-border rounded-sm py-2 gap-x-2 flex flex-row justify-between items-center"
         >
           <div class="flex flex-row gap-x-2 items-center">
             <span class="text-muted-foreground bg-muted rounded-md p-0.5 hidden md:block md:text-xs">#{{ article.languages[0].name.slice(0,2) }}</span>
@@ -44,7 +40,7 @@
               {{ article.label }}
             </h3>
           </div>
-          <div class="md:flex md:flex-row gap-x-3 text-muted-foreground text-sm hidden">
+          <div class="md:flex md:flex-row gap-x-1 text-muted-foreground text-sm hidden">
             <div class="flex flex-row gap-x-2">
               <span
                 v-for="topic in article.topics"
@@ -61,11 +57,9 @@
       </div>
     </div>
 
-    <div class="grid md:grid-cols-3 grid-cols-1 gap-y-6 md:gap-x-2">
+    <div class="grid md:grid-cols-1 grid-cols-1 gap-y-6 md:gap-x-2">
       <div>
-        <h4 class="text-foreground font-medium text-2xl underline underline-offset-4 mt-3">
-          Hard skills
-        </h4>
+        <LayoutHeadingH2 page-key="hero.content.hard_skills" />
         <div class="flex flex-row flex-wrap gap-x-3 w-full my-5">
           <template v-if="data && data.skills.hard_skills">
             <div
@@ -86,9 +80,7 @@
       </div>
 
       <div>
-        <h4 class="text-foreground font-medium text-2xl underline underline-offset-4 mt-3">
-          Expertise
-        </h4>
+        <LayoutHeadingH2 page-key="hero.content.expertise" />
         <div class="flex flex-row gap-x-2 flex-wrap w-full my-5">
           <template v-if="data && data.skills.expertise">
             <div
@@ -108,9 +100,7 @@
         </div>
       </div>
       <div>
-        <h4 class="text-foreground font-medium text-2xl underline underline-offset-4 mt-3">
-          Languages
-        </h4>
+        <LayoutHeadingH2 page-key="hero.content.languages" />
         <div class="flex flex-row flex-wrap gap-x-3 w-full my-5">
           <template v-if="data && data.skills.languages">
             <div

@@ -26,7 +26,12 @@
 		"title": "사진"
 	},
 	"playlist": {
-		"title": "내 음악 라이브러리"
+		"title": "내 음악",
+		"description": "내 재생목록에 오신 것을 환영합니다. 여기에는 제가 들어왔고 현재 듣고 있는 트랙과 좋아하는 앨범이 보관되어 있습니다.",
+		"content": {
+			"albums": "역대 가장 좋아하는 앨범",
+			"favorite_tracks": "현재 재생목록에 있는 마지막 트랙"
+		}
 	},
 	"friends": {
 		"title": "친구",

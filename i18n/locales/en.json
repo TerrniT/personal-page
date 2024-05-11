@@ -1,7 +1,14 @@
 {
 	"hero": {
 		"title": "Hi, I’m Gleb!",
-		"description": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life"
+		"description": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life",
+		"content": {
+			"numbers": "Numbers",
+			"recent_articles": "Recent articles",
+			"hard_skills": "Hard skills",
+			"expertise": "Expertise",
+			"languages": "Languages"
+		}
 	},
 	"work": {
 		"title": "Work"
@@ -26,7 +33,12 @@
 		"title": "Photos"
 	},
 	"playlist": {
-		"title": "My music library"
+		"title": "My playlist",
+		"description": "Welcome to my playlist lads. This is where I keep tracks and favorite albums that I've been listening to or am currently listening to.",
+		"content": {
+			"albums": "Favorite Albums Of All Time",
+			"favorite_tracks": "My Go-to Tracks Right Now"
+		}
 	},
 	"friends": {
 		"title": "Friends",

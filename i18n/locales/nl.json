@@ -26,7 +26,12 @@
 		"title": "Fotos"
 	},
 	"playlist": {
-		"title": "Mijn muziekbibliotheek "
+		"title": "Mijn afspeellijst",
+		"description": "Welkom bij mijn afspeellijst jongens. Hier bewaar ik tracks en favoriete albums die ik heb beluisterd en momenteel beluister.",
+		"content": {
+			"albums": "Favoriete albums aller tijden",
+			"favorite_tracks": "Mijn laatste nummers in mijn huidige afspeellijst"
+		}
 	},
 	"friends": {
 		"title": "Vrienden",

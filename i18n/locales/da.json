@@ -26,7 +26,12 @@
 		"title": "Fotos"
 	},
 	"playlist": {
-		"title": "Mit musikbibliotek"
+		"title": "Min playliste",
+		"description": "Velkommen til min playliste lads. Det er her, jeg opbevarer numre og yndlingsalbum, som jeg har lyttet til og lytter til i øjeblikket.",
+		"content": {
+			"albums": "Yndlingsalbums gennem tiderne",
+			"favorite_tracks": "Mine sidste numre på playlisten lige nu"
+		}
 	},
 	"friends": {
 		"title": "Venner",

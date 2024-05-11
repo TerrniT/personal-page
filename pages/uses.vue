@@ -8,9 +8,7 @@
         :key="section_name"
         class=""
       >
-        <h2 class="text-foreground font-semibold text-2xl">
-          {{ $t(`uses.content.${section_name}`) }}
-        </h2>
+        <LayoutHeadingH2 :page-key="`uses.content.${section_name}`" />
         <ul class="mt-6 flex flex-col gap-y-4">
           <li
             v-for="item in section"

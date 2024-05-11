@@ -27,6 +27,7 @@ export type SkillItem = {
 	name: string
 	level: SkillLevel
 	type: SkillType
+	description: string
 }
 
 export type Skills = Record<SkillType, SkillItem[]>

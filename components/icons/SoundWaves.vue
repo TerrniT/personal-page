@@ -1,0 +1,69 @@
+<template>
+  <svg
+    width="25"
+    height="20"
+    viewBox="0 0 25 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="1"
+      y="7"
+      width="2"
+      height="6"
+      rx="1"
+    />
+    <rect
+      x="4"
+      y="3"
+      width="2"
+      height="14"
+      rx="1"
+    />
+    <rect
+      x="7"
+      y="2"
+      width="2"
+      height="17"
+      rx="1"
+    />
+    <rect
+      x="16"
+      y="1"
+      width="2"
+      height="18"
+      rx="1"
+    />
+    <rect
+      x="10"
+      y="5"
+      width="2"
+      height="11"
+      rx="1"
+    />
+    <rect
+      x="13"
+      y="5"
+      width="2"
+      height="11"
+      rx="1"
+    />
+    <rect
+      x="19"
+      y="6"
+      width="2"
+      height="9"
+      rx="1"
+    />
+    <rect
+      x="22"
+      y="7"
+      width="2"
+      height="7"
+      rx="1"
+    />
+  </svg>
+</template>
+
+<script setup lang="ts">
+
+</script>

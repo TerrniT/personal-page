@@ -26,7 +26,12 @@
 		"title": "照片"
 	},
 	"playlist": {
-		"title": "我的音乐库"
+		"title": "我的播放列表",
+		"description": "欢迎来到我的播放列表。这是我保存曲目和最喜欢的专辑的地方，我一直在听，现在也在听",
+		"content": {
+			"albums": "收藏夹专辑",
+			"favorite_tracks": "现在播放列表中我最喜欢的曲目~"
+		}
 	},
 	"friends": {
 		"title": "朋友",
