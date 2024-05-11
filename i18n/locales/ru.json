@@ -10,13 +10,23 @@
 		"title": "Статьи"
 	},
 	"uses": {
-		"title": "Мои вещи"
+		"title": "Мои вещи",
+		"description": "Приложения, которые я использую. Гаджеты, которые я люблю и другие разные вещи, которые я рекомендую",
+		"content": {
+			"workstation": "Рабочее место",
+			"devtools": "Для разработки",
+			"other_software": "Дополнительное ПО",
+			"misc": "Разное"
+		}
 	},
 	"contact": {
 		"title": "Контакты"
 	},
 	"photos": {
 		"title": "Фото"
+	},
+	"playlist": {
+		"title": "Моя музыкальная библиотека"
 	},
 	"friends": {
 		"title": "Друзья",
@@ -33,6 +43,7 @@
 		"link_contact": "Контакты",
 		"link_photos": "Фото",
 		"link_friends": "Друзья",
+		"link_playlist": "Плейлист",
 		"select_language": "Выбрать язык",
 		"select_theme": "Выбрать тему",
 		"theme_system": "Системная",

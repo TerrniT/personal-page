@@ -10,13 +10,23 @@
 		"title": "기사"
 	},
 	"uses": {
-		"title": "내 용도"
+		"title": "내 용도",
+		"description": "내가 사용하는 소프트웨어, 내가 좋아하는 가젯, 내가 추천하는 다른 것들",
+		"content": {
+			"workstation": "업무용 스테이션",
+			"devtools": "프로그래머 도구",
+			"other_software": "기타 소프트웨어",
+			"misc": "기타"
+		}
 	},
 	"contact": {
 		"title": "연락처"
 	},
 	"photos": {
 		"title": "사진"
+	},
+	"playlist": {
+		"title": "내 음악 라이브러리"
 	},
 	"friends": {
 		"title": "친구",
@@ -32,6 +42,7 @@
 		"link_uses": "내 용도",
 		"link_contact": "연락처",
 		"link_photos": "사진",
+		"link_playlist": "음악 재생 목록",
 		"link_friends": "친구 ",
 		"select_language": "언어 선택",
 		"select_theme": "테마 선택",

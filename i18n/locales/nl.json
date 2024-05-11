@@ -10,13 +10,23 @@
 		"title": "Artikelen"
 	},
 	"uses": {
-		"title": "Mijn toepassingen"
+		"title": "Mijn toepassingen",
+		"description": "Software die ik gebruik, gadgets waar ik van hou en andere dingen die ik aanbeveel",
+		"content": {
+			"workstation": "Werkstation",
+			"devtools": "Hulpprogramma's voor ontwikkelaars",
+			"other_software": "Andere software",
+			"misc": "Overige"
+		}
 	},
 	"contact": {
 		"title": "Contacten"
 	},
 	"photos": {
 		"title": "Fotos"
+	},
+	"playlist": {
+		"title": "Mijn muziekbibliotheek "
 	},
 	"friends": {
 		"title": "Vrienden",
@@ -32,6 +42,7 @@
 		"link_uses": "Mijn toepassingen",
 		"link_contact": "Contacten",
 		"link_photos": "Fotos",
+		"link_playlist": "Afspilningsliste",
 		"link_friends": "Vrienden",
 		"select_language": "Selecteer taal",
 		"select_theme": "Selecteer thema",

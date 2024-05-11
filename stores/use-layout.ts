@@ -36,6 +36,11 @@ export const useLayout = defineStore('layout', () => {
 			locale_key: 'link_uses'
 		},
 		{
+			label: 'Playlist',
+			href: '/playlist',
+			locale_key: 'link_playlist'
+		},
+		{
 			label: 'Photos',
 			href: '/photos',
 			locale_key: 'link_photos'

@@ -10,13 +10,23 @@
 		"title": "Articles"
 	},
 	"uses": {
-		"title": "Uses"
+		"title": "Uses",
+		"description": "Software I use, gadgets I love, and other things I recommend",
+		"content": {
+			"workstation": "Workstation",
+			"devtools": "DevTools",
+			"other_software": "Other Software",
+			"misc": "Misc"
+		}
 	},
 	"contact": {
 		"title": "Contact"
 	},
 	"photos": {
 		"title": "Photos"
+	},
+	"playlist": {
+		"title": "My music library"
 	},
 	"friends": {
 		"title": "Friends",
@@ -32,6 +42,7 @@
 		"link_uses": "Uses",
 		"link_contact": "Contact",
 		"link_photos": "Photos",
+		"link_playlist": "Playlist",
 		"link_friends": "Friends",
 		"select_language": "Select a language",
 		"select_theme": "Select a theme",

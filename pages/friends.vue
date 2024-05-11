@@ -33,7 +33,7 @@ await store.fetchFriends()
 if(!data.value) {
  throw createError({
   statusCode: 500,
-  statusMessage: 'Api Init Error',
+  statusMessage: 'Api Friends Error',
   data: {
     myCustomField: true
   }

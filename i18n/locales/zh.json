@@ -10,13 +10,23 @@
 		"title": "文章"
 	},
 	"uses": {
-		"title": "我的用途"
+		"title": "我的用途",
+		"description": "我使用的软件、我喜欢的小工具以及我推荐的其他东西",
+		"content": {
+			"workstation": "工作站",
+			"devtools": "开发人员工具",
+			"other_software": "其他软件",
+			"misc": "别的~"
+		}
 	},
 	"contact": {
 		"title": "联系方式"
 	},
 	"photos": {
 		"title": "照片"
+	},
+	"playlist": {
+		"title": "我的音乐库"
 	},
 	"friends": {
 		"title": "朋友",
@@ -32,6 +42,7 @@
 		"link_uses": "我的用途",
 		"link_contact": "联系方式",
 		"link_photos": "照片",
+		"link_playlist": "播放列表",
 		"link_friends": "朋友",
 		"select_language": "选择语言",
 		"select_theme": "选择主题",

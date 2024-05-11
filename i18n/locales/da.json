@@ -10,13 +10,23 @@
 		"title": "Artikler"
 	},
 	"uses": {
-		"title": "Anvendelser"
+		"title": "Anvendelser",
+		"description": "Software, jeg bruger, gadgets, jeg elsker, og andre ting, jeg anbefaler",
+		"content": {
+			"workstation": "Arbejdsstation",
+			"devtools": "Udvikler-apps ",
+			"other_software": "Anden software",
+			"misc": "Diverse"
+		}
 	},
 	"contact": {
 		"title": "Kontakt"
 	},
 	"photos": {
 		"title": "Fotos"
+	},
+	"playlist": {
+		"title": "Mit musikbibliotek"
 	},
 	"friends": {
 		"title": "Venner",
@@ -32,6 +42,7 @@
 		"link_uses": "Anvendelser",
 		"link_contact": "Kontakt",
 		"link_photos": "Fotos",
+		"link_playlist": "Muziekafspeellijst",
 		"link_friends": "Venner",
 		"select_language": "Vælg sprog",
 		"select_theme": "Vælg tema",
