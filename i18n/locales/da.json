@@ -1,7 +1,14 @@
 {
 	"hero": {
 		"title": "Hej, jeg hedder Gleb!",
-		"description": "Jeg er udvikler med erfaring inden for UI/UX-design. Jeg elsker at bruge og bygge brugervenlige og minimalistiske grænseflader til alle enheder fra web til smarte ure. Jeg elsker også naturen, god musik og lækker kaffe"
+		"description": "Jeg er udvikler med erfaring inden for UI/UX-design. Jeg elsker at bruge og bygge brugervenlige og minimalistiske grænseflader til alle enheder fra web til smarte ure. Jeg elsker også naturen, god musik og lækker kaffe.",
+		"content": {
+			"numbers": "Vigtige tal",
+			"recent_articles": "Nylige artikler",
+			"hard_skills": "Vigtige færdigheder",
+			"expertise": "Erfaring",
+			"languages": "Sprogene"
+		}
 	},
 	"work": {
 		"title": "Arbejde"

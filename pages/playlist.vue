@@ -116,8 +116,8 @@
             >
               <NuxtImg
                 :src="album.cover"
-                alt="hero image"
-                placeholder="/friends/fallback.png"
+                :alt="album.name + ' ' + album.artist + ' cover'"
+                placeholder="/fallback_for_albums.jpg"
                 class="rounded-xl w-full border border-muted-foreground/10"
               />
               <div class="mt-2">

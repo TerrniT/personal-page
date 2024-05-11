@@ -1,7 +1,14 @@
 {
 	"hero": {
 		"title": "Hé, mijn naam is Gleb!",
-		"description": "Ik ben een ontwikkelaar met ervaring in UI/UX-ontwerp. Ik gebruik en bouw graag gebruiksvriendelijke en minimalistische interfaces voor alle apparaten, van web tot smart watches. Ik hou ook van de natuur, goede muziek en heerlijke koffie"
+		"description": "Ik ben een ontwikkelaar met ervaring in UI/UX-ontwerp. Ik gebruik en bouw graag gebruiksvriendelijke en minimalistische interfaces voor alle apparaten, van web tot smart watches. Ik hou ook van de natuur, goede muziek en heerlijke koffie",
+		"content": {
+			"numbers": "Belangrijke nummers",
+			"recent_articles": "Laatste artikelen",
+			"hard_skills": "Harde vaardigheden",
+			"expertise": "Expertise ",
+			"languages": "Talen"
+		}
 	},
 	"work": {
 		"title": "Werk"
