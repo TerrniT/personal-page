@@ -40,11 +40,11 @@ export const useLayout = defineStore('layout', () => {
 			href: '/playlist',
 			locale_key: 'link_playlist'
 		},
-		{
-			label: 'Photos',
-			href: '/photos',
-			locale_key: 'link_photos'
-		},
+		// {
+		// 	label: 'Photos',
+		// 	href: '/photos',
+		// 	locale_key: 'link_photos'
+		// },
 		{
 			label: 'Friends',
 			href: '/friends',
@@ -66,10 +66,6 @@ export const useLayout = defineStore('layout', () => {
 			contactLinks.value = data.value.filter(item => item.type === 'contact')
 		}
 	}
-	// const setSocialLinks = (data: Links) => {
-	// 	socialLinks.value = data
-	// 	console.log(socialLinks.value)
-	// }
 
 	return { socialLinks, contactLinks, routeLinks, fetchLinks }
 })

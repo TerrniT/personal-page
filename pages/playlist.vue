@@ -109,7 +109,7 @@
           </div>
         </template>
         <template v-else>
-          <div class="grid grid-cols-1 gap-4 md:grid-cols-3 mt-6">
+          <div class="grid grid-cols-1 md:gap-5 gap-y-12 md:grid-cols-3 mt-6">
             <div
               v-for="album in section"
               :key="album.name"
