@@ -2,7 +2,9 @@
   <div class="">
     <div class="flex flex-col gap-x-4 items-center">
       <div class="flex flex-col w-full justify-start my-auto gap-y-4">
-        <LayoutHeading page-key="hero" />
+        <h1 class="text-4xl font-bold text-foreground">
+          {{ t("hero.content.hi") }}
+        </h1>
         <LayoutDescription page-key="hero" />
       </div>
       <NuxtImg
@@ -144,6 +146,13 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
+useSeoMeta({
+  title: t('hero.title') + " | Gleb Kotovsky",
+  description: t('hero.description'),
+})
+
 import { type SkillLevel } from '../shared/types/hero'
 
 const store = useHero()

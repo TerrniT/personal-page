@@ -39,7 +39,15 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
+useSeoMeta({
+  title: t('uses.title') + " | Gleb Kotovsky",
+  description: t('uses.description'),
+})
+
 const store = useMyUses()
+
 const {pageData: data} = storeToRefs(store)
 
 await store.fetchUses()

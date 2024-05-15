@@ -1,8 +1,9 @@
 {
 	"hero": {
-		"title": "Hi, I’m Gleb!",
+		"title": "Home",
 		"description": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life",
 		"content": {
+			"hi": "Hi, I’m Gleb!",
 			"numbers": "Numbers",
 			"recent_articles": "Recent articles",
 			"hard_skills": "Hard skills",
@@ -14,7 +15,8 @@
 		"title": "Work"
 	},
 	"articles": {
-		"title": "Articles"
+		"title": "Articles",
+		"description": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order"
 	},
 	"uses": {
 		"title": "Uses",

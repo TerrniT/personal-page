@@ -24,8 +24,16 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
+useSeoMeta({
+  title: t('friends.title') + " | Gleb Kotovsky",
+  description: t('friends.description'),
+})
+
 const localePath = useLocalePath()
 const store = useFriends()
+
 const {pageData: data} = storeToRefs(store)
 
 await store.fetchFriends()

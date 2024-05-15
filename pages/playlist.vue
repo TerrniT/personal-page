@@ -2,10 +2,11 @@
   <div class="flex flex-col gap-y-4 text-foreground">
     <LayoutHeading page-key="playlist" />
     <LayoutDescription page-key="playlist" />
-    <div class="mt-12 flex flex-col gap-y-16 ">
+    <div class="mt-6 flex flex-col gap-y-16 ">
       <div
         v-for="(section, section_name) in data"
         :key="(section_name as unknown as 'albums' | 'favorite_tracks')"
+        class="mt-12"
       >
         <LayoutHeadingH2 :page-key="`playlist.content.${section_name}`" />
         <template v-if="(section_name as unknown as 'albums' | 'favorite_tracks') === 'favorite_tracks'">
@@ -151,6 +152,13 @@
 <script setup lang="ts">
 import Autoplay from 'embla-carousel-autoplay'
 import { Carousel } from '~/components/ui/carousel'
+
+const { t } = useI18n()
+
+useSeoMeta({
+  title: t('playlist.title') + " | Gleb Kotovsky",
+  description: t('playlist.description'),
+})
 
 const carouselContainerRef = ref<InstanceType<typeof Carousel>[] | null>(null)
 
