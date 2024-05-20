@@ -8,7 +8,8 @@ export default defineNuxtConfig({
       '@nuxtjs/color-mode',
       "@nuxtjs/i18n",
       "@pinia/nuxt",
-      "@nuxt/content"
+      "@nuxt/content",
+	  'nuxt-icon'
     ],
 	css: ['/assets/css/tailwind.css', '/assets/css/app.scss'],
 	postcss: {

@@ -29,7 +29,7 @@ useSeoMeta({
 	twitterCard: "summary_large_image",
 	articleAuthor: "Gleb Kotovsky",
 	title: document?.title + " | Gleb Kotovsky",
-  	description: document?.description
+  description: document?.description
 })
 
 </script>

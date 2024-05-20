@@ -1,6 +1,7 @@
 ---
 title: Markdown test
-published: '2024/03/24'
+published: '2024/05/14'
+createdAt: '2024/05/14'
 tags: ['markdown']
 topic: Test
 slug: "markdown-test"
@@ -30,7 +31,7 @@ author: TerrniT
 
 ## Ordered list
 
-1. first
+1. firstj
 2. second
 3. third
 

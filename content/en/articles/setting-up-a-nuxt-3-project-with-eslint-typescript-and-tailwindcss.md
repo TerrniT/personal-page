@@ -1,6 +1,7 @@
 ---
 title: Setting Up a Nuxt 3 Project with ESLint, TypeScript, and Tailwind CSS
 published: '2024/03/24'
+createdAt: '2024/03/24'
 tags: ['vue', 'nuxt 3', 'typescript']
 topic: 'Software Development'
 slug: "setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss"

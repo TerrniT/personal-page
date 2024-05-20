@@ -22,6 +22,7 @@
     "embla-carousel-autoplay": "^8.0.4",
     "embla-carousel-vue": "^8.0.4",
     "nuxt": "^3.11.1",
+    "pnpm": "^9.1.1",
     "radix-vue": "^1.7.3",
     "sass": "^1.75.0",
     "tailwindcss-animate": "^1.0.7",
@@ -40,6 +41,7 @@
     "clsx": "^2.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "nuxt-icon": "^0.6.10",
     "postcss": "^8.4.38",
     "tailwind-merge": "^2.2.2"
   }

@@ -25,15 +25,15 @@
 	--ring: 9 96.4% 55.9%;
 	--radius: 0.5rem;
 }
-	
+
 .dark-mode {
-	--background: #1A1818;
+	--background: 0, 6%, 10%;
 	--foreground: 258 0% 90%;
 	--card: 258 0% 5%;
 	--card-foreground: 258 0% 90%;
 	--popover: 258 10% 5%;
 	--popover-foreground: 258 0% 90%;
-	--primary: 258 36.1% 47.8%;
+	--primary: 86, 80%, 63%;
 	--primary-foreground: 0 0% 100%;
 	--secondary: 0, 1%, 15%;
 	--secondary-foreground: 0 0% 100%;
@@ -49,7 +49,7 @@
 	--radius: 0.5rem;
 }
 .solarized-mode {
-	--background: #1A1818;
+	--background: 0, 6%, 10%
 	--foreground: 258 0% 90%;
 	--card: 258 0% 5%;
 	--card-foreground: 258 0% 90%;

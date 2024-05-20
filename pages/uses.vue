@@ -25,7 +25,7 @@
                 {{ item.name }}
               </a>
               <div class="flex gap-x-1">
-                <span class="text-muted-foreground">~</span>
+                <span class="text-muted-foreground hidden md:block">~</span>
                 <span class="text-muted-foreground">
                   {{ item.description }}
                 </span>

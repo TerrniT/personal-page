@@ -10,9 +10,9 @@
       >
         <LayoutHeadingH2 :page-key="`playlist.content.${section_name}`" />
         <template v-if="(section_name as unknown as 'albums' | 'favorite_tracks') === 'favorite_tracks'">
-          <div class="w-full items-center flex flex-col justify-center bg-secondary mt-4 md:h-full  md:pt-4 py-3 md:py-0 px-2 gap-y-12 rounded-lg">
+          <div class="w-full items-center flex flex-col justify-center bg-sky-900 mt-4 md:h-full  md:pt-4 py-3 md:py-0 px-2 gap-y-12 rounded-lg">
             <div class="h-full w-full relative flex items-end justify-center min-h-[240px]">
-              <div class="w-[340px] h-[200px] rounded-[48px] flex flex-col bg-black absolute top-7 mx-auto left-0 right-0">
+              <div class="w-[340px] h-[200px] rounded-[48px] flex flex-col bg-black absolute top-7 mx-auto left-0 right-0 z-30">
                 <div class="grid grid-cols-5 items-center">
                   <UiCarousel
                     ref="carouselContainerRef"
@@ -65,9 +65,9 @@
                   class="w-full justify-center gap-x-5 flex items-center px-6"
                 >
                   <UiButton
-                    class="hover:bg-black "
                     variant="ghost"
-                    size="icon"
+                    size="lg-icon"
+                    class="rounded-full size-8 duration-150 transition-colors ease-linear"
                     @click="scrollPrev()"
                   >
                     <IconsArrowLeft
@@ -76,9 +76,9 @@
                     />
                   </UiButton>
                   <UiButton
-                    class="hover:bg-black hover:text-white fill-white "
                     variant="ghost"
-                    size="icon"
+                    size="lg-icon"
+                    class="rounded-full size-8 duration-150 transition-colors ease-linear fill-white"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -90,9 +90,9 @@
                     /></svg>
                   </UiButton>
                   <UiButton
-                    class="hover:bg-black"
                     variant="ghost"
-                    size="icon"
+                    size="lg-icon"
+                    class="rounded-full size-8 duration-150 transition-colors ease-linear fill-white"
                     @click="scrollNext()"
                   >
                     <IconsArrowRight
@@ -103,7 +103,7 @@
                 </div>
               </div>
               <NuxtImg
-                class="h-full w-1/2 hidden lg:block"
+                class="h-full w-1/2 hidden lg:block select-none shadow-black"
                 src="iphone_mockup_15.png"
               />
             </div>
