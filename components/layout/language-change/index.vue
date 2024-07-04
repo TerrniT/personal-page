@@ -12,74 +12,83 @@
           {{ $t('nav.select_language') }}
         </UiDropdownMenuLabel>
         <UiDropdownMenuSeparator class="bg-border" />
-        <UiDropdownMenuGroup v-model="local">
-          <UiDropdownMenuItem
-            v-for="lang in availableLocales"
-            :key="lang.iso"
-            :value="lang.iso"
-            :class="{
-              'text-foreground':
-                local === lang.iso,
-              'text-muted-foreground':
-                local !== lang.iso,
-            }"
-          >
-            <NuxtLink
-              :to="switchLocalePath(lang.iso)"
-              class="flex w-full cursor-pointer items-center justify-between"
+        <ClientOnly>
+          <UiDropdownMenuGroup>
+            <UiDropdownMenuItem
+              v-for="lang in availableLocales"
+              :key="lang.code"
+              :value="lang.code"
+              :class="{
+                'text-foreground':
+                  currentLocale!.code === lang.code,
+                'text-muted-foreground':
+                  currentLocale!.code !== lang.code,
+              }"
             >
-              <span class="truncate">
-                {{ lang.name }}
-              </span>
-            </NuxtLink>
-          </UiDropdownMenuItem>
-        </UiDropdownMenuGroup>
+              <div
+                class="flex w-full cursor-pointer items-center justify-between"
+                @click="$i18n.locale = lang.code"
+              >
+                <span class="truncate">
+                  {{ lang.name }}
+                </span>
+              </div>
+            </UiDropdownMenuItem>
+          </UiDropdownMenuGroup>
+          <template #fallback>
+            <div class="h-2 w-5" />
+          </template>
+        </ClientOnly>
       </UiDropdownMenuContent>
     </UiDropdownMenu>
   </div>
 </template>
 
 <script setup lang="ts">
-interface ILocales {
-  [key: string]: {
-    name: string
-    iso: string
-    flag?: string
-  }
-}
-
-const availableLocales: ILocales = {
-  en: {
+const availableLocales = [
+  {
     name: 'English',
-    iso: 'en',
+    code: 'en',
   },
-  ru: {
+  {
     name: 'Русский',
-    iso: 'ru',
+    code: 'ru',
   },
-  ko: {
+  {
     name: '한국어',
-    iso: 'ko',
+    code: 'ko',
   },
-  zh: {
+  {
     name: '中文',
-    iso: 'zh',
+    code: 'zh',
   },
-  da: {
+  {
     name: 'Dansk',
-    iso: 'da',
+    code: 'da',
   },
-  nl: {
+  {
     name: 'Nederlandse taal',
-    iso: 'nl',
-  },
+    code: 'nl',
+  }
+]
+
+const { locale: current, setLocaleCookie } = useI18n()
+
+const currentLocale = computed(() => {
+  return availableLocales.find(locale => locale.code === current.value)
+})
+
+if(!currentLocale.value) {
+  throw createError({
+    statusCode: 500,
+    statusMessage: "Locale Error",
+    data: {
+      myCustomField: true,
+    },
+  });
 }
 
-const switchLocalePath = useSwitchLocalePath()
-
-const { locale } = useI18n()
-
-const local = computed(() => {
-  return locale.value
+watch(current, (newLocale) => {
+  setLocaleCookie(newLocale)
 })
 </script>

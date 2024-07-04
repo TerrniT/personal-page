@@ -25,11 +25,11 @@ export const useLayout = defineStore('layout', () => {
 			href: '/articles',
 			locale_key: 'link_articles'
 		},
-		// {
-		// 	label: 'Designs',
-		// 	href: '/designs',
-		// 	locale_key: 'link_designs'
-		// },
+		{
+			label: 'About',
+			href: '/about',
+			locale_key: 'link_about'
+		},
 		{
 			label: 'Uses',
 			href: '/uses',

@@ -46,8 +46,8 @@ interface IThemes {
 
 const themeMods: IThemes[] = [
 	{
-  		value: 'system',
-  		label: 'System',
+  	value: 'system',
+  	label: 'System',
 		locale_key: 'theme_system'
 	},
 	{

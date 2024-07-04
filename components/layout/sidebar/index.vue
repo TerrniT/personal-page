@@ -4,7 +4,22 @@
       <LayoutLogo />
 
       <div class="flex flex-col gap-y-2 px-2 mt-4">
-        <NuxtLink
+        <ContentNavigation v-slot="{ navigation }">
+          <ul class="flex flex-col gap-y-2">
+            <li
+              v-for="link of navigation.filter(item => item.nav_title)"
+              :key="link._path"
+              class="hover:text-foreground text-muted-foreground transition-colors duration-150 ease-linear"
+            >
+              <NuxtLink
+                :to="localePath(link._path)"
+              >
+                {{ link.nav_title }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </ContentNavigation>
+        <!-- <NuxtLink
           v-for="link in links"
           :key="link.label"
           :to="localePath(link.href)"
@@ -16,7 +31,7 @@
           <template v-else>
             {{ link.label }}
           </template>
-        </NuxtLink>
+        </NuxtLink> -->
       </div>
 
       <div
@@ -24,6 +39,8 @@
         class="flex flex-col gap-y-2 px-2 mt-12"
       >
         <span class="text-muted-foreground font-medium uppercase text-sm"> {{ $t('nav.elsewhere') }}</span>
+
+
         <NuxtLink
           v-for="link in socialLinks"
           :key="link.name"

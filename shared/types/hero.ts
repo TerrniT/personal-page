@@ -33,10 +33,6 @@ export type SkillItem = {
 export type Skills = Record<SkillType, SkillItem[]>
 
 export interface PageData {
-	hero_content: {
-		image: string
-		number_blocks: {label: string, description: string}[]
-	}
 	skills: Skills
 	works: {
 		projects: WorkItem<'project'>[]

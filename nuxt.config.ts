@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	devtools: { enabled: false },
+	devtools: { enabled: true },
 	modules: [
       "@nuxtjs/eslint-module",
       '@nuxtjs/tailwindcss',
@@ -19,15 +19,53 @@ export default defineNuxtConfig({
 		}
 	},
 	app: {
-		pageTransition: { name: "page", mode: "out-in" },
 		head: {
-		  htmlAttrs: {
-			lang: "en"
-		  },
-	    },
+		  viewport: 'width=device-width, initial-scale=1',
+		  charset: 'utf-8',
+		},
+		// pageTransition: {
+		//   name: 'fade',
+		//   mode: 'out-in',
+		// },
+	  },
+
+	routeRules: {
+		'/': { isr: true, prerender: true },
+	},
+	site: {
+		url: process.env.NUXT_SITE_URL || 'https://www-terrnit.vercel.app',
+		identity: {
+		  type: 'Person',
+		},
+		twitter: '@gaundergod',
+	},
+	nitro: {
+		prerender: {
+		  crawlLinks: true,
+		  routes: [
+			// '/sitemap.xml',
+			 '/',
+			  '/work',
+			   '/about',
+			    '/contact'
+			],
+		},
 	},
 	content: {
-		documentDriven: false,
+		documentDriven: true,
+		watch: {
+		  ws: {
+			showURL: false,
+		  },
+		},
+		markdown: {
+		  anchorLinks: false,
+		  remarkPlugins: [
+			// 'remark-reading-time',
+			// 'remark-emoji'
+		  ],
+		  toc: { depth: 3, searchDepth: 3 },
+		},
 		// fullTextSearchFields: ['title', 'description', 'slug'],
 		highlight: {
 		  preload: ['apache', 'bash', 'cmd', 'dart', 'diff', 'css', 'html', 'groovy', 'ini', 'js', 'javascript', 'json', 'latex', 'lua', 'nginx', 'php', 'powershell', 'ps1', 'ruby', 'tex', 'typescript', 'ts', 'sass', 'scss', 'sql', 'vue', 'vue-html', 'vim', 'yaml', 'xml'],
@@ -36,15 +74,8 @@ export default defineNuxtConfig({
 		},
 		defaultLocale: 'en',
 		locales: ['en', 'da', 'zh', 'ko', 'ru', 'nl'],
-		markdown: {
-		  remarkPlugins: [
-			// 'remark-reading-time',
-			// 'remark-emoji'
-		  ],
-		  toc: { depth: 3, searchDepth: 3 },
-		},
 		navigation: {
-		  fields: ['navTitle'],
+		  fields: ['image', '_id', 'nav_title'],
 		},
 	},
 	pinia: {
@@ -61,39 +92,40 @@ export default defineNuxtConfig({
 	  storageKey: 'nuxt-color-mode'
 	},
 	i18n: {
-		locales: [
-		  {
-			code: 'en',
-			file: 'en.json',
-		  },
-		  {
-			code: 'ko',
-			file: 'ko.json'
-		  },
-		  {
-			code: 'zh',
-			file: 'zh.json'
-		  },
-		  {
-			code: 'ru',
-			file: 'ru.json'
-		  },
-		  {
-			code: 'da',
-			file: 'da.json'
-		  },
-		  {
-			code: 'nl',
-			file: 'nl.json'
-		  },
-		],
-		defaultLocale: 'en',
-		// lazy: true,
-		langDir: 'i18n/locales/',
-		strategy: 'prefix_except_default',
+		strategy: 'no_prefix',
 		detectBrowserLanguage: {
-			useCookie: false,
-			redirectOn: 'root' // recommended
-		}
-	  }
+			useCookie: true,
+			cookieKey: 'i18n_redirected',
+			redirectOn: 'root',
+		},
+		baseUrl: '/',
+		locales: [
+			{
+			  code: 'en',
+			  file: 'en.json',
+			},
+			{
+			  code: 'ko',
+			  file: 'ko.json'
+			},
+			{
+			  code: 'zh',
+			  file: 'zh.json'
+			},
+			{
+			  code: 'ru',
+			  file: 'ru.json'
+			},
+			{
+			  code: 'da',
+			  file: 'da.json'
+			},
+			{
+			  code: 'nl',
+			  file: 'nl.json'
+			},
+		  ],
+		langDir: 'i18n/locales/',
+		defaultLocale: 'en'
+	}
 })

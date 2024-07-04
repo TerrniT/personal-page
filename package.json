@@ -25,6 +25,7 @@
     "pnpm": "^9.1.1",
     "radix-vue": "^1.7.3",
     "sass": "^1.75.0",
+    "sitemap": "^8.0.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.3",
     "vue": "^3.4.21",
