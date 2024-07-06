@@ -30,7 +30,8 @@
 		}
 	},
 	"contact": {
-		"title": "Contact"
+		"title": "Contact",
+		"description": "Feel free to get in touch with me"
 	},
 	"photos": {
 		"title": "Photos"

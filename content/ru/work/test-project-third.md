@@ -1,6 +1,6 @@
 ---
 title: "Hello Vue 3"
-description: "Vue test project"
+description: "Ты кто"
 createdAt: 2024/11/1
 slug: "picture-5"
 size: 'portrait'

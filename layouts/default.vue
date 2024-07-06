@@ -3,7 +3,6 @@
     <LayoutSidebar />
     <LayoutMobileNavbar />
     <LayoutContainer>
-      <!-- <NuxtPage /> -->
       <slot />
       <LayoutFooter />
     </LayoutContainer>

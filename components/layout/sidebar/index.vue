@@ -4,34 +4,22 @@
       <LayoutLogo />
 
       <div class="flex flex-col gap-y-2 px-2 mt-4">
-        <ContentNavigation v-slot="{ navigation }">
-          <ul class="flex flex-col gap-y-2">
-            <li
-              v-for="link of navigation.filter(item => item.nav_title)"
-              :key="link._path"
-              class="hover:text-foreground text-muted-foreground transition-colors duration-150 ease-linear"
-            >
-              <NuxtLink
-                :to="localePath(link._path)"
-              >
-                {{ link.nav_title }}
-              </NuxtLink>
-            </li>
-          </ul>
-        </ContentNavigation>
-        <!-- <NuxtLink
-          v-for="link in links"
-          :key="link.label"
-          :to="localePath(link.href)"
-          class="hover:text-foreground text-muted-foreground transition-colors duration-150 ease-linear"
+        <ul
+          v-if="navigation"
+          class="flex flex-col gap-y-2"
         >
-          <template v-if="link.locale_key">
-            {{ $t('nav.' + link.locale_key) }}
-          </template>
-          <template v-else>
-            {{ link.label }}
-          </template>
-        </NuxtLink> -->
+          <li
+            v-for="link of navigation.filter(item => item.nav_title)"
+            :key="link._path"
+            class="hover:text-foreground text-muted-foreground transition-colors duration-150 ease-linear"
+          >
+            <NuxtLink
+              :to="localePath(link._path)"
+            >
+              {{ link.nav_title }}
+            </NuxtLink>
+          </li>
+        </ul>
       </div>
 
       <div
@@ -66,9 +54,20 @@
 
 <script setup lang="ts">
 const localePath = useLocalePath()
+const { locale } = useI18n()
+
 
 const store = useLayout()
-const {socialLinks, routeLinks: links} = storeToRefs(store)
+const {socialLinks} = storeToRefs(store)
 
 await store.fetchLinks()
+
+const { data: navigation } = await useAsyncData(
+  'navigation',
+  () => fetchContentNavigation(
+    queryContent()
+      .where({ _locale: locale.value })
+  ), {
+    watch: [locale]
+  })
 </script>

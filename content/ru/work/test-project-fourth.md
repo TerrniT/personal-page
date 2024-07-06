@@ -1,5 +1,5 @@
 ---
-title: "Hello Svelte 4"
+title: "Hello Svelte 4 ru"
 description: "Svelte test project"
 createdAt: 2024/11/4
 slug: "picture-2"

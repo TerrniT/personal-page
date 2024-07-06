@@ -26,7 +26,7 @@ export const useLayout = defineStore('layout', () => {
 			locale_key: 'link_articles'
 		},
 		{
-			label: 'About',
+			label: 'Aboutss',
 			href: '/about',
 			locale_key: 'link_about'
 		},
