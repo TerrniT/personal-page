@@ -7,6 +7,7 @@ topic: 'Software Development'
 slug: "setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss"
 cover_type: 'image'
 author: TerrniT
+type: 'article'
 ---
 
 ## Introduction

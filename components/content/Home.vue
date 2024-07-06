@@ -1,90 +1,80 @@
 <template>
   <div class="">
-    <div class="flex flex-col gap-x-4 items-center">
-      <div class="flex flex-col w-full justify-start my-auto gap-y-4">
-        <h1 class="text-4xl font-bold text-foreground">
+    <div class="flex flex-col items-center">
+      <div class="flex flex-col w-full justify-start my-auto gap-y-1">
+        <h1 class="text-xl font-bold text-foreground">
           <ContentSlot :use="$slots.title" />
         </h1>
-        <span class="text-muted-foreground">
-          <ContentSlot :use="$slots.description" />
+        <span class="text-muted-foreground text-sm italic">
+          <ContentSlot :use="$slots.legenda" />
         </span>
+        <div class="text-muted-foreground mt-5">
+          <ContentSlot :use="$slots.description" />
+        </div>
+        <div class="flex gap-x-2 mt-4">
+          <UiButton
+            as="nuxt-link"
+            to="/work"
+            variant="secondary"
+            class="text-foreground cursor-pointer"
+          >
+            {{ t('home.cta.explore') }}
+          </UiButton>
+          <UiButton
+            as="nuxt-link"
+            to="/about"
+            variant="ghost"
+            class="text-foreground cursor-pointer"
+          >
+            {{ t('home.cta.about') }}
+          </UiButton>
+        </div>
       </div>
     </div>
-    <div class="my-24">
-      <div class="flex flex-col mt-3 gap-y-12">
-        <!-- <div
-          v-for="item in documents"
-          :key="item.createdAt"
-          class="flex md:flex-row flex-col gap-y-3 md:gap-x-3 my-3"
+    <div class="my-12">
+      <h1 class="text-xl font-bold text-foreground">
+        <ContentSlot :use="$slots.recent_notes_title" />
+      </h1>
+      <div class="flex flex-col mt-3 gap-y-1">
+        <article
+          v-for="article in recent_articles"
+          :key="article.title"
+          class="border-b border-border rounded-sm py-3 "
         >
-          <div class="lg:w-1/3 md:w-1/2 w-full">
-            <span class="text-muted-foreground font-medium">{{ item.duration }}</span>
-          </div>
-          <div class="w-full">
-            <h3 class="text-xl text-foreground font-semibold">
-              {{ item.job_title }}
-            </h3>
-            <div class="flex gap-x-2 text-muted-foreground mb-2">
-              <a
-                class="text-foreground font-medium hover:text-primary transition-all duration-150 ease-linear hover:underline hover:underline-offset-4 decoration-wavy "
-                :href="item.live_url"
-                target="_blank"
-              >
-                {{ item.company_name }}
-              </a>
-              <span>•</span>
-              <span class="">Ekaterinburg, Russia</span>
-            </div>
-            <p class="text-muted-foreground">
-              {{ item.description }}
-            </p>
-            <div class="flex gap-x-2 flex-wrap mt-2">
-              <div
-                v-for="(stack_item, l) in item.stack"
-                :key="l"
-                class="text-muted-foreground bg-muted rounded-md px-2 p-0.5 text-xs md:text-sm"
-              >
-                {{ stack_item }}
+          <NuxtLink
+            :to="'/articles/' + article.slug"
+            class="group"
+          >
+            <div class="gap-x-2 flex flex-row justify-between items-center">
+              <div class="flex flex-row gap-x-2 items-center">
+                <h3 class="md:text-sm group-hover:text-muted-foreground transition-colors duration-150 ease-linear text-sm text-foreground font-medium ">
+                  {{ article.title }}
+                </h3>
+              </div>
+              <div class="md:flex md:flex-row gap-x-3 text-muted-foreground text-sm hidden">
+                <span class="text-muted-foreground bg-muted rounded-md p-0.5 hidden md:block md:text-xs">
+                  #{{ article.topic }}
+                </span>
+                <span class=""> ~ </span>
+                <span class="">{{ article.createdAt.slice(0,4) }}</span>
               </div>
             </div>
-          </div>
-        </div> -->
-        <!-- <div
-          v-for="article in data?.works.recent_articles"
-          :key="article.created_at"
-          class="border-b border-border rounded-sm py-2 gap-x-2 flex flex-row justify-between items-center"
-        >
-          <div class="flex flex-row gap-x-2 items-center">
-            <span class="text-muted-foreground bg-muted rounded-md p-0.5 hidden md:block md:text-xs">#{{ article.languages[0].name.slice(0,2) }}</span>
-            <h3 class="md:text-base text-sm text-foreground font-medium ">
-              {{ article.label }}
-            </h3>
-          </div>
-          <div class="md:flex md:flex-row gap-x-1 text-muted-foreground text-sm hidden">
-            <div class="flex flex-row gap-x-2">
-              <span
-                v-for="topic in article.topics"
-                :key="topic.id"
-                class="text-muted-foreground text-sm uppercase text-nowrap"
-              >
-                {{ topic.name }}
-              </span>
-            </div>
-            <span class=""> ~ </span>
-            <span class="">{{ article.created_at.slice(0,4) }}</span>
-          </div>
-        </div> -->
+          </NuxtLink>
+        </article>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// const { t } = useI18n()
+const { t } = useI18n()
 
-// useSeoMeta({
-//   title: t('hero.title') + " | Gleb Kotovsky",
-//   description: t('hero.description'),
-// })
+useSeoMeta({
+  title: t('home.title') + " | Gleb Kotovsky",
+  description: t('home.description'),
+})
 
+const { documents } = await useMarkdown('/articles')
+
+const recent_articles = computed(() => documents.value.filter(item => item.type === 'article').slice(0, 7))
 </script>

@@ -7,6 +7,7 @@ topic: Test
 slug: "markdown-test"
 cover_type: 'image'
 author: TerrniT
+type: 'article'
 ---
 
 

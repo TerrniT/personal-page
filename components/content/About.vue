@@ -118,11 +118,11 @@
 </template>
 
 <script setup lang="ts">
-// const { t } = useI18n()
+const { t } = useI18n()
 
-// useSeoMeta({
-//   title: t('hero.title') + " | Gleb Kotovsky",
-//   description: t('hero.description'),
-// })
+useSeoMeta({
+  title: t('about.title') + " | Gleb Kotovsky",
+  description: t('about.description')
+})
 
 </script>

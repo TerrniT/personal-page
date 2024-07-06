@@ -1,22 +1,23 @@
 {
-	"hero": {
+	"home": {
 		"title": "Home",
-		"description": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life",
-		"content": {
-			"hi": "Hi, I’m Gleb!",
-			"numbers": "Numbers",
-			"recent_articles": "Recent articles",
-			"hard_skills": "Hard skills",
-			"expertise": "Expertise",
-			"languages": "Languages"
+		"description": "I'm passionate about bringing ideas to life through code and technology. Whether it's building websites, apps, or software, I love the process of creating and sharing knowledge. I enjoy immersing myself in new topics and experiences, and I'm equally enthusiastic about teaching and sharing my expertise with others.",
+		"cta": {
+			"explore": "Explore projects",
+			"about": "About me"
 		}
 	},
 	"work": {
-		"title": "Work"
+		"title": "Work",
+		"description": "Work description"
 	},
 	"articles": {
 		"title": "Articles",
 		"description": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order"
+	},
+	"about": {
+		"title": "About",
+		"description": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life"
 	},
 	"uses": {
 		"title": "Uses",
