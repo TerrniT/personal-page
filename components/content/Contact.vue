@@ -61,39 +61,6 @@
       <div class=" flex flex-col col-span-3">
         <ContentSlot :use="$slots.links" />
       </div>
-      <!-- <div class="grid md:grid-cols-1 grid-cols-1 gap-y-6 md:gap-x-2">
-        <LayoutHeadingH2>
-          <ContentSlot
-            :use="$slots.experiences_title"
-            unwrap="p"
-          />
-        </LayoutHeadingH2>
-
-        <ContentSlot :use="$slots.experiences" />
-        <LayoutHeadingH2>
-          <ContentSlot
-            :use="$slots.skills_title"
-            unwrap="p"
-          />
-        </LayoutHeadingH2>
-
-        <ContentSlot :use="$slots.skills" />
-        <LayoutHeadingH2>
-          <ContentSlot
-            :use="$slots.expertise_title"
-            unwrap="p"
-          />
-        </LayoutHeadingH2>
-        <ContentSlot :use="$slots.expertise" />
-
-        <LayoutHeadingH2>
-          <ContentSlot
-            :use="$slots.languages_title"
-            unwrap="p"
-          />
-        </LayoutHeadingH2>
-        <ContentSlot :use="$slots.languages" />
-      </div> -->
     </div>
   </div>
 </template>
