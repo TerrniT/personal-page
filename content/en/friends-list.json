@@ -1,0 +1,101 @@
+{
+    "items": [
+      {
+        "name": "Pasha",
+        "nickname": "Shoshi",
+        "link": "https://clck.ru/3AMfKN",
+        "avatar": "/friends/pasha.png",
+        "tags": [
+          {
+            "name": "design",
+            "color": "green"
+          },
+          {
+            "name": "coding",
+            "color": "green"
+          },
+          {
+            "name": "flutter",
+            "color": "red"
+          },
+          {
+            "name": "dart",
+            "color": "gray"
+          },
+          {
+            "name": "Jaoan",
+            "color": "blue",
+            "icon": "mdi:github"
+          }
+        ]
+      },
+      {
+        "name": "Gagik",
+        "nickname": "Gogagoo",
+        "link": "https://gogagoo-cv.vercel.app",
+        "avatar": "/friends/gagik.png",
+        "tags": [
+          {
+            "name": "thinker",
+            "color": "yellow"
+          },
+          {
+            "name": "reactjs",
+            "color": "pink"
+          },
+          {
+            "name": "js",
+            "color": "orange"
+          },
+          {
+            "name": "Armenia",
+            "color": "blue"
+          }
+        ]
+      },
+      {
+        "name": "Shuhrat",
+        "nickname": "rsh12",
+        "link": "https://github.com/rsh-12",
+        "avatar": "/friends/shuhrat.png",
+        "tags": [
+          {
+            "name": "java",
+            "color": "default"
+          },
+          {
+            "name": "docker",
+            "color": "purple"
+          },
+          {
+            "name": "kafka",
+            "color": "purple"
+          },
+          {
+            "name": "postgresql",
+            "color": "orange"
+          }
+        ]
+      },
+      {
+        "name": "Dima",
+        "nickname": "LordVelion",
+        "link": "https://t.me/LordVelion",
+        "avatar": "/friends/dima.png",
+        "tags": [
+          {
+            "name": "embedded",
+            "color": "red"
+          },
+          {
+            "name": "physics",
+            "color": "pink"
+          },
+          {
+            "name": "maths",
+            "color": "default"
+          }
+        ]
+      }
+    ]
+  }

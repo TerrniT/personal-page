@@ -9,11 +9,10 @@
           <LayoutHeading page-key="articles" />
           <LayoutDescription page-key="articles" />
           <main class="min-h-screen md:mr-12">
-            <ul class="grid lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 gap-7 mt-8">
-              <li
-                v-for="(article, id) in articles"
-                :key="id"
-              >
+            <ul
+              class="grid lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 gap-7 mt-8"
+            >
+              <li v-for="(article, id) in articles" :key="id">
                 <ArticlesCard :article="article" />
               </li>
             </ul>
@@ -25,19 +24,20 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
+const { t } = useI18n();
 
 definePageMeta({
-	layout: 'articles'
-})
+  layout: "articles",
+});
 
 useSeoMeta({
-  title: t('articles.title') + " | Gleb Kotovsky",
-  description: t('articles.description'),
-})
+  title: t("articles.title") + " | Gleb Kotovsky",
+  description: t("articles.description"),
+});
 
+const { documents } = await useMarkdown("articles", { localized: true });
 
-const { documents } = await useMarkdown('articles')
-
-const articles = computed(() => documents.value.filter(item => item.type === 'article'))
+const articles = computed(() =>
+  documents.value.filter((item) => item.type === "article"),
+);
 </script>

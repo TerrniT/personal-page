@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-16 mt-12">
     <div
-      v-for="friend in data"
+      v-for="friend in data.items"
       :key="friend.nickname"
     >
       <NuxtImg
@@ -97,11 +97,18 @@
 </template>
 
 <script setup lang="ts">
-import type { Friends } from '~/shared/types/friends';
+// import type { Friends } from '~/shared/types/friends';
 
-interface Props {
-	data: Friends
-}
+// interface Props {
+// 	data: Friends
+// }
 
-defineProps<Props>()
+// defineProps<Props>()
+
+const { locale } = useI18n()
+
+const { data } = await useAsyncData('friends', () => queryContent('/friends-list').locale(locale.value).findOne(), {
+  watch: [locale],
+})
+
 </script>

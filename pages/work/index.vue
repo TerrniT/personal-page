@@ -5,7 +5,7 @@
   >
     <Body>
       <NuxtLayout>
-        <div class="flex flex-col gap-y-4 text-foreground">
+        <div class="flex flex-col gap-y-4 text-foreground w-full">
           <LayoutHeading page-key="work" />
           <LayoutDescription page-key="work" />
           <main class="min-h-screen">
@@ -14,11 +14,13 @@
                 v-for="(work, id) in workItems"
                 :key="id"
                 class="block"
-                :class="work.size === 'cover' ? 'w-full' : 'md:w-[calc(50%-0.5rem)] w-full'"
+                :class="
+                  work.size === 'cover'
+                    ? 'w-full'
+                    : 'md:w-[calc(50%-0.5rem)] w-full'
+                "
               >
-                <WorkCard
-                  :work="work"
-                />
+                <WorkCard :work="work" />
               </li>
             </ul>
           </main>
@@ -29,19 +31,20 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
+const { t } = useI18n();
 
 definePageMeta({
-	layout: 'work'
-})
-
+  layout: "work",
+});
 
 useSeoMeta({
-  title: t('work.title') + " | Gleb Kotovsky",
-  description: t('work.description'),
-})
+  title: t("work.title") + " | Gleb Kotovsky",
+  description: t("work.description"),
+});
 
+const { documents } = await useMarkdown("work", { localized: true });
 
-const { documents } = await useMarkdown('work')
-const workItems = computed(() => documents.value.filter(item => item.type !== 'page'))
+const workItems = computed(() =>
+  documents.value.filter((item) => item.type !== "page"),
+);
 </script>

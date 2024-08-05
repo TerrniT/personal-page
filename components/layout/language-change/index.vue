@@ -54,22 +54,22 @@ const availableLocales = [
     name: 'Русский',
     code: 'ru',
   },
-  {
-    name: '한국어',
-    code: 'ko',
-  },
-  {
-    name: '中文',
-    code: 'zh',
-  },
-  {
-    name: 'Dansk',
-    code: 'da',
-  },
-  {
-    name: 'Nederlandse taal',
-    code: 'nl',
-  }
+  // {
+  //   name: '한국어',
+  //   code: 'ko',
+  // },
+  // {
+  //   name: '中文',
+  //   code: 'zh',
+  // },
+  // {
+  //   name: 'Dansk',
+  //   code: 'da',
+  // },
+  // {
+  //   name: 'Nederlandse taal',
+  //   code: 'nl',
+  // }
 ]
 
 const { locale: current, setLocaleCookie } = useI18n()

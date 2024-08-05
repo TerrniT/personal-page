@@ -1,0 +1,346 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Zekrom",
+      "description": "This is a simple desktop application for viewing and editing Markdown files. It was built with Tauri, a framework that enables the creation of native desktop applications using web technoligies such as React, Typescript and Vite",
+      "topics": [
+        {
+          "title": "case study",
+          "color": "neutral"
+        },
+        {
+          "title": "desktop",
+          "color": "neutral"
+        },
+        {
+          "title": "open source",
+          "color": "neutral"
+        }
+      ],
+      "stack": [
+        {
+          "title": "React",
+          "color": "cyan"
+        },
+        {
+          "title": "Typescript",
+          "color": "ocean"
+        },
+        {
+          "title": "Tauri",
+          "color": "yellow"
+        },
+        {
+          "title": "Rust",
+          "color": "orange"
+        },
+        {
+          "title": "Vite",
+          "color": "purple"
+        }
+      ],
+      "link": "https://github.com/terrnit/zekrom",
+      "client": {
+        "name": "Terrnit",
+        "services": ["UI UX Design", "PWA Development", "Open Source"]
+      },
+      "image": "https://raw.githubusercontent.com/TerrniT/terrnit/main/zekrom_theme.png"
+    },
+    {
+      "id": 2,
+      "name": "Lastdoc",
+      "description": "",
+      "topics": [
+        {
+          "title": "e-commerce",
+          "color": "neutral"
+        },
+        {
+          "title": "dashboard",
+          "color": "neutral"
+        },
+        {
+          "title": "web",
+          "color": "neutral"
+        }
+      ],
+      "stack": [
+        {
+          "title": "React",
+          "color": "cyan"
+        },
+        {
+          "title": "Typescript",
+          "color": "ocean"
+        },
+        {
+          "title": "Redux Toolkit",
+          "color": "purple"
+        },
+        {
+          "title": "Supabase",
+          "color": "green"
+        }
+      ],
+      "link": "https://github.com/terrnit/lastdoc",
+      "client": {
+        "name": "UGKP",
+        "website": "UGKP.ru",
+        "services": ["UI UX Design", "Web Development", "Dashboard", "Logo"]
+      },
+      "image": "https://raw.githubusercontent.com/terrnit/terrnit/main/lastdoc_theme.png"
+    },
+    {
+      "id": 3,
+      "name": "Apollo",
+      "description": "Mobile task manager and markdown styller",
+      "topics": [
+        {
+          "title": "case study",
+          "color": "neutral"
+        },
+        {
+          "title": "apps",
+          "color": "neutral"
+        },
+        {
+          "title": "mobile",
+          "color": "neutral"
+        }
+      ],
+      "stack": [
+        {
+          "title": "React Native",
+          "color": "cyan"
+        },
+        {
+          "title": "Firebase",
+          "color": "yellow"
+        },
+        {
+          "title": "Expo",
+          "color": "gray"
+        }
+      ],
+      "link": "https://github.com/terrnit/apollo",
+      "client": {
+        "name": "Terrnit",
+        "services": ["UI UX Design", "Mobile Development"]
+      },
+      "image": "https://raw.githubusercontent.com/terrnit/terrnit/main/apollo_theme.png"
+    },
+    {
+      "id": 8,
+      "name": "Shoko's Website",
+      "description": "Personal website design for my friends from Shoko Team. Shoko Team are funny guys. They are engaged in the development of web application, mobile and games",
+      "topics": [
+        {
+          "title": "e-commerce",
+          "color": "neutral"
+        },
+        {
+          "title": "web",
+          "color": "neutral"
+        },
+        {
+          "title": "team work",
+          "color": "neutral"
+        }
+      ],
+      "stack": [
+        {
+          "title": "React",
+          "color": "cyan"
+        },
+        {
+          "title": "ChakraUI",
+          "color": "green"
+        }
+      ],
+      "link": "https://shokoteam.ru",
+      "client": {
+        "name": "Shoko",
+        "website": "https://shokoteam.ru",
+        "services": ["UI UX Design", "Web Development"]
+      },
+      "image": "https://raw.githubusercontent.com/terrnit/terrnit/main/shoko_theme.png"
+    },
+    {
+      "id": 4,
+      "name": "Merlo",
+      "description": "Crowd Funding app based on test GoerliETH actions",
+      "topics": [
+        {
+          "title": "e-commerce",
+          "color": "neutral"
+        },
+        {
+          "title": "dashboard",
+          "color": "neutral"
+        },
+        {
+          "title": "WEB3",
+          "color": "neutral"
+        },
+        {
+          "title": "case study",
+          "color": "neutral"
+        }
+      ],
+      "stack": [
+        {
+          "title": "React",
+          "color": "cyan"
+        },
+        {
+          "title": "Typescript",
+          "color": "ocean"
+        },
+        {
+          "title": "Thirdweb.JS",
+          "color": "purple"
+        },
+        {
+          "title": "Solidity",
+          "color": "metal"
+        }
+      ],
+      "link": "https://github.com/terrnit/merlo",
+      "client": {
+        "name": "Terrnit",
+        "website": "https://crowd-funding-web3-seven.vercel.app",
+        "services": ["UI UX Design", "Web Development"]
+      },
+      "image": "https://raw.githubusercontent.com/terrnit/terrnit/main/merlo_theme.png"
+    },
+    {
+      "id": 5,
+      "name": "Monolink",
+      "description": "Organize your web experience with Monolink, a modern and beautiful bookmarking tool",
+      "topics": [
+        {
+          "title": "main",
+          "color": "neutral"
+        },
+        {
+          "title": "web",
+          "color": "neutral"
+        },
+        {
+          "title": "pwa",
+          "color": "neutral"
+        },
+        {
+          "title": "case study",
+          "color": "neutral"
+        }
+      ],
+      "stack": [
+        {
+          "title": "NextJS",
+          "color": "metal"
+        },
+        {
+          "title": "Typescript",
+          "color": "ocean"
+        },
+        {
+          "title": "Supabase",
+          "color": "green"
+        },
+        {
+          "title": "Redux Toolkit",
+          "color": "purple"
+        }
+      ],
+      "link": "https://github.com/terrnit/monolink-site",
+      "client": {
+        "name": "Terrnit",
+        "website": "https://monolink-site.vercel.app",
+        "services": ["UI UX Design", "Web Development"]
+      },
+      "image": "https://raw.githubusercontent.com/terrnit/terrnit/main/monolink_theme.png"
+    },
+    {
+      "id": 6,
+      "name": "NeoChad",
+      "description": "Neovim config for fastest development",
+      "topics": [
+        {
+          "title": "neovim",
+          "color": "neutral"
+        },
+        {
+          "title": ".dotfiles",
+          "color": "neutral"
+        },
+        {
+          "title": "open source",
+          "color": "neutral"
+        }
+      ],
+      "stack": [
+        {
+          "title": "Lua",
+          "color": "darkblue"
+        },
+        {
+          "title": "Neovim",
+          "color": "green"
+        }
+      ],
+      "link": "https://github.com/terrnit/neochad",
+      "client": {
+        "name": "Terrnit",
+        "services": ["DX", "Config", "Open Source"]
+      },
+      "image": "https://user-images.githubusercontent.com/79077994/194117258-3b94711c-4b6a-4981-8137-592adb7a714d.png"
+    },
+
+    {
+      "id": 7,
+      "name": "Three JS Todo-List",
+      "description": "",
+      "topics": [
+        {
+          "title": "case study",
+          "color": "neutral"
+        },
+        {
+          "title": "web",
+          "color": "neutral"
+        },
+        {
+          "title": "3d",
+          "color": "neutral"
+        }
+      ],
+      "stack": [
+        {
+          "title": "React",
+          "color": "cyan"
+        },
+        {
+          "title": "ThreeJS",
+          "color": "yellow"
+        },
+        {
+          "title": "ChakraUI",
+          "color": "green"
+        },
+        {
+          "title": "Zustand",
+          "color": "metal"
+        }
+      ],
+      "link": "https://github.com/TerrniT/todo-chakra-zustand-react",
+      "client": {
+        "name": "Terrnit",
+        "website": "https://three-todo.vercel.app",
+        "services": ["UI UX Design", "Web Development"]
+      },
+      "image": "https://raw.githubusercontent.com/terrnit/terrnit/main/todolist_theme.png"
+    }
+  ]
+}

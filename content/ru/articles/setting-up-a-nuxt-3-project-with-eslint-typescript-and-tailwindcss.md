@@ -1,12 +1,13 @@
 ---
-title: Setting Up a Nuxt 3 Project with ESLint, TypeScript, and Tailwind CSS
-published: '2024/03/24'
-createdAt: '2024/03/24'
-tags: ['vue', 'nuxt 3', 'typescript']
-topic: 'Software Development'
+title: Тайтл на русском
+createdAt: "2024/03/24"
+published: "2024/03/24"
+tags: ["vue", "nuxt 3", "typescript"]
+topic: "Software Development"
 slug: "setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss"
-cover_type: 'image'
+cover_type: "image"
 author: TerrniT
+type: "article"
 ---
 
 ## Introduction
@@ -32,10 +33,10 @@ pnpm i && pnpm run dev
 ```
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6kiq3827myvu1ohggc4j.png)
+
 ## First result
 
-After initiation we get a template project on nuxt 3. So let's make it even better 
-
+After initiation we get a template project on nuxt 3. So let's make it even better
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/t3pu8b1rj2fnu1xrmu53.png)
 
@@ -49,7 +50,7 @@ To add these to your Nuxt project, you'll need to install the necessary dependen
 
 ```bash
 # Add eslint module and typescript to nuxt project
-pnpm install -D eslint eslint-plugin-vue@latest 
+pnpm install -D eslint eslint-plugin-vue@latest
 
 pnpm add -D @nuxtjs/eslint-module
 
@@ -62,11 +63,9 @@ Update `nuxt.config.ts` file:
 // nuxt.config.ts
 
 export default defineNuxtConfig({
-	devtools: { enabled: false },
-	modules: [
-	  '@nuxtjs/eslint-module'
-	]
-})
+  devtools: { enabled: false },
+  modules: ["@nuxtjs/eslint-module"],
+});
 ```
 
 Create `.eslintrc.cjs` file and add these lines of code:
@@ -75,42 +74,42 @@ Create `.eslintrc.cjs` file and add these lines of code:
 // .eslintrc.cjs
 
 module.exports = {
-	root: true,
-	parser: "vue-eslint-parser",
-	parserOptions: {
-	  parser: {
-			ts: "@typescript-eslint/parser"
-	  }
-	},
-	env: {
-	  node: true,
-	  browser: true
-	},
-	extends: [
-	  "plugin:vue/vue3-recommended"
-	],
-	rules: {
-	  "no-trailing-spaces": ["warn"],
-	  "prefer-promise-reject-errors": "off",
-	  "vue/no-v-html": "off",
-	  "no-trailing-spaces": ["warn"],
-	  "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-	  "vue/multi-word-component-names": ["error", {
-			ignores: ["error", "Error"]
-	  }]
-	},
-	ignorePatterns: ['dist', 'node_modules', 'build', 'coverage', 'docs', 'test'],
-	overrides: [
-	  {
-			files: ["components/**/**/*.vue"],
-			rules: { "vue/multi-word-component-names": "off" }
-	  }
-	]
-}
-
+  root: true,
+  parser: "vue-eslint-parser",
+  parserOptions: {
+    parser: {
+      ts: "@typescript-eslint/parser",
+    },
+  },
+  env: {
+    node: true,
+    browser: true,
+  },
+  extends: ["plugin:vue/vue3-recommended"],
+  rules: {
+    "no-trailing-spaces": ["warn"],
+    "prefer-promise-reject-errors": "off",
+    "vue/no-v-html": "off",
+    "no-trailing-spaces": ["warn"],
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "vue/multi-word-component-names": [
+      "error",
+      {
+        ignores: ["error", "Error"],
+      },
+    ],
+  },
+  ignorePatterns: ["dist", "node_modules", "build", "coverage", "docs", "test"],
+  overrides: [
+    {
+      files: ["components/**/**/*.vue"],
+      rules: { "vue/multi-word-component-names": "off" },
+    },
+  ],
+};
 ```
 
-If eslint doesn’t work the first time, you will need to delete `node_modules` and install the project again. 
+If eslint doesn’t work the first time, you will need to delete `node_modules` and install the project again.
 
 After these steps, the project will already have a configured eslint, which also acts as a formatter
 
@@ -137,19 +136,18 @@ Our tailwind.config.js file should look like this:
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-		"./components/**/*.{js,vue,ts}",
-		"./layouts/**/*.vue",
-		"./pages/**/*.vue",
-		"./plugins/**/*.{js,ts}",
-		"./app.vue",
-		"./error.vue",
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./app.vue",
+    "./error.vue",
   ],
   theme: {
     extend: {},
   },
   plugins: [],
-}
-
+};
 ```
 
 And update `nuxt.config.ts` file:
@@ -158,20 +156,20 @@ And update `nuxt.config.ts` file:
 // nuxt.config.ts
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	devtools: { enabled: false },
-	modules: [
-		"@nuxtjs/eslint-module",
-		// add tailwindcss module
-		'@nuxtjs/tailwindcss'
-	],
-	// add postcss support for tailwindcss
-	postcss: {
-		plugins: {
-		  tailwindcss: {},
-		  autoprefixer: {},
-		}
-	}
-})
+  devtools: { enabled: false },
+  modules: [
+    "@nuxtjs/eslint-module",
+    // add tailwindcss module
+    "@nuxtjs/tailwindcss",
+  ],
+  // add postcss support for tailwindcss
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+});
 ```
 
 You should also remember to create a root file for tailwindcss
@@ -197,7 +195,9 @@ If you want to see if tailwindcss works just copy this template and add it to `a
 ```html
 <!-- app.vue -->
 <template>
-  <div class="flex flex-col w-full h-screen bg-zinc-950 items-center justify-center">
+  <div
+    class="flex flex-col w-full h-screen bg-zinc-950 items-center justify-center"
+  >
     <div class="mx-auto">
       <h1 class="text-3xl text-blue-400 font-bold underline">
         Nuxt 3 template
@@ -216,7 +216,6 @@ If you want to see if tailwindcss works just copy this template and add it to `a
     </div>
   </div>
 </template>
-
 ```
 
 ## Conclusion
@@ -228,3 +227,4 @@ By integrating these tools in your Nuxt project, you can elevate your Vue.js dev
 Check out the [Github repo](https://github.com/TerrniTLLC/nuxt3-template) for the entire template!
 
 Until next time, thank you for reading! 🐾
+
