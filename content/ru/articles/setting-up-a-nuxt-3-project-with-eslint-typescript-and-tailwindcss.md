@@ -1,30 +1,35 @@
 ---
-title: Тайтл на русском
-createdAt: "2024/03/24"
-published: "2024/03/24"
-tags: ["vue", "nuxt 3", "typescript"]
-topic: "Software Development"
-slug: "setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss"
-cover_type: "image"
+title: Настройка проекта Nuxt 3 с помощью ESLint, TypeScript и Tailwind CSS
+createdAt: 2024/03/24
+published: 2024/03/24
+tags:
+  - vue
+  - nuxt 3
+  - typescript
+topic: Разработка
+slug: setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss
+cover_type: image
 author: TerrniT
-type: "article"
+type: article
 ---
 
 ## Introduction
 
-Nuxt.js is a robust and versatile framework that is primarily used for building server-rendered applications with Vue.js. In this comprehensive guide, we're going to delve into the process of setting up a Nuxt 3 project template. This template will be integrated with ESLint, TypeScript, and Tailwind CSS. These tools, when combined, can significantly enhance productivity, enforce a high standard of code quality, and streamline the process of styling.
+**Nuxt.js** - это надежный и универсальный фреймворк, который в основном используется для создания серверных рендеринговых приложений с Vue.js. В этом подробном руководстве мы рассмотрим процесс создания шаблона проекта Nuxt 3. Этот шаблон будет интегрирован с ESLint, TypeScript и Tailwind CSS. Сочетание этих инструментов позволяет значительно повысить производительность, обеспечить высокий стандарт качества кода и упростить процесс создания стиля.
 
-## Pre-requisites
+Переведено с помощью DeepL.com (бесплатная версия)
 
-- Node (In this example I used the 20.10.0 version, but any older version can work. )
-- Npm (tested with v7)
-- Pnpm (but you can use just npm / yarn)
+## Ингредиенты
 
-## Setting Up Nuxt 3
+- Node (В этом примере я использовал версию 20.10.0, но может подойти и любая более старая версия. )
+- Npm (проверено на v7)
+- Pnpm (но вы можете использовать просто npm / yarn)
 
-Nuxt 3 is the latest iteration of the Nuxt.js framework. It comes with a host of significant improvements and innovative features that make the process of Vue.js development more efficient and enjoyable. The setup process for a new project with Nuxt 3 is straightforward.
+## Настройка Nuxt 3
 
-Firstly, you'll need to install Node.js and npm. These are fundamental to running the Nuxt 3 framework. Once you have these installed, you can create a new Nuxt 3 project using the `nuxi@latest` command. This command initiates a process that will guide you through the various setup stages, allowing you to customize your project according to your specific needs. In this guide I will use pnpm as package manager. So let’s init our project:
+**Nuxt 3** - это последняя итерация фреймворка Nuxt.js. В нем реализовано множество значительных улучшений и инновационных функций, которые делают процесс разработки Vue.js более эффективным и приятным. Процесс настройки нового проекта с **Nuxt 3** очень прост.
+
+Во-первых, вам нужно будет установить Node.js и npm. Они являются основополагающими для работы фреймворка Nuxt 3. После их установки вы можете создать новый проект Nuxt 3 с помощью команды `nuxi@latest`. Эта команда запускает процесс, который проведет вас через различные этапы настройки, позволяя вам настроить проект в соответствии с вашими конкретными потребностями. В этом руководстве я буду использовать pnpm в качестве менеджера пакетов. Итак, давайте запустим наш проект:
 
 ```bash
 pnpm dlx nuxi@latest init nuxt3-template
@@ -34,22 +39,22 @@ pnpm i && pnpm run dev
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6kiq3827myvu1ohggc4j.png)
 
-## First result
+## Что мы получаем
 
-After initiation we get a template project on nuxt 3. So let's make it even better
+После инициализации мы получаем шаблонный проект на nuxt 3. Так давайте сделаем его еще лучше!
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/t3pu8b1rj2fnu1xrmu53.png)
 
-## Integrating ESLint and TypeScript
+## Интеграция ESLint и TypeScript
 
-ESLint is a widely recognized tool that identifies and reports on patterns found in ECMAScript/JavaScript code. The integration of ESLint can drastically improve the quality of your code, and helps to prevent potential bugs from cropping up in the future.
+**ESLint** - это широко известный инструмент, который выявляет и сообщает о шаблонах, найденных в коде ECMAScript/JavaScript. Интеграция ESLint может значительно улучшить качество вашего кода и помочь предотвратить появление потенциальных ошибок в будущем.
 
-On the other hand, TypeScript is a strongly typed superset of JavaScript that adds static types. It's an invaluable tool that helps to detect errors early during the development phase, thus saving time and resources.
+С другой стороны, TypeScript - это сильно типизированный супернабор JavaScript, добавляющий статические типы. Это бесценный инструмент, который помогает обнаружить ошибки на ранней стадии разработки, что экономит время и ресурсы.
 
-To add these to your Nuxt project, you'll need to install the necessary dependencies and then implement the appropriate configurations in your project's settings. With the ESLint and TypeScript integrations, your development environment becomes more robust by enforcing good coding practices and type safety
+Чтобы добавить их в свой проект Nuxt, вам нужно установить необходимые зависимости, а затем реализовать соответствующие конфигурации в настройках проекта. С интеграцией ESLint и TypeScript ваша среда разработки становится более надежной, обеспечивая хорошую практику разработки
 
 ```bash
-# Add eslint module and typescript to nuxt project
+# Добавляем модули eslint и typescript в проект
 pnpm install -D eslint eslint-plugin-vue@latest
 
 pnpm add -D @nuxtjs/eslint-module
@@ -57,7 +62,7 @@ pnpm add -D @nuxtjs/eslint-module
 pnpm install -D typescript @typescript-eslint/parser@latest @typescript-eslint/eslint-plugin@latest
 ```
 
-Update `nuxt.config.ts` file:
+Обновляем `nuxt.config.ts` файл:
 
 ```tsx
 // nuxt.config.ts
@@ -68,7 +73,7 @@ export default defineNuxtConfig({
 });
 ```
 
-Create `.eslintrc.cjs` file and add these lines of code:
+Создайте файл `.eslintrc.cjs` и добавьте в него следующие строки кода:
 
 ```jsx
 // .eslintrc.cjs
@@ -109,9 +114,9 @@ module.exports = {
 };
 ```
 
-If eslint doesn’t work the first time, you will need to delete `node_modules` and install the project again.
+Если eslint не работает с первого раза, вам нужно удалить `node_modules` и установить проект заново.
 
-After these steps, the project will already have a configured eslint, which also acts as a formatter
+После этих действий в проекте уже будет сконфигурирован eslint, который также выполняет роль форматера
 
 ## Incorporating Tailwind CSS
 
@@ -227,4 +232,3 @@ By integrating these tools in your Nuxt project, you can elevate your Vue.js dev
 Check out the [Github repo](https://github.com/TerrniTLLC/nuxt3-template) for the entire template!
 
 Until next time, thank you for reading! 🐾
-
