@@ -5,8 +5,11 @@
     <div>
       <LayoutLogo />
 
-      <div class="flex flex-col gap-y-2 px-2 mt-4">
-        <ul v-if="navigation" class="flex flex-col gap-y-2">
+      <div
+        v-if="navigation"
+        class="flex flex-col gap-y-2 px-2 mt-4"
+      >
+        <ul class="flex flex-col gap-y-2">
           <li
             v-for="link of navigation.filter((item) => item.nav_title)"
             :key="link._path"
@@ -19,10 +22,12 @@
         </ul>
       </div>
 
-      <div v-if="socialLinks" class="flex flex-col gap-y-2 px-2 mt-12">
+      <div
+        v-if="socialLinks"
+        class="flex flex-col gap-y-2 px-2 mt-12"
+      >
         <span class="text-muted-foreground font-medium uppercase text-sm">
-          {{ $t("nav.elsewhere") }}</span
-        >
+          {{ $t("nav.elsewhere") }}</span>
 
         <NuxtLink
           v-for="link in socialLinks"
@@ -32,7 +37,10 @@
           class="hover:text-foreground text-muted-foreground transition-all duration-150 ease-linear hover:underline underline-offset-2 flex items-center gap-x-2"
         >
           {{ link.name }}
-          <NuxtImg :src="link.icon" class="w-6 h-6" />
+          <NuxtImg
+            :src="link.icon"
+            class="w-6 h-6"
+          />
         </NuxtLink>
       </div>
     </div>

@@ -34,20 +34,36 @@
               Navbar menu
             </span>
           </UiSheetTitle>
-          <div class="flex flex-col gap-y-1 mt-4">
+          <div
+            v-if="navigation"
+            class="flex flex-col gap-y-1 mt-4"
+          >
             <NuxtLink
-              v-for="link in links"
-              :key="link.label"
-              :to="localePath(link.href)"
+              v-for="link in navigation"
+              :key="link.nav_title"
+              :to="localePath(link._path)"
               class="hover:text-foreground rounded-md px-2 hover:bg-primary text-base text-muted-foreground transition-colors py-2 duration-150 ease-linear"
               @click="sheetModal = false"
             >
-              <template v-if="link.locale_key">
-                {{ $t('nav.' + link.locale_key) }}
-              </template>
-              <template v-else>
-                {{ link.label }}
-              </template>
+              {{ link.nav_title }}
+            </NuxtLink>
+          </div>
+
+          <div
+            v-if="socialLinks"
+            class="flex gap-x-4 px-2 mt-2"
+          >
+            <NuxtLink
+              v-for="link in socialLinks"
+              :key="link.name"
+              :to="link.link"
+              target="_blank"
+              class="hover:text-foreground text-muted-foreground transition-all duration-150 ease-linear hover:underline underline-offset-2 flex items-center gap-x-2"
+            >
+              <NuxtImg
+                :src="link.icon"
+                class="w-6 h-6"
+              />
             </NuxtLink>
           </div>
         </UiSheetHeader>
@@ -59,7 +75,26 @@
 <script setup lang="ts">
 const sheetModal = ref(false)
 
-const localePath = useLocalePath()
-const store = useLayout()
-const {routeLinks: links} = storeToRefs(store)
+const localePath = useLocalePath();
+const { locale } = useI18n();
+
+const socialLinks = [
+  {
+    icon: "https://api.iconify.design/skill-icons:devto-dark.svg?color=%23888888",
+    name: "Devto",
+    link: "https://dev.to/terrnitllc",
+  },
+  {
+    icon: "https://api.iconify.design/icomoon-free:youtube.svg?color=%23888888",
+    name: "Youtube",
+    link: "https://www.youtube.com/channel/UC-Xu_hPhWucbV06VeyyIZig",
+  },
+];
+const { data: navigation } = await useAsyncData(
+  "navigation",
+  () => fetchContentNavigation(queryContent().where({ _locale: locale.value })),
+  {
+    watch: [locale],
+  },
+);
 </script>

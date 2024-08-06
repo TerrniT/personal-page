@@ -1,0 +1,70 @@
+---
+hero:
+  title: Home
+  description:
+    Ik ben een ontwikkelaar met ervaring in UI/UX-ontwerp. Ik gebruik en
+    bouw graag gebruiksvriendelijke en minimalistische interfaces voor alle apparaten,
+    van web tot smart watches. Ik hou ook van de natuur, goede muziek en heerlijke
+    koffie
+  content:
+    hi: Hé, mijn naam is Gleb!
+    numbers: Belangrijke nummers
+    recent_articles: Laatste artikelen
+    hard_skills: Harde vaardigheden
+    expertise: "Expertise "
+    languages: Talen
+work:
+  title: Werk
+articles:
+  title: Artikelen
+uses:
+  title: Mijn toepassingen
+  description:
+    Software die ik gebruik, gadgets waar ik van hou en andere dingen die
+    ik aanbeveel
+  content:
+    workstation: Werkstation
+    devtools: Hulpprogramma's voor ontwikkelaars
+    other_software: Andere software
+    misc: Overige
+contact:
+  title: Contacten
+photos:
+  title: Fotos
+playlist:
+  title: Mijn afspeellijst
+  description:
+    Welkom bij mijn afspeellijst jongens. Hier bewaar ik tracks en favoriete
+    albums die ik heb beluisterd en momenteel beluister.
+  content:
+    albums: Favoriete albums aller tijden
+    favorite_tracks: Mijn laatste nummers in mijn huidige afspeellijst
+friends:
+  title: Vrienden
+  description:
+    Welkom bij de levendige gemeenschap van vrienden en collega's die een
+    integraal deel uitmaken van mijn reis! Hier kun je een divers netwerk van connecties
+    ontdekken, die elk unieke perspectieven, talenten en passies vertegenwoordigen.
+  cta:
+    "Wil je hier ook aan meedoen? Laten we elkaar leren kennen, hier zijn mijn
+    links:"
+  cta_link: Hier
+nav:
+  elsewhere: Elders
+  link_home: Home
+  link_work: Werk
+  link_articles: Artikelen
+  link_uses: Mijn toepassingen
+  link_contact: Contacten
+  link_photos: Fotos
+  link_playlist: Afspilningsliste
+  link_friends: Vrienden
+  select_language: Selecteer taal
+  select_theme: Selecteer thema
+  theme_system: Systeem
+  theme_light: Licht
+  theme_dark: Donker
+construct_banner:
+  title: Pagina in ontwikkeling
+  description: Deze pagina is nog niet volledig. Ik werk er nu mee
+

@@ -1,0 +1,60 @@
+---
+home:
+  title: Home
+  description:
+    I'm passionate about bringing ideas to life through code and technology.
+    Whether it's building websites, apps, or software, I love the process of creating
+    and sharing knowledge. I enjoy immersing myself in new topics and experiences,
+    and I'm equally enthusiastic about teaching and sharing my expertise with others.
+  cta:
+    explore: Explore projects
+    about: About me
+work:
+  title: Work
+  description: Work description
+articles:
+  title: Articles
+  description:
+    All of my long-form thoughts on programming, user interfaces, product
+    design, and more, collected in chronological order
+about:
+  title: About
+  description:
+    I'm software developer with expertise in UI/UX design. I enjoy exploring
+    new design trends and techniques to further improve my skills. I'm passionate
+    about delivering high-quality work and collaborating with clients to bring their
+    vision to life
+uses:
+  title: Uses
+  description: Software I use, gadgets I love, and other things I recommend
+contact:
+  title: Contact
+  description: Feel free to get in touch with me
+photos:
+  title: Photos
+playlist:
+  title: My playlist
+  description:
+    Welcome to my playlist lads. This is where I keep tracks and favorite
+    albums that I've been listening to or am currently listening to.
+friends:
+  title: Friends
+  description:
+    Welcome to the vibrant community of friends and colleagues who are
+    an integral part of my journey! Here you can discover a diverse network of connections,
+    each representing unique perspectives, talents, and passions.
+  cta:
+    "Would you like to get in here too ? Let's get to know each other, here are
+    my links:"
+  cta_link: Here
+nav:
+  elsewhere: Elsewhere
+  select_language: Select a language
+  select_theme: Select a theme
+  theme_system: System
+  theme_light: Light
+  theme_dark: Dark
+construct_banner:
+  title: Page in progress
+  description: This page is still uncompleted. I'm working on it
+

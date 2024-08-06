@@ -1,0 +1,67 @@
+---
+hero:
+  title: Hjem
+  description:
+    Jeg er udvikler med erfaring inden for UI/UX-design. Jeg elsker at
+    bruge og bygge brugervenlige og minimalistiske grænseflader til alle enheder fra
+    web til smarte ure. Jeg elsker også naturen, god musik og lækker kaffe.
+  content:
+    hi: Hej, jeg hedder Gleb!
+    numbers: Vigtige tal
+    recent_articles: Nylige artikler
+    hard_skills: Vigtige færdigheder
+    expertise: Erfaring
+    languages: Sprogene
+work:
+  title: Arbejde
+articles:
+  title: Artikler
+uses:
+  title: Anvendelser
+  description: Software, jeg bruger, gadgets, jeg elsker, og andre ting, jeg anbefaler
+  content:
+    workstation: Arbejdsstation
+    devtools: "Udvikler-apps "
+    other_software: Anden software
+    misc: Diverse
+contact:
+  title: Kontakt
+photos:
+  title: Fotos
+playlist:
+  title: Min playliste
+  description:
+    Velkommen til min playliste lads. Det er her, jeg opbevarer numre og
+    yndlingsalbum, som jeg har lyttet til og lytter til i øjeblikket.
+  content:
+    albums: Yndlingsalbums gennem tiderne
+    favorite_tracks: Mine sidste numre på playlisten lige nu
+friends:
+  title: Venner
+  description:
+    Velkommen til det livlige fællesskab af venner og kolleger, som er
+    en integreret del af min rejse! Her kan du opdage et mangfoldigt netværk af forbindelser,
+    som hver især repræsenterer unikke perspektiver, talenter og passioner.
+  cta:
+    "Har du også lyst til at komme herind? Lad os lære hinanden at kende, her er
+    mine links:"
+  cta_link: Her
+nav:
+  elsewhere: Et andet sted
+  link_home: Hjem
+  link_work: Arbejde
+  link_articles: Artikler
+  link_uses: Anvendelser
+  link_contact: Kontakt
+  link_photos: Fotos
+  link_playlist: Muziekafspeellijst
+  link_friends: Venner
+  select_language: Vælg sprog
+  select_theme: Vælg tema
+  theme_system: System
+  theme_light: Lys
+  theme_dark: Mørk
+construct_banner:
+  title: Side i udvikling
+  description: Dette side er i øjeblikket ikke færdig. Jeg laver det nu
+

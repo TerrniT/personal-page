@@ -18,7 +18,7 @@
             variant="secondary"
             class="text-foreground cursor-pointer"
           >
-            {{ t('home.cta.explore') }}
+            {{ t("home.cta.explore") }}
           </UiButton>
           <UiButton
             as="nuxt-link"
@@ -26,7 +26,7 @@
             variant="ghost"
             class="text-foreground cursor-pointer"
           >
-            {{ t('home.cta.about') }}
+            {{ t("home.cta.about") }}
           </UiButton>
         </div>
       </div>
@@ -39,24 +39,27 @@
         <article
           v-for="article in recent_articles"
           :key="article.title"
-          class="border-b border-border rounded-sm py-3 "
+          class="border-b border-border rounded-sm py-3"
         >
-          <NuxtLink
-            :to="'/articles/' + article.slug"
-            class="group"
-          >
+          <NuxtLink :to="'/articles/' + article.slug" class="group">
             <div class="gap-x-2 flex flex-row justify-between items-center">
               <div class="flex flex-row gap-x-2 items-center">
-                <h3 class="md:text-sm group-hover:text-muted-foreground transition-colors duration-150 ease-linear text-sm text-foreground font-medium ">
+                <h3
+                  class="md:text-sm group-hover:text-muted-foreground transition-colors duration-150 ease-linear text-sm text-foreground font-medium"
+                >
                   {{ article.title }}
                 </h3>
               </div>
-              <div class="md:flex md:flex-row gap-x-3 text-muted-foreground text-sm hidden">
-                <span class="text-muted-foreground bg-muted rounded-md p-0.5 hidden md:block md:text-xs">
+              <div
+                class="md:flex md:flex-row gap-x-3 text-muted-foreground text-sm hidden"
+              >
+                <span
+                  class="text-muted-foreground bg-muted rounded-md p-0.5 hidden md:block md:text-xs"
+                >
                   #{{ article.topic }}
                 </span>
                 <span class=""> ~ </span>
-                <span class="">{{ article.createdAt.slice(0,4) }}</span>
+                <span class="">{{ article.createdAt.slice(0, 4) }}</span>
               </div>
             </div>
           </NuxtLink>
@@ -67,14 +70,16 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
+const { t } = useI18n();
 
 useSeoMeta({
-  title: t('home.title') + " | Gleb Kotovsky",
-  description: t('home.description'),
-})
+  title: t("home.title") + " | Gleb Kotovsky",
+  description: t("home.description"),
+});
 
-const { documents } = await useMarkdown('/articles')
+const { documents } = await useMarkdown("/articles", { localized: true });
 
-const recent_articles = computed(() => documents.value.filter(item => item.type === 'article').slice(0, 7))
+const recent_articles = computed(() =>
+  documents.value.filter((item) => item.type === "article").slice(0, 7),
+);
 </script>

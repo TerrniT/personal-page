@@ -1,0 +1,57 @@
+---
+hero:
+  title: 主页
+  description: 我是一名拥有用户界面/用户体验设计经验的开发人员。我喜欢为从网络到智能手表的任何设备使用和构建用户友好的简约界面。我还热爱大自然、美妙的音乐和美味的咖啡
+  content:
+    hi: 嗨，我叫 Gleb！(我的中文名 - 阎永盛)
+    numbers: 重要数字
+    recent_articles: 最近的文章
+    hard_skills: 硬技能
+    expertise: 专业技能
+    languages: 语言
+work:
+  title: 作品
+articles:
+  title: 文章
+uses:
+  title: 我的用途
+  description: 我使用的软件、我喜欢的小工具以及我推荐的其他东西
+  content:
+    workstation: 工作站
+    devtools: 开发人员工具
+    other_software: 其他软件
+    misc: 别的~
+contact:
+  title: 联系方式
+photos:
+  title: 照片
+playlist:
+  title: 我的播放列表
+  description: 欢迎来到我的播放列表。这是我保存曲目和最喜欢的专辑的地方，我一直在听，现在也在听
+  content:
+    albums: 收藏夹专辑
+    favorite_tracks: 现在播放列表中我最喜欢的曲目~
+friends:
+  title: 朋友
+  description: 欢迎来到这个充满活力的社区，这里的朋友和同事是我人生旅途中不可或缺的一部分！在这里，您可以发现一个多样化的关系网络，每个人都代表着独特的视角、才能和热情
+  cta: 您也想加入我们吗？让我们互相认识一下吧，这是我的链接
+  cta_link: 这里
+nav:
+  elsewhere: 在别处
+  link_home: 主页
+  link_work: 作品
+  link_articles: 文章
+  link_uses: 我的用途
+  link_contact: 联系方式
+  link_photos: 照片
+  link_playlist: 播放列表
+  link_friends: 朋友
+  select_language: 选择语言
+  select_theme: 选择主题
+  theme_system: 系统主题色
+  theme_light: 白光
+  theme_dark: 黑暗
+construct_banner:
+  title: 正在构建
+  description: 这个页面还没有完全完成。我正在努力完成它
+
