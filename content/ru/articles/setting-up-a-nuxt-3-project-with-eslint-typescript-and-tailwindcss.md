@@ -7,7 +7,7 @@ tags:
   - nuxt 3
   - typescript
 topic: Разработка
-slug: setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss
+slug: setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss-ru
 cover_type: image
 author: TerrniT
 type: article
