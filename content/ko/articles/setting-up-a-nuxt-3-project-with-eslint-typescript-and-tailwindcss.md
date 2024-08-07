@@ -1,13 +1,16 @@
 ---
 title: Тайтл на русском
-createdAt: "2024/03/24"
-published: "2024/03/24"
-tags: ["vue", "nuxt 3", "typescript"]
-topic: "Software Development"
-slug: "setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss"
-cover_type: "image"
+createdAt: 2024/03/24
+published: 2024/03/24
+tags:
+  - vue
+  - nuxt 3
+  - typescript
+topic: Software Development
+slug: setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss
+cover_type: image
 author: TerrniT
-type: "article"
+type: article
 ---
 
 ## Introduction
@@ -227,4 +230,3 @@ By integrating these tools in your Nuxt project, you can elevate your Vue.js dev
 Check out the [Github repo](https://github.com/TerrniTLLC/nuxt3-template) for the entire template!
 
 Until next time, thank you for reading! 🐾
-
