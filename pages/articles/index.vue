@@ -24,18 +24,14 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n();
-
 definePageMeta({
   layout: "articles",
 });
 
-useSeoMeta({
-  title: t("articles.title") + " | Gleb Kotovsky",
-  description: t("articles.description"),
-});
+const seoImage = "put there image url";
+useLangMeta("articles", seoImage);
 
-const { documents } = await useMarkdown("articles", { localized: true });
+const { documents } = await useMarkdown("articles");
 
 const articles = computed(() =>
   documents.value.filter((item) => item.type === "article"),

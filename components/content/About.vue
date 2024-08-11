@@ -18,34 +18,22 @@
     <div class="my-24">
       <div class="grid md:grid-cols-1 grid-cols-1 gap-y-6 md:gap-x-2">
         <LayoutHeadingH2>
-          <ContentSlot
-            :use="$slots.experiences_title"
-            unwrap="p"
-          />
+          <ContentSlot :use="$slots.experiences_title" unwrap="p" />
         </LayoutHeadingH2>
 
         <ContentSlot :use="$slots.experiences" />
         <LayoutHeadingH2>
-          <ContentSlot
-            :use="$slots.skills_title"
-            unwrap="p"
-          />
+          <ContentSlot :use="$slots.skills_title" unwrap="p" />
         </LayoutHeadingH2>
 
         <ContentSlot :use="$slots.skills" />
         <LayoutHeadingH2>
-          <ContentSlot
-            :use="$slots.expertise_title"
-            unwrap="p"
-          />
+          <ContentSlot :use="$slots.expertise_title" unwrap="p" />
         </LayoutHeadingH2>
         <ContentSlot :use="$slots.expertise" />
 
         <LayoutHeadingH2>
-          <ContentSlot
-            :use="$slots.languages_title"
-            unwrap="p"
-          />
+          <ContentSlot :use="$slots.languages_title" unwrap="p" />
         </LayoutHeadingH2>
         <ContentSlot :use="$slots.languages" />
       </div>
@@ -54,11 +42,6 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
-
-useSeoMeta({
-  title: t('about.title') + " | Gleb Kotovsky",
-  description: t('about.description')
-})
-
+const seoImage = "put image there";
+useLangMeta("about", seoImage);
 </script>

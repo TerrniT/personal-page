@@ -26,10 +26,6 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
-
-useSeoMeta({
-  title: t('friends.title') + " | Gleb Kotovsky",
-  description: t('friends.description'),
-})
+const seoImage = "put image there";
+useLangMeta("friends", seoImage);
 </script>

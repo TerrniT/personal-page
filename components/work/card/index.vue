@@ -1,14 +1,17 @@
 <template>
-  <NuxtLink
-    :to="localePath(work._path)"
-    class="group"
-  >
+  <NuxtLink :to="localePath(work._path)" class="group">
     <article
       class="min-h-[350px] flex flex-col"
+      :class="{ 'min-h-fit': !imageSrc }"
     >
-      <div class="bg-secondary p-6 rounded-t-2xl pb-12">
+      <div
+        class="bg-secondary p-6 rounded-t-2xl pb-12"
+        :class="{ 'rounded-b-2xl': !imageSrc }"
+      >
         <div class="flex justify-between items-start md:items-center">
-          <div class="flex gap-x-0 md:gap-x-6 md:items-center items-start flex-col md:flex-row">
+          <div
+            class="flex gap-x-0 md:gap-x-6 md:items-center items-start flex-col md:flex-row"
+          >
             <h2
               class="text-lg font-semibold font-display tracking-tight text-foreground group-hover:text-primary-600"
             >
@@ -18,9 +21,9 @@
               <span
                 v-for="(stack_item, s) in work.stack"
                 :key="s + stack_item"
-                class="text-xs rounded-sm w-fit py-0.5 px-1 "
+                class="text-xs rounded-sm w-fit py-0.5 px-1"
               >
-                <LayoutWorkStackIcon :name="stack_item" />
+                <LayoutWorkStackIcon :name="stack_item as StackNames" />
               </span>
             </div>
           </div>
@@ -33,12 +36,11 @@
           </time>
         </div>
 
-
         <div class="flex flex-row gap-x-2 my-2">
           <span
             v-for="(tag, k) in work.tags"
             :key="k"
-            class="text-muted-foreground bg-muted-foreground/10 text-xs rounded-sm w-fit py-0.5 px-1 "
+            class="text-muted-foreground bg-muted-foreground/10 text-xs rounded-sm w-fit py-0.5 px-1"
           >
             {{ tag }}
           </span>
@@ -49,48 +51,29 @@
         </p>
       </div>
 
-      <div
-        v-if="work.cover_type === 'image'"
-        class="w-full"
-      >
+      <div v-if="work.coverType === 'image' && imageSrc" class="w-full">
         <NuxtImg
           class="rounded-b-2xl w-full max-h-[550px] object-cover"
-          :src="'work/' + work.slug + '.png'"
+          :src="imageSrc"
           :alt="work.title"
         />
       </div>
 
-      <div
-        v-else-if="work.cover_type === 'youtube_video'"
-        class="mt-5"
-      >
+      <div v-else-if="work.coverType === 'youtube_video'" class="mt-5">
         <iframe
           width="100%"
           height="auto"
-          style="min-height:300px"
-          :src="work.video_slug"
+          style="min-height: 300px"
+          :src="work.videoSlug"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
         />
       </div>
-      <div
-        v-else-if="work.cover_type === 'video'"
-        class="mt-5"
-      >
-        <video
-          width="100%"
-          height="auto"
-          playsinline
-          muted
-          autoplay
-          loop
-        >
-          <source
-            :src="'work/' + work.video_slug"
-            type="video/mp4"
-          >
+      <div v-else-if="work.coverType === 'video'" class="mt-5">
+        <video width="100%" height="auto" playsinline muted autoplay loop>
+          <source :src="'work/' + work.videoSlug" type="video/mp4" />
         </video>
       </div>
     </article>
@@ -98,22 +81,36 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
-  work: any
+import { type StackNames } from "../../layout/work/stack-icon/types";
+import { type WorkContract } from "../../../contracts";
+
+interface WorkItem extends WorkContract {
+  _path: string;
 }
 
-defineProps<Props>()
+interface Props {
+  work: WorkItem;
+}
 
+const props = defineProps<Props>();
 
-const { locale } = useI18n()
-const localePath = useLocalePath()
+const { work } = toRefs(props);
+
+const imageSrc = computed(() => {
+  if (work.value.image) {
+    return work.value.image;
+  }
+  return work.value.slug ? "work/" + work.value.slug + ".png" : undefined;
+});
+
+const { locale } = useI18n();
+const localePath = useLocalePath();
 
 const getReadableDate = (dateString: string) => {
-	const date = new Date(dateString)
+  const date = new Date(dateString);
 
-	return date.toLocaleDateString(locale.value, {
-		year: "numeric"
-	})
-}
-
+  return date.toLocaleDateString(locale.value, {
+    year: "numeric",
+  });
+};
 </script>

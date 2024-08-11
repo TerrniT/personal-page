@@ -85,22 +85,24 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  layout: "default",
+});
+
 const { params } = useRoute();
 
 const { document } = await useMarkdown(`work/${(params as any).slug}`, {
   localized: true,
 });
 
-definePageMeta({
-  layout: "default",
-});
+const runtimeConfig = useRuntimeConfig();
+
+const config = runtimeConfig.public;
 
 useSeoMeta({
-  ogImage: `https://www-terrnit.vercel.app/work/${params.slug}.png`,
-  twitterCard: "summary_large_image",
-  articleAuthor: "Gleb Kotovsky",
-  title: document?.title + " | Gleb Kotovsky",
+  title: document?.title + " | " + config.name,
   description: document?.description,
+  ogImage: `https://${config.domain}/work/${params.slug}.png`,
+  twitterCard: "summary_large_image",
 });
 </script>
-

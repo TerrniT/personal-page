@@ -1,5 +1,35 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+/* const constructFeedItem = (post: any, hostname: string) => {
+  const url = `${hostname}/blog/${post.slug}`;
+  return {
+    title: post.title,
+    id: url,
+    link: url,
+    description: post.description,
+    content: post.bodyPlainText,
+  };
+}; */
+
+/* const createRssFeed = async (feed: any) => {
+  const hostname = `https://${config.domain}`;
+  feed.options = {
+    title: `Blog | ${config.name}`,
+    description: config.strings.en_US.hero.description,
+    link: `${hostname}/feed.xml`,
+  };
+  const { $content } = require("@nuxt/content");
+  const posts = await $content("posts").fetch();
+  for (const post of posts) {
+    const feedItem = await constructFeedItem(post, hostname);
+    feed.addItem(feedItem);
+  }
+  return feed;
+}; */
+import config from "./terrnit.config";
+
+const nuxtConfig = defineNuxtConfig({
+  runtimeConfig: {
+    public: config,
+  },
   devtools: { enabled: false },
   modules: [
     "@nuxtjs/eslint-module",
@@ -12,7 +42,12 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "nuxt-icon",
   ],
+  buildModules: ["@nuxtjs/google-analytics"],
   css: ["/assets/css/tailwind.css", "/assets/css/app.scss"],
+  googleAnalytics: {
+    dev: config.googleAnalyticsV4.enabled,
+    id: process.env.GOOGLE_ANALYTICS_ID,
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -21,24 +56,25 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      viewport: "width=device-width, initial-scale=1",
-      charset: "utf-8",
+      htmlAttrs: {
+        lang: "en",
+      },
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "author", content: config.name },
+      ],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
-    // pageTransition: {
-    //   name: 'fade',
-    //   mode: 'out-in',
-    // },
+  },
+
+  site: {
+    url: `https:${config.domain}`,
+    name: "Gleb Kotovsky",
   },
 
   routeRules: {
     "/": { isr: true, prerender: true },
-  },
-  site: {
-    url: process.env.NUXT_SITE_URL || "https://www-terrnit.vercel.app",
-    identity: {
-      type: "Person",
-    },
-    twitter: "@gaundergod",
   },
   nitro: {
     prerender: {
@@ -47,6 +83,7 @@ export default defineNuxtConfig({
         // '/sitemap.xml',
         "/",
         "/work",
+        "/article",
         "/about",
         "/contact",
       ],
@@ -114,7 +151,7 @@ export default defineNuxtConfig({
     storesDirs: ["./stores/**"],
   },
   colorMode: {
-    preference: "system", // default value of $colorMode.preference
+    preference: "dark", // default value of $colorMode.preference
     fallback: "light", // fallback value if not system preference found
     hid: "nuxt-color-mode-script",
     globalName: "__NUXT_COLOR_MODE__",
@@ -133,7 +170,7 @@ export default defineNuxtConfig({
       cookieKey: "i18n_redirected",
       redirectOn: "root",
     },
-    baseUrl: "/",
+    baseUrl: config.domain ? config.domain : "/",
     locales: [
       {
         code: "en",
@@ -160,8 +197,23 @@ export default defineNuxtConfig({
         file: "nl.yaml",
       },
     ],
-    langDir: "i18n/locales/",
     defaultLocale: "en",
+    langDir: "i18n/locales/",
   },
 });
 
+/* if (config.articles.enabled) {
+  // if blog enabled only then create feed
+  nuxtConfig.modules.unshift('@nuxtjs/feed')
+  nuxtConfig.feed = [
+    {
+      path: '/feed.xml', // The route to your feed.
+      create: createRssFeed, // The create function (see below)
+      cacheTime: 1000 * 60 * 15, // How long should the feed be cached
+      type: 'rss2', // Can be: rss2, atom1, json1
+      data: [] // Will be passed as 2nd argument to `create` function
+    }
+  ]
+}
+*/
+export default nuxtConfig;

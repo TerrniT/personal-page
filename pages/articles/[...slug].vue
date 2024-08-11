@@ -11,8 +11,12 @@
             class="prose prose-blockquote:not-italic prose-img:ring-1 prose-img:ring-primary prose-img:rounded-lg prose-img:shadow-sm prose-li:text-foreground"
           >
             <article>
-              <div class="flex justify-between items-center text-center text-xs mb-4">
-                <span class="text-muted-foreground bg-accent rounded-sm w-fit py-0.5 px-1 ">
+              <div
+                class="flex justify-between items-center text-center text-xs mb-4"
+              >
+                <span
+                  class="text-muted-foreground bg-accent rounded-sm w-fit py-0.5 px-1"
+                >
                   {{ document.topic }}
                 </span>
                 <UiButton
@@ -21,13 +25,8 @@
                   class="flex gap-x-2 h-8 text-muted-foreground"
                   @click="$router.back()"
                 >
-                  <Icon
-                    name="mdi:arrow-left"
-                    size="1.3em"
-                  />
-                  <span>
-                    Back
-                  </span>
+                  <Icon name="mdi:arrow-left" size="1.3em" />
+                  <span> Back </span>
                 </UiButton>
               </div>
               <h1 class="text-3xl text-foreground">
@@ -43,18 +42,26 @@
 </template>
 
 <script setup lang="ts">
-const { params } = useRoute()
+const { params, path } = useRoute();
 
-const { document } = await useMarkdown(`articles/${(params as any).slug}`)
+const { document } = await useMarkdown(`articles/${(params as any).slug}`);
+
+const runtimeConfig = useRuntimeConfig();
+
+const config = runtimeConfig.public;
 
 useSeoMeta({
-	ogImage: `https://www-terrnit.vercel.app/articles/${params.slug}.png`,
-	twitterCard: "summary_large_image",
-	articleAuthor: ["Gleb Kotovsky"],
-	title: document?.title + " | Gleb Kotovsky",
-  description: document?.description
-})
-
+  title: document?.title + " | " + config.name,
+  description: document?.description,
+  articleAuthor: [config.name as string],
+  ogImage: `https://www-terrnit.vercel.app/articles/${params.slug}.png`,
+  ogTitle: document?.title,
+  ogDescription: document?.description,
+  twitterCard: "summary_large_image",
+  twitterImage: `https://www-terrnit.vercel.app/articles/${params.slug}.png`,
+  twitterTitle: document?.title + " | " + config.name,
+  twitterDescription: document?.description,
+});
 </script>
 
 <style>
@@ -66,24 +73,24 @@ useSeoMeta({
 .prose h4 a,
 .prose h5,
 .prose h6 {
-	@apply no-underline text-foreground
+  @apply no-underline text-foreground;
 }
 .prose code {
-    @apply text-primary rounded-md p-0.5
+  @apply text-primary rounded-md p-0.5;
 }
 .prose code::before,
 .prose code::after {
-    content: '';
+  content: "";
 }
 
 .prose p {
-    @apply text-foreground
+  @apply text-foreground;
 }
 .prose p a {
-    @apply text-primary hover:text-primary/50
+  @apply text-primary hover:text-primary/50;
 }
 
 .prose blockquote {
-    @apply text-foreground italic bg-yellow-500/20
+  @apply text-foreground italic bg-yellow-500/20;
 }
 </style>

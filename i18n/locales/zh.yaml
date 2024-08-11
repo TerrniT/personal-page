@@ -1,5 +1,5 @@
 ---
-hero:
+home:
   title: 主页
   description: 我是一名拥有用户界面/用户体验设计经验的开发人员。我喜欢为从网络到智能手表的任何设备使用和构建用户友好的简约界面。我还热爱大自然、美妙的音乐和美味的咖啡
   content:
@@ -54,4 +54,3 @@ nav:
 construct_banner:
   title: 正在构建
   description: 这个页面还没有完全完成。我正在努力完成它
-

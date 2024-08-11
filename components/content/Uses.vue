@@ -11,34 +11,26 @@
       </div>
     </div>
 
-    <div class="mt-12 flex flex-col gap-y-16 ">
-      <div
-        class="flex flex-col"
-      >
+    <div class="mt-12 flex flex-col gap-y-16">
+      <div class="flex flex-col">
         <h2 class="text-xl font-bold text-foreground">
           <ContentSlot :use="$slots.workstation_title" />
         </h2>
         <ContentSlot :use="$slots.workstation" />
       </div>
-      <div
-        class="flex flex-col"
-      >
+      <div class="flex flex-col">
         <h2 class="text-xl font-bold text-foreground">
           <ContentSlot :use="$slots.devtools_title" />
         </h2>
         <ContentSlot :use="$slots.devtools" />
       </div>
-      <div
-        class="flex flex-col"
-      >
+      <div class="flex flex-col">
         <h2 class="text-xl font-bold text-foreground">
           <ContentSlot :use="$slots.other_software_title" />
         </h2>
         <ContentSlot :use="$slots.other_software" />
       </div>
-      <div
-        class="flex flex-col"
-      >
+      <div class="flex flex-col">
         <h2 class="text-xl font-bold text-foreground">
           <ContentSlot :use="$slots.misc_title" />
         </h2>
@@ -49,10 +41,6 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
-
-useSeoMeta({
-    title: t('uses.title') + " | Gleb Kotovsky",
-    description: t('uses.description')
-})
+const seoImage = "put image there";
+useLangMeta("uses", seoImage);
 </script>

@@ -1,5 +1,5 @@
 ---
-hero:
+home:
   title: Home
   description:
     Ik ben een ontwikkelaar met ervaring in UI/UX-ontwerp. Ik gebruik en
@@ -67,4 +67,3 @@ nav:
 construct_banner:
   title: Pagina in ontwikkeling
   description: Deze pagina is nog niet volledig. Ik werk er nu mee
-

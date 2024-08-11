@@ -72,10 +72,8 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-useSeoMeta({
-  title: t("home.title") + " | Gleb Kotovsky",
-  description: t("home.description"),
-});
+const seoImage = "put image there";
+useLangMeta("home", seoImage);
 
 const { documents } = await useMarkdown("/articles", { localized: true });
 

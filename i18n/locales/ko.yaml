@@ -1,5 +1,5 @@
 ---
-hero:
+home:
   title: 메인
   description:
     저는 UI/UX 디자인 경력이 있는 개발자입니다. 웹에서 스마트 워치에 이르기까지 모든 디바이스에서 사용자 친화적이고 미니멀한
@@ -58,4 +58,3 @@ nav:
 construct_banner:
   title: 이 페이지는 개발 중입니다
   description: 이 페이지는 아직 완성되지 않았습니다. 작업 중입니다
-

@@ -35,6 +35,7 @@
     "@nuxthq/studio": "^2.0.3",
     "@nuxtjs/color-mode": "^3.4.1",
     "@nuxtjs/eslint-module": "^4.1.0",
+    "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@tailwindcss/typography": "^0.5.13",
     "@typescript-eslint/eslint-plugin": "^7.3.1",

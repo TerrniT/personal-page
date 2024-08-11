@@ -38,6 +38,7 @@ export async function useMarkdown(path: string, opts?: Options) {
 
   const options = opts;
   const documents = ref<Document[]>([]);
+  // const toc = ref<Toc>()
 
   const { locale } = useI18n();
 
@@ -87,4 +88,3 @@ export async function useMarkdown(path: string, opts?: Options) {
     documents,
   };
 }
-

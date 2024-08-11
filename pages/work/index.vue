@@ -31,16 +31,12 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n();
-
 definePageMeta({
   layout: "work",
 });
 
-useSeoMeta({
-  title: t("work.title") + " | Gleb Kotovsky",
-  description: t("work.description"),
-});
+const seoImage = "put there image url";
+useLangMeta("work", seoImage);
 
 const { documents } = await useMarkdown("work", { localized: true });
 
