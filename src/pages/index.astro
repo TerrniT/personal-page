@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content'
+import Container from '@components/Container.astro'
+import PageLayout from '@layouts/PageLayout.astro'
+import ArrowCard from '@components/ArrowCard.astro'
+import Link from '@components/Link.astro'
+
+import { dateRange } from '@lib/utils'
+import { SITE, HOME, SOCIALS } from '@consts'
+
+import { t } from 'i18next'
+import Button from '@components/Button.vue'
+
+const blog = (await getCollection('articles'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE)
+
+const projects = (await getCollection('projects'))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE)
+
+const aboutData = (await getCollection('about'))
+  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
+  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE)
+
+const work = await Promise.all(
+  aboutData.map(async (item) => {
+    const { Content } = await item.render()
+    return { ...item, Content }
+  }),
+)
+---
+
+<PageLayout title={t('home.title')} description={t('home.description')}>
+  <Container>
+    <h4 class="animate text-xl font-semibold text-black dark:text-white">{t('home.heading')}</h4>
+    <div class="space-y-16">
+      <section>
+        <article class="space-y-4">
+          <p class="animate">
+            {t('home.paragraph')}
+          </p>
+        </article>
+
+        <Button to="/work" variant="secondary">
+          {t('home.cta.explore')}
+        </Button>
+        <Button to="/about" variant="ghost">
+          {t('home.cta.about')}
+        </Button>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-y-2">
+          <h5 class="font-semibold text-black dark:text-white">Latest posts</h5>
+          <Link href="/articles"> See all posts </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {
+            blog.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <!-- <section class="animate space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-y-2">
+          <h5 class="font-semibold text-black dark:text-white">Work Experience</h5>
+          <Link href="/work"> See all work </Link>
+        </div>
+        <ul class="flex flex-col space-y-4">
+          {
+            work.map((entry) => (
+              <li>
+                <div class="text-sm opacity-75">{dateRange(entry.data.dateStart, entry.data.dateEnd)}</div>
+                <div class="font-semibold text-black dark:text-white">{entry.data.company}</div>
+                <div class="text-sm opacity-75">{entry.data.role}</div>
+                <article>
+                  <entry.Content />
+                </article>
+              </li>
+            ))
+          }
+        </ul>
+      </section> -->
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-y-2">
+          <h5 class="font-semibold text-black dark:text-white">Recent projects</h5>
+          <Link href="/projects"> See all projects </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {
+            projects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </Container>
+</PageLayout>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content'
+import PageLayout from '@layouts/PageLayout.astro'
+import Container from '@components/Container.astro'
+import UsesLink from '@components/UsesLink.astro'
+
+import { t } from 'i18next'
+
+const uses = (await getCollection('uses')).filter((item) => !item.data.draft)
+
+const sections = ['workstation', 'devtools', 'other_software', 'misc']
+
+function getSection(section: string) {
+  return uses.filter((item) => item.data.type === section)
+}
+---
+
+<PageLayout title={t('uses.title')} description={t('uses.description')}>
+  <Container>
+    <h1 class="animate text-xl font-semibold text-black dark:text-white">{t('uses.heading')}</h1>
+    <div class="space-y-16">
+      <section>
+        <article class="space-y-4">
+          <p class="animate">
+            {t('uses.paragraph')}
+          </p>
+        </article>
+      </section>
+    </div>
+    {
+      sections.map((section) => (
+        <div class="mt-14 space-y-6">
+          <h2 class="animate text-lg font-semibold text-black dark:text-white">{t(`uses.${section}.heading`)}</h2>
+          <ul class="animate flex flex-col gap-4">
+            {getSection(section).map((item) => (
+              <>
+                <UsesLink item={item} />
+              </>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </Container>
+</PageLayout>

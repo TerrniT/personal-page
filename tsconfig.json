@@ -1,46 +1,10 @@
 {
-	"extends": "./.nuxt/tsconfig.json",
-	"compilerOptions": {
-	  "skipLibCheck": true,
-	  "allowSyntheticDefaultImports": true,
-	  "baseUrl": ".",
-	  "paths": {
-		"~": [
-		  "."
-		],
-		"~/*": [
-		  "./*"
-		],
-		"@": [
-		  "."
-		],
-		"@/*": [
-		  "./*"
-		],
-		"~~": [
-		  "."
-		],
-		"~~/*": [
-		  "./*"
-		],
-		"@@": [
-		  "."
-		],
-		"@@/*": [
-		  "./*"
-		],
-		"assets": [
-		  "./assets"
-		],
-		"assets/*": [
-		  "./assets/*"
-		],
-		"public": [
-		  "./public"
-		],
-		"public/*": [
-		  "./public/*"
-		]
-	}
-}
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["./src/*"]
+    }
+  }
 }

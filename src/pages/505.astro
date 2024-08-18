@@ -1,0 +1,35 @@
+---
+import Container from '@components/Container.astro'
+import Link from '@components/Link.astro'
+import { SITE } from '@consts'
+
+interface Props {
+  error: unknown
+}
+
+const { error } = Astro.props
+---
+
+<div class="relative flex h-screen w-full items-center justify-center bg-background">
+  <Container>
+    <div class="flex flex-col-reverse items-center justify-around md:flex-row">
+      <div class="prose">
+        <h1
+          class="text-uppercase w-fit rounded-md bg-secondary px-1 text-muted-foreground hover:text-secondary-foreground"
+        >
+          Dang
+        </h1>
+        <p class="my-4 text-3xl font-semibold text-foreground">
+          {error instanceof Error ? error.message : 'Unknown error'}
+        </p>
+        <p class="my-2 text-xl font-light text-secondary-foreground">It looks like something broke.</p>
+        <p class="mb-6 mt-2 text-xl font-light text-secondary-foreground">Sorry about that.</p>
+
+        <Link href="/" aria-label={`${SITE.NAME} on Home`}> Go back </Link>
+      </div>
+      <div class="relative flex size-72 items-center justify-center">
+        <img src="/404_mockup.png" alt="404 mockup" />
+      </div>
+    </div>
+  </Container>
+</div>
