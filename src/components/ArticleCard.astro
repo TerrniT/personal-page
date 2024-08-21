@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+type Props = {
+  entry: CollectionEntry<'articles'> | CollectionEntry<'projects'>
+}
+
+const { entry } = Astro.props
+---
+
+<article
+  class="group flex w-full flex-nowrap rounded-lg border border-transparent px-3 py-3 transition-colors duration-300 ease-in-out hover:border-black/15 hover:bg-black/5 hover:text-black dark:hover:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+>
+  <a href={`/${entry.collection}/${entry.slug}`} class="flex w-full flex-col no-underline">
+    {
+      entry.data.cover_url && (
+        <div class="mb-3 w-full rounded-md group-hover:cursor-pointer">
+          <img
+            src={'/articles/' + entry.data.cover_url}
+            alt={entry.data.title}
+            class="animate w-full rounded-md object-cover"
+          />
+        </div>
+      )
+    }
+
+    <div class="flex flex-col flex-wrap truncate">
+      <div class="text-sm font-semibold no-underline hover:underline">
+        {entry.data.title}
+      </div>
+      <div class="text-sm">
+        {entry.data.description}
+      </div>
+    </div>
+  </a>
+</article>

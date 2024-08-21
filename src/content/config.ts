@@ -18,10 +18,15 @@ const articles = defineCollection({
 const about = defineCollection({
   type: "content",
   schema: z.object({
-    company: z.string(),
-    role: z.string(),
-    dateStart: z.coerce.date(),
-    dateEnd: z.union([z.coerce.date(), z.string()]),
+    title: z.string(),
+    role: z.string().optional(),
+    date: z.coerce.date().optional(),
+    year: z.number(),
+	event: z.object({
+		title: z.string(),
+		location: z.string(),
+		date: z.coerce.date(),
+	}).optional()
   }),
 });
 
@@ -32,6 +37,7 @@ const projects = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().optional(),
+	stack: z.array(z.string()).optional(),
     demoURL: z.string().optional(),
     repoURL: z.string().optional()
   }),

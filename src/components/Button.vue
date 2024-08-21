@@ -40,6 +40,7 @@ interface Props {
 	to?: string | null
 	href?: string | null
 	classes?: string
+	external?: boolean
 }
 defineEmits(['click'])
 
@@ -51,7 +52,8 @@ const props = defineProps<Props>()
 	 :is="to ? 'a' : 'button'" 
 	 :href="to ?? href"
 	 type="button"
-	:class="cn(buttonVariants({ variant, size }), classes)"
+	 :target="external ? '_blank' : '_self'"
+	 :class="cn(buttonVariants({ variant, size }), classes)"
 	 @click="$emit('click')"
 	>
 		<slot name="prepend" />

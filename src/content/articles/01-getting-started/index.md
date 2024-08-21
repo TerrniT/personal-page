@@ -2,7 +2,8 @@
 title: "Getting started"
 description: "Hit the ground running."
 date: "Mar 22 2024"
-draft: true
+cover_url: "/setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss.png"
+draft: false
 ---
 
 The basic configuration of Nano is pretty simple.

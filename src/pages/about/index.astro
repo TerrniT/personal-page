@@ -4,10 +4,12 @@ import PageLayout from '@layouts/PageLayout.astro'
 import Container from '@components/Container.astro'
 import { dateRange } from '@lib/utils'
 import { t } from 'i18next'
+import FormattedDate from '@components/FormattedDate.astro'
+import { Icon } from 'astro-icon/components'
 
-const collection = (await getCollection('about')).sort(
-  (a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf(),
-)
+import { HARD_SKILLS, EXPERTISE } from '@consts'
+
+const collection = await getCollection('about')
 
 const work = await Promise.all(
   collection.map(async (item) => {
@@ -31,40 +33,74 @@ const work = await Promise.all(
       </section>
     </div>
     <div class="mt-14 space-y-6">
-      <h2 class="animate text-lg font-semibold text-black dark:text-white">{t('about.bio.heading')}</h2>
+      <h2 class="animate font-semibold text-black dark:text-white">{t('about.bio.heading')}</h2>
       <ul class="flex flex-col">
         {
           work.map((entry) => (
-            <li class="animate">
-              <div class="text-sm opacity-75">{dateRange(entry.data.dateStart, entry.data.dateEnd)}</div>
-              <div class="font-semibold text-black dark:text-white">{entry.data.company}</div>
-              <div class="text-sm opacity-75">{entry.data.role}</div>
-              <article>
-                <entry.Content />
-              </article>
+            <li class="animate mt-6">
+              <div class="flex gap-x-5">
+                <div class="min-w-[66px] border-r-2 border-dashed border-primary pr-2 text-xl font-semibold text-black dark:text-white">
+                  {entry.data.year}
+                </div>
+                <div>
+                  <div class="font-semibold text-black dark:text-white">{entry.data.title}</div>
+                  {entry.data.date && (
+                    <div class="text-sm opacity-75">
+                      <FormattedDate date={entry.data.date} />
+                    </div>
+                  )}
+                  {entry.data.role && <div class="text-sm opacity-75">{entry.data.role}</div>}
+                  <article>
+                    <entry.Content />
+                  </article>
+                </div>
+              </div>
             </li>
           ))
         }
       </ul>
     </div>
     <div class="mt-14 space-y-6">
-      <h2 class="animate text-lg font-semibold text-black dark:text-white">{t('about.hard_skills.heading')}</h2>
-      WIP
+      <h5 class="animate font-semibold text-black dark:text-white">{t('about.expertise.heading')}</h5>
+
+      <div class="grid w-full grid-cols-3 gap-2">
+        {
+          EXPERTISE.map((item) => (
+            <div class="animate relative flex flex-col items-center justify-center gap-y-2 rounded-md bg-zinc-200 p-4 dark:bg-stone-800">
+              <div class="flex flex-col items-center justify-center gap-y-1">
+                <Icon name={item.icon} size="2em" class="text-black dark:text-white" />
+                <div class="flex items-center gap-x-2">
+                  <p class="font-bold text-black dark:text-white">{item.name}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
-    <div class="mt-14 space-y-6">
-      <h2 class="animate text-lg font-semibold text-black dark:text-white">{t('about.expertise.heading')}</h2>
-      WIP
-    </div>
-    <div class="mt-14 space-y-6">
-      <h2 class="animate text-lg font-semibold text-black dark:text-white">{t('about.languages.heading')}</h2>
-      <section>
-        <article class="space-y-4">
-          <p class="animate">
-            {t('about.languages.paragraph')}
-          </p>
-        </article>
-      </section>
-      WIP
+    <div class="my-14 space-y-6">
+      <h5 class="animate font-semibold text-black dark:text-white">{t('about.hard_skills.heading')}</h5>
+      <article class="space-y-4">
+        <p class="animate">
+          {t('about.hard_skills.paragraph')}
+        </p>
+      </article>
+      <div class="grid w-full grid-cols-3 gap-2">
+        {
+          HARD_SKILLS.map((item) => (
+            <div class="animate relative flex flex-col items-center justify-center gap-y-2 rounded-md bg-zinc-200 p-4 dark:bg-stone-800">
+              <div class="flex flex-col items-center justify-center gap-y-1">
+                <a href={item.link} target="_blank">
+                  <Icon name={item.icon} size="2em" />
+                </a>
+                <div class="flex items-center gap-x-2">
+                  <p class="font-bold text-black dark:text-white">{item.name}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </Container>
 </PageLayout>

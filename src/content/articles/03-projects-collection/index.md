@@ -2,7 +2,8 @@
 title: "Projects Collection"
 description: "How to add projects to your portfolio."
 date: "Mar 20 2024"
-draft: true
+cover_url: "/setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss.png"
+draft: false
 ---
 
 The `projects` collections is found in `src/content/projects`.
