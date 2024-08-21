@@ -3,6 +3,7 @@ import type { Site, Metadata, Socials } from '@types'
 export const SITE: Site = {
   NAME: 'David Kotovsky',
   EMAIL: 'terrnitllc.work@gmail.com',
+  DOMAIN: 'https://www-terrnit.vercel.app',
   NUM_POSTS_ON_HOMEPAGE: 4,
   NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,

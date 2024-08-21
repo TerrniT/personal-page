@@ -3,7 +3,7 @@ title: "Blog Collection"
 description: "How to add posts to your blog."
 date: "Mar 21 2024"
 cover_url: "/setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss.png"
-draft: false
+draft: true
 ---
 
 The `blog` collections is found in `src/content/blog`.

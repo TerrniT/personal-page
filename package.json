@@ -26,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^8.1.0",
     "astro": "^4.5.6",
+    "astro-expressive-code": "^0.36.0",
     "astro-i18next": "1.0.0-beta.21",
     "astro-icon": "^1.1.1",
     "class-variance-authority": "^0.7.0",
@@ -48,6 +49,8 @@
     "@iconify-json/ci": "^1.1.14",
     "@iconify-json/devicon": "^1.1.50",
     "@iconify-json/icon-park-twotone": "^1.1.15",
-    "@iconify-json/ph": "^1.1.14"
+    "@iconify-json/logos": "^1.1.44",
+    "@iconify-json/ph": "^1.1.14",
+    "@iconify-json/simple-icons": "^1.1.114"
   }
 }

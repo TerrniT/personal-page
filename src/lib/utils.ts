@@ -141,7 +141,7 @@ export const devIconResolver: Record<
     link: "https://nodejs.org/en/docs/",
   },
   expo: {
-    icon: "devicon:expo",
+    icon: "logos:expo-icon",
     description: "Expo",
     link: "https://docs.expo.dev/get-started/",
   },
