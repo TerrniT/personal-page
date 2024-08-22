@@ -1,0 +1,18 @@
+---
+title: "Merlo"
+description: "Crowd Funding app based on test GoerliETH actions"
+date: "Mar 18 2024"
+demoURL: "https://crowd-funding-web3-seven.vercel.app"
+repoURL: "https://github.com/terrnit/merlo"
+tags: ["e-commerce", "dashboard", "web3", "case study"]
+stack: ["react", "typescript", "tailwindcss", "thirdwebjs", "solidity"]
+image: "https://raw.githubusercontent.com/terrnit/terrnit/main/merlo_theme.png"
+---
+
+### Title
+
+Merlo
+
+### Description
+
+WIP!

@@ -1,4 +1,4 @@
-import type { Site, Metadata, Socials } from '@types'
+import type { Site, Metadata, Socials, Navigation } from '@types'
 
 export const SITE: Site = {
   NAME: 'David Kotovsky',
@@ -49,7 +49,7 @@ export const SOCIALS: Socials = [
   },
 ]
 
-export const NAVIGATION = [
+export const NAVIGATION: Navigation[] = [
   {
     title: 'Home',
     href: '/',

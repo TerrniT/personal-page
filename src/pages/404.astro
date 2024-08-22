@@ -1,26 +1,41 @@
 ---
+import { getLocale, t } from 'i18n:astro'
+
 import Container from '@components/Container.astro'
 import Link from '@components/Link.astro'
+
+import ErrorLayout from '@layouts/ErrorLayout.astro'
+
 import { SITE } from '@consts'
+
+export const prerender = false
+
+const locale = getLocale()
+
+const title = t('404.title')
+const description = t('404.description')
 ---
 
-<div class="relative flex h-screen w-full items-center justify-center bg-background">
-  <Container>
-    <div class="flex flex-col-reverse items-center justify-around md:flex-row">
-      <div class="prose">
-        <h1
-          class="text-uppercase w-fit rounded-md bg-secondary px-1 text-muted-foreground hover:text-secondary-foreground"
-        >
-          404 page
-        </h1>
-        <p class="my-4 text-3xl font-medium text-foreground">Page not found</p>
-        <p class="mb-6 mt-2 text-xl font-light text-secondary-foreground">Sorry, that page doesn't exist.</p>
+<ErrorLayout title={title} description={description}>
+  <div class="relative flex h-screen w-full items-center justify-center bg-background">
+    <Container>
+      <div class="flex flex-col-reverse items-center justify-around md:flex-row">
+        <div class="prose">
+          <h1
+            class="text-uppercase w-fit rounded-md bg-secondary px-1 text-muted-foreground hover:text-secondary-foreground"
+          >
+            404 page
+            {locale}
+          </h1>
+          <p class="my-4 text-3xl font-medium text-foreground">Page not found</p>
+          <p class="mb-6 mt-2 text-xl font-light text-secondary-foreground">Sorry, that page doesn't exist.</p>
 
-        <Link href="/" aria-label={`${SITE.NAME} on Home`}> Go back </Link>
+          <Link href="/" aria-label={`${SITE.NAME} on Home`}> Go back </Link>
+        </div>
+        <div class="relative flex size-72 items-center justify-center">
+          <img src="/404_mockup.png" alt="404 mockup" />
+        </div>
       </div>
-      <div class="relative flex size-72 items-center justify-center">
-        <img src="/404_mockup.png" alt="404 mockup" />
-      </div>
-    </div>
-  </Container>
-</div>
+    </Container>
+  </div>
+</ErrorLayout>

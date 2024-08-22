@@ -1,0 +1,43 @@
+---
+import { t } from 'i18n:astro'
+
+import Link from '@components/Link.astro'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+import { SITE, SOCIALS } from '@consts'
+---
+
+<PageLayout title={t('contact.title')} description={t('contact.description')}>
+  <div class="space-y-16">
+    <section class="animate space-y-4">
+      <h4 class="text-xl font-semibold text-black dark:text-white">{t('contact.title')}</h4>
+      <article>
+        <p>
+          {t('contact.paragraph')}
+        </p>
+      </article>
+      <ul class="flex flex-wrap gap-2">
+        {
+          SOCIALS.map((SOCIAL) => (
+            <li class="flex gap-x-2 text-nowrap">
+              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                {SOCIAL.NAME}
+              </Link>
+              {'/'}
+            </li>
+          ))
+        }
+        {
+          SITE.EMAIL && (
+            <li class="line-clamp-1">
+              <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+                {SITE.EMAIL}
+              </Link>
+            </li>
+          )
+        }
+      </ul>
+    </section>
+  </div>
+</PageLayout>

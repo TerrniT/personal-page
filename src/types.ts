@@ -20,6 +20,11 @@ export type Socials = {
   ICON?: string
 }[];
 
+export type Navigation = {
+	title: string;
+	href: string | unknown
+}
+
 
 export interface AstroI18nextGlobal {
   config: AstroI18nextConfig;

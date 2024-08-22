@@ -1,0 +1,121 @@
+{
+  "about": {
+    "title": "About",
+    "description": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life",
+
+    "heading": "About me",
+    "paragraph": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life",
+
+    "bio": {
+      "heading": "Bio"
+    },
+    "hard_skills": {
+      "heading": "Hard skills",
+      "paragraph": "In my day-to-day work, I’m using a variety of technologies, including but not limited to the following:"
+    },
+    "expertise": {
+      "heading": "Expertise"
+    },
+    "languages": {
+      "heading": "Languages",
+      "paragraph": "The languages which i love and trying to learn more"
+    }
+  },
+  "articles": {
+    "title": "Articles",
+    "description": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order",
+
+    "heading": "Articles",
+    "paragraph": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Feel free to get in touch with me"
+  },
+  "friends": {
+    "title": "Friends",
+    "description": "Welcome to the vibrant community of friends and colleagues who are an integral part of my journey! Here you can discover a diverse network of connections, each representing unique perspectives, talents, and passions.",
+    "cta": {
+      "description": "Would you like to get in here too ? Let's get to know each other, here are my links:",
+      "link": "About me"
+    }
+  },
+  "home": {
+    "title": "Home",
+    "description": "I'm passionate about bringing ideas to life through code and technology. Whether it's building websites, apps, or software, I love the process of creating and sharing knowledge. I enjoy immersing myself in new topics and experiences, and I'm equally enthusiastic about teaching and sharing my expertise with others.",
+
+    "heading": "Gleb (yànzhì, 燕智)",
+    "legenda": "燕 (yàn) - 'swallow (bird)', 智 (zhì) - 'wisdom, knowledge, intelligence'.",
+    "paragraph": "I'm passionate about bringing ideas to life through code and technology. Whether it's building websites, apps, or software, I love the process of creating and sharing knowledge. I enjoy immersing myself in new topics and experiences, and I'm equally enthusiastic about teaching and sharing my expertise with others.",
+
+    "cta": {
+      "explore": "Explore projects",
+      "about": "About me"
+    },
+    "latest_posts": {
+      "h5": "Latest posts",
+      "link": "See all posts"
+    },
+    "recent_projects": {
+      "h5": "Recent projects",
+      "link": "See all projects"
+    }
+  },
+  "navigation": {
+    "elsewhere": "Другие ссылки",
+    "select_language": "Выберите язык",
+    "select_theme": "Выберите тему",
+    "theme_system": "Системная",
+    "theme_light": "Светлая",
+    "theme_dark": "Темная",
+    "Home": "Главная",
+    "About": "Обо мне",
+    "Articles": "Статьи",
+    "Projects": "Проекты",
+    "Contact": "Контакты",
+    "Friends": "Друзья",
+    "Photos": "Галерея",
+    "Playlist": "Плейлист",
+    "Uses": "Мои инструменты"
+  },
+  "photos": {
+    "title": "Photos",
+    "description": "WIP"
+  },
+  "playlist": {
+    "title": "Playlist",
+    "description": "Welcome to my playlist lads. This is where I keep tracks and favorite albums that I've been listening to or am currently listening to."
+  },
+  "uses": {
+    "title": "Uses",
+    "description": "Software I use, gadgets I love, and other things I recommend",
+
+    "heading": "My uses",
+    "paragraph": "Software I use, gadgets I love, and other things I recommend",
+
+    "workstation": {
+      "heading": "Workstation"
+    },
+    "devtools": {
+      "heading": "Devtools"
+    },
+    "other_software": {
+      "heading": "Other software"
+    },
+    "misc": {
+      "heading": "Misc"
+    }
+  },
+  "work": {
+    "title": "Work",
+    "description": "WIP"
+  },
+  "404": {
+    "title": "404",
+    "description": "Page not found"
+  },
+  "505": {
+    "title": "505",
+    "description": "Something went wrong(("
+  }
+}
