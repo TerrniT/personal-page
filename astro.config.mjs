@@ -10,7 +10,7 @@ import i18n from '@astrolicious/i18n'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www-terrnit.vercel.app',
-  output: 'hybrid',
+//   output: 'hybrid',
   integrations: [
     expressiveCode({
       themes: ['poimandres', 'solarized-light'],
