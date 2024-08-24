@@ -23,7 +23,7 @@ const post = Astro.props
 const { Content } = await post.render()
 ---
 
-<PageLayout title={post.data.title} description={post.data.description}>
+<PageLayout title={post.data.title} description={post.data.description ?? ''}>
   <div class="animate">
     <BackToPrev href="/articles"> Back to articles </BackToPrev>
   </div>

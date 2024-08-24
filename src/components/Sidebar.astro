@@ -28,7 +28,7 @@ import { SITE, SOCIALS, NAVIGATION } from '@consts'
                 aria-label={`${SITE.NAME} on ${item.title}`}
                 underline={false}
               >
-                {t(`navigation.${item.title}`)}
+                {t(`navigation.${item.title}` as unknown as TemplateStringsArray)}
               </Link>
             </li>
           ))
