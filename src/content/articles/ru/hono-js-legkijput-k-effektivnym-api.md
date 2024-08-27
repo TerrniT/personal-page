@@ -9,220 +9,271 @@ cover_url: "/setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss.
 type: article
 ---
 
+# Hono.js: Легкий Путь к Эффективным API
 
-## Introduction
+Когда речь идет о разработке простого бэкенда, то в голову приходит Express.js. Однако в 2024 году он считается устаревшим, так как есть шустрые альтернативы. Приветствую вас, дорогие читатели и сегодня расскажу о Hono.js.
 
-Nuxt.js is a robust and versatile framework that is primarily used for building server-rendered applications with Vue.js. In this comprehensive guide, we're going to delve into the process of setting up a Nuxt 3 project template. This template will be integrated with ESLint, TypeScript, and Tailwind CSS. These tools, when combined, can significantly enhance productivity, enforce a high standard of code quality, and streamline the process of styling.
+Hono.js — маленькой, простой и сверхбыстрый фрейморк, построенной на веб-стандартах. Под его капотом поддержка TypeScript и комфортная разработка в локальной среде. Hono.js работает в разных рантаймах JavaScript: _Cloudflare \_Workers, Deno, Bun, Vercel, Netlify,_ в том числе и _Node.js_.
 
-## Pre-requisites
+Hono.js решает проблему разработки высокопроизводительных и легковесных веб-приложений, минимизируя накладные расходы и сложность. Многие разработчики сталкиваются с тем, что популярные фреймворки, такие как Express.js или Koa.js, хотя и предоставляют широкие возможности, бывают избыточными и тяжелыми для простых задач, особенно в проектах, где важна производительность и минимализм. Собственно Hono.js ориентирован на решение этих проблем, предлагая ультралегкий фреймворк, с помощью которого быстро создаются серверные приложения без лишних зависимостей и с минимальным кодом.
 
-- Node (In this example I used the 20.10.0 version, but any older version can work. )
-- Npm (tested with v7)
-- Pnpm (but you can use just npm / yarn)
+## Особенности Hono.js
 
-## Setting Up Nuxt 3
+### Легковесность
 
-Nuxt 3 is the latest iteration of the Nuxt.js framework. It comes with a host of significant improvements and innovative features that make the process of Vue.js development more efficient and enjoyable. The setup process for a new project with Nuxt 3 is straightforward.
+Hono.js выделяется легковесностью — это один из самых компактных веб-фреймворков на рынке. Размер его исходного кода минимален, что даёт возможность значительно снизить накладные расходы при его использовании. В отличие от крупных фреймворков, Hono.js не загружен множеством встроенных модулей и функций, которые могут быть избыточными для небольших проектов. Для сравнения Express.js, который весит 2 МБ, Hono.js весит всего лишь 14 КБ.
 
-Firstly, you'll need to install Node.js and npm. These are fundamental to running the Nuxt 3 framework. Once you have these installed, you can create a new Nuxt 3 project using the `nuxi@latest` command. This command initiates a process that will guide you through the various setup stages, allowing you to customize your project according to your specific needs. In this guide I will use pnpm as package manager. So let’s init our project:
+### Простота использования
 
-```bash
-pnpm dlx nuxi@latest init nuxt3-template
-cd nuxt3-template
-pnpm i && pnpm run dev
+Hono.js построен на простых и интуитивных концепциях, что делает его легким в освоении и использовании даже для новичков. Он минималистичен, но при этом предоставляет все основные функции, необходимые для создания веб-приложений, такие как маршрутизация, обработка запросов и ответы, поддержка middleware и работа с параметрами URL.
+
+Ниже представлен простой пример минимального приложения на Hono.js.:
+
+```ts
+import { Hono } from 'hono'
+const app = new Hono()
+
+app.get('/', (c) => c.text('Hono!'))
+
+export default app
 ```
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6kiq3827myvu1ohggc4j.png)
+Если тоже самое написать на Express.js, выйдет многозатратно:
 
-## First result
+```js
+const express = require('express')
+const app = express()
+const port = 3000
 
-After initiation we get a template project on nuxt 3. So let's make it even better
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/t3pu8b1rj2fnu1xrmu53.png)
-
-## Integrating ESLint and TypeScript
-
-ESLint is a widely recognized tool that identifies and reports on patterns found in ECMAScript/JavaScript code. The integration of ESLint can drastically improve the quality of your code, and helps to prevent potential bugs from cropping up in the future.
-
-On the other hand, TypeScript is a strongly typed superset of JavaScript that adds static types. It's an invaluable tool that helps to detect errors early during the development phase, thus saving time and resources.
-
-To add these to your Nuxt project, you'll need to install the necessary dependencies and then implement the appropriate configurations in your project's settings. With the ESLint and TypeScript integrations, your development environment becomes more robust by enforcing good coding practices and type safety
-
-```bash
-# Add eslint module and typescript to nuxt project
-pnpm install -D eslint eslint-plugin-vue@latest 
-
-pnpm add -D @nuxtjs/eslint-module
-
-pnpm install -D typescript @typescript-eslint/parser@latest @typescript-eslint/eslint-plugin@latest
-```
-
-Update `nuxt.config.ts` file:
-
-```tsx
-// nuxt.config.ts
-
-export default defineNuxtConfig({
-    devtools: { enabled: false },
-    modules: [
-      '@nuxtjs/eslint-module'
-    ]
+app.listen(port, () => {
+  console.log(Example app listening on port ${port})
 })
 ```
 
-Create `.eslintrc.cjs` file and add these lines of code:
+Думаю, вам нравится Hono.js, но это ещё не всё, впереди много интересного. Теперь перейдем к его установке и начальной настройки. В качестве рантайма буду использовать Bun.js.
 
-```jsx
-// .eslintrc.cjs
+---
 
-module.exports = {
-    root: true,
-    parser: "vue-eslint-parser",
-    parserOptions: {
-      parser: {
-            ts: "@typescript-eslint/parser"
-      }
-    },
-    env: {
-      node: true,
-      browser: true
-    },
-    extends: [
-      "plugin:vue/vue3-recommended"
-    ],
-    rules: {
-      "no-trailing-spaces": ["warn"],
-      "prefer-promise-reject-errors": "off",
-      "vue/no-v-html": "off",
-      "no-trailing-spaces": ["warn"],
-      "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-      "vue/multi-word-component-names": ["error", {
-            ignores: ["error", "Error"]
-      }]
-    },
-    ignorePatterns: ['dist', 'node_modules', 'build', 'coverage', 'docs', 'test'],
-    overrides: [
-      {
-            files: ["components/**/**/*.vue"],
-            rules: { "vue/multi-word-component-names": "off" }
-      }
-    ]
-}
-```
+## Установка и начальная настройка
 
-If eslint doesn’t work the first time, you will need to delete `node_modules` and install the project again.
-
-After these steps, the project will already have a configured eslint, which also acts as a formatter
-
-## Incorporating Tailwind CSS
-
-Tailwind CSS is a utility-first CSS framework that offers an unprecedented level of customization. It allows developers to build responsive designs with relative ease. To include Tailwind CSS in your Nuxt project, you need to install it as a project dependency.
-
-Once installed, you should create a Tailwind config file. This file is crucial as it allows you to customize your design according to your project's needs. Following this, you need to update your Nuxt config file to include Tailwind CSS in your project's build step.
-
-One of the main advantages of Tailwind CSS is that you can write custom styles directly in your HTML. This reduces the need for separate CSS files and makes your styles easier to manage and maintain
-
-Let’s init tailwind css config file:
+1. Инициализация проекта и создание простого сервера
+   На старте буду использовать Bun для инициализации проекта:
 
 ```bash
-pnpm install -D postcss autoprefixer
-pnpm dlx tailwindcss init
-pnpm add --save-dev @nuxtjs/tailwindcss
+bun init
 ```
 
-Our tailwind.config.js file should look like this:
+Перед тем, как перейдем к Hono.js, давайте создадим простой HTTP-сервер через Bun в index.tsx:
 
-```jsx
-// tailwind.config.js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-        "./components/**/*.{js,vue,ts}",
-        "./layouts/**/*.vue",
-        "./pages/**/*.vue",
-        "./plugins/**/*.{js,ts}",
-        "./app.vue",
-        "./error.vue",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-```
-
-And update `nuxt.config.ts` file:
-
-```jsx
-// nuxt.config.ts
-// https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
-    devtools: { enabled: false },
-    modules: [
-        "@nuxtjs/eslint-module",
-        // add tailwindcss module
-        '@nuxtjs/tailwindcss'
-    ],
-    // add postcss support for tailwindcss
-    postcss: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        }
-    }
+```ts
+// index.tsx
+Bun.serve({
+	fetch: (req) => {
+		return new Response('Hello from Bun!')
+	},
+	port: process.env.PORT || 3030,
 })
 ```
 
-You should also remember to create a root file for tailwindcss
+![Вывод ответа на 3030-ом порту](https://habrastorage.org/r/w1560/getpro/habr/upload_files/8c5/669/7f9/8c56697f9089d3f06137a436ba8a2c84.png)
+
+### 2) Установка и подключение Hono.js
+
+После инициализации проекта сразу же и установим Hono.js :
 
 ```bash
-// in project root
-mkdir assets/
-cd assets
-mkdir css/
-cd css
-touch tailwind.css
+bun i hono
 ```
 
-```css
-/* tailwind.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+Подключаем Hono и пишем GET-запрос на получение ответа в виде простого JSON, чутка меняя то, что написали через Bun:
+
+```ts
+// index.tsx
+import { Hono } from 'hono'
+
+const app = new Hono()
+
+app.get('/hello', (c) => {
+	return c.json({ hello: 'world' })
+})
+
+Bun.serve({
+	fetch: app.fetch,
+	port: process.env.PORT || 3030,
+})
 ```
 
-If you want to see if tailwindcss works just copy this template and add it to `app.vue`
+Таким образом, мы избавляем пользовательскую функцию, передав это всё Hono. Теперь HTTP-запросы, поступающие на сервер Bun, будет обрабатываться этой платформой, что нам дает гораздо удобное API:
+![Ответ на том же порту](https://habrastorage.org/r/w1560/getpro/habr/upload_files/3e3/aeb/82a/3e3aeb82a4e3d4f41eed60ed168c9a9d.png)
 
-```html
-<!-- app.vue -->
-<template>
-  <div class="flex flex-col w-full h-screen bg-zinc-950 items-center justify-center">
-    <div class="mx-auto">
-      <h1 class="text-3xl text-blue-400 font-bold underline">
-        Nuxt 3 template
-      </h1>
-      <ul class="text-white flex flex-col gap-y-3 mt-6 ">
-        <li class="hover:text-blue-950">
-          <a href="https://www.typescriptlang.org/">Typescript</a>
-        </li>
-        <li class="hover:text-blue-950">
-          <a href="https://eslint.org/">Eslint</a>
-        </li>
-        <li class="hover:text-blue-950">
-          <a href="https://tailwindcss.com/">TailwindCSS</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</template>
+### 3) Групповая маршрутизация Hono.js
+
+Следуя по офиц. документации Hono.js , можно увидеть раздел огрупповом роутинге, с помощью которого группируются маршруты через экземпляр Hono и добавлять их в основное приложение методом route.
+
+Создадим books.ts и воспользуемся примером оттуда. Не забудем экспортировать book по умолчанию:
+
+```ts
+// routes/books.ts
+import { Hono } from 'hono'
+
+const book = new Hono()
+
+book.get('/', (c) => c.text('List Books')) // GET /book
+book.get('/:id', (c) => {
+	// GET /book/:id
+	const id = c.req.param('id')
+	return c.text('Get Book: ' + id)
+})
+book.post('/', (c) => c.text('Create Book')) // POST /book
+
+const app = new Hono()
+app.route('/book', book)
+
+export default book
 ```
 
-## Conclusion
+Далее импортируем bookRouter из book.ts и воспользуемся ним следующим образом. конечном итоге прилетает ответ списка книг:
 
-While setting up a Nuxt 3 project with ESLint, TypeScript, and Tailwind CSS may initially seem like a daunting task, the benefits that these tools bring to the table make the effort worthwhile. They streamline your development process, ensure that your code maintains a high standard of quality, and offer a highly customizable styling solution.
+```ts
+// index.tsx
+app.route('/book', bookRouter)
+```
 
-By integrating these tools in your Nuxt project, you can elevate your Vue.js development to the next level, making for a more efficient, enjoyable, and productive coding experience
+!["Список" книжек на /book](https://habrastorage.org/r/w1560/getpro/habr/upload_files/21b/fae/f89/21bfaef897d2745cf8be2522bfa442d8.png)
 
-Check out the [Github repo](https://github.com/TerrniTLLC/nuxt3-template) for the entire template!
+### 4) Что же за "c" в аргументах???
 
-Until next time, thank you for reading! 🐾
+Однако, как вы могли заметить, вместо req используется c , что сокращенно означает объект context . Об этом написано в документации Hono.js .
+
+По факту все исходящие и входящие данные обрабатываются данным объектом. Hono дает возможность возвращать ответы не только через json-формат, но и множеством других (например, html-формат).
+
+### 5) Middleware
+
+Middleware работает перед/после обработчика. Мы можем получить запрос до диспатча или манипулировать ответом после диспатча:
+
+```ts
+// index.tsx
+import { logger } from 'hono/logger'
+
+app.use('*', logger())
+```
+
+Выполняя различные запросы, в консоли редактора VS Code можно увидеть, как описывается то, что отправляется и что мы получаем с статусом кода:
+![Отображение запросов и их ответов со статусом кода](https://habrastorage.org/r/w1560/getpro/habr/upload_files/0f9/250/207/0f9250207779e7a701ca92e5d383b848.png)
+
+### 5) Рендеринг JSX
+
+Хотя hono/jsx работает на клиенте, его также можно использовать его при рендеринге контента на стороне сервера
+
+В разделе про JSX есть пример функционального React-компонента, попробуем с ней отрендрить на стороне сервера:
+
+```ts
+// page.tsx
+
+import { Hono } from 'hono'
+import type { FC } from 'hono/jsx'
+
+const app = new Hono()
+
+const Layout: FC = (props) => {
+	return (
+		<html>
+			<body>{props.children}</body>
+		</html>
+	)
+}
+
+const Top: FC<{ messages: string[] }> = (props: { messages: string[] }) => {
+	return (
+		<Layout>
+			<h1>Hello Hono!</h1>
+			<ul>
+				{props.messages.map((message) => {
+					return <li>{message}!!</li>
+				})}
+			</ul>
+		</Layout>
+	)
+}
+
+export default Top
+```
+
+Далее в конфиге TypeScript необходимо изменить некоторые настройки, чтобы JSX заработал:
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+}
+```
+
+Импортируем компонент <Top /> в корневой файл и отрендрим простенькую разметку:
+
+```ts
+// index.tsx
+import Top from './page.tsx'
+
+app.get('/', (c) => {
+	const messages = ['Good Morning', 'Good Evening', 'Good Night']
+	return c.html(<Top messages={messages} />)
+})
+```
+
+![Рендер со стороны сервера](https://habrastorage.org/r/w1560/getpro/habr/upload_files/5fe/e49/771/5fee497714c7232321c6d1cca0e7a8fd.png)
+
+Это напоминает SSR в Next.js или Remix.js, но это решение является легким. Hono так же поддерживает и другие фичи, например асинхронные компоненты, Suspense и тд.
+
+6. Тестирование
+   Тестирование — это важно, но протестировать приложения Hono — несложно. Способ создания тестовой среды отличается в каждой среде выполнения, но основные шаги одинаковы. Перейдем непосредственно к тестированию.
+
+Для удобства я вынесу код в отдельный файл app.tsx .
+
+```ts
+// index.test.ts
+import { expect, test, describe } from 'bun:test'
+import app from './app'
+
+describe('Example', () => {
+	test('GET /posts', async () => {
+		const res = await app.request('/hello')
+		expect(res.status).toBe(200)
+		expect(await res.json()).toEqual({ hello: 'world' })
+	})
+	expect(2 + 2).toBe(4)
+})
+```
+
+```ts
+// index.tsx
+import app from './app'
+
+Bun.serve({
+	fetch: app.fetch,
+	port: process.env.PORT || 3030,
+})
+```
+
+В журнале консоли вводим команду для того, чтобы посмотреть, прошли ли тесты или нет:
+
+![Тесты пройдены!](https://habrastorage.org/r/w1560/getpro/habr/upload_files/b61/d83/2ca/b61d832ca33b3cb0aa3b5d42c17505c8.png)
+
+Таким образом, легко и просто можно протестировать своё API.
+
+---
+
+Удивительно, что Hono.js, став достаточно популярным в этом году, не освещен в российском сегменте, так как про него практически никаких статей и видео. Так что вы можете пересмотреть для себя отличную альтернативу над Express.js.
+
+В Hono.js есть много всего, но в этом вы можете убедиться самостоятельно: валидация, RPC, Best Practices и многое другое.
+
+До скорых встреч, спасибо за внимание. Надеюсь, вам понравилась моя статья, для меня это очень важно!
+
+Полезные ссылки:
+
+Официальный сайт Hono.js — https://hono.dev
