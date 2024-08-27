@@ -5,7 +5,7 @@ date: "Aug 26 2024"
 tags: ["hono.js", "bun", "backend", "testing", "middleware"] 
 topic: Software Development
 author: GoGagoo
-cover_url: "/setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss.png"
+cover_url: "/honojs-the-easy-way-to-efficient-apis.png"
 type: article
 ---
 
