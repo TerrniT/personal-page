@@ -1,5 +1,5 @@
 ---
-title: "Honojs: Легкий Путь К Эффективным API"
+title: "Hono js: Легкий Путь К Эффективным API"
 description: "Hit the ground running."
 date: "Aug 26 2024"
 tags: ["hono.js", "bun", "backend", "testing", "middleware"] 
