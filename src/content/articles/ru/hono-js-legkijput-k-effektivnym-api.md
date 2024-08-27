@@ -1,6 +1,6 @@
 ---
 title: "Hono.js: Легкий Путь К Эффективным API"
-description: "Hit the ground running."
+description: "Первая статья о Hono.js в российском IT-сообществе"
 date: "Aug 26 2024"
 tags: ["hono.js", "bun", "backend", "testing", "middleware"] 
 topic: Software Development
