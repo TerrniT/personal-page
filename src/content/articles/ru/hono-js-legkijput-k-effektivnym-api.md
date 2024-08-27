@@ -1,10 +1,10 @@
 ---
-title: Setting Up a Nuxt 3 Project with ESLint, TypeScript, and Tailwind CSS
+title: Hono.js: Легкий Путь К Эффективным API
 description: "Hit the ground running."
-date: "Mar 22 2024"
-tags: ["vue", "nuxt 3", "typescript"]
+date: "Aug 26 2024"
+tags: ["hono.js", "bun", "backend", "testing", "middleware"] 
 topic: Software Development
-author: TerrniT
+author: GoGagoo
 cover_url: "/setting-up-a-nuxt-3-project-with-eslint-typescript-and-tailwindcss.png"
 type: article
 ---
