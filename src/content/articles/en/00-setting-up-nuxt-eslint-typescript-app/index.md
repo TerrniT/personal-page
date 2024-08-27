@@ -1,6 +1,6 @@
 ---
 title: Setting Up a Nuxt 3 Project with ESLint, TypeScript, and Tailwind CSS
-description: "Hit the ground running."
+description: "Первая статья о Hono.js в российском IT-сообществе"
 date: "Mar 22 2024"
 tags: ["vue", "nuxt 3", "typescript"]
 topic: Software Development
