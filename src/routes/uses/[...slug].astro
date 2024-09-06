@@ -1,33 +1,81 @@
 ---
-import { t } from 'i18n:astro'
+import { getLocalePath, t, setDynamicParams, getDefaultLocalePlaceholder, getLocalePlaceholder } from 'i18n:astro'
 
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { getCollection } from 'astro:content'
 
-import BackToPrev from '@components/BackToPrev.vue'
+import BackToPrev from '@components/BackToPrev.astro'
 
 import PageLayout from '@layouts/PageLayout.astro'
 
-export async function getStaticPaths() {
-  const projects = (await getCollection('uses')).filter((post) => !post.data.draft)
-  // .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: project,
-  }))
-}
-type Props = CollectionEntry<'uses'>
+import sitemap from 'i18n:astro/sitemap'
 
-const project = Astro.props
-const { Content } = await project.render()
+import { collectionFilters, handleI18nSlug } from '@astrolicious/i18n/content-collections'
+
+import type { GetStaticPaths } from 'astro'
+
+export const getStaticPaths = (async () => {
+  const locale = getLocalePlaceholder()
+  const defaultLocale = getDefaultLocalePlaceholder()
+
+  // TODO: We can add sorting by order in the future
+  const useses = (await getCollection('uses', (post) => collectionFilters.byLocale(post, { locale }))).filter(
+    (p) => !p.data.draft,
+  )
+  // .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+
+  return await Promise.all(
+    useses.map(async (item) => {
+      const equivalentUseses = await getCollection('uses', (p) =>
+        collectionFilters.matchingEntries(p, {
+          currentEntry: item,
+          key: 'defaultLocaleVersion' as unknown as never,
+          locale,
+          defaultLocale,
+        }),
+      )
+
+      const dynamicParams = equivalentUseses.map((entry) => {
+        const { locale, slug } = handleI18nSlug(entry.slug)
+
+        return {
+          locale,
+          params: {
+            slug,
+          },
+        }
+      })
+
+      sitemap({
+        dynamicParams,
+      })
+
+      return {
+        params: {
+          slug: handleI18nSlug(item.slug).slug,
+        },
+        props: {
+          item,
+          dynamicParams,
+        },
+      }
+    }),
+  )
+}) satisfies GetStaticPaths
+
+const { item, dynamicParams } = Astro.props
+
+setDynamicParams(dynamicParams)
+
+const { Content } = await item.render()
 ---
 
-<PageLayout title={project.data.title} description={project.data.description}>
+<PageLayout title={item.data.title} description={item.data.description}>
   <div class="animate">
-    <BackToPrev> {t('uses.back_to')}</BackToPrev>
+    <BackToPrev href={getLocalePath('/uses')}> {t('uses.back_to')}</BackToPrev>
   </div>
   <div class="my-10 space-y-1">
     <div class="animate text-2xl font-semibold text-black dark:text-white">
-      {project.data.title}
+      {item.data.title}
     </div>
   </div>
   <article class="animate">

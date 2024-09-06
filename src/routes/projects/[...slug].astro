@@ -1,8 +1,10 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { getLocalePath, t, setDynamicParams, getDefaultLocalePlaceholder, getLocalePlaceholder } from 'i18n:astro'
+
+import { getCollection } from 'astro:content'
 
 import Button from '@components/Button.vue'
-import BackToPrev from '@components/BackToPrev.vue'
+import BackToPrev from '@components/BackToPrev.astro'
 import FormattedDate from '@components/FormattedDate.astro'
 
 import PageLayout from '@layouts/PageLayout.astro'
@@ -11,25 +13,69 @@ import { readingTime, devIconResolver } from '@lib/utils'
 
 import { Icon } from 'astro-icon/components'
 
-export async function getStaticPaths() {
-  const projects = (await getCollection('projects'))
-    .filter((post) => !post.data.draft)
+import sitemap from 'i18n:astro/sitemap'
+
+import { collectionFilters, handleI18nSlug } from '@astrolicious/i18n/content-collections'
+
+import type { GetStaticPaths } from 'astro'
+
+export const getStaticPaths = (async () => {
+  const locale = getLocalePlaceholder()
+  const defaultLocale = getDefaultLocalePlaceholder()
+
+  const projects = (await getCollection('projects', (post) => collectionFilters.byLocale(post, { locale })))
+    .filter((p) => !p.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: project,
-  }))
-}
-type Props = CollectionEntry<'projects'>
+  return await Promise.all(
+    projects.map(async (project) => {
+      const equivalentProjects = await getCollection('projects', (p) =>
+        collectionFilters.matchingEntries(p, {
+          currentEntry: project,
+          key: 'defaultLocaleVersion' as unknown as never,
+          locale,
+          defaultLocale,
+        }),
+      )
 
-const project = Astro.props
+      const dynamicParams = equivalentProjects.map((entry) => {
+        const { locale, slug } = handleI18nSlug(entry.slug)
+
+        return {
+          locale,
+          params: {
+            slug,
+          },
+        }
+      })
+
+      sitemap({
+        dynamicParams,
+      })
+
+      return {
+        params: {
+          slug: handleI18nSlug(project.slug).slug,
+        },
+        props: {
+          project,
+          dynamicParams,
+        },
+      }
+    }),
+  )
+}) satisfies GetStaticPaths
+
+const { project, dynamicParams } = Astro.props
+
+setDynamicParams(dynamicParams)
+
 const { Content } = await project.render()
 ---
 
 <PageLayout title={project.data.title} description={project.data.description}>
   <div class="animate">
-    <BackToPrev> Back to projects </BackToPrev>
+    <BackToPrev href={getLocalePath('/projects')}> {t('projects.back_to')} </BackToPrev>
   </div>
   <div class="my-10">
     <div class="animate flex items-center gap-1.5">

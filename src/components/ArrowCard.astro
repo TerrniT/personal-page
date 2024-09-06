@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 
+import { getLocalePath } from 'i18n:astro'
+
 import { devIconResolver } from '@lib/utils'
 
 import { Icon } from 'astro-icon/components'
@@ -13,7 +15,7 @@ const { entry } = Astro.props
 ---
 
 <a
-  href={`/${entry.collection}/${entry.slug}`}
+  href={getLocalePath(`/projects/${entry.slug.split('/')[1]}`)}
   class="group relative flex flex-nowrap rounded-lg border border-black/15 px-4 py-3 pr-10 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
 >
   <div class="flex flex-1 flex-col truncate">

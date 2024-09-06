@@ -29,7 +29,9 @@
     "description": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order",
 
     "heading": "Articles",
-    "paragraph": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order"
+    "paragraph": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order",
+
+	"back_to": "Back to articles"
   },
   "contact": {
     "title": "Contact",
@@ -118,7 +120,9 @@
     "title": "Projects",
     "description": "Projects that I created or maintaining.",
 
-    "heading": "Projects"
+    "heading": "Projects",
+
+	"back_to": "Back to projects"
   },
   "404": {
     "title": "404",
