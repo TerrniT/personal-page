@@ -2,11 +2,10 @@
 title: "Как импортить данные из Notion в Buildin.ai"
 description: "26 августа 2024 года Notion начал рассылать уведомления пользователям о том, что с 9 сентября 2024 года прекращает свою работу, и аккаунты пользователей из России будут удалены."
 date: "Sep 3 2024"
-tags: ["notion"] 
-topic: Software Development
-cover_url: "/honojs-the-easy-way-to-efficient-apis.png"
+tags: ["notion", "migration"] 
+topic: Project Managment
+cover_url: "/notion-buildin.png"
 type: article
-draft: true
 ---
 
 
