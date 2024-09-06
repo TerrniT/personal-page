@@ -1,0 +1,22 @@
+---
+import { SITE, NAVIGATION } from '@consts'
+import Link from '@components/Link.astro'
+
+import { getLocalePath, type Loose, type LocalePathParams, t } from 'i18n:astro'
+---
+
+<ul class="flex flex-col gap-y-2" slot="navigation">
+  {
+    NAVIGATION.map((item) => (
+      <li class="text-muted-foreground transition-colors duration-150 ease-linear hover:text-foreground">
+        <Link
+          href={getLocalePath(`${item.href}` as Loose<keyof LocalePathParams>)}
+          aria-label={`${SITE.NAME} on ${item.title}`}
+          underline={false}
+        >
+          {t(`navigation.${item.title}` as unknown as TemplateStringsArray)}
+        </Link>
+      </li>
+    ))
+  }
+</ul>

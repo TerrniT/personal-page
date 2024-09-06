@@ -1,5 +1,5 @@
 ---
-import { t } from 'i18n:astro'
+import { getLocale, t } from 'i18n:astro'
 
 import { type CollectionEntry, getCollection } from 'astro:content'
 
@@ -7,7 +7,7 @@ import ArticleCard from '@components/ArticleCard.astro'
 
 import PageLayout from '@layouts/PageLayout.astro'
 
-const data = (await getCollection('articles'))
+const data = (await getCollection('articles', ({ slug }) => slug.split('/')[0] === getLocale()))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 

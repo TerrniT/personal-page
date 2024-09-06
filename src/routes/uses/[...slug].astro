@@ -1,9 +1,9 @@
 ---
-import { getLocalePath } from 'i18n:astro'
+import { t } from 'i18n:astro'
 
 import { type CollectionEntry, getCollection } from 'astro:content'
 
-import BackToPrev from '@components/BackToPrev.astro'
+import BackToPrev from '@components/BackToPrev.vue'
 
 import PageLayout from '@layouts/PageLayout.astro'
 
@@ -23,7 +23,7 @@ const { Content } = await project.render()
 
 <PageLayout title={project.data.title} description={project.data.description}>
   <div class="animate">
-    <BackToPrev href={getLocalePath('/uses')}> Back to uses </BackToPrev>
+    <BackToPrev> {t('uses.back_to')}</BackToPrev>
   </div>
   <div class="my-10 space-y-1">
     <div class="animate text-2xl font-semibold text-black dark:text-white">

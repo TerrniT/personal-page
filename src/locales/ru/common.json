@@ -1,9 +1,12 @@
 {
+  "layout": {
+    "back_to_top": "Наверх"
+  },
   "about": {
-    "title": "About",
+    "title": "Обо мне",
     "description": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life",
 
-    "heading": "About me",
+    "heading": "Обо мне",
     "paragraph": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life",
 
     "bio": {
@@ -22,15 +25,15 @@
     }
   },
   "articles": {
-    "title": "Articles",
-    "description": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order",
+    "title": "Статьи",
+    "description": "Все мои размышления об IT, UI, дизайне продуктов и многом другом, собранные в хронологическом порядке",
 
-    "heading": "Articles",
-    "paragraph": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order"
+    "heading": "Статьи",
+    "paragraph": "Все мои размышления об IT, UI, дизайне продуктов и многом другом, собранные в хронологическом порядке"
   },
   "contact": {
-    "title": "Contact",
-    "description": "Feel free to get in touch with me"
+    "title": "Контакты",
+    "description": "Если есть вопросы, предложения, пожелания или просто хотите поговорить, то не стесняйтесь писать мне"
   },
   "friends": {
     "title": "Friends",
@@ -41,24 +44,24 @@
     }
   },
   "home": {
-    "title": "Home",
-    "description": "I'm passionate about bringing ideas to life through code and technology. Whether it's building websites, apps, or software, I love the process of creating and sharing knowledge. I enjoy immersing myself in new topics and experiences, and I'm equally enthusiastic about teaching and sharing my expertise with others.",
+    "title": "Главная",
+    "description": "Я страстно люблю воплощать идеи в жизнь с помощью кода и технологий. Будь то создание веб-приложений, дизайна, анимаций или десктопных приложений, я люблю процесс создания и обмена знаниями. Мне нравится погружаться в новые темы и знания, и я с таким же энтузиазмом преподаю и делюсь своими знаниями с другими.",
 
-    "heading": "Gleb (yànzhì, 燕智)",
-    "legenda": "燕 (yàn) - 'swallow (bird)', 智 (zhì) - 'wisdom, knowledge, intelligence'.",
-    "paragraph": "I'm passionate about bringing ideas to life through code and technology. Whether it's building websites, apps, or software, I love the process of creating and sharing knowledge. I enjoy immersing myself in new topics and experiences, and I'm equally enthusiastic about teaching and sharing my expertise with others.",
+    "heading": "Глеб Котовский (燕智, yànzhì)",
+    "legenda": "燕 (yàn) - «ласточка (птица)», 智 (zhì) - «мудрость, знание, ум».",
+    "paragraph": "Я страстно люблю воплощать идеи в жизнь с помощью кода и технологий. Будь то создание веб-приложений, дизайна, анимаций или десктопных приложений, я люблю процесс создания и обмена знаниями. Мне нравится погружаться в новые темы и знания, и я с таким же энтузиазмом преподаю и делюсь своими знаниями с другими.",
 
     "cta": {
-      "explore": "Explore projects",
-      "about": "About me"
+      "explore": "Больше моих работ",
+      "about": "Обо мне"
     },
     "latest_posts": {
-      "h5": "Latest posts",
-      "link": "See all posts"
+      "h5": "Последние посты",
+      "link": "Все посты"
     },
     "recent_projects": {
-      "h5": "Recent projects",
-      "link": "See all projects"
+      "h5": "Последние проекты",
+      "link": "Все проекты"
     }
   },
   "navigation": {
@@ -79,43 +82,52 @@
     "Uses": "Мои инструменты"
   },
   "photos": {
-    "title": "Photos",
+    "title": "Галерея",
     "description": "WIP"
   },
   "playlist": {
-    "title": "Playlist",
+    "title": "Плейлист",
     "description": "Welcome to my playlist lads. This is where I keep tracks and favorite albums that I've been listening to or am currently listening to."
   },
   "uses": {
-    "title": "Uses",
-    "description": "Software I use, gadgets I love, and other things I recommend",
+    "title": "Мои инструменты",
+    "description": "Приложухи, которые я использую, гаджеты, которые я люблю, и другие вещи, которые я рекомендую",
 
-    "heading": "My uses",
-    "paragraph": "Software I use, gadgets I love, and other things I recommend",
+    "heading": "Мои инструменты",
+    "paragraph": "Приложухи, которые я использую, гаджеты, которые я люблю, и другие вещи, которые я рекомендую",
 
     "workstation": {
-      "heading": "Workstation"
+      "heading": "Рабочее место"
     },
     "devtools": {
-      "heading": "Devtools"
+      "heading": "Dev-инструменты"
     },
     "other_software": {
-      "heading": "Other software"
+      "heading": "Другие программы"
     },
     "misc": {
-      "heading": "Misc"
-    }
+      "heading": "Разное"
+    },
+
+    "back_to": "Обратно в инструменты"
   },
-  "work": {
-    "title": "Work",
-    "description": "WIP"
+  "projects": {
+    "title": "Проекты",
+    "description": "Проекты, которые я создал или поддерживаю.",
+
+    "heading": "Проекты"
   },
   "404": {
     "title": "404",
-    "description": "Page not found"
+    "description": "Страница не найдена",
+
+    "heading": "Страница не найдена",
+    "paragraph": "Кажись такой страницы не существует..",
+
+    "back_to": "Вернутся обратно"
   },
   "505": {
     "title": "505",
-    "description": "Something went wrong(("
+    "description": "Блен, что то пошло не так(("
   }
 }

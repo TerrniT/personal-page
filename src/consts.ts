@@ -14,39 +14,37 @@ export const HOME: Metadata = {
   DESCRIPTION: 'Astro Nano is a minimal and lightweight blog and portfolio.',
 }
 
-export const BLOG: Metadata = {
-  TITLE: 'Blog',
-  DESCRIPTION: 'A collection of articles on topics I am passionate about.',
-}
-
-export const PROJECTS: Metadata = {
-  TITLE: 'Projects',
-  DESCRIPTION: 'A collection of my projects, with links to repositories and demos.',
-}
-
 export const SOCIALS: Socials = [
   {
+	ICON: 'fa6-brands:square-x-twitter',
     NAME: 'Twitter-x',
     HREF: 'https://twitter.com/gaundergod',
   },
   {
+	ICON: 'fa6-brands:github',
     NAME: 'Github',
     HREF: 'https://github.com/terrnit',
   },
   {
+	ICON: 'fa6-brands:linkedin',
     NAME: 'Linkedin',
     HREF: 'https://www.linkedin.com/in/terrnit',
   },
   {
-    ICON: 'https://api.iconify.design/skill-icons:devto-dark.svg?color=%23888888',
+    ICON: 'fa6-brands:dev',
     NAME: 'Devto',
-    HREF: 'https://dev.to/terrnitllc',
+    HREF: 'https://dev.to/gaundergod',
   },
   {
-    ICON: 'https://api.iconify.design/icomoon-free:youtube.svg?color=%23888888',
+    ICON: 'fa6-brands:youtube',
     NAME: 'Youtube',
     HREF: 'https://www.youtube.com/channel/UC-Xu_hPhWucbV06VeyyIZig',
   },
+  {
+	ICON: 'fa6-brands:telegram',
+	NAME: 'Telegram',
+	HREF: 'https://t.me/terrnit',
+  }
 ]
 
 export const NAVIGATION: Navigation[] = [

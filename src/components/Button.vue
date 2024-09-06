@@ -44,7 +44,7 @@ interface Props {
 }
 defineEmits(['click'])
 
-const props = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>

@@ -1,7 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
 
-import BackToPrev from '@components/BackToPrev.astro'
+import BackToPrev from '@components/BackToPrev.vue'
+
 import FormattedDate from '@components/FormattedDate.astro'
 
 import PageLayout from '@layouts/PageLayout.astro'
@@ -12,6 +13,11 @@ export async function getStaticPaths() {
   const posts = (await getCollection('articles'))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+
+  // const posts = (await getCollection('articles', ({ slug }) => slug.split('/')[0] === getLocale()))
+  // .filter((post) => !post.data.draft)
+  // .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
@@ -25,7 +31,7 @@ const { Content } = await post.render()
 
 <PageLayout title={post.data.title} description={post.data.description ?? ''}>
   <div class="animate">
-    <BackToPrev href="/articles"> Back to articles </BackToPrev>
+    <BackToPrev> Back to articles </BackToPrev>
   </div>
   <div class="my-10 space-y-1">
     <div class="animate flex items-center gap-1.5">

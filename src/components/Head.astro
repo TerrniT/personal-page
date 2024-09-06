@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css'
+import '@/styles/main.css'
 
 import '@fontsource/inter/latin-400.css'
 import '@fontsource/inter/latin-600.css'
@@ -25,7 +25,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 const googleAnalyticsId = import.meta.env.GOOGLE_ANALYTICS_ID
 
-const { title, description, image = '/nano.png' } = Astro.props
+const { title, description, image = '/default-og-image.png' } = Astro.props
 ---
 
 <!-- Global Metadata -->

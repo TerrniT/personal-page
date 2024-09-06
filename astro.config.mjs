@@ -16,7 +16,9 @@ export default defineConfig({
       themes: ['poimandres', 'solarized-light'],
     }),
     mdx(),
-    tailwind(),
+    tailwind({
+		applyBaseStyles: false,
+	}),
     vue(),
     icon(),
     i18n({

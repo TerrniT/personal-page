@@ -1,11 +1,14 @@
 ---
-import { getLocalePath, type LocalePathParams, type Loose, t } from 'i18n:astro'
+import { t } from 'i18n:astro'
 
 import Link from '@components/Link.astro'
+import Navigation from '@components/Navigation.astro'
+
 import ThemeSwitcher from '@components/ThemeSwitcher.astro'
 import LanguageSwitcher from '@components/LanguageSwitcher.astro'
 
-import { SITE, SOCIALS, NAVIGATION } from '@consts'
+import { SITE, SOCIALS } from '@consts'
+import { Icon } from 'astro-icon/components'
 ---
 
 <div class="sticky top-0 hidden h-screen w-[220px] flex-col justify-between px-4 py-8 md:flex">
@@ -19,21 +22,7 @@ import { SITE, SOCIALS, NAVIGATION } from '@consts'
     </Link>
 
     <div class="mt-4 flex flex-col gap-y-2 px-2">
-      <ul class="flex flex-col gap-y-2">
-        {
-          NAVIGATION.map((item) => (
-            <li class="text-muted-foreground transition-colors duration-150 ease-linear hover:text-foreground">
-              <Link
-                href={getLocalePath(`${item.href}` as Loose<keyof LocalePathParams>)}
-                aria-label={`${SITE.NAME} on ${item.title}`}
-                underline={false}
-              >
-                {t(`navigation.${item.title}` as unknown as TemplateStringsArray)}
-              </Link>
-            </li>
-          ))
-        }
-      </ul>
+      <Navigation />
     </div>
 
     <div class="mt-12 flex flex-col gap-y-2 px-2">
@@ -42,8 +31,16 @@ import { SITE, SOCIALS, NAVIGATION } from '@consts'
         {
           SOCIALS.map((item) => (
             <li class="flex items-center gap-x-2 text-muted-foreground underline-offset-2 transition-all duration-150 ease-linear hover:text-foreground hover:underline">
-              <Link href={item.HREF} external aria-label={`${SITE.NAME} on ${item.HREF}`}>
-                {item.NAME}
+              <Link
+                href={item.HREF}
+                external
+                aria-label={`${SITE.NAME} on ${item.HREF}`}
+                classes="flex gap-x-1 items-center"
+                underline={false}
+              >
+                <Icon name={item.ICON} size="1.3rem" />
+
+                <span>{item.NAME}</span>
               </Link>
             </li>
           ))
@@ -52,8 +49,8 @@ import { SITE, SOCIALS, NAVIGATION } from '@consts'
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-3 px-2">
-    <LanguageSwitcher />
+  <div class="flex gap-x-1 px-2">
     <ThemeSwitcher />
+    <LanguageSwitcher />
   </div>
 </div>

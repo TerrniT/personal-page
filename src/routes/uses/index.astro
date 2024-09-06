@@ -16,6 +16,10 @@ const sections = ['workstation', 'devtools', 'other_software', 'misc']
 function getSection(section: string) {
   return uses.filter((item) => item.data.type === section)
 }
+
+function getSectionLocale(sectionName: string) {
+  return `uses.${sectionName}.heading` as unknown as TemplateStringsArray
+}
 ---
 
 <PageLayout title={t('uses.title')} description={t('uses.description')}>
@@ -32,9 +36,7 @@ function getSection(section: string) {
   {
     sections.map((section) => (
       <div class="mt-14 space-y-6">
-        <h2 class="animate text-lg font-semibold text-black dark:text-white">
-          {t(`uses.[${section}].heading` as unknown as TemplateStringsArray)}
-        </h2>
+        <h2 class="animate text-lg font-semibold text-black dark:text-white">{t(getSectionLocale(section))}</h2>
         <ul class="animate flex flex-col gap-4">
           {getSection(section).map((item) => (
             <>

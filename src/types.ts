@@ -12,6 +12,7 @@ export type Site = {
 export type Metadata = {
   TITLE: string;
   DESCRIPTION: string;
+  OG_IMAGE_URL?: string
 };
 
 export type Socials = {

@@ -1,15 +1,31 @@
 ---
 import BackToTop from '@components/BackToTop.astro'
 
-import { SITE } from '@consts'
+import { SITE, SOCIALS } from '@consts'
+import Link from './Link.astro'
+import { Icon } from 'astro-icon/components'
 ---
 
 <footer class="animate">
-  <div class="flex items-center justify-between">
+  <div class="mt-10 flex items-center justify-between md:mt-0">
     <div>
       &copy; 2024 {`|`}
       {SITE.NAME}
     </div>
     <BackToTop />
+  </div>
+
+  <div class="mt-5 flex flex-wrap gap-3 px-2 md:hidden">
+    {
+      SOCIALS.map((link) => (
+        <Link
+          href={link.HREF}
+          classes="flex items-center gap-x-2 text-muted-foreground underline-offset-2 transition-all duration-150 ease-linear hover:text-foreground hover:underline"
+        >
+          <span>{link.NAME}</span>
+          <Icon name={link.ICON} size={'1.3em'} />
+        </Link>
+      ))
+    }
   </div>
 </footer>

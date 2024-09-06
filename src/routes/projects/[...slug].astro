@@ -2,7 +2,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content'
 
 import Button from '@components/Button.vue'
-import BackToPrev from '@components/BackToPrev.astro'
+import BackToPrev from '@components/BackToPrev.vue'
 import FormattedDate from '@components/FormattedDate.astro'
 
 import PageLayout from '@layouts/PageLayout.astro'
@@ -15,6 +15,7 @@ export async function getStaticPaths() {
   const projects = (await getCollection('projects'))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+
   return projects.map((project) => ({
     params: { slug: project.slug },
     props: project,
@@ -28,7 +29,7 @@ const { Content } = await project.render()
 
 <PageLayout title={project.data.title} description={project.data.description}>
   <div class="animate">
-    <BackToPrev href="/projects"> Back to projects </BackToPrev>
+    <BackToPrev> Back to projects </BackToPrev>
   </div>
   <div class="my-10">
     <div class="animate flex items-center gap-1.5">
@@ -57,29 +58,30 @@ const { Content } = await project.render()
         </div>
       )
     }
-    {
-      (project.data.demoURL || project.data.repoURL) && (
-        <nav class="animate mt-6 flex gap-x-4">
-          {project.data.demoURL && (
-            <Button external to={project.data.demoURL} variant="secondary" size="sm">
-              <Icon name="devicon:github" size="1.3rem" class="text-black/50 dark:text-white" />
-            </Button>
-          )}
-          {project.data.repoURL && (
-            <Button
-              to={project.data.repoURL}
-              variant="ghost"
-              size="sm"
-              external
-              classes="text-black dark:text-white bg-zinc-400 dark:bg-zinc-800"
-            >
-              Demo
-              <Icon name="ci:external-link" size="1.3rem" />
-            </Button>
-          )}
-        </nav>
-      )
-    }
+
+    <nav class="animate mt-6 flex gap-x-4">
+      {
+        project.data.repoURL && (
+          <Button external to={project.data.repoURL} variant="secondary" size="sm">
+            <Icon name="devicon:github" size="1.3rem" class="text-black/50 dark:text-white" />
+          </Button>
+        )
+      }
+      {
+        project.data.demoURL && (
+          <Button
+            to={project.data.demoURL}
+            variant="ghost"
+            size="sm"
+            external
+            classes="text-black dark:text-white bg-zinc-400 dark:bg-zinc-800 flex items-center gap-x-1"
+          >
+            <span>Demo</span>
+            <Icon name="ci:external-link" size="1.3rem" />
+          </Button>
+        )
+      }
+    </nav>
   </div>
   <article class="animate">
     <Content />

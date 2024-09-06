@@ -1,26 +1,20 @@
 ---
 import Link from '@components/Link.astro'
-
-import { SITE } from '@consts'
+import MobileMenu from '@components/MobileMenu.vue'
+import Navigation from '@components/Navigation.astro'
 ---
 
 <header>
-  <div class="flex flex-wrap justify-between gap-y-2 md:hidden">
-    <Link href="/" underline={false}>
-      <div class="font-semibold">
-        {SITE.NAME}
-      </div>
+  <div class="flex flex-wrap justify-between gap-y-2 px-2">
+    <Link href="/">
+      <img
+        src="/cat_logo.png"
+        class="h-12 w-12 cursor-pointer sepia-0 transition-all duration-300 ease-in-out hover:scale-110 hover:sepia"
+        alt="cat logo"
+      />
     </Link>
-    <nav class="flex gap-1">
-      <Link href="/articles"> articles </Link>
-      <span>
-        {`/`}
-      </span>
-      <Link href="/work"> work </Link>
-      <span>
-        {`/`}
-      </span>
-      <Link href="/projects"> projects </Link>
-    </nav>
+    <MobileMenu client:visible>
+      <Navigation slot="navigation" />
+    </MobileMenu>
   </div>
 </header>
