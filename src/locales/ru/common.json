@@ -4,24 +4,24 @@
   },
   "about": {
     "title": "Обо мне",
-    "description": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life",
+    "description": "Я страстно люблю воплощать идеи в жизнь с помощью кода и технологий. Будь то создание веб-приложений, дизайна, анимаций или десктопных приложений, я люблю процесс создания и обмена знаниями. Мне нравится погружаться в новые темы и знания, и я с таким же энтузиазмом преподаю и делюсь своими знаниями с другими.",
 
     "heading": "Обо мне",
-    "paragraph": "I'm software developer with expertise in UI/UX design. I enjoy exploring new design trends and techniques to further improve my skills. I'm passionate about delivering high-quality work and collaborating with clients to bring their vision to life",
+    "paragraph": "Я страстно люблю воплощать идеи в жизнь с помощью кода и технологий. Будь то создание веб-приложений, дизайна, анимаций или десктопных приложений, я люблю процесс создания и обмена знаниями. Мне нравится погружаться в новые темы и знания, и я с таким же энтузиазмом преподаю и делюсь своими знаниями с другими.",
 
     "bio": {
-      "heading": "Bio"
+      "heading": "Биография"
     },
     "hard_skills": {
-      "heading": "Hard skills",
-      "paragraph": "In my day-to-day work, I’m using a variety of technologies, including but not limited to the following:"
+      "heading": "Хард-скиллы",
+      "paragraph": "В своей повседневной работе я использую различные технологии, включая, в частности, следующие:"
     },
     "expertise": {
-      "heading": "Expertise"
+      "heading": "Экспертиза"
     },
     "languages": {
-      "heading": "Languages",
-      "paragraph": "The languages which i love and trying to learn more"
+      "heading": "Языка",
+      "paragraph": "Языки, которые я люблю и хочу познать больше"
     }
   },
   "articles": {
