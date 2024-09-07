@@ -7,7 +7,7 @@
     "strictNullChecks": true,
     "strict": true,
     "jsx": "react-jsx",
-    "baseUrl": "/home/terrnit/projects/astro/personal-page",
+    "baseUrl": ".",
     "paths": {
       "@*": [
         "./src/*"
