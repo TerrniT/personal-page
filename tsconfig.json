@@ -1,13 +1,18 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "exclude": ["dist"],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
     "strictNullChecks": true,
-	"strict": true,
-	"jsx": "preserve",
-    "baseUrl": ".",
+    "strict": true,
+    "jsx": "react-jsx",
+    "baseUrl": "/home/terrnit/projects/astro/personal-page",
     "paths": {
-      "@*": ["./src/*"]
-    }
+      "@*": [
+        "./src/*"
+      ]
+    },
+    "jsxImportSource": "react"
   }
 }

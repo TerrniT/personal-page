@@ -1,8 +1,8 @@
-<script setup lang="ts">
-import { cn } from '@lib/utils'
-import { cva } from 'class-variance-authority'
+import { type VariantProps, cva } from 'class-variance-authority'
 
-const buttonVariants = cva(
+export { default as Button } from './button.vue'
+
+export const buttonVariants = cva(
 	'animate inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
 	{
 		variants: {
@@ -24,7 +24,7 @@ const buttonVariants = cva(
 				sm: 'h-9 rounded-md px-3',
 				lg: 'h-11 rounded-md px-8',
 				"lg-icon": 'h-12 w-12 rounded-md',
-				icon: 'h-10 w-1	0',
+				icon: 'h-10 w-10',
 			},
 		},
 		defaultVariants: {
@@ -34,30 +34,4 @@ const buttonVariants = cva(
 	},
 )
 
-interface Props {
-	variant?: NonNullable<Parameters<typeof buttonVariants>[0]>['variant']
-	size?: NonNullable<Parameters<typeof buttonVariants>[0]>['size']
-	to?: string | null
-	href?: string | null
-	classes?: string
-	external?: boolean
-}
-defineEmits(['click'])
-
-defineProps<Props>()
-</script>
-
-<template>
-	<component
-	 :is="to ? 'a' : 'button'" 
-	 :href="to ?? href"
-	 type="button"
-	 :target="external ? '_blank' : '_self'"
-	 :class="cn(buttonVariants({ variant, size }), classes)"
-	 @click="$emit('click')"
-	>
-		<slot name="prepend" />
-		<slot name="default" />
-		<slot name="append" />
-	</component>
-</template>
+export type ButtonVariants = VariantProps<typeof buttonVariants>

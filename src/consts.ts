@@ -122,3 +122,13 @@ export const EXPERTISE = [
     icon: 'icon-park-twotone:time',
   },
 ]
+
+
+
+export const THEME_MAP = {
+	light: 'light',
+	dark: 'dark',
+	system: undefined,
+} as const;
+
+export const STORAGE_THEME_KEY = 'theme' as const;

@@ -79,6 +79,13 @@ html #back-to-top {
 html.scrolled #back-to-top {
   @apply pointer-events-auto opacity-100;
 }
+
+@layer base {
+	* {
+	  @apply border-border;
+	}
+  }
+
 .dark {
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
@@ -108,13 +115,31 @@ html.scrolled #back-to-top {
   --destructive-foreground: 0 0% 98%;
 
   --ring: 240 4.9% 83.9%;
+
+  --custom-gray-50: #000;
+  --custom-gray-75: #141414;
+  --custom-gray-100: #1d1d1d;
+  --custom-gray-200: #303030;
+  --custom-gray-300: #4b4b4b;
+  --custom-gray-400: #6a6a6a;
+  --custom-gray-500: #8d8d8d;
+  --custom-gray-600: #b0b0b0;
+  --custom-gray-700: #d0d0d0;
+  --custom-gray-800: #ebebeb;
+  --custom-gray-900: #fff;
+  --custom-gray-950: #fff;
+
+  --selection: hsla(0, 0%, 100%, 0.077);
+  --border: hsla(0, 0%, 100%, 0.1);
+
+  --page-background: var(--custom-gray-75);
+
+  --heading: var(--custom-gray-900);
+  --text-body: var(--custom-gray-800);
+  --text-second: var(--custom-gray-600);
+  --text-disabled: var(--custom-gray-500);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-}
 
 :root {
   --background: 9 0% 100%;
@@ -137,6 +162,29 @@ html.scrolled #back-to-top {
   --input: 9 20% 50%;
   --ring: 9 96.4% 55.9%;
   --radius: 0.5rem;
+
+  --custom-gray-50: #ffffff;
+  --custom-gray-75: #fdfdfd;
+  --custom-gray-100: #f8f8f8;
+  --custom-gray-200: #e6e6e6;
+  --custom-gray-300: #d5d5d5;
+  --custom-gray-400: #b1b1b1;
+  --custom-gray-500: #909090;
+  --custom-gray-600: #6d6d6d;
+  --custom-gray-700: #464646;
+  --custom-gray-800: #222222;
+  --custom-gray-900: #000000;
+  --custom-gray-950: #000000;
+
+  --selection: hsla(0, 0%, 0%, 0.045);
+  --border: hsla(0, 0%, 0%, 0.09);
+
+  --page-background: var(--custom-gray-50);
+
+  --heading: var(--custom-gray-900);
+  --text-body: var(--custom-gray-800);
+  --text-second: var(--custom-gray-700);
+  --text-disabled: var(--custom-gray-500);
 }
 /* 
 
@@ -184,3 +232,57 @@ html.scrolled #back-to-top {
 	--ring: 258 36.1% 47.8%;
 	--radius: 0.5rem;
 } */
+
+
+/* -- colors --- */
+@layer base {
+	:root {
+	  --gray-50: #ffffff;
+	  --gray-75: #fdfdfd;
+	  --gray-100: #f8f8f8;
+	  --gray-200: #e6e6e6;
+	  --gray-300: #d5d5d5;
+	  --gray-400: #b1b1b1;
+	  --gray-500: #909090;
+	  --gray-600: #6d6d6d;
+	  --gray-700: #464646;
+	  --gray-800: #222222;
+	  --gray-900: #000000;
+	  --gray-950: #000000;
+  
+	  --selection: hsla(0, 0%, 0%, 0.045);
+	  --border: hsla(0, 0%, 0%, 0.09);
+  
+	  --page-background: var(--gray-50);
+  
+	  --heading: var(--gray-900);
+	  --text-body: var(--gray-800);
+	  --text-second: var(--gray-700);
+	  --text-disabled: var(--gray-500);
+	}
+  
+	.dark {
+	  --gray-50: #000;
+	  --gray-75: #141414;
+	  --gray-100: #1d1d1d;
+	  --gray-200: #303030;
+	  --gray-300: #4b4b4b;
+	  --gray-400: #6a6a6a;
+	  --gray-500: #8d8d8d;
+	  --gray-600: #b0b0b0;
+	  --gray-700: #d0d0d0;
+	  --gray-800: #ebebeb;
+	  --gray-900: #fff;
+	  --gray-950: #fff;
+  
+	  --selection: hsla(0, 0%, 100%, 0.077);
+	  --border: hsla(0, 0%, 100%, 0.1);
+  
+	  --page-background: var(--gray-75);
+  
+	  --heading: var(--gray-900);
+	  --text-body: var(--gray-800);
+	  --text-second: var(--gray-600);
+	  --text-disabled: var(--gray-500);
+	}
+}

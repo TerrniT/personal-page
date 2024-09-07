@@ -2,6 +2,8 @@
 import Link from '@components/Link.astro'
 import MobileMenu from '@components/MobileMenu.vue'
 import Navigation from '@components/Navigation.astro'
+
+import ThemeSwitcher from '@components/ThemeSwitcher.tsx'
 ---
 
 <header>
@@ -13,8 +15,12 @@ import Navigation from '@components/Navigation.astro'
         alt="cat logo"
       />
     </Link>
-    <MobileMenu client:visible>
-      <Navigation slot="navigation" />
-    </MobileMenu>
+    <div class="flex items-center gap-x-3">
+      <ThemeSwitcher client:load side={'bottom'} />
+
+      <MobileMenu client:visible>
+        <Navigation slot="navigation" />
+      </MobileMenu>
+    </div>
   </div>
 </header>

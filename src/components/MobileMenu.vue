@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import Button from '@components/ui/vue/button/button.vue'
+
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@components/ui/vue/sheet'
+
+const sheetModal = ref(false)
+</script>
+
+
 <template>
   <Sheet :open="sheetModal" @update:open="sheetModal = $event">
     <SheetTrigger as-child as="div">
@@ -23,12 +33,3 @@
     </SheetContent>
   </Sheet>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import Button from './Button.vue'
-
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet'
-
-const sheetModal = ref(false)
-</script>
