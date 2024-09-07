@@ -22,9 +22,20 @@ export type Socials = {
 }[];
 
 export type Navigation = {
-	title: string;
-	href: string | unknown
+  title: string;
+  href: string | unknown
 }
+
+export interface Experience {
+	job_title: string
+	company_name: string
+	live_url?: string
+	duration: string
+	description?: string
+	icon?: string
+	stack?: string[]
+	location?: string
+  }
 
 
 export interface AstroI18nextGlobal {

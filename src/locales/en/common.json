@@ -12,6 +12,11 @@
     "bio": {
       "heading": "Bio"
     },
+
+	"experience": {
+	  "heading": "Experiences"
+	},
+	
     "hard_skills": {
       "heading": "Hard skills",
       "paragraph": "In my day-to-day work, I’m using a variety of technologies, including but not limited to the following:"

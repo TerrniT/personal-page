@@ -46,10 +46,12 @@
     "vue": "^3.4.38"
   },
   "devDependencies": {
+    "@iconify-icons/ic": "^1.2.13",
     "@iconify-icons/twemoji": "^1.2.8",
     "@iconify-json/ci": "^1.1.14",
     "@iconify-json/devicon": "^1.1.50",
     "@iconify-json/fa6-brands": "^1.1.22",
+    "@iconify-json/ic": "^1.2.0",
     "@iconify-json/icon-park-twotone": "^1.1.15",
     "@iconify-json/logos": "^1.1.44",
     "@iconify-json/ph": "^1.1.14",

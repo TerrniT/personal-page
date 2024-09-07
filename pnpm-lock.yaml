@@ -100,6 +100,9 @@ dependencies:
     version: 3.4.38(typescript@5.4.2)
 
 devDependencies:
+  '@iconify-icons/ic':
+    specifier: ^1.2.13
+    version: 1.2.13
   '@iconify-icons/twemoji':
     specifier: ^1.2.8
     version: 1.2.8
@@ -112,6 +115,9 @@ devDependencies:
   '@iconify-json/fa6-brands':
     specifier: ^1.1.22
     version: 1.1.22
+  '@iconify-json/ic':
+    specifier: ^1.2.0
+    version: 1.2.0
   '@iconify-json/icon-park-twotone':
     specifier: ^1.1.15
     version: 1.1.15
@@ -1562,6 +1568,12 @@ packages:
     engines: {node: '>=18.18'}
     dev: false
 
+  /@iconify-icons/ic@1.2.13:
+    resolution: {integrity: sha512-9Y3DLark8PYGtsHuWqbYxo2xAquL9vFQBZKRkpHuntyQJxBDLsfm3OO8mRbj2EmaAQR65pecH77DqQaLnN7yJQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify-icons/twemoji@1.2.8:
     resolution: {integrity: sha512-B12wK7BCloSuiemntXXoPRIQ+E/oZDBQNY6G9wRY4vHPESWpSaCM5fcaRUc8sE4zqiHvjA++oJt25ZJanD5j5Q==}
     dependencies:
@@ -1582,6 +1594,12 @@ packages:
 
   /@iconify-json/fa6-brands@1.1.22:
     resolution: {integrity: sha512-a7x0hTjNI/cQ1XFyRQCyFfXJbYboYDRSmxeNgImRi8WwREDi00/U1e2WH+Xc4zBDFixBj/PQ5VOfCDaNy2ELTw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/ic@1.2.0:
+    resolution: {integrity: sha512-L4+m77xTQB08X3I+3xs1+IrvK+aNcuN/7ODu5aUPznHKLU+/8UYcsjUgNHze6vPOGPQ0AG+kCwvy91EYPXSRxw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

@@ -1,9 +1,10 @@
 ---
-import { t } from 'i18n:astro'
+import { t, getLocale } from 'i18n:astro'
 
 import { getCollection } from 'astro:content'
 
 import FormattedDate from '@components/FormattedDate.astro'
+import ExperienceCard from '@components/ExperienceCard.astro'
 
 import PageLayout from '@layouts/PageLayout.astro'
 
@@ -11,10 +12,23 @@ import { HARD_SKILLS, EXPERTISE } from '@consts'
 
 import { Icon } from 'astro-icon/components'
 
-const collection = await getCollection('about')
+// const data = (await getCollection('about', ({ slug }) => slug.split('/')[0] === getLocale()))
+//   .filter((post) => !post.data.draft)
+//   .sort((a, b) => a.data.year.valueOf() - b.data.year.valueOf())
 
-const work = await Promise.all(
-  collection.map(async (item) => {
+// const bio = await Promise.all(
+//   data.map(async (item) => {
+//     const { Content } = await item.render()
+//     return { ...item, Content }
+//   }),
+// )
+
+const dataExperiences = (await getCollection('experiences', ({ slug }) => slug.split('/')[0] === getLocale())).filter(
+  (post) => !post.data.draft,
+)
+
+const experiences = await Promise.all(
+  dataExperiences.map(async (item) => {
     const { Content } = await item.render()
     return { ...item, Content }
   }),
@@ -33,12 +47,12 @@ const work = await Promise.all(
       <img src="/hero.png" alt="hero image" class="animate mt-3 h-[150px] md:h-[180px]" />
     </section>
   </div>
-  <div class="mt-14 space-y-6">
+  <!-- <div class="mt-14 space-y-6">
     <h2 class="animate font-semibold text-black dark:text-white">{t('about.bio.heading')}</h2>
     <ul class="flex flex-col">
       {
-        work.map((entry) => (
-          <li class="animate mt-6">
+        bio.map((entry) => (
+          <li class="animate pt-4">
             <div class="flex gap-x-5">
               <div class="min-w-[66px] border-r-2 border-dashed border-primary pr-2 text-xl font-semibold text-black dark:text-white">
                 {entry.data.year}
@@ -60,18 +74,32 @@ const work = await Promise.all(
         ))
       }
     </ul>
+  </div> -->
+  <div class="mt-14 space-y-6">
+    <h2 class="animate font-semibold text-black dark:text-white">{t('about.experience.heading')}</h2>
+    <ul class="flex flex-col">
+      {
+        experiences.map((entry) => (
+          <li class="animate mt-6">
+            <ExperienceCard experience={entry.data}>
+              <entry.Content />
+            </ExperienceCard>
+          </li>
+        ))
+      }
+    </ul>
   </div>
   <div class="mt-14 space-y-6">
     <h5 class="animate font-semibold text-black dark:text-white">{t('about.expertise.heading')}</h5>
 
-    <div class="grid w-full grid-cols-3 gap-2">
+    <div class="grid w-full grid-cols-1 gap-2 md:grid-cols-3">
       {
         EXPERTISE.map((item) => (
           <div class="animate relative flex flex-col items-center justify-center gap-y-2 rounded-md bg-zinc-200 p-4 dark:bg-stone-800">
             <div class="flex flex-col items-center justify-center gap-y-1">
               <Icon name={item.icon} size="2em" class="text-black dark:text-white" />
               <div class="flex items-center gap-x-2">
-                <p class="font-bold text-black dark:text-white">{item.name}</p>
+                <p class="text-center font-bold text-black dark:text-white">{item.name}</p>
               </div>
             </div>
           </div>
