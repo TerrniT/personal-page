@@ -1,0 +1,28 @@
+---
+import { useI18n } from '@lib/i18n'
+import { devIconResolver } from '@lib/utils'
+
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  items: string[]
+}
+
+const { url } = Astro
+const { items } = Astro.props
+
+const { t } = useI18n(url)
+---
+
+<div class="my-6 flex flex-col">
+  <div class="animate font-semibold">{t('stack.title')}</div>
+  <div class="my-2 flex flex-wrap gap-3">
+    {
+      items.map((item) => (
+        <div class="animate group w-fit cursor-pointer rounded-sm bg-muted-foreground/10 p-2.5 text-xs text-muted-foreground hover:bg-muted-foreground/20">
+          <Icon name={devIconResolver[item].icon} size="1.3rem" class="group-hover:scale-110" />
+        </div>
+      ))
+    }
+  </div>
+</div>

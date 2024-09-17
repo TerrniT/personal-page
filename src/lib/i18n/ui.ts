@@ -115,6 +115,8 @@ export const ui = {
 
 
 		"layout.back_to_top" : "Back to top",
+
+		"stack.title": "Stack",
 	},
 	ru: {
 		"home.title": "Главная",
@@ -218,6 +220,8 @@ export const ui = {
 		"navigation.uses": "Мои инструменты",
 
 		"layout.back_to_top" : "Наверх",
+
+		"stack.title": "Стек",
 	},
 } satisfies Record<Language, { [key: string]: string }>;
 
