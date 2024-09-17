@@ -1,10 +1,7 @@
 ---
-import Logo from '@components/astro/Logo.astro'
-import Navigation from '@components/astro/layout/Navigation.astro'
-import Socials from '@components/astro/Socials.astro'
+import { Logo, Navigation, SocialsLinks } from '@components/astro/layout'
 
-import ThemeSwitcher from '@components/react/ThemeSwitcher'
-import LanguageSwitcher from '@components/react/LanguageSwitcher'
+import { ThemeSwitcher, LanguageSwitcher } from '@components/react/layout'
 
 const { url } = Astro
 ---
@@ -13,7 +10,7 @@ const { url } = Astro
   <div>
     <Logo />
     <Navigation />
-    <Socials />
+    <SocialsLinks />
   </div>
 
   <div class="flex gap-x-1 px-2">

@@ -17,7 +17,7 @@ interface Props {
   side: 'left' | 'right' | 'bottom' | 'top'
 }
 
-export default function ThemeDropdown({side}: Props) {
+export default function ThemeSwitcher({side}: Props) {
   const theme = useStore(themeStore);
 
   return (
