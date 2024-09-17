@@ -73,7 +73,7 @@ const { Content } = await project.render()
     <nav class="animate mt-6 flex gap-x-4">
       {
         project.data.repoURL && (
-          <Button external to={project.data.repoURL} variant="secondary" size="sm">
+          <Button external to={project.data.repoURL} variant="secondary" size="sm" classes="animate">
             <Icon name="devicon:github" size="1.3rem" class="text-black/50 dark:text-white" />
           </Button>
         )
@@ -85,7 +85,7 @@ const { Content } = await project.render()
             variant="ghost"
             size="sm"
             external
-            classes="text-black dark:text-white bg-zinc-400 dark:bg-zinc-800 flex items-center gap-x-1"
+            classes="text-black dark:text-white bg-zinc-400 dark:bg-zinc-800 flex items-center gap-x-1 animate"
           >
             <span>Demo</span>
             <Icon name="ci:external-link" size="1.3rem" />

@@ -3,7 +3,9 @@ import { MobileMenu } from '@components/vue/layout'
 
 import { Link, Navigation } from '@components/astro/layout'
 
-import { ThemeSwitcher } from '@components/react/layout'
+import { LanguageSwitcher, ThemeSwitcher } from '@components/react/layout'
+
+const { url } = Astro
 ---
 
 <header>
@@ -16,11 +18,12 @@ import { ThemeSwitcher } from '@components/react/layout'
       />
     </Link>
     <div class="flex items-center gap-x-3">
+      <LanguageSwitcher client:load side={'bottom'} url={url} />
       <ThemeSwitcher client:load side={'bottom'} />
 
-      <!-- <MobileMenu client:visible>
+      <MobileMenu client:visible>
         <Navigation slot="navigation" />
-      </MobileMenu> -->
+      </MobileMenu>
     </div>
   </div>
 </header>

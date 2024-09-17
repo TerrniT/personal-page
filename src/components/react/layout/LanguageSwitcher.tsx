@@ -11,8 +11,9 @@ import { DotIcon, HeroiconsLanguage, resolveFlag } from '@components/react/icons
 
 interface Props {
 	url: URL
+	side: 'left' | 'right' | 'bottom' | 'top'
 }
-export default function LanguageSwitcher({url}: Props) {
+export default function LanguageSwitcher({url, side}: Props) {
   const { lang, p } = useI18n(url);
 
   const pathname = getDefaultPathname(url);
@@ -25,7 +26,7 @@ export default function LanguageSwitcher({url}: Props) {
           <span className="sr-only">select language</span>
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" side="right" alignOffset={40}>
+      <DropdownMenuContent align="end" side={side} alignOffset={40}>
         {Object.entries(languages).map(([language, label]) => (
           <DropdownMenuItem key={language} className="justify-between" asChild>
             <a href={p(pathname, language)}>

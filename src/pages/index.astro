@@ -37,10 +37,10 @@ const articles = (await getPostInfoList(lang)).slice(0, SITE.NUM_POSTS_ON_HOMEPA
           {t('home.paragraph')}
         </p>
       </article>
-      <Button to={p('/projects')} variant="secondary">
+      <Button to={p('/projects')} variant="secondary" classes="animate">
         {t('home.cta.explore')}
       </Button>
-      <Button to={p('/about')} variant="ghost">
+      <Button to={p('/about')} variant="ghost" classes="animate">
         {t('home.cta.about')}
       </Button>
     </section>
