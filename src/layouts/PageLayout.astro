@@ -1,5 +1,5 @@
 ---
-import { Head, Header, Footer, Sidebar, Container, Aside } from '@components/astro/layout'
+import { Head, Header, Footer, Sidebar, Container } from '@components/astro/layout'
 
 import { SITE } from '@consts'
 
@@ -32,9 +32,6 @@ const htmlLang = lang ?? getLangFromUrl(Astro.url)
         <slot />
         <Footer />
       </Container>
-      <Aside>
-        <div class="text-xl text-white">Hello</div>
-      </Aside>
     </div>
   </body>
 </html>
