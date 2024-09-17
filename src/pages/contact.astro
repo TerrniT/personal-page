@@ -1,14 +1,14 @@
 ---
-import Link from '@components/Link.astro'
-
-import PageLayout from '@layouts/PageLayout.astro'
+import { useI18n } from '@lib/i18n'
 
 import { SITE, SOCIALS } from '@consts'
 
-import { useI18n } from '@lib/i18n'
+import Link from '@components/astro/Link.astro'
+
+import PageLayout from '@layouts/PageLayout.astro'
 
 const { url } = Astro
-const { t, p } = useI18n(url)
+const { t } = useI18n(url)
 ---
 
 <PageLayout title={t('contact.title')} description={t('contact.description')}>

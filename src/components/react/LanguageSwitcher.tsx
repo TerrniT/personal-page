@@ -1,12 +1,13 @@
+import { getDefaultPathname, languages, useI18n } from '@lib/i18n';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@components/ui/react/dropdown-menu';
-import { getDefaultPathname, languages, useI18n } from '@lib/i18n';
+} from '@components/react/ui/dropdown-menu';
 
-import { DotIcon, HeroiconsLanguage, resolveFlag } from '@components/icons/react/icons';
+import { DotIcon, HeroiconsLanguage, resolveFlag } from '@components/react/icons/icons';
 
 interface Props {
 	url: URL

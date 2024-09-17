@@ -15,7 +15,7 @@ import { ViewTransitions } from 'astro:transitions'
 
 import { THEME_MAP, STORAGE_THEME_KEY } from '@consts'
 
-import GoogleAnalytics from '@components/GoogleAnalytics.astro'
+import GoogleAnalytics from '@components/astro/GoogleAnalytics.astro'
 
 interface Props {
   title: string
@@ -27,7 +27,7 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 const googleAnalyticsId = import.meta.env.GOOGLE_ANALYTICS_ID
-const yandexWebmasterContent = import.meta.env.YANDEX_WEBMASTER_CONTENT || "4645dc62c679e979"
+const yandexWebmasterContent = import.meta.env.YANDEX_WEBMASTER_CONTENT || '4645dc62c679e979'
 
 const { title, description, image = '/default-og-image.png', author } = Astro.props
 ---

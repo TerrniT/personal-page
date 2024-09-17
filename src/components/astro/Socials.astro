@@ -1,0 +1,35 @@
+---
+import { useI18n } from '@lib/i18n'
+
+import { SITE, SOCIALS } from '@consts'
+
+import Link from '@components/astro/Link.astro'
+
+import { Icon } from 'astro-icon/components'
+
+const { url } = Astro
+const { t } = useI18n(url)
+---
+
+<div class="mt-12 flex flex-col gap-y-2 px-2">
+  <span class="text-sm font-medium uppercase text-muted-foreground"> {t('navigation.elsewhere')}</span>
+  <ul class="flex flex-col gap-y-2">
+    {
+      SOCIALS.map((item) => (
+        <li class="flex items-center gap-x-2 text-muted-foreground underline-offset-2 transition-all duration-150 ease-linear hover:text-foreground hover:underline">
+          <Link
+            href={item.HREF}
+            external
+            aria-label={`${SITE.NAME} on ${item.HREF}`}
+            classes="flex gap-x-1 items-center"
+            underline={false}
+          >
+            <Icon name={item.ICON} size="1.3rem" />
+
+            <span>{item.NAME}</span>
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+</div>

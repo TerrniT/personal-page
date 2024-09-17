@@ -1,17 +1,17 @@
 ---
-import Button from '@components/ui/vue/button/button.vue'
-
-import Link from '@components/Link.astro'
-import ArrowCard from '@components/ArrowCard.astro'
-import ArticleCard from '@components/ArticleCard.astro'
-
-import PageLayout from '@layouts/PageLayout.astro'
-
 import { useI18n, getLangFromUrl } from '@lib/i18n'
+
+import { getPostInfoList } from '@lib/mdx'
 
 import { SITE } from '@consts'
 
-import { getPostInfoList } from '@lib/mdx'
+import Link from '@components/astro/Link.astro'
+import ProjectCard from '@components/astro/ProjectCard.astro'
+import ArticleCard from '@components/astro/ArticleCard.astro'
+
+import { Button } from '@components/vue/ui/button'
+
+import PageLayout from '@layouts/PageLayout.astro'
 
 const { url } = Astro
 const { t, p } = useI18n(url)
@@ -72,7 +72,7 @@ const articles = (await getPostInfoList(lang)).slice(0, SITE.NUM_POSTS_ON_HOMEPA
           <ul class="flex flex-col gap-4">
             {projects.map((project) => (
               <li>
-                <ArrowCard entry={project} />
+                <ProjectCard entry={project} />
               </li>
             ))}
           </ul>

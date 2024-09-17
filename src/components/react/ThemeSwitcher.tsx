@@ -5,9 +5,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@components/ui/react/dropdown-menu';
+} from '@components/react/ui/dropdown-menu';
 
-import {SunIcon, MoonIcon, DotIcon} from "@components/icons/react/icons"
+import {SunIcon, MoonIcon, DotIcon} from "@components/react/icons/icons"
 
 import { THEME_MAP } from '@consts'
 

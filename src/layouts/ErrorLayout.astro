@@ -1,5 +1,5 @@
 ---
-import Head from '@components/Head.astro'
+import Head from '@components/astro/layout/Head.astro'
 
 import { SITE } from '@consts'
 
@@ -11,7 +11,7 @@ type Props = {
 const { title, description } = Astro.props
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <Head title={`${title} | ${SITE.NAME}`} description={description} />

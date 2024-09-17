@@ -1,0 +1,42 @@
+---
+import { useI18n } from '@lib/i18n'
+import { type ProjectInfo } from '@lib/mdx'
+import { devIconResolver } from '@lib/utils'
+
+import { Icon } from 'astro-icon/components'
+
+const { url } = Astro
+const { p } = useI18n(url)
+
+type Props = {
+  item: ProjectInfo
+}
+
+const { item } = Astro.props
+---
+
+<a
+  href={p(item.href)}
+  class="group relative flex flex-nowrap rounded-lg border border-black/15 px-4 py-3 pr-10 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+>
+  <div class="flex flex-1 flex-col gap-y-3 truncate">
+    <div class="font-semibold">
+      {item.data.title}
+    </div>
+
+    <div class="flex flex-1 flex-col gap-y-3">
+      <div class="text-sm">
+        {item.data.description}
+      </div>
+      {
+        item.data.stack && item.data.stack.length > 0 && (
+          <div class="mb-3 flex flex-wrap gap-2">
+            {item.data.stack.map((entry) => (
+              <Icon name={devIconResolver[entry].icon} size="1.3rem" />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</a>

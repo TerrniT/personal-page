@@ -1,27 +1,25 @@
 ---
-import Head from '@components/Head.astro'
-import Header from '@components/Header.astro'
-import Footer from '@components/Footer.astro'
-import Sidebar from '@components/Sidebar.astro'
-import Container from '@components/Container.astro'
+import Head from '@components/astro/layout/Head.astro'
+import Header from '@components/astro/layout/Header.astro'
+import Footer from '@components/astro/layout/Footer.astro'
+import Sidebar from '@components/astro/layout/Sidebar.astro'
+import Container from '@components/astro/layout/Container.astro'
 
 import { SITE } from '@consts'
 
 import { type Language, getLangFromUrl } from '@lib/i18n'
-
 
 type Props = {
   title: string
   description: string
   author?: string
   image?: string
-  lang?: Language;
+  lang?: Language
 }
 
 const { title, description, image, author, lang } = Astro.props
 
-
-const htmlLang = lang ?? getLangFromUrl(Astro.url);
+const htmlLang = lang ?? getLangFromUrl(Astro.url)
 ---
 
 <!doctype html>

@@ -1,7 +1,8 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import Check from "@components/icons/CheckIcon.astro"
-import ChevronRight from "@components/icons/ChevronRightIcon.astro"
-import Circle from "@components/icons/CircleIcon.astro"
+
+import Check from "@components/astro/icons/CheckIcon.astro"
+import ChevronRight from "@components/astro/icons/ChevronRightIcon.astro"
+import Circle from "@components/astro/icons/CircleIcon.astro"
 
 import * as React from 'react';
 

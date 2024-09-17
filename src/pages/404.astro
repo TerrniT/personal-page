@@ -1,14 +1,14 @@
 ---
 export const prerender = false
 
-import Container from '@components/Container.astro'
-import Link from '@components/Link.astro'
-
-import ErrorLayout from '@layouts/ErrorLayout.astro'
+import { useI18n } from '@lib/i18n'
 
 import { SITE } from '@consts'
 
-import { useI18n } from '@lib/i18n'
+import Container from '@components/astro/layout/Container.astro'
+import Link from '@components/astro/Link.astro'
+
+import ErrorLayout from '@layouts/ErrorLayout.astro'
 
 const { url } = Astro
 const { t, p } = useI18n(url)

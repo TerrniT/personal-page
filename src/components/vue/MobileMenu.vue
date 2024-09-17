@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Button from '@components/ui/vue/button/button.vue'
+import { Button } from '@components/vue/ui/button'
 
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@components/ui/vue/sheet'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@components/vue/ui/sheet'
 
 const sheetModal = ref(false)
 </script>
-
 
 <template>
   <Sheet :open="sheetModal" @update:open="sheetModal = $event">

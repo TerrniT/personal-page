@@ -4,15 +4,13 @@ import { resolveSlug } from '@lib/mdx'
 
 import { getCollection } from 'astro:content'
 
-import BackToPrev from '@components/BackToPrev.astro'
+import BackToPrev from '@components/astro/BackToPrev.astro'
 
 import PageLayout from '@layouts/PageLayout.astro'
 
-export const getStaticPaths = (async () => {
+export const getStaticPaths = async () => {
   // TODO: We can add sorting by order in the future
-  const useses = (await getCollection('uses')).filter(
-    (p) => !p.data.draft,
-  )
+  const useses = (await getCollection('uses')).filter((p) => !p.data.draft)
   return useses
     .filter((item) => getLangFromSlug(item.slug) === 'en')
     .map((uses) => {
@@ -22,9 +20,9 @@ export const getStaticPaths = (async () => {
           lang: 'en' as const,
           uses,
         },
-      };
-    });
-}) 
+      }
+    })
+}
 
 const { url } = Astro
 const { t, p } = useI18n(url)

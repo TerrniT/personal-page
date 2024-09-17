@@ -1,0 +1,23 @@
+---
+import Logo from '@components/astro/Logo.astro'
+import Navigation from '@components/astro/layout/Navigation.astro'
+import Socials from '@components/astro/Socials.astro'
+
+import ThemeSwitcher from '@components/react/ThemeSwitcher'
+import LanguageSwitcher from '@components/react/LanguageSwitcher'
+
+const { url } = Astro
+---
+
+<div class="sticky top-0 hidden h-screen w-[220px] flex-col justify-between px-4 py-8 md:flex">
+  <div>
+    <Logo />
+    <Navigation />
+    <Socials />
+  </div>
+
+  <div class="flex gap-x-1 px-2">
+    <ThemeSwitcher client:load side={'right'} />
+    <LanguageSwitcher client:load url={url} />
+  </div>
+</div>

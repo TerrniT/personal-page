@@ -1,11 +1,11 @@
 ---
-import ArrowCard from '@components/ArrowCard.astro'
-
-import PageLayout from '@layouts/PageLayout.astro'
-
 import { useI18n, getLangFromUrl } from '@lib/i18n'
 
 import { getProjectsInfoList } from '@lib/mdx'
+
+import ProjectCard from '@components/astro/ProjectCard.astro'
+
+import PageLayout from '@layouts/PageLayout.astro'
 
 const { url } = Astro
 const { t } = useI18n(url)
@@ -21,7 +21,7 @@ const projects = await getProjectsInfoList(lang)
       {
         projects.map((project) => (
           <li>
-            <ArrowCard item={project} />
+            <ProjectCard item={project} />
           </li>
         ))
       }
