@@ -1,5 +1,8 @@
 ---
-import { t } from 'i18n:astro'
+import { useI18n } from '@lib/i18n'
+
+const { url } = Astro
+const { t } = useI18n(url)
 ---
 
 <button
@@ -17,7 +20,7 @@ import { t } from 'i18n:astro'
       x2="19"
       y2="12"
       class="translate-x-2 scale-x-0 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100"
-    ></line>
+      />
     <polyline
       points="12 5 5 12 12 19"
       class="translate-x-1 transition-transform duration-300 ease-in-out group-hover:translate-x-0"></polyline>

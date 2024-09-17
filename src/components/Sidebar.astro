@@ -1,56 +1,23 @@
 ---
-import { t } from 'i18n:astro'
-
-import Link from '@components/Link.astro'
+import Logo from '@components/Logo.astro'
 import Navigation from '@components/Navigation.astro'
+import Socials from '@components/Socials.astro'
 
 import ThemeSwitcher from '@components/ThemeSwitcher.tsx'
-import LanguageSwitcher from '@components/LanguageSwitcher.astro'
+import LanguageSwitcher from '@components/LanguageSwitcher.tsx'
 
-import { SITE, SOCIALS } from '@consts'
-import { Icon } from 'astro-icon/components'
+const { url } = Astro
 ---
 
 <div class="sticky top-0 hidden h-screen w-[220px] flex-col justify-between px-4 py-8 md:flex">
   <div>
-    <Link href="/">
-      <img
-        src="/cat_logo.png"
-        class="h-16 w-16 cursor-pointer sepia-0 transition-all duration-300 ease-in-out hover:scale-110 hover:sepia"
-        alt="cat logo"
-      />
-    </Link>
-
-    <div class="mt-4 flex flex-col gap-y-2 px-2">
-      <Navigation />
-    </div>
-
-    <div class="mt-12 flex flex-col gap-y-2 px-2">
-      <span class="text-sm font-medium uppercase text-muted-foreground"> {t('navigation.elsewhere')}</span>
-      <ul class="flex flex-col gap-y-2">
-        {
-          SOCIALS.map((item) => (
-            <li class="flex items-center gap-x-2 text-muted-foreground underline-offset-2 transition-all duration-150 ease-linear hover:text-foreground hover:underline">
-              <Link
-                href={item.HREF}
-                external
-                aria-label={`${SITE.NAME} on ${item.HREF}`}
-                classes="flex gap-x-1 items-center"
-                underline={false}
-              >
-                <Icon name={item.ICON} size="1.3rem" />
-
-                <span>{item.NAME}</span>
-              </Link>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+	<Logo/>
+    <Navigation />
+	<Socials/>
   </div>
 
   <div class="flex gap-x-1 px-2">
     <ThemeSwitcher client:load side={'right'} />
-    <LanguageSwitcher />
+	<LanguageSwitcher client:load url={url}/>
   </div>
 </div>

@@ -1,6 +1,10 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+
+export const isProd = import.meta.env.PROD;
+export const isDev = import.meta.env.DEV;
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -37,41 +41,6 @@ export function dateRange(startDate: Date, endDate?: Date | string): string {
   }
 
   return `${startMonth}${startYear} - ${endMonth}${endYear}`;
-}
-
-export const langIconResolver: Record<
-  string,
-  { icon: string; title: string }
-> = {
-  ru: {
-	icon: "twemoji:flag-russia",
-	title: 'Русский'
-  },
-  en: {
-	// icon: "twemoji:flag-united-states",
-	icon: "devicon:nuxtjs",
-	title: 'English'
-  },
-  es: {
-	icon: "twemoji:flag-spain",
-	title: 'Español'
-  },
-  zh: {
-	icon: "twemoji:flag-china",
-	title: '简体中文'
-  },
-  ko: {
-	icon: "twemoji:flag-south-korea",
-	title: '한국어'
-  },
-  nl: {
-	icon: "twemoji:flag-netherlands",
-	title: 'Nederlands'
-  },
-  da: {
-	icon: "twemoji:flag-denmark",
-	title: 'Dansk'
-  }
 }
 
 export const devIconResolver: Record<

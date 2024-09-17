@@ -293,3 +293,60 @@ export function HeroiconsLanguage(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+
+
+export function FlagRussia(props: SVGProps<SVGSVGElement>) {
+	return (<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36" {...props}><path fill="#ce2028" d="M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4v-4h36z"></path><path fill="#22408c" d="M0 13h36v10H0z"></path><path fill="#eee" d="M32 5H4a4 4 0 0 0-4 4v4h36V9a4 4 0 0 0-4-4"></path></svg>);
+}
+
+export function FlagUnitedStates(props: SVGProps<SVGSVGElement>) {
+	return (<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36" {...props}><path fill="#b22334" d="M35.445 7C34.752 5.809 33.477 5 32 5H18v2zM0 25h36v2H0zm18-8h18v2H18zm0-4h18v2H18zM0 21h36v2H0zm4 10h28c1.477 0 2.752-.809 3.445-2H.555c.693 1.191 1.968 2 3.445 2M18 9h18v2H18z"></path><path fill="#eee" d="M.068 27.679q.025.14.059.277q.04.15.092.296c.089.259.197.509.333.743L.555 29h34.89l.002-.004a4 4 0 0 0 .332-.741a4 4 0 0 0 .152-.576c.041-.22.069-.446.069-.679H0c0 .233.028.458.068.679M0 23h36v2H0zm0-4v2h36v-2H18zm18-4h18v2H18zm0-4h18v2H18zM.555 7l-.003.005zM.128 8.044c.025-.102.06-.199.092-.297a4 4 0 0 0-.092.297M18 9h18c0-.233-.028-.459-.069-.68a3.6 3.6 0 0 0-.153-.576A4 4 0 0 0 35.445 7H18z"></path><path fill="#3c3b6e" d="M18 5H4a4 4 0 0 0-4 4v10h18z"></path><path fill="#fff" d="m2.001 7.726l.618.449l-.236.725L3 8.452l.618.448l-.236-.725L4 7.726h-.764L3 7l-.235.726zm2 2l.618.449l-.236.725l.617-.448l.618.448l-.236-.725L6 9.726h-.764L5 9l-.235.726zm4 0l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L9 9l-.235.726zm4 0l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L13 9l-.235.726zm-8 4l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L5 13l-.235.726zm4 0l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L9 13l-.235.726zm4 0l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L13 13l-.235.726zm-6-6l.618.449l-.236.725L7 8.452l.618.448l-.236-.725L8 7.726h-.764L7 7l-.235.726zm4 0l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L11 7l-.235.726zm4 0l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L15 7l-.235.726zm-12 4l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L3 11l-.235.726zM6.383 12.9L7 12.452l.618.448l-.236-.725l.618-.449h-.764L7 11l-.235.726h-.764l.618.449zm3.618-1.174l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L11 11l-.235.726zm4 0l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L15 11l-.235.726zm-12 4l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L3 15l-.235.726zM6.383 16.9L7 16.452l.618.448l-.236-.725l.618-.449h-.764L7 15l-.235.726h-.764l.618.449zm3.618-1.174l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L11 15l-.235.726zm4 0l.618.449l-.236.725l.617-.448l.618.448l-.236-.725l.618-.449h-.764L15 15l-.235.726z"></path></svg>);
+}
+
+export function FlagSpain(props: SVGProps<SVGSVGElement>) {
+	return (<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36" {...props}><path fill="#c60a1d" d="M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4z"></path><path fill="#ffc400" d="M0 12h36v12H0z"></path><path fill="#ea596e" d="M9 17v3a3 3 0 1 0 6 0v-3z"></path><path fill="#f4a2b2" d="M12 16h3v3h-3z"></path><path fill="#dd2e44" d="M9 16h3v3H9z"></path><ellipse cx={12} cy={14.5} fill="#ea596e" rx={3} ry={1.5}></ellipse><ellipse cx={12} cy={13.75} fill="#ffac33" rx={3} ry={0.75}></ellipse><path fill="#99aab5" d="M7 16h1v7H7zm9 0h1v7h-1z"></path><path fill="#66757f" d="M6 22h3v1H6zm9 0h3v1h-3zm-8-7h1v1H7zm9 0h1v1h-1z"></path></svg>);
+}
+
+export function FlagChina(props: SVGProps<SVGSVGElement>) {
+	return (<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36" {...props}><path fill="#de2910" d="M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4z"></path><path fill="#ffde02" d="m11.136 8.977l.736.356l.589-.566l-.111.81l.72.386l-.804.144l-.144.804l-.386-.72l-.81.111l.566-.589zm4.665 2.941l-.356.735l.566.59l-.809-.112l-.386.721l-.144-.805l-.805-.144l.721-.386l-.112-.809l.59.566zm-.957 3.779l.268.772l.817.017l-.651.493l.237.783l-.671-.467l-.671.467l.236-.783l-.651-.493l.817-.017zm-3.708 3.28l.736.356l.589-.566l-.111.81l.72.386l-.804.144l-.144.804l-.386-.72l-.81.111l.566-.589zM7 10.951l.929 2.671l2.826.058l-2.253 1.708l.819 2.706L7 16.479l-2.321 1.615l.819-2.706l-2.253-1.708l2.826-.058z"></path></svg>);
+}
+
+export function FlagSouthKorea(props: SVGProps<SVGSVGElement>) {
+	return (<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36" {...props}><path fill="#eee" d="M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4z"></path><path fill="#c60c30" d="M21.441 13.085a6 6 0 0 0-8.356 1.474A3.001 3.001 0 0 0 18 18a3 3 0 0 1 4.915 3.442a6 6 0 0 0-1.474-8.357"></path><path fill="#003478" d="M22.178 17.264A3 3 0 0 0 18 18a3.001 3.001 0 0 1-4.915-3.442a6 6 0 1 0 9.829 6.882a2.997 2.997 0 0 0-.736-4.176"></path><path fill="#292f33" d="m24.334 25.572l1.928-2.298l.766.643l-1.928 2.298zm2.57-3.063l1.928-2.297l.766.643l-1.928 2.297zm-1.038 4.351l1.928-2.297l.766.643l-1.928 2.297zm2.572-3.066l1.93-2.297l.766.644l-1.93 2.296zm-1.041 4.352l1.93-2.297l.765.643l-1.929 2.297zm2.571-3.065l1.927-2.3l.767.643l-1.927 2.3zm.004-14.162l.766-.643l1.93 2.299l-.767.643zM27.4 7.853l.766-.643l1.928 2.299l-.767.642zm-1.533 1.288l.766-.643l4.5 5.362l-.766.643zm-1.532 1.284l.767-.643l1.927 2.298l-.766.642zm2.57 3.065l.766-.643l1.93 2.297l-.765.643zM6.4 20.854l.766-.643l4.499 5.363l-.767.643zM4.87 22.14l.765-.642l1.929 2.298l-.767.643zm2.567 3.066l.766-.643l1.93 2.297l-.766.643zm-4.101-1.781l.766-.643l4.5 5.362l-.767.643zm-.001-10.852l4.498-5.362l.767.642l-4.5 5.363zm1.532 1.287l4.5-5.363l.766.643l-4.5 5.362zM6.4 15.145l4.5-5.363l.766.643l-4.5 5.363z"></path></svg>);
+}
+
+export function FlagJapan(props: SVGProps<SVGSVGElement>) {
+	return (<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36" {...props}><path fill="#eee" d="M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4z"></path><circle cx={18} cy={18} r={7} fill="#ed1b2f"></circle></svg>);
+}
+
+export function FlagNetherlands(props: SVGProps<SVGSVGElement>) {
+	return (<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36" {...props}><path fill="#eee" d="M0 14h36v8H0z"></path><path fill="#ae1f28" d="M32 5H4a4 4 0 0 0-4 4v5h36V9a4 4 0 0 0-4-4"></path><path fill="#20478b" d="M4 31h28a4 4 0 0 0 4-4v-5H0v5a4 4 0 0 0 4 4"></path></svg>);
+}
+
+export function FlagDenmark(props: SVGProps<SVGSVGElement>) {
+	return (<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36" {...props}><path fill="#c60c30" d="M32 5H15v11h21V9a4 4 0 0 0-4-4M15 31h17c2.209 0 4-1.791 4-4.5V20H15zM0 20v6.5C0 29.209 1.791 31 4 31h7V20zM11 5H4a4 4 0 0 0-4 4v7h11z"></path><path fill="#eee" d="M15 5h-4v11H0v4h11v11h4V20h21v-4H15z"></path></svg>);
+}
+
+export function resolveFlag(locale: string): JSX.Element {
+	switch (locale) {
+		case "ru":
+			return <FlagRussia />;
+		case "en":
+			return <FlagUnitedStates />;
+		case "es":
+			return <FlagSpain />;
+		case "zh":
+			return <FlagChina />;
+		case "ko":
+			return <FlagSouthKorea />;
+		case "ja":
+			return <FlagJapan />;
+		case "nl":
+			return <FlagNetherlands />;
+		case "da":
+			return <FlagDenmark />;
+		default:
+			return <FlagRussia />;
+	}
+}

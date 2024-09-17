@@ -1,0 +1,83 @@
+---
+import { useI18n, getLangFromSlug } from '@lib/i18n'
+import { resolveSlug } from '@lib/mdx'
+import { readingTime } from '@lib/utils'
+
+import { SITE } from '@consts'
+
+import { getCollection } from 'astro:content'
+
+import BackToPrev from '@components/BackToPrev.astro'
+import FormattedDate from '@components/FormattedDate.astro'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+export const getStaticPaths = async () => {
+  const articles = (await getCollection('articles')).filter((p) => !p.data.draft)
+  return articles
+    .filter((item) => getLangFromSlug(item.slug) === 'ru')
+    .map((article) => {
+      return {
+        params: { slug: resolveSlug(article.slug) },
+        props: {
+          lang: 'ru' as const,
+          article,
+        },
+      }
+    })
+}
+
+const { url } = Astro
+const { t, p } = useI18n(url)
+
+const { article } = Astro.props
+
+const { Content } = await article.render()
+
+const title = article.data.title
+const description = article.data.description ?? ''
+const author = article.data.author ?? SITE.NAME
+const readingTimeText = readingTime(article.body)
+---
+
+<PageLayout title={title} description={description} author={author}>
+  <div class="animate">
+    <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
+  </div>
+  <div class="my-10 space-y-1">
+    <div class="animate flex items-center gap-1.5">
+      <div class="font-base text-sm">
+        <FormattedDate date={article.data.date} />
+      </div>
+      &bull;
+      <div class="font-base text-sm">
+        {readingTimeText}
+      </div>
+    </div>
+
+    <p class="animate text-2xl font-semibold text-black dark:text-white">
+      {article.data.title}
+    </p>
+    <div class="my-2 flex flex-row gap-x-2">
+      {
+        article.data.tags &&
+          article.data.tags.length > 0 &&
+          article.data.tags.map((tag) => (
+            <span class="animate w-fit rounded-sm bg-muted-foreground/10 px-1 py-0.5 text-xs text-muted-foreground">
+              {tag}
+            </span>
+          ))
+      }
+    </div>
+    {
+      article.data.cover_url && (
+        <div class="my-5 w-full rounded-md">
+          <img src={'/articles/' + article.data.cover_url} alt={article.data.title} class="animate mt-3 rounded-md" />
+        </div>
+      )
+    }
+  </div>
+  <article class="animate">
+    <Content />
+  </article>
+</PageLayout>

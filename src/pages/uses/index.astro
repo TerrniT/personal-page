@@ -1,0 +1,52 @@
+---
+import UsesLink from '@components/UsesLink.astro'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+import { useI18n, type UiScheme, getLangFromUrl } from '@lib/i18n'
+
+import { getUsesInfoList } from '@lib/mdx'
+
+const { url } = Astro
+const { t } = useI18n(url)
+const lang = getLangFromUrl(url)
+
+const uses = await getUsesInfoList(lang)
+
+const SECTIONS = ['workstation', 'devtools', 'other_software', 'misc'] as const
+
+function getSection(section: string) {
+  return uses.filter((item) => item.data.type === section)
+}
+
+function getSectionLocale(sectionName: string) {
+  return `uses.${sectionName}.heading` as UiScheme
+}
+---
+
+<PageLayout title={t('uses.title')} description={t('uses.description')}>
+  <h1 class="animate text-xl font-semibold text-black dark:text-white">{t('uses.heading')}</h1>
+  <div class="space-y-16">
+    <section>
+      <article class="space-y-4">
+        <p class="animate">
+          {t('uses.paragraph')}
+        </p>
+      </article>
+    </section>
+  </div>
+  {
+    SECTIONS.map((section) => (
+      <div class="mt-14 space-y-6">
+        <h2 class="animate text-lg font-semibold text-black dark:text-white">{t(getSectionLocale(section))}</h2>
+        <ul class="animate flex flex-col gap-4">
+          {getSection(section).map((item) => (
+            <>
+              <UsesLink item={item} />
+            </>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</PageLayout>

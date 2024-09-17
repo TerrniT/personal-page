@@ -1,12 +1,14 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-
-import { getLocalePath } from 'i18n:astro'
-
 import Link from '@components/Link.astro'
 
+import { useI18n } from '@lib/i18n'
+import { type UsesInfo } from '@lib/mdx'
+
+const { url } = Astro
+const { p } = useI18n(url)
+
 type Props = {
-  item: CollectionEntry<'uses'>
+  item: UsesInfo
 }
 
 const { item } = Astro.props
@@ -15,8 +17,7 @@ const { item } = Astro.props
 <li class="flex flex-wrap items-center gap-x-3">
   <span class="block size-1.5 rounded-full bg-primary"></span>
   <div class="flex flex-col gap-x-1 md:flex-row">
-    <Link href={getLocalePath(`/uses/${item.slug.split('/')[1]}`)}>{item.data.title}</Link>
-
+    <Link href={p(item.href)}>{item.data.title}</Link>
     <div class="flex gap-x-1">
       <span class="hidden text-muted-foreground md:block">~</span>
       <span class="text-muted-foreground">{item.data.description}</span>

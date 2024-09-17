@@ -1,7 +1,7 @@
 import type { Site, Metadata, Socials, Navigation } from '@types'
 
 export const SITE: Site = {
-  NAME: 'David Kotovsky',
+  NAME: 'Gleb Kotovsky',
   EMAIL: 'terrnitllc.work@gmail.com',
   DOMAIN: 'https://www-terrnit.vercel.app',
   NUM_POSTS_ON_HOMEPAGE: 4,
@@ -49,27 +49,27 @@ export const SOCIALS: Socials = [
 
 export const NAVIGATION: Navigation[] = [
   {
-    title: 'Home',
+    key: 'home',
     href: '/',
   },
   {
-    title: 'About',
+    key: 'about',
     href: '/about',
   },
   {
-    title: 'Articles',
+    key: 'articles',
     href: '/articles',
   },
   {
-    title: 'Projects',
+    key: 'projects',
     href: '/projects',
   },
   {
-    title: 'Uses',
+    key: 'uses',
     href: '/uses',
   },
   {
-    title: 'Contact',
+    key: 'contact',
     href: '/contact',
   },
 ]

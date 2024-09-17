@@ -1,12 +1,7 @@
 ---
-import { getHtmlAttrs } from 'i18n:astro'
-
 import Head from '@components/Head.astro'
 
 import { SITE } from '@consts'
-
-import I18NClient from '@astrolicious/i18n/components/I18nClient.astro'
-import I18NHead from '@astrolicious/i18n/components/I18nHead.astro'
 
 type Props = {
   title: string
@@ -16,12 +11,10 @@ type Props = {
 const { title, description } = Astro.props
 ---
 
-<!doctype html>
-<html {...getHtmlAttrs()}>
+<!DOCTYPE html>
+<html>
   <head>
     <Head title={`${title} | ${SITE.NAME}`} description={description} />
-    <I18NHead />
-    <I18NClient />
   </head>
   <body>
     <div class="relative flex w-full flex-col md:flex-row">

@@ -1,0 +1,49 @@
+---
+import { useI18n, getLangFromSlug } from '@lib/i18n'
+import { resolveSlug } from '@lib/mdx'
+
+import { getCollection } from 'astro:content'
+
+import BackToPrev from '@components/BackToPrev.astro'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+export const getStaticPaths = (async () => {
+  // TODO: We can add sorting by order in the future
+  const useses = (await getCollection('uses')).filter(
+    (p) => !p.data.draft,
+  )
+  return useses
+    .filter((item) => getLangFromSlug(item.slug) === 'en')
+    .map((uses) => {
+      return {
+        params: { slug: resolveSlug(uses.slug) },
+        props: {
+          lang: 'en' as const,
+          uses,
+        },
+      };
+    });
+}) 
+
+const { url } = Astro
+const { t, p } = useI18n(url)
+
+const { uses } = Astro.props
+
+const { Content } = await uses.render()
+---
+
+<PageLayout title={uses.data.title} description={uses.data.description}>
+  <div class="animate">
+    <BackToPrev href={p('/uses')}> {t('uses.back_to')}</BackToPrev>
+  </div>
+  <div class="my-10 space-y-1">
+    <div class="animate text-2xl font-semibold text-black dark:text-white">
+      {uses.data.title}
+    </div>
+  </div>
+  <article class="animate">
+    <Content />
+  </article>
+</PageLayout>

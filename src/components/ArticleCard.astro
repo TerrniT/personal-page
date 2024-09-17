@@ -1,26 +1,33 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import { Image } from 'astro:assets'
 
-import { getLocalePath } from 'i18n:astro'
+import { useI18n } from '@lib/i18n'
+
+import { type ArticleInfo } from '@lib/mdx'
+
+const { url } = Astro
+const { p } = useI18n(url)
 
 type Props = {
-  entry: CollectionEntry<'articles'>
+  item: ArticleInfo
 }
 
-const { entry } = Astro.props
+const { item } = Astro.props
 ---
 
 <article
   class="group flex w-full flex-nowrap rounded-lg border border-transparent px-3 py-3 transition-colors duration-300 ease-in-out hover:border-black/15 hover:bg-black/5 hover:text-black dark:hover:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
 >
-  <a href={getLocalePath(`/articles/${entry.slug.split('/')[1]}`)} class="flex w-full flex-col no-underline">
+  <a href={p(item.href)} class="flex w-full flex-col no-underline">
     {
-      entry.data.cover_url && (
+      item.cover_url && (
         <div class="mb-3 w-full rounded-md group-hover:cursor-pointer">
-          <img
-            src={'/articles/' + entry.data.cover_url}
-            alt={entry.data.title}
+          <Image
+            src={'/articles/' + item.cover_url}
+            alt={item.title}
             class="animate max-h-44 w-full rounded-md object-cover"
+            height={176}
+            width={320}
           />
         </div>
       )
@@ -28,10 +35,10 @@ const { entry } = Astro.props
 
     <div class="flex flex-col flex-wrap truncate">
       <div class="text-sm font-semibold no-underline hover:underline">
-        {entry.data.title}
+        {item.title}
       </div>
       <div class="text-sm">
-        {entry.data.description}
+        {item.description}
       </div>
     </div>
   </a>

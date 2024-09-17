@@ -1,17 +1,21 @@
 import { defineCollection, z } from 'astro:content'
 
+const DEFAULT_FIELDS = {
+	date: z.coerce.date(),
+    draft: z.boolean().optional(),
+}
+
 const articles = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
-    date: z.coerce.date(),
-    draft: z.boolean().optional(),
     tags: z.array(z.string()).optional(),
     topic: z.string().optional(),
     author: z.string().optional(),
     cover_url: z.string().optional(),
     type: z.enum(['article', 'thought']).optional(),
+    ...DEFAULT_FIELDS,
   }),
 })
 
@@ -20,16 +24,8 @@ const about = defineCollection({
   schema: z.object({
     title: z.string(),
     role: z.string().optional(),
-    date: z.coerce.date().optional(),
     year: z.number(),
-    draft: z.boolean().optional(),
-    event: z
-      .object({
-        title: z.string(),
-        location: z.string(),
-        date: z.coerce.date(),
-      })
-      .optional(),
+    ...DEFAULT_FIELDS,
   }),
 })
 
@@ -44,7 +40,7 @@ const experiences = defineCollection({
 	location: z.string().optional(),
 	icon: z.string().optional(),
 	stack: z.array(z.string()).optional(),
-    draft: z.boolean().optional(),
+    ...DEFAULT_FIELDS,
   }),
 })
 
@@ -53,13 +49,12 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    date: z.coerce.date(),
-    draft: z.boolean().optional(),
     stack: z.array(z.string()).optional(),
     tags: z.array(z.string()).optional(),
     imageUrl: z.string().optional(),
     demoURL: z.string().optional(),
     repoURL: z.string().optional(),
+    ...DEFAULT_FIELDS,
   }),
 })
 
@@ -68,9 +63,9 @@ const uses = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    draft: z.boolean().optional(),
     link: z.string().optional(),
     type: z.enum(['workstation', 'devtools', 'other_software', 'misc']),
+    ...DEFAULT_FIELDS,
   }),
 })
 

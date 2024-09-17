@@ -1,9 +1,0 @@
----
-title: "Keychron K2 V2 brown switches"
-description: "mechanical keyboard #1"
-link: "https://www.keychron.com/collections/keychron-k-series-keyboard/products/keychron-k2-wireless-mechanical-keyboard"
-type: "workstation"
-
----
-
-Voluptatem est quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione distinctio quae maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum dolor. Sit amet consectetur adipisicing elit. Iure illo neque tempora.

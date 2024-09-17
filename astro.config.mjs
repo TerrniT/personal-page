@@ -1,61 +1,64 @@
-import { defineConfig } from 'astro/config'
-import expressiveCode from 'astro-expressive-code'
-import mdx from '@astrojs/mdx'
-import tailwind from '@astrojs/tailwind'
-import vue from '@astrojs/vue'
-import react from '@astrojs/react'
-import icon from 'astro-icon'
-import i18n from '@astrolicious/i18n'
+import { defineConfig } from 'astro/config';
+// import expressiveCode from 'astro-expressive-code';
+import mdx from '@astrojs/mdx';
+import tailwind from '@astrojs/tailwind';
+import vue from '@astrojs/vue';
+import react from '@astrojs/react';
+import icon from 'astro-icon';
+
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeExternalLinks from 'rehype-external-links';
+// import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
+
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www-terrnit.vercel.app',
-  //   output: 'hybrid',
-  integrations: [
-    expressiveCode({
-      themes: ['poimandres', 'solarized-light'],
-    }),
-    mdx(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    vue(),
-    react(),
-    icon(),
-    i18n({
-      defaultLocale: 'en',
-      locales: ['en', 'ru'],
-      pages: {
-        '/contact': {
-          ru: '/contact',
-        },
-        '/about': {
-          ru: '/about',
-        },
-        '/articles': {
-          ru: '/articles',
-        },
-        '/articles/[slug]': {
-          ru: '/articles/[slug]',
-        },
-        '/projects': {
-          ru: '/projects',
-        },
-        '/projects/[slug]': {
-          ru: '/projects/[slug]',
-        },
-        '/uses': {
-          ru: '/uses',
-        },
-        '/uses/[slug]': {
-          ru: '/uses/[slug]',
-        },
-      },
-      client: {
-        data: true,
-        paths: true,
-      },
-      sitemap: true,
-    }),
-  ],
-})
+	site: 'https://www-terrnit.vercel.app',
+	//   output: 'hybrid',
+	integrations: [
+		// expressiveCode({
+		// 	themes: ['poimandres', 'solarized-light']
+		// }),
+		mdx({
+			syntaxHighlight: false,
+			remarkPlugins: [remarkGfm, remarkBreaks],
+			rehypePlugins: [
+			  rehypeSlug,
+			  [
+				rehypeAutolinkHeadings,
+				{
+				  behavior: 'wrap',
+				  properties: {
+					className: ['anchor'],
+				  },
+				},
+			  ],
+			  [
+				rehypeExternalLinks,
+				{
+				  properties: {
+					class: 'external-link',
+				  },
+				  target: '_blank',
+				  rel: ['noopener noreferrer'],
+				},
+			  ],
+			//   [
+			// 	rehypePrettyCode,
+			// 	{
+			// 	  theme: 'css-variables',
+			// 	},
+			//   ],
+			],
+		}),
+		tailwind({
+			applyBaseStyles: false
+		}),
+		vue(),
+		react(),
+		icon()
+	]
+});
