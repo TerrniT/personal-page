@@ -37,6 +37,7 @@
     "eslint": "^9.9.0",
     "eslint-plugin-astro": "^1.2.3",
     "eslint-plugin-jsx-a11y": "^6.8.0",
+    "lodash-es": "^4.17.21",
     "lucide-vue-next": "^0.436.0",
     "nanostores": "^0.11.3",
     "prettier": "^3.3.3",
@@ -70,6 +71,7 @@
     "@iconify-json/ph": "^1.1.14",
     "@iconify-json/simple-icons": "^1.1.114",
     "@iconify-json/twemoji": "^1.2.0",
-    "@tailwindcss/forms": "^0.5.7"
+    "@tailwindcss/forms": "^0.5.7",
+    "@types/lodash-es": "^4.17.12"
   }
 }

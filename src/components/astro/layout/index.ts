@@ -9,6 +9,7 @@ import Logo from "./Logo.astro";
 import Navigation from "./Navigation.astro";
 import Sidebar from "./Sidebar.astro";
 import SocialsLinks from "./SocialsLinks.astro";
+import Aside from "./Aside.astro";
 
 export {
 	BackToPrev,
@@ -21,5 +22,6 @@ export {
 	Logo,
 	Navigation,
 	Sidebar,
-	SocialsLinks
+	SocialsLinks,
+	Aside
 }

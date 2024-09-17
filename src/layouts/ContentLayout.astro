@@ -1,9 +1,14 @@
 ---
-import { Head, Header, Footer, Sidebar, Container, Aside } from '@components/astro/layout'
+import { type Language, getLangFromUrl } from '@lib/i18n'
+import { parseToc } from '@lib/toc'
 
 import { SITE } from '@consts'
 
-import { type Language, getLangFromUrl } from '@lib/i18n'
+import { Head, Header, Footer, Sidebar, Container, Aside } from '@components/astro/layout'
+
+import { TableOfContent } from '@components/react/layout'
+
+import type { CollectionEntry } from 'astro:content'
 
 type Props = {
   title: string
@@ -11,11 +16,13 @@ type Props = {
   author?: string
   image?: string
   lang?: Language
+  content: CollectionEntry<'articles'>
 }
 
-const { title, description, image, author, lang } = Astro.props
+const { title, description, image, author, lang, content } = Astro.props
 
 const htmlLang = lang ?? getLangFromUrl(Astro.url)
+const toc = parseToc(content.body)
 ---
 
 <!doctype html>
@@ -33,7 +40,7 @@ const htmlLang = lang ?? getLangFromUrl(Astro.url)
         <Footer />
       </Container>
       <Aside>
-        <div class="text-xl text-white">Hello</div>
+        <TableOfContent data-animate className="hidden px-2 text-sm md:block" toc={toc} client:visible />
       </Aside>
     </div>
   </body>

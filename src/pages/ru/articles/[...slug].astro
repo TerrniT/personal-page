@@ -11,7 +11,7 @@ import { BackToPrev } from '@components/astro/layout'
 
 import FormattedDate from '@components/astro/FormattedDate.astro'
 
-import PageLayout from '@layouts/PageLayout.astro'
+import ContentLayout from '@layouts/ContentLayout.astro'
 
 export const getStaticPaths = async () => {
   const articles = (await getCollection('articles')).filter((p) => !p.data.draft)
@@ -41,7 +41,7 @@ const author = article.data.author ?? SITE.NAME
 const readingTimeText = readingTime(article.body)
 ---
 
-<PageLayout title={title} description={description} author={author}>
+<ContentLayout title={title} description={description} author={author} content={article}>
   <div class="animate">
     <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
   </div>
@@ -78,7 +78,7 @@ const readingTimeText = readingTime(article.body)
       )
     }
   </div>
-  <article class="animate">
+  <article class="animate mdx">
     <Content />
   </article>
-</PageLayout>
+</ContentLayout>

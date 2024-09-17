@@ -1,11 +1,11 @@
 ---
-title: "Hono.js: Легкий Путь К Эффективным API"
-description: "Первая статья о Hono.js в российском IT-сообществе"
-date: "Aug 26 2024"
-tags: ["hono.js", "bun", "backend", "testing", "middleware"] 
+title: 'Hono.js: Легкий Путь К Эффективным API'
+description: 'Первая статья о Hono.js в российском IT-сообществе'
+date: 'Aug 26 2024'
+tags: ['hono.js', 'bun', 'backend', 'testing', 'middleware']
 topic: Software Development
 author: GoGagoo
-cover_url: "/honojs-the-easy-way-to-efficient-apis.png"
+cover_url: '/honojs-the-easy-way-to-efficient-apis.png'
 type: article
 ---
 
@@ -72,16 +72,16 @@ bun init
 ```ts
 // index.tsx
 Bun.serve({
-	fetch: (req) => {
-		return new Response('Hello from Bun!')
-	},
-	port: process.env.PORT || 3030,
+  fetch: (req) => {
+    return new Response('Hello from Bun!')
+  },
+  port: process.env.PORT || 3030,
 })
 ```
 
 ![Вывод ответа на 3030-ом порту](https://habrastorage.org/r/w1560/getpro/habr/upload_files/8c5/669/7f9/8c56697f9089d3f06137a436ba8a2c84.png)
 
-### 2) Установка и подключение Hono.js
+## 2) Установка и подключение Hono.js
 
 После инициализации проекта сразу же и установим Hono.js :
 
@@ -98,19 +98,19 @@ import { Hono } from 'hono'
 const app = new Hono()
 
 app.get('/hello', (c) => {
-	return c.json({ hello: 'world' })
+  return c.json({ hello: 'world' })
 })
 
 Bun.serve({
-	fetch: app.fetch,
-	port: process.env.PORT || 3030,
+  fetch: app.fetch,
+  port: process.env.PORT || 3030,
 })
 ```
 
 Таким образом, мы избавляем пользовательскую функцию, передав это всё Hono. Теперь HTTP-запросы, поступающие на сервер Bun, будет обрабатываться этой платформой, что нам дает гораздо удобное API:
 ![Ответ на том же порту](https://habrastorage.org/r/w1560/getpro/habr/upload_files/3e3/aeb/82a/3e3aeb82a4e3d4f41eed60ed168c9a9d.png)
 
-### 3) Групповая маршрутизация Hono.js
+## 3) Групповая маршрутизация Hono.js
 
 Следуя по офиц. документации Hono.js , можно увидеть раздел огрупповом роутинге, с помощью которого группируются маршруты через экземпляр Hono и добавлять их в основное приложение методом route.
 
@@ -124,9 +124,9 @@ const book = new Hono()
 
 book.get('/', (c) => c.text('List Books')) // GET /book
 book.get('/:id', (c) => {
-	// GET /book/:id
-	const id = c.req.param('id')
-	return c.text('Get Book: ' + id)
+  // GET /book/:id
+  const id = c.req.param('id')
+  return c.text('Get Book: ' + id)
 })
 book.post('/', (c) => c.text('Create Book')) // POST /book
 
@@ -145,13 +145,13 @@ app.route('/book', bookRouter)
 
 !["Список" книжек на /book](https://habrastorage.org/r/w1560/getpro/habr/upload_files/21b/fae/f89/21bfaef897d2745cf8be2522bfa442d8.png)
 
-### 4) Что же за "c" в аргументах???
+## 4) Что же за "c" в аргументах???
 
 Однако, как вы могли заметить, вместо req используется c , что сокращенно означает объект context . Об этом написано в документации Hono.js .
 
 По факту все исходящие и входящие данные обрабатываются данным объектом. Hono дает возможность возвращать ответы не только через json-формат, но и множеством других (например, html-формат).
 
-### 5) Middleware
+## 5) Middleware
 
 Middleware работает перед/после обработчика. Мы можем получить запрос до диспатча или манипулировать ответом после диспатча:
 
@@ -165,7 +165,7 @@ app.use('*', logger())
 Выполняя различные запросы, в консоли редактора VS Code можно увидеть, как описывается то, что отправляется и что мы получаем с статусом кода:
 ![Отображение запросов и их ответов со статусом кода](https://habrastorage.org/r/w1560/getpro/habr/upload_files/0f9/250/207/0f9250207779e7a701ca92e5d383b848.png)
 
-### 5) Рендеринг JSX
+## 6) Рендеринг JSX
 
 Хотя hono/jsx работает на клиенте, его также можно использовать его при рендеринге контента на стороне сервера
 
@@ -214,7 +214,7 @@ export default Top
 }
 ```
 
-Импортируем компонент <Top /> в корневой файл и отрендрим простенькую разметку:
+Импортируем компонент `<Top />` в корневой файл и отрендрим простенькую разметку:
 
 ```ts
 // index.tsx
@@ -241,12 +241,12 @@ import { expect, test, describe } from 'bun:test'
 import app from './app'
 
 describe('Example', () => {
-	test('GET /posts', async () => {
-		const res = await app.request('/hello')
-		expect(res.status).toBe(200)
-		expect(await res.json()).toEqual({ hello: 'world' })
-	})
-	expect(2 + 2).toBe(4)
+  test('GET /posts', async () => {
+    const res = await app.request('/hello')
+    expect(res.status).toBe(200)
+    expect(await res.json()).toEqual({ hello: 'world' })
+  })
+  expect(2 + 2).toBe(4)
 })
 ```
 
@@ -255,8 +255,8 @@ describe('Example', () => {
 import app from './app'
 
 Bun.serve({
-	fetch: app.fetch,
-	port: process.env.PORT || 3030,
+  fetch: app.fetch,
+  port: process.env.PORT || 3030,
 })
 ```
 
