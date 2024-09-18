@@ -1,15 +1,15 @@
 import { throttle } from 'lodash-es';
 import { useEffect, useState } from 'react';
 
-import { type TOCSection } from '@lib/toc';
 import { cn } from '@lib/utils';
+import { type MarkdownHeading } from 'astro';
 
 export default function TableOfContent({
   toc,
   className,
   ...props
 }: {
-  toc: TOCSection[];
+  toc: MarkdownHeading[];
   className?: string;
 }) {
   const { currentSectionSlug } = useTocScroll(toc);
@@ -33,7 +33,7 @@ export default function TableOfContent({
   );
 }
 
-const useTocScroll = (tableOfContents: TOCSection[]) => {
+const useTocScroll = (tableOfContents: MarkdownHeading[]) => {
   const [currentSectionSlug, setCurrentSectionSlug] = useState<string>();
 
   useEffect(() => {

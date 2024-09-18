@@ -33,7 +33,7 @@ const { t, p } = useI18n(url)
 
 const { article } = Astro.props
 
-const { Content } = await article.render()
+const { Content, headings } = await article.render()
 
 const title = article.data.title
 const description = article.data.description ?? ''
@@ -41,7 +41,7 @@ const author = article.data.author ?? SITE.NAME
 const readingTimeText = readingTime(article.body)
 ---
 
-<ContentLayout title={title} description={description} author={author} content={article}>
+<ContentLayout title={title} description={description} author={author} content={article} headings={headings}>
   <div class="animate">
     <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
   </div>

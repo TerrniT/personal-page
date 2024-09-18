@@ -1,6 +1,5 @@
 ---
 import { type Language, getLangFromUrl } from '@lib/i18n'
-import { parseToc } from '@lib/toc'
 
 import { SITE } from '@consts'
 
@@ -9,6 +8,7 @@ import { Head, Header, Footer, Sidebar, Container, Aside } from '@components/ast
 import { TableOfContent } from '@components/react/layout'
 
 import type { CollectionEntry } from 'astro:content'
+import type { MarkdownHeading } from 'astro'
 
 type Props = {
   title: string
@@ -17,12 +17,12 @@ type Props = {
   image?: string
   lang?: Language
   content: CollectionEntry<'articles'>
+  headings: MarkdownHeading[]
 }
 
-const { title, description, image, author, lang, content } = Astro.props
+const { title, description, image, author, lang, headings } = Astro.props
 
 const htmlLang = lang ?? getLangFromUrl(Astro.url)
-const toc = parseToc(content.body)
 ---
 
 <!doctype html>
@@ -40,7 +40,7 @@ const toc = parseToc(content.body)
         <Footer />
       </Container>
       <Aside>
-        <TableOfContent data-animate className="hidden px-2 text-sm md:block" toc={toc} client:visible />
+        <TableOfContent data-animate className="hidden px-2 text-sm md:block" toc={headings} client:visible />
       </Aside>
     </div>
   </body>
