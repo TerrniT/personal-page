@@ -1,4 +1,4 @@
-import { MarkdownHeading } from "astro"
+import type { MarkdownHeading } from "astro"
 
 /** table-of-content */
 export type TOCSection = TOCSubSection & {
