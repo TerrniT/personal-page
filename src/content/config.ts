@@ -1,8 +1,8 @@
 import { defineCollection, z } from 'astro:content'
 
 const DEFAULT_FIELDS = {
-	date: z.coerce.date(),
-    draft: z.boolean().optional(),
+  date: z.coerce.date(),
+  draft: z.boolean().optional(),
 }
 
 const articles = defineCollection({
@@ -33,13 +33,13 @@ const experiences = defineCollection({
   type: 'content',
   schema: z.object({
     job_title: z.string(),
-	company_name: z.string(),
-	live_url: z.string().optional(),
-	duration: z.string(),
-	description: z.string().optional(),
-	location: z.string().optional(),
-	icon: z.string().optional(),
-	stack: z.array(z.string()).optional(),
+    company_name: z.string(),
+    live_url: z.string().optional(),
+    duration: z.string(),
+    description: z.string().optional(),
+    location: z.string().optional(),
+    icon: z.string().optional(),
+    stack: z.array(z.string()).optional(),
     ...DEFAULT_FIELDS,
   }),
 })

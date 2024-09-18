@@ -1,13 +1,13 @@
 ---
 import { useI18n, getLangFromSlug } from '@lib/i18n'
 import { resolveSlug } from '@lib/mdx'
-import { readingTime } from '@lib/utils'
 
 import { SITE } from '@consts'
 
 import { getCollection } from 'astro:content'
 
 import { BackToPrev } from '@components/astro/layout'
+import { ReadingTimeBadge } from '@components/astro/modules/article'
 
 import FormattedDate from '@components/astro/FormattedDate.astro'
 
@@ -38,10 +38,9 @@ const { Content, headings } = await article.render()
 const title = article.data.title
 const description = article.data.description ?? ''
 const author = article.data.author ?? SITE.NAME
-const readingTimeText = readingTime(article.body)
 ---
 
-<ContentLayout title={title} description={description} author={author} content={article} headings={headings}>
+<ContentLayout {title} {description} {author} content={article} {headings}>
   <div class="animate">
     <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
   </div>
@@ -51,9 +50,7 @@ const readingTimeText = readingTime(article.body)
         <FormattedDate date={article.data.date} />
       </div>
       &bull;
-      <div class="font-base text-sm">
-        {readingTimeText}
-      </div>
+      <ReadingTimeBadge text={article.body} />
     </div>
 
     <p class="animate text-2xl font-semibold text-black dark:text-white">

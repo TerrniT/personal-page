@@ -1,0 +1,25 @@
+---
+import { useI18n } from '@lib/i18n'
+
+interface Props {
+  text: string
+}
+
+const url = Astro.url
+const { text } = Astro.props
+
+const { t } = useI18n(url)
+
+function readingTime(html: string, min_to_read_str: string) {
+  const textOnly = html.replace(/<[^>]+>/g, '')
+  const wordCount = textOnly.split(/\s+/).length
+  const readingTimeMinutes = (wordCount / 200 + 1).toFixed()
+  return min_to_read_str ? `${readingTimeMinutes} ${min_to_read_str}` : `${readingTimeMinutes} min read`
+}
+
+const readingTimeText = readingTime(text, t('reading_time'))
+---
+
+<div class="font-base text-sm">
+  {readingTimeText}
+</div>

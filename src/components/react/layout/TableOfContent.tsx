@@ -2,7 +2,7 @@ import { throttle } from 'lodash-es';
 import { useEffect, useState } from 'react';
 
 import { cn } from '@lib/utils';
-import { type MarkdownHeading } from 'astro';
+import type { MarkdownHeading } from 'astro';
 
 export default function TableOfContent({
   toc,
