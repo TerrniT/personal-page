@@ -4,16 +4,18 @@ import { type Language, getLangFromUrl } from '@lib/i18n'
 import { SITE } from '@consts'
 
 import { Head, Header, Footer, Sidebar, Container, Aside } from '@components/astro/layout'
-
 import { TableOfContent } from '@components/react/layout'
+
+import { ArticleAuthor } from '@components/astro/modules/article'
 
 import type { CollectionEntry } from 'astro:content'
 import type { MarkdownHeading } from 'astro'
+import type { Author } from '@content/_authors'
 
 type Props = {
   title: string
   description: string
-  author?: string
+  author?: Author
   image?: string
   lang?: Language
   content: CollectionEntry<'articles'>
@@ -22,13 +24,14 @@ type Props = {
 
 const { title, description, image, author, lang, headings } = Astro.props
 
+const isShowAuthor = author?.isShowAuthor
 const htmlLang = lang ?? getLangFromUrl(Astro.url)
 ---
 
 <!doctype html>
 <html lang={htmlLang}>
   <head>
-    <Head title={`${title} | ${SITE.NAME}`} description={description} image={image} author={author} />
+    <Head title={`${title} | ${SITE.NAME}`} {description} {image} author={author?.name} />
   </head>
   <body>
     <div class="relative flex w-full flex-col md:flex-row">
@@ -40,6 +43,7 @@ const htmlLang = lang ?? getLangFromUrl(Astro.url)
         <Footer />
       </Container>
       <Aside>
+        {author && isShowAuthor && <ArticleAuthor {author} />}
         <TableOfContent data-animate className="hidden px-2 text-sm md:block" toc={headings} client:visible />
       </Aside>
     </div>

@@ -3,8 +3,9 @@ import { type CollectionEntry, getCollection } from 'astro:content'
 import { getLangFromSlug, type Language } from '@lib/i18n'
 
 import { isDev } from './utils'
+import { SITE } from '@consts'
 
-export type CollectionsType = 'articles' | 'uses' | 'about' | 'experiences' | 'projects'
+export type CollectionsType = 'articles' | 'uses' | 'about' | 'experiences' | 'projects' | 'people'
 export type SlugItemType = CollectionEntry<CollectionsType>
 
 export const isPublished = (item: CollectionEntry<CollectionsType>) => {
@@ -75,6 +76,10 @@ export type UsesInfo = CollectionEntry<'uses'> & {
   href: string
 }
 
+export type PeopleInfo = CollectionEntry<'people'> & {
+  href?: string
+}
+
 export const getUsesInfoList = async (locale: Language = 'en') => {
   const useses = (await getCollection('uses'))
     .filter(isPublished)
@@ -82,6 +87,23 @@ export const getUsesInfoList = async (locale: Language = 'en') => {
     .sort(sortCollectionDateDesc)
 
   return useses.map<UsesInfo>((item) => ({ ...item, href: `/uses/${resolveSlug(item.slug)}` }))
+}
+
+export const getPeopleInfoList = async (locale: Language = 'en') => {
+  const peoples = (await getCollection('people'))
+    .filter(isPublished)
+    .filter((item) => filterByLocale(item, locale))
+    .sort(sortCollectionDateDesc)
+
+  return peoples.map<PeopleInfo>((item) => ({ ...item, href: `/uses/${resolveSlug(item.slug)}` }))
+}
+
+export async function resolveAuthor(author: string, locale: Language = 'en') {
+  const authors = await getPeopleInfoList(locale)
+
+  return authors.find((item) => item.data.name === author)
+    ? authors.find((item) => item.data.name === author)?.data
+    : SITE.AUTHOR
 }
 
 export type ProjectInfo = CollectionEntry<'projects'> & {

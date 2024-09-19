@@ -10,39 +10,40 @@ import FormattedDate from '@components/astro/FormattedDate.astro'
 
 import ContentLayout from '@layouts/ContentLayout.astro'
 import type { CollectionEntry } from 'astro:content'
+import type { PeopleInfo } from '@lib/mdx'
 
 const { url } = Astro
 const { t, p } = useI18n(url)
 
 interface Props {
   data: CollectionEntry<'articles'>
+  author?: PeopleInfo
 }
 
-const { data: article } = Astro.props
+const { data: article, author } = Astro.props
 
 const { Content, headings } = await article.render()
 
 const title = article.data.title
 const description = article.data.description ?? ''
-const author = article.data.author ?? SITE.NAME
 ---
 
-<ContentLayout title={title} description={description} author={author} content={article} headings={headings}>
+<ContentLayout {title} {description} author={author} content={article} {headings}>
   <div class="animate">
     <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
   </div>
   <div class="my-10 space-y-1">
+    <p class="animate text-2xl font-semibold text-black dark:text-white">
+      {article.data.title}
+    </p>
     <div class="animate flex items-center gap-1.5">
       <div class="font-base text-sm">
         <FormattedDate date={article.data.date} />
       </div>
-      &bull;
+      <div class="text-disabled">&bull;</div>
       <ReadingTimeBadge text={article.body} />
     </div>
 
-    <p class="animate text-2xl font-semibold text-black dark:text-white">
-      {article.data.title}
-    </p>
     <div class="my-2 flex flex-row gap-x-2">
       {
         article.data.tags &&

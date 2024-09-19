@@ -7,6 +7,14 @@ export const SITE: Site = {
   NUM_POSTS_ON_HOMEPAGE: 4,
   NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
+
+  AUTHOR: {
+	name: 'TerrniT',
+	avatar: '/avatars/avatar.png',
+	url: 'https://github.com/terrnit',
+	description: 'Software Engineer',
+	isShowAuthor: false,
+  }
 }
 
 export const HOME: Metadata = {

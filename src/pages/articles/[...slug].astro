@@ -1,5 +1,5 @@
 ---
-import { getSlugItem } from '@lib/mdx'
+import { getSlugItem, type PeopleInfo, resolveAuthor } from '@lib/mdx'
 import type { LanguageLocales } from '@lib/i18n'
 
 import { ArticleShell } from '@components/astro/modules/article'
@@ -15,6 +15,8 @@ interface Props {
 }
 
 const { data } = Astro.props
+
+const author = await resolveAuthor(data.data.author)
 ---
 
-<ArticleShell {data} />
+<ArticleShell {data} author={author as PeopleInfo} />

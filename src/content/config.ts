@@ -5,6 +5,18 @@ const DEFAULT_FIELDS = {
   draft: z.boolean().optional(),
 }
 
+const people = defineCollection({
+  type: 'content',
+  schema: z.object({
+    name: z.string().optional(),
+    avatar: z.string().optional(),
+    url: z.string().optional(),
+    description: z.string().optional(),
+	isShowAuthor: z.boolean().optional(),
+    ...DEFAULT_FIELDS,
+  }),
+})
+
 const articles = defineCollection({
   type: 'content',
   schema: z.object({
@@ -12,9 +24,9 @@ const articles = defineCollection({
     description: z.string().optional(),
     tags: z.array(z.string()).optional(),
     topic: z.string().optional(),
-    author: z.string().optional(),
     cover_url: z.string().optional(),
     type: z.enum(['article', 'thought']).optional(),
+    author: z.string(),
     ...DEFAULT_FIELDS,
   }),
 })
@@ -69,4 +81,4 @@ const uses = defineCollection({
   }),
 })
 
-export const collections = { articles, about, projects, uses, experiences }
+export const collections = { articles, about, projects, uses, experiences, people }
