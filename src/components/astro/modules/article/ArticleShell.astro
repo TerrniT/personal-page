@@ -11,13 +11,14 @@ import FormattedDate from '@components/astro/FormattedDate.astro'
 import ContentLayout from '@layouts/ContentLayout.astro'
 import type { CollectionEntry } from 'astro:content'
 import type { PeopleInfo } from '@lib/mdx'
+import type { Author } from '@types'
 
 const { url } = Astro
 const { t, p } = useI18n(url)
 
 interface Props {
   data: CollectionEntry<'articles'>
-  author?: PeopleInfo
+  author?: PeopleInfo | Author
 }
 
 const { data: article, author } = Astro.props
@@ -28,7 +29,7 @@ const title = article.data.title
 const description = article.data.description ?? ''
 ---
 
-<ContentLayout {title} {description} author={author} content={article} {headings}>
+<ContentLayout {title} {description} author={author as Author} content={article} {headings}>
   <div class="animate">
     <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
   </div>
