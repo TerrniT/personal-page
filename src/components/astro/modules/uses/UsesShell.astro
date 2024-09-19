@@ -1,0 +1,33 @@
+---
+import { useI18n } from '@lib/i18n'
+
+import { BackToPrev } from '@components/astro/layout'
+
+import PageLayout from '@layouts/PageLayout.astro'
+import type { CollectionEntry } from 'astro:content'
+
+const { url } = Astro
+const { t, p } = useI18n(url)
+
+interface Props {
+  data: CollectionEntry<'uses'>
+}
+
+const { data: uses } = Astro.props
+
+const { Content } = await uses.render()
+---
+
+<PageLayout title={uses.data.title} description={uses.data.description}>
+  <div class="animate">
+    <BackToPrev href={p('/uses')}> {t('uses.back_to')}</BackToPrev>
+  </div>
+  <div class="my-10 space-y-1">
+    <div class="animate text-2xl font-semibold text-black dark:text-white">
+      {uses.data.title}
+    </div>
+  </div>
+  <article class="animate">
+    <Content />
+  </article>
+</PageLayout>

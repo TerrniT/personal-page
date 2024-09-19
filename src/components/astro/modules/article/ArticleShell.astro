@@ -1,0 +1,68 @@
+---
+import { useI18n } from '@lib/i18n'
+
+import { SITE } from '@consts'
+
+import { BackToPrev } from '@components/astro/layout'
+import { ReadingTimeBadge } from '@components/astro/modules/article'
+
+import FormattedDate from '@components/astro/FormattedDate.astro'
+
+import ContentLayout from '@layouts/ContentLayout.astro'
+import type { CollectionEntry } from 'astro:content'
+
+const { url } = Astro
+const { t, p } = useI18n(url)
+
+interface Props {
+  data: CollectionEntry<'articles'>
+}
+
+const { data: article } = Astro.props
+
+const { Content, headings } = await article.render()
+
+const title = article.data.title
+const description = article.data.description ?? ''
+const author = article.data.author ?? SITE.NAME
+---
+
+<ContentLayout title={title} description={description} author={author} content={article} headings={headings}>
+  <div class="animate">
+    <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
+  </div>
+  <div class="my-10 space-y-1">
+    <div class="animate flex items-center gap-1.5">
+      <div class="font-base text-sm">
+        <FormattedDate date={article.data.date} />
+      </div>
+      &bull;
+      <ReadingTimeBadge text={article.body} />
+    </div>
+
+    <p class="animate text-2xl font-semibold text-black dark:text-white">
+      {article.data.title}
+    </p>
+    <div class="my-2 flex flex-row gap-x-2">
+      {
+        article.data.tags &&
+          article.data.tags.length > 0 &&
+          article.data.tags.map((tag) => (
+            <span class="animate w-fit rounded-sm bg-muted-foreground/10 px-1 py-0.5 text-xs text-muted-foreground">
+              {tag}
+            </span>
+          ))
+      }
+    </div>
+    {
+      article.data.cover_url && (
+        <div class="my-5 w-full rounded-md">
+          <img src={'/articles/' + article.data.cover_url} alt={article.data.title} class="animate mt-3 rounded-md" />
+        </div>
+      )
+    }
+  </div>
+  <article class="animate mdx">
+    <Content />
+  </article>
+</ContentLayout>

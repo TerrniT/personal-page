@@ -1,0 +1,77 @@
+---
+import { useI18n } from '@lib/i18n'
+
+import { Button } from '@components/vue/ui/button'
+
+import { BackToPrev } from '@components/astro/layout'
+
+import FormattedDate from '@components/astro/FormattedDate.astro'
+import StackItems from '@components/astro/StackItems.astro'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+import { Icon } from 'astro-icon/components'
+
+import type { CollectionEntry } from 'astro:content'
+
+const { url } = Astro
+const { t, p } = useI18n(url)
+
+interface Props {
+  data: CollectionEntry<'projects'>
+}
+
+const { data: project } = Astro.props
+
+const { Content } = await project.render()
+---
+
+<PageLayout title={project.data.title} description={project.data.description}>
+  <div class="animate">
+    <BackToPrev href={p('/projects')}> {t('projects.back_to')}</BackToPrev>
+  </div>
+  <div class="my-10">
+    <div class="animate flex items-center gap-1.5">
+      <div class="font-base text-sm">
+        <FormattedDate date={project.data.date} />
+      </div>
+    </div>
+    <div class="animate my-3 text-2xl font-semibold text-black dark:text-white">
+      {project.data.title}
+    </div>
+    {
+      project.data.description && (
+        <div class="animate font-light text-black/50 dark:text-white/50">{project.data.description}</div>
+      )
+    }
+
+    {project.data.stack && project.data.stack.length > 0 && <StackItems items={project.data.stack} />}
+
+    <nav class="animate mt-6 flex gap-x-4">
+      {
+        project.data.repoURL && (
+          <Button external to={project.data.repoURL} variant="secondary" size="sm" classes="animate">
+            <Icon name="devicon:github" size="1.3rem" class="text-black/50 dark:text-white" />
+          </Button>
+        )
+      }
+      {
+        project.data.demoURL && (
+          <Button
+            to={project.data.demoURL}
+            variant="ghost"
+            size="sm"
+            external
+            classes="text-black dark:text-white bg-zinc-400 dark:bg-zinc-800 flex items-center gap-x-1 animate"
+          >
+            <span>Demo</span>
+            <Icon name="ci:external-link" size="1.3rem" />
+          </Button>
+        )
+      }
+    </nav>
+  </div>
+  <article class="animate">
+    <Content />
+  </article>
+</PageLayout>

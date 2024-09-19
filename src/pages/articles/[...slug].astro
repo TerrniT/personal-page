@@ -1,81 +1,20 @@
 ---
-import { useI18n, getLangFromSlug } from '@lib/i18n'
-import { resolveSlug } from '@lib/mdx'
+import { getSlugItem } from '@lib/mdx'
+import type { LanguageLocales } from '@lib/i18n'
 
-import { SITE } from '@consts'
-
-import { getCollection } from 'astro:content'
-
-import { BackToPrev } from '@components/astro/layout'
-import { ReadingTimeBadge } from '@components/astro/modules/article'
-
-import FormattedDate from '@components/astro/FormattedDate.astro'
-
-import ContentLayout from '@layouts/ContentLayout.astro'
+import { ArticleShell } from '@components/astro/modules/article'
+import type { CollectionEntry } from 'astro:content'
 
 export const getStaticPaths = async () => {
-  const articles = (await getCollection('articles')).filter((p) => !p.data.draft)
-  return articles
-    .filter((item) => getLangFromSlug(item.slug) === 'en')
-    .map((article) => {
-      return {
-        params: { slug: resolveSlug(article.slug) },
-        props: {
-          lang: 'en' as const,
-          article,
-        },
-      }
-    })
+  return await getSlugItem('articles')
 }
 
-const { url } = Astro
-const { t, p } = useI18n(url)
+interface Props {
+  lang: LanguageLocales
+  data: CollectionEntry<'articles'>
+}
 
-const { article } = Astro.props
-
-const { Content, headings } = await article.render()
-
-const title = article.data.title
-const description = article.data.description ?? ''
-const author = article.data.author ?? SITE.NAME
+const { data } = Astro.props
 ---
 
-<ContentLayout {title} {description} {author} content={article} {headings}>
-  <div class="animate">
-    <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
-  </div>
-  <div class="my-10 space-y-1">
-    <div class="animate flex items-center gap-1.5">
-      <div class="font-base text-sm">
-        <FormattedDate date={article.data.date} />
-      </div>
-      &bull;
-      <ReadingTimeBadge text={article.body} />
-    </div>
-
-    <p class="animate text-2xl font-semibold text-black dark:text-white">
-      {article.data.title}
-    </p>
-    <div class="my-2 flex flex-row gap-x-2">
-      {
-        article.data.tags &&
-          article.data.tags.length > 0 &&
-          article.data.tags.map((tag) => (
-            <span class="animate w-fit rounded-sm bg-muted-foreground/10 px-1 py-0.5 text-xs text-muted-foreground">
-              {tag}
-            </span>
-          ))
-      }
-    </div>
-    {
-      article.data.cover_url && (
-        <div class="my-5 w-full rounded-md">
-          <img src={'/articles/' + article.data.cover_url} alt={article.data.title} class="animate mt-3 rounded-md" />
-        </div>
-      )
-    }
-  </div>
-  <article class="animate mdx">
-    <Content />
-  </article>
-</ContentLayout>
+<ArticleShell {data} />
