@@ -11,6 +11,6 @@ const { author } = Astro.props
 <div class="mb-10 flex flex-col items-start">
   <img class="h-14 w-14 rounded-full" src={author.avatar} />
 
-  <p class="mt-2 font-semibold text-black dark:text-white">{author.name}</p>
-  <p class="mt-2 text-sm font-medium text-black dark:text-white">{author.description}</p>
+  <p class="text-main-foreground mt-2 font-semibold">{author.name}</p>
+  <p class="mt-2 text-sm font-medium text-muted-foreground">{author.description}</p>
 </div>

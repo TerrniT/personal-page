@@ -25,7 +25,7 @@ function getSectionLocale(sectionName: string) {
 ---
 
 <PageLayout title={t('uses.title')} description={t('uses.description')}>
-  <h1 class="animate text-xl font-semibold text-black dark:text-white">{t('uses.heading')}</h1>
+  <h1 class="animate text-xl font-semibold">{t('uses.heading')}</h1>
   <div class="space-y-16">
     <section>
       <article class="space-y-4">
@@ -38,7 +38,7 @@ function getSectionLocale(sectionName: string) {
   {
     SECTIONS.map((section) => (
       <div class="mt-14 space-y-6">
-        <h2 class="animate text-lg font-semibold text-black dark:text-white">{t(getSectionLocale(section))}</h2>
+        <h2 class="animate text-lg font-semibold">{t(getSectionLocale(section))}</h2>
         <ul class="animate flex flex-col gap-4">
           {getSection(section).map((item) => (
             <>

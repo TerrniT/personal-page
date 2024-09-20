@@ -40,7 +40,7 @@ const experiences = await Promise.all(
 ---
 
 <PageLayout title={t('about.title')} description={t('about.description')}>
-  <h1 class="animate text-xl font-semibold text-black dark:text-white">{t('about.heading')}</h1>
+  <h1 class="animate text-xl font-semibold">{t('about.heading')}</h1>
   <div class="space-y-16">
     <section class="animate flex flex-col items-center space-y-4">
       <article class="space-y-4">
@@ -52,17 +52,17 @@ const experiences = await Promise.all(
     </section>
   </div>
   <!-- <div class="mt-14 space-y-6">
-    <h2 class="animate font-semibold text-black dark:text-white">{t('about.bio.heading')}</h2>
+    <h2 class="animate font-semibold">{t('about.bio.heading')}</h2>
     <ul class="flex flex-col">
       {
         bio.map((entry) => (
           <li class="animate pt-4">
             <div class="flex gap-x-5">
-              <div class="min-w-[66px] border-r-2 border-dashed border-primary pr-2 text-xl font-semibold text-black dark:text-white">
+              <div class="min-w-[66px] border-r-2 border-dashed border-primary pr-2 text-xl font-semibold">
                 {entry.data.year}
               </div>
               <div>
-                <div class="font-semibold text-black dark:text-white">{entry.data.title}</div>
+                <div class="font-semibold">{entry.data.title}</div>
                 {entry.data.date && (
                   <div class="text-sm opacity-75">
                     <FormattedDate date={entry.data.date} />
@@ -80,7 +80,7 @@ const experiences = await Promise.all(
     </ul>
   </div> -->
   <div class="mt-14 space-y-6">
-    <h2 class="animate font-semibold text-black dark:text-white">{t('about.experience.heading')}</h2>
+    <h2 class="animate font-semibold">{t('about.experience.heading')}</h2>
     <ul class="flex flex-col">
       {
         experiences.map((entry) => (
@@ -94,16 +94,16 @@ const experiences = await Promise.all(
     </ul>
   </div>
   <div class="mt-14 space-y-6">
-    <h5 class="animate font-semibold text-black dark:text-white">{t('about.expertise.heading')}</h5>
+    <h5 class="animate font-semibold">{t('about.expertise.heading')}</h5>
 
     <div class="grid w-full grid-cols-1 gap-2 md:grid-cols-3">
       {
         EXPERTISE.map((item) => (
-          <div class="animate relative flex flex-col items-center justify-center gap-y-2 rounded-md bg-zinc-200 p-4 dark:bg-stone-800">
+          <div class="animate relative flex flex-col items-center justify-center gap-y-2 rounded-md bg-secondary p-4">
             <div class="flex flex-col items-center justify-center gap-y-1">
-              <Icon name={item.icon} size="2em" class="text-black dark:text-white" />
+              <Icon name={item.icon} size="2em" class="text-main-foreground" />
               <div class="flex items-center gap-x-2">
-                <p class="text-center font-bold text-black dark:text-white">{item.name}</p>
+                <p class="text-main-foreground text-center font-bold">{item.name}</p>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ const experiences = await Promise.all(
     </div>
   </div>
   <div class="my-14 space-y-6">
-    <h5 class="animate font-semibold text-black dark:text-white">{t('about.hard_skills.heading')}</h5>
+    <h5 class="animate font-semibold">{t('about.hard_skills.heading')}</h5>
     <article class="space-y-4">
       <p class="animate">
         {t('about.hard_skills.paragraph')}
@@ -121,13 +121,13 @@ const experiences = await Promise.all(
     <div class="grid w-full grid-cols-3 gap-2">
       {
         HARD_SKILLS.map((item) => (
-          <div class="animate relative flex flex-col items-center justify-center gap-y-2 rounded-md bg-zinc-200 p-4 dark:bg-stone-800">
+          <div class="animate relative flex flex-col items-center justify-center gap-y-2 rounded-md bg-secondary p-4">
             <div class="flex flex-col items-center justify-center gap-y-1">
               <a href={item.link} target="_blank">
                 <Icon name={item.icon} size="2em" />
               </a>
               <div class="flex items-center gap-x-2">
-                <p class="font-bold text-black dark:text-white">{item.name}</p>
+                <p class="text-main-foreground font-bold">{item.name}</p>
               </div>
             </div>
           </div>

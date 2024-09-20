@@ -16,7 +16,7 @@ const projects = await getProjectsInfoList(lang)
 
 <PageLayout title={t('projects.title')} description={t('projects.description')}>
   <div class="space-y-10">
-    <h1 class="animate text-xl font-semibold text-black dark:text-white">{t('projects.heading')}</h1>
+    <h1 class="animate text-xl font-semibold">{t('projects.heading')}</h1>
     <ul class="animate flex flex-col gap-4">
       {
         projects.map((project) => (

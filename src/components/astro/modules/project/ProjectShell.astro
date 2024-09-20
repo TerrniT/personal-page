@@ -36,12 +36,12 @@ const { Content } = await project.render()
         <FormattedDate date={project.data.date} />
       </div>
     </div>
-    <div class="animate my-3 text-2xl font-semibold text-black dark:text-white">
+    <div class="animate text-main-foreground my-3 text-2xl font-semibold">
       {project.data.title}
     </div>
     {
       project.data.description && (
-        <div class="animate font-light text-black/50 dark:text-white/50">{project.data.description}</div>
+        <div class="animate font-light text-muted-foreground/80">{project.data.description}</div>
       )
     }
 
@@ -50,8 +50,15 @@ const { Content } = await project.render()
     <nav class="animate mt-6 flex gap-x-4">
       {
         project.data.repoURL && (
-          <Button external to={project.data.repoURL} variant="secondary" size="sm" classes="animate">
-            <Icon name="devicon:github" size="1.3rem" class="text-black/50 dark:text-white" />
+          <Button
+            external
+            to={project.data.repoURL}
+            variant="outline"
+            size="sm"
+            classes="flex items-center gap-x-1 animate"
+          >
+            <span>Github</span>
+            <Icon name="devicon:github" size="1.3rem" class="text-secondary-foreground" />
           </Button>
         )
       }
@@ -59,10 +66,10 @@ const { Content } = await project.render()
         project.data.demoURL && (
           <Button
             to={project.data.demoURL}
-            variant="ghost"
+            variant="outline"
             size="sm"
             external
-            classes="text-black dark:text-white bg-zinc-400 dark:bg-zinc-800 flex items-center gap-x-1 animate"
+            classes="flex items-center gap-x-1 animate"
           >
             <span>Demo</span>
             <Icon name="ci:external-link" size="1.3rem" />

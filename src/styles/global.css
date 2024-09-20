@@ -11,16 +11,16 @@
     --primary: hsl(9 96.4% 55.9%);
     --primary-foreground: hsl(9, 74%, 60%);
 
-	--secondary: hsl(9 10% 90%);
+    --secondary: hsl(9 10% 90%);
     --secondary-foreground: hsl(0 0% 0%);
-	
-	--destructive: hsl(0 50% 50%);
+
+    --destructive: hsl(0 50% 50%);
     --destructive-foreground: hsl(9 0% 100%);
 
-	--muted: hsl(-29 10% 95%);
+    --muted: hsl(-29 10% 95%);
     --muted-foreground: hsl(9 0% 40%);
 
-	--accent: hsl(-29 10% 90%);
+    --accent: hsl(-29 10% 90%);
     --accent-foreground: hsl(9 0% 15%);
 
     --popover: hsl(9 0% 100%);
@@ -42,13 +42,13 @@
     --background: hsl(240 10% 3.9%);
     --foreground: hsl(0 0% 98%);
 
-	--primary: hsl(234, 78%, 46%);
+    --primary: hsl(234, 78%, 46%);
     --primary-foreground: hsl(234, 81%, 55%);
 
     --secondary: hsl(240 3.7% 15.9%);
     --secondary-foreground: hsl(0 0% 98%);
 
-	--destructive: hsl(0 62.8% 30.6%);
+    --destructive: hsl(0 62.8% 30.6%);
     --destructive-foreground: hsl(0 0% 98%);
 
     --muted: hsl(240 3.7% 15.9%);
@@ -74,13 +74,13 @@
     --background: hsl(240 10% 3.9%);
     --foreground: hsl(0 0% 98%);
 
-	--primary: hsl(162, 78%, 45%);
+    --primary: hsl(162, 78%, 45%);
     --primary-foreground: hsl(147, 89%, 39%);
 
     --secondary: hsl(240 3.7% 15.9%);
     --secondary-foreground: hsl(0 0% 98%);
 
-	--destructive: hsl(0 62.8% 30.6%);
+    --destructive: hsl(0 62.8% 30.6%);
     --destructive-foreground: hsl(0 0% 98%);
 
     --muted: hsl(240 3.7% 15.9%);
@@ -101,7 +101,6 @@
     --input: hsl(240 3.7% 15.9%);
     --ring: hsl(240 4.9% 83.9%);
   }
-  
 }
 
 /* -- variable --- */
@@ -192,8 +191,9 @@
   }
 
   code {
-    @apply rounded-md p-0.5 text-primary-foreground bg-primary bg-opacity-5;
+    @apply rounded-md bg-primary/10 p-0.5 text-primary-foreground;
   }
+
   code::before,
   code::after {
     content: '';
@@ -212,12 +212,12 @@
 @layer utilities {
   article a {
     @apply font-sans text-current underline underline-offset-2;
-    @apply decoration-black/15 dark:decoration-white/30;
+    @apply decoration-main-foreground/25;
     @apply transition-colors duration-300 ease-in-out;
   }
   article a:hover {
     @apply text-main-foreground;
-    @apply decoration-black/25 dark:decoration-white/50;
+    @apply decoration-main-foreground/50;
   }
 }
 

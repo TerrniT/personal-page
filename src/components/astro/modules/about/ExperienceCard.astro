@@ -17,11 +17,10 @@ const { job_title, company_name, live_url, duration, icon, stack, location } = e
     <span class="font-medium text-muted-foreground">{duration}</span>
   </div>
   <div class="w-full">
-    <h3 class="text-xl font-semibold text-black dark:text-white">
+    <h3 class="text-xl font-semibold">
       {job_title}
     </h3>
     <div class="mb-2 flex gap-x-2 text-muted-foreground">
-		
       <a
         class="cursor-pointer flex gap-x-2 font-medium decoration-wavy transition-all duration-150 ease-linear hover:text-primary hover:underline hover:underline-offset-4"
         href={live_url}
@@ -54,7 +53,7 @@ const { job_title, company_name, live_url, duration, icon, stack, location } = e
         stack &&
           stack.length > 0 &&
           stack.map((stack_item) => (
-            <div class="rounded-md bg-zinc-200 dark:bg-stone-800 p-0.5 px-2 text-[10px] text-muted-foreground md:text-xs">{stack_item}</div>
+            <div class="rounded-md bg-secondary p-0.5 px-2 text-[10px] text-secondary-foreground md:text-xs">{stack_item}</div>
           ))
       }
     </div>
