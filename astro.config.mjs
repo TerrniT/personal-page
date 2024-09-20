@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config'
-import expressiveCode from 'astro-expressive-code';
 import mdx from '@astrojs/mdx'
 import tailwind from '@astrojs/tailwind'
 import vue from '@astrojs/vue'
@@ -16,13 +15,29 @@ import remarkGfm from 'remark-gfm'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www-terrnit.vercel.app',
-  //   output: 'hybrid',
   integrations: [
-    expressiveCode({
-    	themes: ['poimandres', 'solarized-light']
+    tailwind({
+      applyBaseStyles: false,
     }),
+    vue(),
+    react(),
+    icon(),
     mdx({
-      syntaxHighlight: false,
+      //   syntaxHighlight: false,
+      shikiConfig: {
+        theme: 'solarized-dark',
+        themes: {
+          light: 'solarized-light',
+          dark: 'solarized-dark',
+		  'dark-green': 'catppuccin-macchiato'
+        },
+
+        defaultColor: false,
+        cssVariablePrefix: '--shiki-',
+
+        wrap: true,
+      },
+	//   { theme: "css-variables" }
       remarkPlugins: [remarkGfm, remarkBreaks, remarkToc],
       rehypePlugins: [
         rehypeSlug,
@@ -47,11 +62,5 @@ export default defineConfig({
         ],
       ],
     }),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    vue(),
-    react(),
-    icon(),
   ],
 })
