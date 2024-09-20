@@ -315,8 +315,7 @@
 }
 
 .mdx > :where(h1, h2, h3, h4) {
-  color: var(--text-body);
-  font-weight: 600;
+  @apply text-main-foreground font-semibold;
   scroll-margin-top: var(--page-top);
 }
 
@@ -360,4 +359,47 @@
   .mdx .anchor:hover::after {
     opacity: 1;
   }
+}
+
+/* ---- scrollbar ---- */
+* {
+  --scrollbar-size: 16px;
+  --scrollbar-size-min: 44px;
+  --scrollbar-color: var(--primary);
+  
+  scrollbar-color: var(--scrollbar-color) transparent;
+  /* firefox */
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+::-webkit-scrollbar-thumb {
+  min-width: var(--scrollbar-size-min);
+  min-height: var(--scrollbar-size-min);
+  border: 5px solid transparent;
+  border-radius: var(--scrollbar-size);
+  background-clip: padding-box;
+  background-color: var(--scrollbar-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  --scrollbar-color: var(--accent);
+}
+
+::-webkit-scrollbar-thumb:active {
+  --scrollbar-color: var(--accent);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner,
+::-webkit-resizer {
+  display: none;
 }
