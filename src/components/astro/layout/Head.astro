@@ -2,21 +2,15 @@
 // import '@/styles/main.css'
 import '@/styles/global.css'
 
-import '@fontsource/inter/latin-400.css'
-import '@fontsource/inter/latin-600.css'
-import '@fontsource/lora/400.css'
-import '@fontsource/lora/600.css'
-
-import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2'
-import inter600 from '@fontsource/inter/files/inter-latin-600-normal.woff2'
-import lora400 from '@fontsource/lora/files/lora-latin-400-normal.woff2'
-import lora600 from '@fontsource/lora/files/lora-latin-600-normal.woff2'
-
 import { ViewTransitions } from 'astro:transitions'
 
-import { THEME_MAP, STORAGE_THEME_KEY } from '@consts'
-
-import GoogleAnalytics from '@components/astro/GoogleAnalytics.astro'
+import {
+  GoogleAnalytics,
+  AnimationProvider,
+  ThemeProvider,
+  FontPreloadProvider,
+  ScrollProvider,
+} from '@components/astro/layout'
 
 interface Props {
   title: string
@@ -28,12 +22,16 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 const googleAnalyticsId = import.meta.env.GOOGLE_ANALYTICS_ID
-const yandexWebmasterContent = import.meta.env.YANDEX_WEBMASTER_CONTENT || '4645dc62c679e979'
+const yandexWebmasterContent = import.meta.env.YANDEX_WEBMASTER_CONTENT
 
 const { title, description, image = '/default-og-image.png', author } = Astro.props
 ---
 
 <!-- Global Metadata -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content={author} />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
@@ -46,20 +44,8 @@ const { title, description, image = '/default-og-image.png', author } = Astro.pr
 <meta name="msapplication-TileColor" content="#da532c" />
 <meta name="theme-color" content="#ffffff" />
 
-<!-- Font preloads -->
-<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={lora600} as="font" type="font/woff2" crossorigin />
-
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
-
-<!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
-<meta name="author" content={author} />
 
 <!-- Yandex Webmaster -->
 <meta name="yandex-verification" content={yandexWebmasterContent} />
@@ -78,70 +64,9 @@ const { title, description, image = '/default-og-image.png', author } = Astro.pr
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<FontPreloadProvider />
 <ViewTransitions />
-
 <GoogleAnalytics id={googleAnalyticsId} />
-
-<script>
-  import type { TransitionBeforeSwapEvent } from 'astro:transitions/client'
-  document.addEventListener('astro:before-swap', (e) =>
-    [...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll('link[as="font"]')].forEach((link) =>
-      link.remove(),
-    ),
-  )
-</script>
-
-<script is:inline define:vars={{ STORAGE_THEME_KEY, THEME_MAP }}>
-  function init() {
-    onAnimate()
-    onScroll()
-    onPreloadTheme()
-
-    const backToTop = document.getElementById('back-to-top')
-    backToTop?.addEventListener('click', (event) => scrollToTop(event))
-
-    const backToPrev = document.getElementById('back-to-prev')
-    backToPrev?.addEventListener('click', () => window.history.back())
-
-    document.addEventListener('scroll', onScroll)
-  }
-
-  function onAnimate() {
-    const animateElements = document.querySelectorAll('.animate')
-
-    animateElements.forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.add('show')
-      }, index * 150)
-    })
-  }
-
-  function onPreloadTheme() {
-    const userTheme = localStorage.getItem(STORAGE_THEME_KEY)
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-
-    document.documentElement.classList.remove('light', 'dark')
-    document.documentElement.classList.add(userTheme || systemTheme)
-  }
-
-  function onScroll() {
-    if (window.scrollY > 0) {
-      document.documentElement.classList.add('scrolled')
-    } else {
-      document.documentElement.classList.remove('scrolled')
-    }
-  }
-
-  function scrollToTop(event) {
-    event.preventDefault()
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }
-
-  document.addEventListener('DOMContentLoaded', () => init())
-  document.addEventListener('astro:after-swap', () => init())
-
-  onPreloadTheme()
-</script>
+<ThemeProvider />
+<AnimationProvider />
+<ScrollProvider />

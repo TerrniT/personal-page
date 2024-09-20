@@ -1,0 +1,27 @@
+---
+import { THEME_MAP, STORAGE_THEME_KEY } from '@consts'
+---
+
+<script is:inline define:vars={{ STORAGE_THEME_KEY, THEME_MAP }}>
+  function onPreloadTheme() {
+    const localStorageTheme = localStorage.getItem(STORAGE_THEME_KEY)
+
+    const doc = document.firstElementChild
+
+    if (localStorageTheme !== null && localStorageTheme !== 'system') {
+      doc.classList.add(localStorageTheme)
+    } else {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? THEME_MAP['Dark']
+        : THEME_MAP['Light']
+
+      document.documentElement.classList.remove(THEME_MAP['Dark'], THEME_MAP['Light'])
+      document.documentElement.classList.add(systemTheme)
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => onPreloadTheme())
+  document.addEventListener('astro:after-swap', () => onPreloadTheme())
+
+  onPreloadTheme()
+</script>

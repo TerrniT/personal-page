@@ -10,6 +10,14 @@ import Navigation from "./Navigation.astro";
 import Sidebar from "./Sidebar.astro";
 import SocialsLinks from "./SocialsLinks.astro";
 import Aside from "./Aside.astro";
+// Providers
+import AnimationProvider from "./AnimationProvider.astro"
+import ThemeProvider from "./ThemeProvider.astro"
+import FontPreloadProvider from "./FontPreloadProvider.astro"
+import ScrollProvider from "./ScrollProvider.astro"
+
+// Analytics
+import GoogleAnalytics from "./GoogleAnalytics.astro";
 
 export {
 	BackToPrev,
@@ -23,5 +31,10 @@ export {
 	Navigation,
 	Sidebar,
 	SocialsLinks,
-	Aside
+	Aside,
+	AnimationProvider,
+	ThemeProvider,
+	FontPreloadProvider,
+	ScrollProvider,
+	GoogleAnalytics
 }

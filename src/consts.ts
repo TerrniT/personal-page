@@ -1,7 +1,10 @@
-import type { Site, Metadata, Socials, Navigation } from '@types'
+import type { Site, Socials, Navigation } from '@types'
 
 export const SITE: Site = {
+  TITLE: 'TerrniT',
+  DESCRIPTION: 'TerrniT',
   NAME: 'Gleb Kotovsky',
+  OG_IMAGE_URL: '/avatars/avatar.png',
   EMAIL: 'terrnitllc.work@gmail.com',
   DOMAIN: 'https://www-terrnit.vercel.app',
   NUM_POSTS_ON_HOMEPAGE: 4,
@@ -9,32 +12,27 @@ export const SITE: Site = {
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 
   AUTHOR: {
-	name: 'TerrniT',
-	avatar: '/avatars/avatar.png',
-	url: 'https://github.com/terrnit',
-	description: 'Software Engineer',
-	isShowAuthor: false,
-  }
-}
-
-export const HOME: Metadata = {
-  TITLE: 'Home',
-  DESCRIPTION: 'Astro Nano is a minimal and lightweight blog and portfolio.',
+    name: 'TerrniT',
+    avatar: '/avatars/avatar.png',
+    url: 'https://github.com/terrnit',
+    description: 'Software Engineer',
+    isShowAuthor: false,
+  },
 }
 
 export const SOCIALS: Socials = [
   {
-	ICON: 'fa6-brands:square-x-twitter',
+    ICON: 'fa6-brands:square-x-twitter',
     NAME: 'Twitter-x',
     HREF: 'https://twitter.com/gaundergod',
   },
   {
-	ICON: 'fa6-brands:github',
+    ICON: 'fa6-brands:github',
     NAME: 'Github',
     HREF: 'https://github.com/terrnit',
   },
   {
-	ICON: 'fa6-brands:linkedin',
+    ICON: 'fa6-brands:linkedin',
     NAME: 'Linkedin',
     HREF: 'https://www.linkedin.com/in/terrnit',
   },
@@ -49,10 +47,10 @@ export const SOCIALS: Socials = [
     HREF: 'https://www.youtube.com/channel/UC-Xu_hPhWucbV06VeyyIZig',
   },
   {
-	ICON: 'fa6-brands:telegram',
-	NAME: 'Telegram',
-	HREF: 'https://t.me/terrnit',
-  }
+    ICON: 'fa6-brands:telegram',
+    NAME: 'Telegram',
+    HREF: 'https://t.me/terrnit',
+  },
 ]
 
 export const NAVIGATION: Navigation[] = [
@@ -131,12 +129,11 @@ export const EXPERTISE = [
   },
 ]
 
-
-
 export const THEME_MAP = {
-	light: 'light',
-	dark: 'dark',
-	system: undefined,
-} as const;
+  Light: 'light',
+  Dark: 'dark',
+  'Dark Green': 'dark-green',
+  System: 'system',
+} as const
 
-export const STORAGE_THEME_KEY = 'theme' as const;
+export const STORAGE_THEME_KEY = 'theme' as const

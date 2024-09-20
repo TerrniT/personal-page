@@ -44,7 +44,6 @@ const articles = (await getPostInfoList(lang)).slice(0, SITE.NUM_POSTS_ON_HOMEPA
         {t('home.cta.about')}
       </Button>
     </section>
-
     {
       articles && articles.length > 0 && (
         <section class="animate space-y-6">
