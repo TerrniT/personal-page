@@ -4,71 +4,155 @@ import PageLayout from '@layouts/PageLayout.astro'
 
 <PageLayout title="Playground" description="Playground">
   <div class="bg-main mb-12 space-y-16">
-    <div class="text-main-foreground text-4xl">Light</div>
+    <div class="text-main-foreground text-4xl">Dark Theme</div>
     <section class="animate grid grid-cols-5 gap-4">
       <div class="flex flex-col items-center gap-y-2">
-        <div class="bg-main size-12 rounded-lg p-4"></div>
+        <div class="bg-main size-12 rounded-lg border border-border p-4"></div>
         <div class="text-main-foreground text-center">Main Background</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="bg-main-foreground size-12 rounded-lg p-4"></div>
+        <div class="bg-main-foreground size-12 rounded-lg border border-border p-4"></div>
         <div class="text-main-foreground text-center">Main Foreground</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-primary p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-primary p-4"></div>
         <div class="text-main-foreground text-center">Primary Background</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-primary-foreground p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-primary-foreground p-4"></div>
         <div class="text-main-foreground text-center">Primary Foreground</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-secondary p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-secondary p-4"></div>
         <div class="text-main-foreground text-center">Secondary Background</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-secondary-foreground p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-secondary-foreground p-4"></div>
         <div class="text-main-foreground text-center">Secondary Foreground</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-destructive p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-destructive p-4"></div>
         <div class="text-main-foreground text-center">Destructive Background</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-destructive-foreground p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-destructive-foreground p-4"></div>
         <div class="text-main-foreground text-center">Destructive Foreground</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-muted p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-muted p-4"></div>
         <div class="text-main-foreground text-center">Muted Background</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-muted-foreground p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-muted-foreground p-4"></div>
         <div class="text-main-foreground text-center">Muted Foreground</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-accent p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-accent p-4"></div>
         <div class="text-main-foreground text-center">Accent Background</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-accent-foreground p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-accent-foreground p-4"></div>
         <div class="text-main-foreground text-center">Accent Foreground</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-popover p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-popover p-4"></div>
         <div class="text-center text-popover-foreground">Popover Background</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-popover-foreground p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-popover-foreground p-4"></div>
         <div class="text-center text-popover-foreground">Popover Foreground</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-card p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-card p-4"></div>
         <div class="text-center text-card-foreground">Card Background</div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
-        <div class="size-12 rounded-lg bg-card-foreground p-4"></div>
+        <div class="size-12 rounded-lg border border-border bg-card-foreground p-4"></div>
         <div class="text-center text-card-foreground">Card Foreground</div>
+      </div>
+    </section>
+
+    <div class="text-main-foreground text-4xl">Opacity / Primary Background</div>
+    <section class="animate grid grid-cols-5 gap-4">
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary p-4"></div>
+        <div class="text-main-foreground text-center">100%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/95 p-4"></div>
+        <div class="text-main-foreground text-center">95%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/90 p-4"></div>
+        <div class="text-main-foreground text-center">90%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/85 p-4"></div>
+        <div class="text-main-foreground text-center">85%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/80 p-4"></div>
+        <div class="text-main-foreground text-center">80%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/75 p-4"></div>
+        <div class="text-main-foreground text-center">75%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/70 p-4"></div>
+        <div class="text-main-foreground text-center">70%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/65 p-4"></div>
+        <div class="text-main-foreground text-center">65%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/60 p-4"></div>
+        <div class="text-main-foreground text-center">60%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/55 p-4"></div>
+        <div class="text-main-foreground text-center">55%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/50 p-4"></div>
+        <div class="text-main-foreground text-center">50%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/45 p-4"></div>
+        <div class="text-main-foreground text-center">45%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/40 p-4"></div>
+        <div class="text-main-foreground text-center">40%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/35 p-4"></div>
+        <div class="text-main-foreground text-center">35%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/30 p-4"></div>
+        <div class="text-main-foreground text-center">30%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/25 p-4"></div>
+        <div class="text-main-foreground text-center">25%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/20 p-4"></div>
+        <div class="text-main-foreground text-center">20%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/15 p-4"></div>
+        <div class="text-main-foreground text-center">15%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/10 p-4"></div>
+        <div class="text-main-foreground text-center">10%</div>
+      </div>
+      <div class="flex flex-col items-center gap-y-2">
+        <div class="size-12 rounded-lg border border-border bg-primary/5 p-4"></div>
+        <div class="text-main-foreground text-center">5%</div>
       </div>
     </section>
   </div>

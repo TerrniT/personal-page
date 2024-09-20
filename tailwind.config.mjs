@@ -1,8 +1,17 @@
 import animate from 'tailwindcss-animate'
 import forms from '@tailwindcss/forms'
 import typography from '@tailwindcss/typography'
-import defaultTheme from "tailwindcss/defaultTheme";
+import defaultTheme from 'tailwindcss/defaultTheme'
 
+/**
+ * Convert a CSS variable (e.g. `--primary`) containing a HSL color to a HSLA color.
+ * <alpha-value> - the opacity of the color passing by tailwind runtime
+ * @param {string} color - The CSS variable containing a HSL color
+ * @returns {string} A HSLA color string
+ */
+function parseHslColorToHsla(color) {
+  return `color-mix(in hsl, var(${color}) calc(<alpha-value> * 100%), transparent)`
+}
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -26,44 +35,44 @@ export default {
         serif: ['Lora', ...defaultTheme.fontFamily.serif],
       },
       colors: {
-		main: {
-			DEFAULT: 'var(--background)',
-			foreground: 'var(--foreground)',
-		},
-        primary: {
-          DEFAULT: 'var(--primary)',
-          foreground: 'var(--primary-foreground)',
+        main: {
+          DEFAULT: parseHslColorToHsla('--background'),
+          foreground: parseHslColorToHsla('--foreground'),
         },
+		primary: {
+			DEFAULT: parseHslColorToHsla('--primary'),
+			foreground: parseHslColorToHsla('--primary-foreground'),
+		},
         secondary: {
-          DEFAULT: 'var(--secondary)',
-          foreground: 'var(--secondary-foreground)',
+          DEFAULT: parseHslColorToHsla('--secondary'),
+          foreground: parseHslColorToHsla('--secondary-foreground'),
         },
         destructive: {
-          DEFAULT: 'var(--destructive)',
-          foreground: 'var(--destructive-foreground)',
+          DEFAULT: parseHslColorToHsla('--destructive'),
+          foreground: parseHslColorToHsla('--destructive-foreground'),
         },
         muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)',
+          DEFAULT: parseHslColorToHsla('--muted'),
+          foreground: parseHslColorToHsla('--muted-foreground'),
         },
         accent: {
-          DEFAULT: 'var(--accent)',
-          foreground: 'var(--accent-foreground)',
+          DEFAULT: parseHslColorToHsla('--accent'),
+          foreground: parseHslColorToHsla('--accent-foreground'),
         },
         popover: {
-          DEFAULT: 'var(--popover)',
-          foreground: 'var(--popover-foreground)',
+          DEFAULT: parseHslColorToHsla('--popover'),
+          foreground: parseHslColorToHsla('--popover-foreground'),
         },
         card: {
-          DEFAULT: 'var(--card)',
-          foreground: 'var(--card-foreground)',
+          DEFAULT: parseHslColorToHsla('--card'),
+          foreground: parseHslColorToHsla('--card-foreground'),
         },
 
-		selection: 'var(--selection)',
+        selection: parseHslColorToHsla('--selection'),
 
-        border: 'var(--border)',
-        input: 'var(--input)',
-        ring: 'var(--ring)',
+        border: parseHslColorToHsla('--border'),
+        input: parseHslColorToHsla('--input'),
+        ring: parseHslColorToHsla('--ring'),
       },
       borderRadius: {
         xl: 'calc(var(--radius) + 4px)',
