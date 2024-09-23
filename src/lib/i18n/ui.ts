@@ -29,8 +29,11 @@ export const ui = {
     'home.cta.explore': 'Explore projects',
     'home.cta.about': 'About me',
 
-    'home.latest_posts.h5': 'Latest posts',
-    'home.latest_posts.link': 'See all posts',
+    'home.latest_articles.h5': 'Latest posts',
+    'home.latest_articles.link': 'See all posts',
+
+	'home.latest_notes.h5': 'Latest notes',
+    'home.latest_notes.link': 'See all notes',
 
     'home.recent_projects.h5': 'Recent projects',
     'home.recent_projects.link': 'See all projects',
@@ -139,8 +142,11 @@ export const ui = {
     'home.cta.explore': 'Больше моих работ',
     'home.cta.about': 'Обо мне',
 
-    'home.latest_posts.h5': 'Последние посты',
-    'home.latest_posts.link': 'Все посты',
+    'home.latest_articles.h5': 'Последние посты',
+    'home.latest_articles.link': 'Все посты',
+
+	'home.latest_notes.h5': 'Последние заметки',
+	'home.latest_notes.link': 'Все заметки',
 
     'home.recent_projects.h5': 'Последние проекты',
     'home.recent_projects.link': 'Все проекты',

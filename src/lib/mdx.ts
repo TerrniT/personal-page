@@ -45,7 +45,7 @@ export type ArticleInfo = {
   topic?: string
   author?: string
   cover_url?: string
-  type?: 'article'
+  type?: 'article' | 'note'
 
   href: string
   isExternal?: boolean
@@ -66,7 +66,7 @@ export const getPostInfoList = async (locale: Language = 'en') => {
     topic: item.data.topic,
     author: item.data.author,
     cover_url: item.data.cover_url,
-    type: 'article',
+    type: item.data.type ?? 'article',
     href: `/articles/${resolveSlug(item.slug)}`,
     lang: getLangFromSlug(item.slug),
   }))

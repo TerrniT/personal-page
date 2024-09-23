@@ -1,5 +1,5 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
+import { getPostInfoList } from "@lib/mdx";
 
 import { SITE } from "@consts";
 
@@ -8,13 +8,11 @@ type Context = {
 }
 
 export async function GET(context: Context) {
-  const article = (await getCollection("articles"))
-  .filter(post => !post.data.draft);
+	const articles = await getPostInfoList("en")
+//   const projects = (await getCollection("projects"))
+//     .filter(project => !project.data.draft);
 
-  const projects = (await getCollection("projects"))
-    .filter(project => !project.data.draft);
-
-  const items = [...article, ...projects]
+  const items = [...articles]
     .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 
   return rss({

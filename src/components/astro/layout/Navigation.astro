@@ -13,7 +13,7 @@ const { t, p } = useI18n(url)
   <ul class="flex flex-col gap-y-2" slot="navigation">
     {
       NAVIGATION.map((item) => (
-        <li class="text-muted-foreground transition-colors duration-150 ease-linear hover:text-foreground">
+        <li class="hover:text-foreground text-muted-foreground transition-colors duration-150 ease-linear">
           <Link href={p(`${item.href}`)} aria-label={`${SITE.NAME} on ${item.key}`} underline={false}>
             {t(`navigation.${item.key}`)}
           </Link>

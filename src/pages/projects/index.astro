@@ -18,13 +18,7 @@ const projects = await getProjectsInfoList(lang)
   <div class="space-y-10">
     <h1 class="animate text-xl font-semibold">{t('projects.heading')}</h1>
     <ul class="animate flex flex-col gap-4">
-      {
-        projects.map((project) => (
-          <li>
-            <ProjectCard item={project} />
-          </li>
-        ))
-      }
+      {projects.map((project) => <ProjectCard item={project} />)}
     </ul>
   </div>
 </PageLayout>

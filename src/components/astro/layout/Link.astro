@@ -15,7 +15,7 @@ const { href, external, underline = true, classes, ...rest } = Astro.props
   href={href}
   target={external ? '_blank' : '_self'}
   class={cn(
-    'inline-block decoration-text-main-foreground/25 hover:decoration-muted-foreground/65 hover:text-muted-foreground text-main-foreground transition-colors duration-300 ease-in-out',
+    'inline-block decoration-text-main-foreground/25 hover:decoration-muted-foreground/65 hover:text-secondary-foreground text-muted-foreground transition-colors duration-300 ease-in-out',
     underline && 'underline underline-offset-2',
     classes,
   )}

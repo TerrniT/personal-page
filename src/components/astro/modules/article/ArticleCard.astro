@@ -13,33 +13,50 @@ type Props = {
 }
 
 const { item } = Astro.props
+
+const hasCover = !!item.cover_url
 ---
 
-<article
-  class="hover:text-main-foreground group flex w-full flex-nowrap rounded-lg border border-border px-3 py-3 transition-colors duration-300 ease-in-out hover:border-border/55 hover:bg-secondary"
+<li
+  class:list={['col-span-1 h-fit', { 'h-full': hasCover, 'col-span-2': !hasCover }]}
+  class="group flex w-full flex-nowrap items-center rounded-lg border border-border/20 transition-colors duration-200 ease-in-out hover:bg-secondary hover:text-main-foreground md:col-span-2"
 >
-  <a href={p(item.href)} class="flex w-full flex-col no-underline">
-    {
-      item.cover_url && (
-        <div class="mb-3 w-full rounded-md group-hover:cursor-pointer">
-          <Image
-            src={'/articles/' + item.cover_url}
-            alt={item.title}
-            class="animate max-h-44 w-full rounded-md object-cover"
-            height={176}
-            width={320}
-          />
+  <article class="w-full">
+    <a
+      href={p(item.href)}
+      class="flex w-full justify-between p-3 no-underline"
+      class:list={['flex-row', { 'flex-col': hasCover }, { 'items-center': !hasCover }]}
+    >
+      {
+        item.cover_url && (
+          <div class="mb-3 w-full rounded-md group-hover:cursor-pointer">
+            <Image
+              src={'/articles/' + item.cover_url}
+              alt={item.title}
+              class="animate max-h-56 w-full rounded-md object-cover"
+              height={236}
+              width={320}
+            />
+          </div>
+        )
+      }
+      <div class="flex flex-col flex-wrap truncate">
+        <div class="text-sm font-semibold text-main-foreground">
+          {item.title}
         </div>
-      )
-    }
-
-    <div class="flex flex-col flex-wrap truncate">
-      <div class="text-sm font-semibold no-underline hover:underline">
-        {item.title}
+        <div
+          class="text-sm text-muted-foreground/50 transition-colors duration-150 ease-linear group-hover:text-muted-foreground"
+        >
+          {item.description}
+        </div>
       </div>
-      <div class="text-sm">
-        {item.description}
-      </div>
-    </div>
-  </a>
-</article>
+      {
+        !hasCover && (
+          <div class="flex flex-col flex-wrap truncate">
+            <div class="text-sm text-muted-foreground">{item.topic}</div>
+          </div>
+        )
+      }
+    </a>
+  </article>
+</li>

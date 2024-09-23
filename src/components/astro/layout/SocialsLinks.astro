@@ -16,7 +16,7 @@ const { t } = useI18n(url)
   <ul class="flex flex-col gap-y-2">
     {
       SOCIALS.map((item) => (
-        <li class="flex items-center gap-x-2 text-muted-foreground underline-offset-2 transition-all duration-150 ease-linear hover:text-foreground hover:underline">
+        <li class="flex items-center gap-x-2 underline-offset-2 transition-all duration-150 ease-linear hover:underline">
           <Link
             href={item.HREF}
             external
