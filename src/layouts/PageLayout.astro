@@ -11,9 +11,10 @@ type Props = {
   author?: string
   image?: string
   lang?: Language
+  isCustomTitle?: boolean
 }
 
-const { title, description, image, author, lang } = Astro.props
+const { title, description, image, author, lang, isCustomTitle } = Astro.props
 
 const htmlLang = lang ?? getLangFromUrl(Astro.url)
 ---
@@ -21,7 +22,12 @@ const htmlLang = lang ?? getLangFromUrl(Astro.url)
 <!doctype html>
 <html lang={htmlLang}>
   <head>
-    <Head title={`${title} | ${SITE.NAME}`} description={description} image={image} author={author} />
+    <Head
+      title={isCustomTitle ? title : `${title} | ${SITE.NAME}`}
+      description={description}
+      image={image}
+      author={author}
+    />
   </head>
   <body>
     <div class="relative flex w-full flex-col md:flex-row">

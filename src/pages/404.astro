@@ -17,13 +17,13 @@ const description = t('404.description')
 ---
 
 <ErrorLayout title={title} description={description}>
-  <div class="relative flex h-screen w-full items-center justify-center bg-background">
+  <div class="bg-background relative flex h-screen w-full items-center justify-center">
     <Container>
       <div class="flex flex-col-reverse items-center justify-around md:flex-row">
         <div class="prose">
           <h1 class="text-uppercase w-fit rounded-md bg-primary/10 px-1 text-4xl text-primary/80">404</h1>
 
-          <p class="my-4 text-3xl font-semibold text-foreground">{t('404.heading')}</p>
+          <p class="text-foreground my-4 text-3xl font-semibold">{t('404.heading')}</p>
           <p class="mb-6 mt-2 text-xl font-light text-secondary-foreground">{t('404.paragraph')}</p>
 
           <Link href={p('/')} aria-label={`${SITE.NAME} on Home`}> {t('404.back_to')} </Link>

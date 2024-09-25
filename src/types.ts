@@ -38,7 +38,7 @@ export type NavigationKeys =
   | 'projects'
   | 'uses'
   | 'contact'
-  | 'friends'
+  | 'people'
   | 'photos'
   | 'playlist'
 

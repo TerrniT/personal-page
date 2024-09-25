@@ -6,7 +6,7 @@ export const SITE: Site = {
   NAME: 'Gleb Kotovsky',
   OG_IMAGE_URL: '/avatars/avatar.png',
   EMAIL: 'terrnitllc.work@gmail.com',
-  DOMAIN: 'https://www-terrnit.vercel.app',
+  DOMAIN: 'terrnit.vercel.app',
   NUM_POSTS_ON_HOMEPAGE: 4,
   NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
@@ -69,6 +69,10 @@ export const NAVIGATION: Navigation[] = [
   {
     key: 'projects',
     href: '/projects',
+  },
+  {
+    key: 'people',
+    href: '/people',
   },
   {
     key: 'uses',

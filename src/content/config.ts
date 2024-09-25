@@ -9,10 +9,22 @@ const people = defineCollection({
   type: 'content',
   schema: z.object({
     name: z.string().optional(),
+    nickname: z.string().optional(),
+    description: z.string().optional(),
     avatar: z.string().optional(),
     url: z.string().optional(),
-    description: z.string().optional(),
-	isShowAuthor: z.boolean().optional(),
+    github_url: z.string().optional(),
+    isShowAuthor: z.boolean().optional(),
+    tags: z
+      .array(
+        z
+          .union([
+            z.object({ name: z.string(), color: z.string() }).optional(),
+            z.object({ name: z.string(), color: z.string(), icon: z.string().optional() }).optional(),
+          ])
+          .optional(),
+      )
+      .optional(),
     ...DEFAULT_FIELDS,
   }),
 })

@@ -621,7 +621,7 @@ code[data-line-numbers-max-digits='3'] > [data-line]::before {
 * {
   --scrollbar-size: 16px;
   --scrollbar-size-min: 44px;
-  --scrollbar-color: var(--primary);
+  --scrollbar-color: var(--secondary);
 
   scrollbar-color: var(--scrollbar-color) transparent;
   /* firefox */

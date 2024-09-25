@@ -1,0 +1,34 @@
+---
+import { useI18n, getLangFromUrl } from '@lib/i18n'
+
+import PageLayout from '@layouts/PageLayout.astro'
+import { PeopleCard, PeopleList } from '@components/astro/modules/people'
+
+import { getPeopleInfoList } from '@lib/mdx'
+
+const { url } = Astro
+const { t } = useI18n(url)
+
+const lang = getLangFromUrl(url)
+
+const people = await getPeopleInfoList(lang)
+---
+
+<PageLayout title={t('people.title')} description={t('people.description')}>
+  <div class="space-y-16">
+    <section class="animate space-y-4">
+      <h4 class="text-xl font-semibold">{t('people.title')}</h4>
+      <article>
+        <p>
+          {t('people.paragraph')}
+        </p>
+      </article>
+    </section>
+
+    <section class="animate space-y-6">
+      <PeopleList>
+        {people.map((p) => <PeopleCard item={p} />)}
+      </PeopleList>
+    </section>
+  </div>
+</PageLayout>

@@ -144,6 +144,9 @@ importers:
         specifier: ^3.4.38
         version: 3.5.3(typescript@5.5.4)
     devDependencies:
+      '@iconify-icons/heroicons':
+        specifier: ^1.2.9
+        version: 1.2.9
       '@iconify-icons/ic':
         specifier: ^1.2.13
         version: 1.2.13
@@ -156,8 +159,14 @@ importers:
       '@iconify-json/devicon':
         specifier: ^1.1.50
         version: 1.2.0
+      '@iconify-json/fa-brands':
+        specifier: ^1.2.0
+        version: 1.2.0
       '@iconify-json/fa6-brands':
         specifier: ^1.1.22
+        version: 1.2.0
+      '@iconify-json/heroicons':
+        specifier: ^1.2.0
         version: 1.2.0
       '@iconify-json/ic':
         specifier: ^1.2.0
@@ -655,6 +664,9 @@ packages:
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
 
+  '@iconify-icons/heroicons@1.2.9':
+    resolution: {integrity: sha512-bZN3gLVVEQ9pVbvs15Vl2x9xSyOO8ZXRpWHo/qzlJLdB5VqNbw0Jgrmt4B1fLQexik6oKp/aau0eaddju7M7Tg==}
+
   '@iconify-icons/ic@1.2.13':
     resolution: {integrity: sha512-9Y3DLark8PYGtsHuWqbYxo2xAquL9vFQBZKRkpHuntyQJxBDLsfm3OO8mRbj2EmaAQR65pecH77DqQaLnN7yJQ==}
 
@@ -667,8 +679,14 @@ packages:
   '@iconify-json/devicon@1.2.0':
     resolution: {integrity: sha512-SIXfetfS8uSC5oZasGn0FtPSIeryriUNXK2kqvMFK2zeSKTRojbsubLdjmxUJcJ5dlBv3M6nVTB+P3u8jlckLA==}
 
+  '@iconify-json/fa-brands@1.2.0':
+    resolution: {integrity: sha512-063zve/7GEfzEnlDQycVQbcrx6MD206bmrnWLYaPFvLcPVioN8DGPbOBzpy3/zI2RQFe/T+ZuCB8XWi+AmBR9w==}
+
   '@iconify-json/fa6-brands@1.2.0':
     resolution: {integrity: sha512-2f5AeUbufKeU/JY+cbX6dOsPaQO1WwfShfoxwRd5VRF3Lr1jGM8CfXLFhb8bonAqbue1oBPwmjHUfaCafAfo2A==}
+
+  '@iconify-json/heroicons@1.2.0':
+    resolution: {integrity: sha512-EmvGN0L9EUJCmQ82rkLGZ4tkz0YGQfZV7ugKT6UvHni/bxNitQrD0gLj6NJj2W9zsSoXyNHyCX236+EJmO4pmA==}
 
   '@iconify-json/ic@1.2.0':
     resolution: {integrity: sha512-L4+m77xTQB08X3I+3xs1+IrvK+aNcuN/7ODu5aUPznHKLU+/8UYcsjUgNHze6vPOGPQ0AG+kCwvy91EYPXSRxw==}
@@ -4918,6 +4936,10 @@ snapshots:
 
   '@humanwhocodes/retry@0.3.0': {}
 
+  '@iconify-icons/heroicons@1.2.9':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify-icons/ic@1.2.13':
     dependencies:
       '@iconify/types': 2.0.0
@@ -4934,7 +4956,15 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
+  '@iconify-json/fa-brands@1.2.0':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify-json/fa6-brands@1.2.0':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/heroicons@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 

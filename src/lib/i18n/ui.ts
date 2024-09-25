@@ -18,6 +18,7 @@ export const ui = {
 	'date_locale': 'en-US',
 	'reading_time': 'min read',
 
+
     'home.title': 'Home',
     'home.description':
       "I'm passionate about bringing ideas to life through code and technology. Whether it's building websites, apps, or software, I love the process of creating and sharing knowledge. I enjoy immersing myself in new topics and experiences, and I'm equally enthusiastic about teaching and sharing my expertise with others.",
@@ -38,6 +39,7 @@ export const ui = {
     'home.recent_projects.h5': 'Recent projects',
     'home.recent_projects.link': 'See all projects',
 
+
     'articles.title': 'Articles',
     'articles.description':
       'All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order',
@@ -47,6 +49,7 @@ export const ui = {
       'All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order',
 
     'articles.back_to': 'Back to articles',
+
 
     'about.title': 'About',
     'about.description':
@@ -67,6 +70,7 @@ export const ui = {
     'about.languages.heading': 'Languages',
     'about.languages.paragraph': 'The languages which i love and trying to learn more',
 
+
     'projects.title': 'Projects',
     'projects.description': 'Projects that I created or maintaining.',
 
@@ -74,12 +78,34 @@ export const ui = {
 
     'projects.back_to': 'Back to projects',
 
-    'contact.title': 'Contact',
-    'contact.description': 'Feel free to get in touch with me',
 
-    'contact.heading': "Let's Connect",
-    'contact.paragraph':
-      'If you want to get in touch with me about something or just to say hi, reach out on social media or send me an email.',
+    'people.title': 'People',
+    'people.description': 'Welcome to the vibrant community of friends and colleagues who arean integral part of my journey! Here you can discover a diverse network of connections, each representing unique perspectives, talents, and passions.',
+
+    'people.heading': 'People',
+	'people.paragraph': 'Welcome to the vibrant community of friends and colleagues who arean integral part of my journey! Here you can discover a diverse network of connections, each representing unique perspectives, talents, and passions.',
+
+	'people.back_to': 'Back to People',
+
+	'people.cta': 'Would you like to get in here too ? Lets get to know each other, here are my links:',
+	'people.cta_link': 'Here',
+
+	'people.notes.h5': 'Notes',
+	'people.notes.fallback': 'No notes yet',
+
+	'people.articles.h5': 'Articles',
+    'people.articles.fallback': 'No articles yet',
+
+	'people.links.h5': 'Links',
+
+
+	'contact.title': 'Contact',
+	'contact.description': 'Feel free to get in touch with me',
+  
+	'contact.heading': "Let's Connect",
+	'contact.paragraph':
+		'If you want to get in touch with me about something or just to say hi, reach out on social media or send me an email.',
+
 
     'uses.title': 'Uses',
     'uses.description': 'Software I use, gadgets I love, and other things I recommend',
@@ -117,7 +143,7 @@ export const ui = {
     'navigation.articles': 'Articles',
     'navigation.projects': 'Projects',
     'navigation.contact': 'Contact',
-    'navigation.friends': 'Friends',
+    'navigation.people': 'People',
     'navigation.photos': 'Photos',
     'navigation.playlist': 'Playlist',
     'navigation.uses': 'Uses',
@@ -186,6 +212,25 @@ export const ui = {
 
     'projects.back_to': 'Назад к проектам',
 
+	'people.title': 'Люди',
+    'people.description': 'Добро пожаловать в мое яркое сообщество друзей и коллег, которые являются неотъемлемой частью моего жизненного пути! Здесь вы можете увидеть моих знакомых, каждый из которых представляет собой уникальные перспективы, таланты и увлечения',
+    'people.heading': 'Люди',
+	'people.paragraph': 'Добро пожаловать в мое яркое сообщество друзей и коллег, которые являются неотъемлемой частью моего жизненного пути! Здесь вы можете увидеть моих знакомых, каждый из которых представляет собой уникальные перспективы, таланты и увлечения',
+
+	'people.back_to': 'Назад к людям',
+
+	'people.cta': 'Вы хотите тоже попасть сюда? Давайте познакомимся поближе, вот мои контакты:',
+	'people.cta_link': 'Здесь',
+
+	'people.notes.h5': 'Заметки',
+	'people.notes.fallback': 'Пока нет заметок',
+
+	'people.articles.h5': 'Статьи',
+    'people.articles.fallback': 'Пока нет статей',
+
+	'people.links.h5': 'Ссылки',
+
+
     'contact.title': 'Контакты',
     'contact.description':
       'Если есть вопросы, предложения, пожелания или просто хотите поговорить, то не стесняйтесь писать мне',
@@ -230,7 +275,7 @@ export const ui = {
     'navigation.articles': 'Статьи',
     'navigation.projects': 'Проекты',
     'navigation.contact': 'Контакты',
-    'navigation.friends': 'Друзья',
+    'navigation.people': 'Люди',
     'navigation.photos': 'Галерея',
     'navigation.playlist': 'Плейлист',
     'navigation.uses': 'Мои инструменты',

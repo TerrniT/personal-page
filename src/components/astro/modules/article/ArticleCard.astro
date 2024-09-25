@@ -10,11 +10,12 @@ const { p } = useI18n(url)
 
 type Props = {
   item: ArticleInfo
+  openInNewTab?: boolean
 }
 
-const { item } = Astro.props
+const { item, openInNewTab } = Astro.props
 
-const hasCover = !!item.cover_url
+const hasCover = !!item.cover_url && item.type === 'article'
 ---
 
 <li
@@ -23,12 +24,13 @@ const hasCover = !!item.cover_url
 >
   <article class="w-full">
     <a
+      target={openInNewTab ? '_blank' : '_self'}
       href={p(item.href)}
       class="flex w-full justify-between p-3 no-underline"
       class:list={['flex-row', { 'flex-col': hasCover }, { 'items-center': !hasCover }]}
     >
       {
-        item.cover_url && (
+        hasCover && item.cover_url && (
           <div class="mb-3 w-full rounded-md group-hover:cursor-pointer">
             <Image
               src={'/articles/' + item.cover_url}
@@ -45,14 +47,14 @@ const hasCover = !!item.cover_url
           {item.title}
         </div>
         <div
-          class="text-sm text-muted-foreground/50 transition-colors duration-150 ease-linear group-hover:text-muted-foreground"
+          class="max-w-[90%] truncate text-sm text-muted-foreground/50 transition-colors duration-150 ease-linear group-hover:text-muted-foreground"
         >
           {item.description}
         </div>
       </div>
       {
         !hasCover && (
-          <div class="flex flex-col flex-wrap truncate">
+          <div class="mx-2 hidden min-w-fit flex-col flex-wrap truncate md:flex">
             <div class="text-sm text-muted-foreground">{item.topic}</div>
           </div>
         )

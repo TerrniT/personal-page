@@ -1,0 +1,132 @@
+---
+import { useI18n, getLangFromUrl } from '@lib/i18n'
+
+import { getPostInfoList } from '@lib/mdx'
+
+import { BackToPrev } from '@components/astro/layout'
+
+import { PeopleImage } from '@components/astro/modules/people'
+
+import { ArticleCard } from '@components/astro/modules/article'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+import { Icon } from 'astro-icon/components'
+import type { CollectionEntry } from 'astro:content'
+import { SITE } from '@consts'
+
+const { url } = Astro
+const { t, p } = useI18n(url)
+
+const lang = getLangFromUrl(url)
+
+interface Props {
+  data: CollectionEntry<'people'>
+}
+
+const { data: people } = Astro.props
+
+const authorWorks = await getPostInfoList(lang, people.data.nickname)
+
+const articles = authorWorks.filter((post) => post.type === 'article')
+const notes = authorWorks.filter((post) => post.type === 'note')
+
+const { Content } = await people.render()
+
+const title = people.data.name ? `${people.data.name} - ${SITE.DOMAIN}` : SITE.DOMAIN
+const description = people.data.description ? people.data.description : SITE.DESCRIPTION
+const avatar = people.data.avatar
+const name = people.data.name
+---
+
+<PageLayout {title} {description} isCustomTitle>
+  <div class="animate">
+    <BackToPrev href={p('/people')}> {t('people.back_to')}</BackToPrev>
+  </div>
+
+  <div class="my-10 flex flex-col gap-y-4 space-y-1 md:flex-row md:gap-x-6">
+    <PeopleImage {avatar} {name} />
+    <div class="flex flex-col gap-y-3">
+      <div class="animate text-2xl font-semibold text-main-foreground">
+        {people.data.name}
+      </div>
+      {
+        people.data.tags && people.data.tags.length > 0 && (
+          <div class="my-3 flex w-full flex-row flex-wrap gap-2">
+            {people.data.tags.map((tag) => (
+              <div class="animate w-fit rounded-lg bg-primary/20 px-3 text-sm text-secondary-foreground">
+                {tag?.name}
+              </div>
+            ))}
+          </div>
+        )
+      }
+      <div class="animate">
+        <h5 class="font-semibold">{t('people.links.h5')}</h5>
+        <div class="flex flex-row flex-wrap gap-2">
+          {
+            people.data.github_url && (
+              <a
+                href={people.data.github_url}
+                target="_blank"
+                class="hover:text-foreground flex items-center gap-x-1 text-base text-muted-foreground transition-all duration-150 ease-linear hover:underline"
+              >
+                <Icon name="fa-brands:github" size="1.1em" class="text-secondary-foreground" />
+                {people.data.nickname}
+              </a>
+            )
+          }
+          {
+            people.data.url && (
+              <a
+                href={people.data.url}
+                target="_blank"
+                class="hover:text-foreground flex items-center gap-x-1 text-base text-muted-foreground transition-all duration-150 ease-linear hover:underline"
+              >
+                <Icon name="heroicons:globe-alt-solid" size="1.1em" class="text-secondary-foreground" />
+                Website
+              </a>
+            )
+          }
+        </div>
+      </div>
+      <article class="animate">
+        <Content />
+      </article>
+    </div>
+  </div>
+
+  <section class="animate my-12 space-y-6">
+    <div class="flex flex-wrap items-center justify-between gap-y-2">
+      <h5 class="font-semibold">{t('people.notes.h5')}</h5>
+    </div>
+    {
+      notes && notes.length > 0 ? (
+        <ul class="animate grid grid-cols-1 gap-2 md:grid-cols-2">
+          {notes.map((note) => (
+            <ArticleCard item={note} openInNewTab />
+          ))}
+        </ul>
+      ) : (
+        <p class="text-center text-muted-foreground">{t('people.notes.fallback')}</p>
+      )
+    }
+  </section>
+
+  <section class="animate my-12 space-y-6">
+    <div class="flex flex-wrap items-center justify-between gap-y-2">
+      <h5 class="font-semibold">{t('people.articles.h5')}</h5>
+    </div>
+    {
+      articles && articles.length > 0 ? (
+        <ul class="animate grid grid-cols-1 gap-2 md:grid-cols-2">
+          {articles.map((article) => (
+            <ArticleCard item={article} openInNewTab />
+          ))}
+        </ul>
+      ) : (
+        <p class="text-center text-muted-foreground">{t('people.articles.fallback')}</p>
+      )
+    }
+  </section>
+</PageLayout>

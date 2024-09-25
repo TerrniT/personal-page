@@ -52,13 +52,13 @@ export type ArticleInfo = {
   lang: Language
 }
 
-export const getPostInfoList = async (locale: Language = 'en') => {
+export const getPostInfoList = async (locale: Language = 'en', author?: string) => {
   const posts = (await getCollection('articles'))
     .filter(isPublished)
     .filter((item) => filterByLocale(item, locale))
     .sort(sortCollectionDateDesc)
 
-  return posts.map<ArticleInfo>((item) => ({
+  const result = posts.map<ArticleInfo>((item) => ({
     title: item.data.title,
     description: item.data.description ?? '',
     date: item.data.date,
@@ -70,6 +70,12 @@ export const getPostInfoList = async (locale: Language = 'en') => {
     href: `/articles/${resolveSlug(item.slug)}`,
     lang: getLangFromSlug(item.slug),
   }))
+
+  if (author) {
+    return result.filter((item) => item.author === author)
+  }
+
+  return result
 }
 
 export type UsesInfo = CollectionEntry<'uses'> & {
@@ -95,7 +101,7 @@ export const getPeopleInfoList = async (locale: Language = 'en') => {
     .filter((item) => filterByLocale(item, locale))
     .sort(sortCollectionDateDesc)
 
-  return peoples.map<PeopleInfo>((item) => ({ ...item, href: `/uses/${resolveSlug(item.slug)}` }))
+  return peoples.map<PeopleInfo>((item) => ({ ...item, href: `/people/${resolveSlug(item.slug)}` }))
 }
 
 export async function resolveAuthor(author: string, locale: Language = 'en') {

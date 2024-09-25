@@ -1,0 +1,30 @@
+---
+import { useI18n } from '@lib/i18n'
+
+import type { PeopleInfo } from '@lib/mdx'
+
+import { PeopleImage } from '@components/astro/modules/people'
+
+interface Props {
+  item: PeopleInfo
+}
+
+const { url } = Astro
+const { p } = useI18n(url)
+
+const { item } = Astro.props
+---
+
+<a href={p(item.href!)}>
+  <PeopleImage avatar={item.data.avatar} name={item.data.name} />
+
+  <div class="mt-2">
+    <div class="my-2 flex flex-col">
+      <h4 class="text-foreground text-lg font-semibold">
+        {item.data.name}
+      </h4>
+      {item.data.nickname && <p class="text-sm italic text-muted-foreground">@{item.data.nickname}</p>}
+    </div>
+    <p class="text-sm text-muted-foreground">{item.data.description}</p>
+  </div>
+</a>

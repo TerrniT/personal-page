@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets'
+
+interface Props {
+  avatar?: string
+  name?: string
+}
+
+const { avatar, name } = Astro.props
+---
+
+{
+  avatar ? (
+    <Image
+      src={avatar}
+      alt={'@' + name}
+      height={195}
+      width={195}
+      class="animate w-[195px] rounded-xl md:max-h-[195px]"
+    />
+  ) : (
+    <Image
+      src="/avatars/fallback.png"
+      alt="fallback image"
+      height={195}
+      width={195}
+      class="animate w-[195px] rounded-xl md:max-h-[195px]"
+    />
+  )
+}
