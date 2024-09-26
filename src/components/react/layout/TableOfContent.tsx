@@ -20,8 +20,8 @@ export default function TableOfContent({
         <li key={i} className="flex">
           <a
             className={cn(
-              'link text-second',
-              currentSectionSlug === section.slug && 'font-medium text-body',
+              'link text-muted-foreground hover:text-main-foreground',
+              currentSectionSlug === section.slug && 'font-medium text-main-foreground',
             )}
             href={`#${section.slug}`}
           >

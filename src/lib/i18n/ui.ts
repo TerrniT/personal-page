@@ -49,7 +49,8 @@ export const ui = {
       'All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order',
 
     'articles.back_to': 'Back to articles',
-
+	'articles.author': 'Author',
+	'articles.published': 'Published at',
 
     'about.title': 'About',
     'about.description':
@@ -186,6 +187,8 @@ export const ui = {
       'Все мои размышления об IT, UI, дизайне продуктов и многом другом, собранные в хронологическом порядке',
 
     'articles.back_to': 'Назад к статьям',
+	'articles.author': 'Автор',
+	'articles.published': 'Опубликовано',
 
     'about.title': 'Обо мне',
     'about.description':

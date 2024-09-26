@@ -1,16 +1,26 @@
 ---
-import type { Author } from '@types'
+import FormattedDate from '@components/astro/FormattedDate.astro'
+import type { PeopleInfo } from '@lib/mdx'
+
+import { useI18n } from '@lib/i18n'
+const { url } = Astro
+const { p, t } = useI18n(url)
 
 interface Props {
-  author: Author
+  author: PeopleInfo
+  publishedAt: Date
 }
 
-const { author } = Astro.props
+const { author, publishedAt } = Astro.props
 ---
 
-<div class="mb-10 flex flex-col items-start">
-  <img class="h-14 w-14 rounded-full" src={author.avatar} />
-
-  <p class="text-main-foreground mt-2 font-semibold">{author.name}</p>
-  <p class="mt-2 text-sm font-medium text-muted-foreground">{author.description}</p>
+<div class="mt-10 flex flex-col items-start px-2 text-sm">
+  <div class="mb-1 text-muted-foreground">{t('articles.published')}</div>
+  <div class="mb-4 font-semibold text-main-foreground">
+    <FormattedDate date={publishedAt} />
+  </div>
+  <div class="mb-1 text-muted-foreground">{t('articles.author')}</div>
+  <a href={p(author.href)} class="font-semibold text-main-foreground underline-offset-2 hover:underline">
+    {author.name}
+  </a>
 </div>

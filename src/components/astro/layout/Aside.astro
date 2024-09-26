@@ -4,9 +4,9 @@ import { cn } from '@lib/utils'
 
 <aside
   class={cn(
-    'sticky top-0 top-page flex max-w-[220px] translate-x-[-200px] translate-y-[120px] flex-col',
+    'top-0 top-page max-w-[220px] z-10 bg-main/65 p-2 rounded-lg backdrop-blur-3xl translate-x-[-30px]  translate-y-[120px] flex-col',
     'transition-opacity',
-    'md:sticky md:-ml-2 md:mb-7 md:opacity-100 h-screen',
+    'md:sticky relative md:-ml-2 md:mb-7 hidden lg:flex h-fit',
   )}
 >
   <slot />

@@ -106,10 +106,16 @@ export const getPeopleInfoList = async (locale: Language = 'en') => {
 
 export async function resolveAuthor(author: string, locale: Language = 'en') {
   const authors = await getPeopleInfoList(locale)
-
-  return authors.find((item) => item.data.name === author)
-    ? authors.find((item) => item.data.name === author)?.data
-    : SITE.AUTHOR
+  const resolvedAuthor = authors.find((item) => item.data.nickname === author)
+  
+  if (resolvedAuthor) {
+    return {
+      ...resolvedAuthor.data,
+      href: `/people/${resolveSlug(resolvedAuthor.slug)}`,
+    }
+  } else {
+    return SITE.AUTHOR
+  }
 }
 
 export type ProjectInfo = CollectionEntry<'projects'> & {

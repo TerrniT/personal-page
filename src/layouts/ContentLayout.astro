@@ -10,21 +10,20 @@ import { ArticleAuthor } from '@components/astro/modules/article'
 
 import type { CollectionEntry } from 'astro:content'
 import type { MarkdownHeading } from 'astro'
-import type { Author } from '@types'
+import type { PeopleInfo } from '@lib/mdx'
 
 type Props = {
   title: string
   description: string
-  author?: Author
+  publishedAt: Date
+  author?: PeopleInfo
   image?: string
   lang?: Language
   content: CollectionEntry<'articles'>
   headings: MarkdownHeading[]
 }
 
-const { title, description, image, author, lang, headings } = Astro.props
-
-const isShowAuthor = author?.isShowAuthor
+const { title, description, image, author, lang, headings, publishedAt } = Astro.props
 const htmlLang = lang ?? getLangFromUrl(Astro.url)
 ---
 
@@ -43,8 +42,8 @@ const htmlLang = lang ?? getLangFromUrl(Astro.url)
         <Footer />
       </Container>
       <Aside>
-        {author && isShowAuthor && <ArticleAuthor {author} />}
         <TableOfContent data-animate className="hidden px-2 text-sm md:block" toc={headings} client:visible />
+        {author && <ArticleAuthor {author} {publishedAt} />}
       </Aside>
     </div>
   </body>

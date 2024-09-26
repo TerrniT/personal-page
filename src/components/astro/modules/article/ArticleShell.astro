@@ -1,7 +1,7 @@
 ---
 import { useI18n } from '@lib/i18n'
 
-import { SITE } from '@consts'
+import type { PeopleInfo } from '@lib/mdx'
 
 import { BackToPrev } from '@components/astro/layout'
 import { ReadingTimeBadge } from '@components/astro/modules/article'
@@ -10,15 +10,13 @@ import FormattedDate from '@components/astro/FormattedDate.astro'
 
 import ContentLayout from '@layouts/ContentLayout.astro'
 import type { CollectionEntry } from 'astro:content'
-import type { PeopleInfo } from '@lib/mdx'
-import type { Author } from '@types'
 
 const { url } = Astro
 const { t, p } = useI18n(url)
 
 interface Props {
   data: CollectionEntry<'articles'>
-  author?: PeopleInfo | Author
+  author?: PeopleInfo
 }
 
 const { data: article, author } = Astro.props
@@ -29,18 +27,15 @@ const title = article.data.title
 const description = article.data.description ?? ''
 ---
 
-<ContentLayout {title} {description} author={author as Author} content={article} {headings}>
+<ContentLayout {title} {description} author={author} content={article} {headings} publishedAt={article.data.date}>
   <div class="animate">
     <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
   </div>
   <div class="my-10 space-y-1">
-    <p class="animate text-main-foreground text-2xl font-semibold">
+    <p class="animate text-2xl font-semibold text-main-foreground">
       {article.data.title}
     </p>
     <div class="animate flex items-center gap-1.5">
-      <div class="font-base text-sm">
-        <FormattedDate date={article.data.date} />
-      </div>
       <div class="text-disabled">&bull;</div>
       <ReadingTimeBadge text={article.body} />
     </div>
