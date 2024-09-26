@@ -4,6 +4,7 @@ import type { LanguageLocales } from '@lib/i18n'
 
 import { ArticleShell } from '@components/astro/modules/article'
 import type { CollectionEntry } from 'astro:content'
+import type { InferEntrySchema } from 'astro:content'
 
 export const getStaticPaths = async () => {
   return await getSlugItem('articles')
@@ -19,4 +20,4 @@ const { data } = Astro.props
 const author = await resolveAuthor(data.data.author)
 ---
 
-<ArticleShell {data} author={author as PeopleInfo} />
+<ArticleShell {data} author={author as InferEntrySchema<'people'> & { href?: string }} />

@@ -1,22 +1,19 @@
 ---
 import { useI18n } from '@lib/i18n'
 
-import type { PeopleInfo } from '@lib/mdx'
-
 import { BackToPrev } from '@components/astro/layout'
 import { ReadingTimeBadge } from '@components/astro/modules/article'
 
-import FormattedDate from '@components/astro/FormattedDate.astro'
-
 import ContentLayout from '@layouts/ContentLayout.astro'
 import type { CollectionEntry } from 'astro:content'
+import type { InferEntrySchema } from 'astro:content'
 
 const { url } = Astro
 const { t, p } = useI18n(url)
 
 interface Props {
   data: CollectionEntry<'articles'>
-  author?: PeopleInfo
+  author?: InferEntrySchema<'people'> & { href?: string }
 }
 
 const { data: article, author } = Astro.props

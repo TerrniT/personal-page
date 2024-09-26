@@ -10,13 +10,13 @@ import { ArticleAuthor } from '@components/astro/modules/article'
 
 import type { CollectionEntry } from 'astro:content'
 import type { MarkdownHeading } from 'astro'
-import type { PeopleInfo } from '@lib/mdx'
+import type { InferEntrySchema } from 'astro:content'
 
 type Props = {
   title: string
   description: string
   publishedAt: Date
-  author?: PeopleInfo
+  author?: InferEntrySchema<'people'> & { href?: string }
   image?: string
   lang?: Language
   content: CollectionEntry<'articles'>
