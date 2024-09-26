@@ -36,7 +36,7 @@ const { Content } = await project.render()
         <FormattedDate date={project.data.date} />
       </div>
     </div>
-    <div class="animate text-main-foreground my-3 text-2xl font-semibold">
+    <div class="animate my-3 text-2xl font-semibold text-main-foreground">
       {project.data.title}
     </div>
     {
@@ -58,7 +58,7 @@ const { Content } = await project.render()
             classes="flex items-center gap-x-1 animate"
           >
             <span>Github</span>
-            <Icon name="devicon:github" size="1.3rem" class="text-secondary-foreground" />
+            <Icon name="fa-brands:github" size="1.3rem" class="text-secondary-foreground" />
           </Button>
         )
       }
