@@ -12,9 +12,13 @@ const { t } = useI18n(url)
 const lang = getLangFromUrl(url)
 
 const projects = await getProjectsInfoList(lang)
+
+const title = t('projects.title')
+const description = t('projects.description')
+const image = `/og/projects-${lang}.png`
 ---
 
-<PageLayout title={t('projects.title')} description={t('projects.description')}>
+<PageLayout {title} {description} {image}>
   <div class="space-y-10">
     <h1 class="animate text-xl font-semibold">{t('projects.heading')}</h1>
     <ul class="animate flex flex-col gap-4">

@@ -12,9 +12,13 @@ const { t } = useI18n(url)
 const lang = getLangFromUrl(url)
 
 const people = await getPeopleInfoList(lang)
+
+const title = t('people.title')
+const description = t('people.description')
+const image = `/og/people-${lang}.png`
 ---
 
-<PageLayout title={t('people.title')} description={t('people.description')}>
+<PageLayout {title} {description} {image}>
   <div class="space-y-16">
     <section class="animate space-y-4">
       <h4 class="text-xl font-semibold">{t('people.title')}</h4>

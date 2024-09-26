@@ -22,9 +22,10 @@ const { Content, headings } = await article.render()
 
 const title = article.data.title
 const description = article.data.description ?? ''
+const image = article.data.cover_url
 ---
 
-<ContentLayout {title} {description} author={author} content={article} {headings} publishedAt={article.data.date}>
+<ContentLayout {title} {description} {author} {image} content={article} {headings} publishedAt={article.data.date}>
   <div class="animate">
     <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
   </div>

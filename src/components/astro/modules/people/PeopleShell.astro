@@ -37,9 +37,11 @@ const title = people.data.name ? `${people.data.name} - ${SITE.DOMAIN}` : SITE.D
 const description = people.data.description ? people.data.description : SITE.DESCRIPTION
 const avatar = people.data.avatar
 const name = people.data.name
+
+const image = `/og/people-${lang}.png`
 ---
 
-<PageLayout {title} {description} isCustomTitle>
+<PageLayout {title} {description} {image} isCustomTitle>
   <div class="animate">
     <BackToPrev href={p('/people')}> {t('people.back_to')}</BackToPrev>
   </div>

@@ -1,5 +1,6 @@
 ---
-// import '@/styles/main.css'
+import { getLangFromUrl } from '@lib/i18n'
+
 import '@/styles/global.css'
 
 import { ViewTransitions } from 'astro:transitions'
@@ -19,12 +20,14 @@ interface Props {
   image?: string
 }
 
+const lang = getLangFromUrl(Astro.url)
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 const googleAnalyticsId = import.meta.env.GOOGLE_ANALYTICS_ID
 const yandexWebmasterContent = import.meta.env.YANDEX_WEBMASTER_CONTENT
 
-const { title, description, image = '/default-og-image.png', author } = Astro.props
+const defaltOgImage = `/og/website-og-image-${lang}.png`
+const { title, description, image, author } = Astro.props
 ---
 
 <!-- Global Metadata -->
@@ -55,14 +58,14 @@ const { title, description, image = '/default-og-image.png', author } = Astro.pr
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={new URL(image ?? defaltOgImage, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={new URL(image ?? defaltOgImage, Astro.url)} />
 
 <FontPreloadProvider />
 <ViewTransitions />

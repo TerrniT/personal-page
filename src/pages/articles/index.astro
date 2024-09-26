@@ -8,6 +8,7 @@ import PageLayout from '@layouts/PageLayout.astro'
 
 const { url } = Astro
 const { t } = useI18n(url)
+
 const lang = getLangFromUrl(url)
 
 const data = await getPostInfoList(lang)
@@ -26,9 +27,13 @@ const posts = data.reduce((acc: Acc, post) => {
 }, {})
 
 const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a))
+
+const title = t('articles.title')
+const description = t('articles.description')
+const image = `/og/articles-${lang}.png`
 ---
 
-<PageLayout title={t('articles.title')} description={t('articles.description')}>
+<PageLayout {title} {description} {image}>
   <h1 class="animate text-xl font-semibold">{t('articles.heading')}</h1>
   <div class="space-y-16">
     <section>

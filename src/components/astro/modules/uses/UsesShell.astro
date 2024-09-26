@@ -1,5 +1,5 @@
 ---
-import { useI18n } from '@lib/i18n'
+import { useI18n, getLangFromUrl } from '@lib/i18n'
 
 import { BackToPrev } from '@components/astro/layout'
 
@@ -9,6 +9,8 @@ import type { CollectionEntry } from 'astro:content'
 const { url } = Astro
 const { t, p } = useI18n(url)
 
+const lang = getLangFromUrl(url)
+
 interface Props {
   data: CollectionEntry<'uses'>
 }
@@ -16,14 +18,18 @@ interface Props {
 const { data: uses } = Astro.props
 
 const { Content } = await uses.render()
+
+const title = uses.data.title
+const description = uses.data.description
+const image = `/og/uses-${lang}.png`
 ---
 
-<PageLayout title={uses.data.title} description={uses.data.description}>
+<PageLayout {title} {description} {image}>
   <div class="animate">
     <BackToPrev href={p('/uses')}> {t('uses.back_to')}</BackToPrev>
   </div>
   <div class="my-10 space-y-1">
-    <div class="animate text-main-foreground text-2xl font-semibold">
+    <div class="animate text-2xl font-semibold text-main-foreground">
       {uses.data.title}
     </div>
   </div>

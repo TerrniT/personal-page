@@ -22,9 +22,12 @@ const posts = await getPostInfoList(lang)
 
 const articles = posts.filter((post) => post.type === 'article').slice(0, SITE.NUM_POSTS_ON_HOMEPAGE)
 const notes = posts.filter((post) => post.type === 'note').slice(0, SITE.NUM_POSTS_ON_HOMEPAGE)
+
+const title = t('home.title')
+const description = t('home.description')
 ---
 
-<PageLayout title={t('home.title')} description={t('home.description')}>
+<PageLayout {title} {description}>
   <h1 class="animate text-xl font-semibold">{t('home.heading')}</h1>
   <h4 class="animate text-sm font-medium italic text-muted-foreground/80">{t('home.legenda')}</h4>
   <div class="space-y-16">

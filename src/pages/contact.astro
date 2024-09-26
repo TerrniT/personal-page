@@ -1,5 +1,5 @@
 ---
-import { useI18n } from '@lib/i18n'
+import { useI18n, getLangFromUrl } from '@lib/i18n'
 
 import { SITE, SOCIALS } from '@consts'
 
@@ -9,9 +9,15 @@ import PageLayout from '@layouts/PageLayout.astro'
 
 const { url } = Astro
 const { t } = useI18n(url)
+
+const lang = getLangFromUrl(url)
+
+const title = t('contact.title')
+const description = t('contact.description')
+const image = `/og/contact-${lang}.png`
 ---
 
-<PageLayout title={t('contact.title')} description={t('contact.description')}>
+<PageLayout {title} {description} {image}>
   <div class="space-y-16">
     <section class="animate space-y-4">
       <h4 class="text-xl font-semibold">{t('contact.title')}</h4>

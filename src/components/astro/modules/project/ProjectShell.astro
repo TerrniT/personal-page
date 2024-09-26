@@ -1,5 +1,5 @@
 ---
-import { useI18n } from '@lib/i18n'
+import { useI18n, getLangFromUrl } from '@lib/i18n'
 
 import { Button } from '@components/vue/ui/button'
 
@@ -17,6 +17,8 @@ import type { CollectionEntry } from 'astro:content'
 const { url } = Astro
 const { t, p } = useI18n(url)
 
+const lang = getLangFromUrl(url)
+
 interface Props {
   data: CollectionEntry<'projects'>
 }
@@ -24,9 +26,11 @@ interface Props {
 const { data: project } = Astro.props
 
 const { Content } = await project.render()
+
+const image = `/og/project-${lang}.png`
 ---
 
-<PageLayout title={project.data.title} description={project.data.description}>
+<PageLayout title={project.data.title} description={project.data.description} {image}>
   <div class="animate">
     <BackToPrev href={p('/projects')}> {t('projects.back_to')}</BackToPrev>
   </div>

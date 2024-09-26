@@ -37,9 +37,13 @@ const experiences = await Promise.all(
     return { ...item, Content }
   }),
 )
+
+const title = t('about.title')
+const description = t('about.description')
+const image = `/og/about-${lang}.png`
 ---
 
-<PageLayout title={t('about.title')} description={t('about.description')}>
+<PageLayout {title} {description} {image}>
   <h1 class="animate text-xl font-semibold">{t('about.heading')}</h1>
   <div class="space-y-16">
     <section class="animate flex flex-col items-center space-y-4">
@@ -103,7 +107,7 @@ const experiences = await Promise.all(
             <div class="flex flex-col items-center justify-center gap-y-1">
               <Icon name={item.icon} size="2em" class="text-main-foreground" />
               <div class="flex items-center gap-x-2">
-                <p class="text-main-foreground text-center font-bold">{item.name}</p>
+                <p class="text-center font-bold text-main-foreground">{item.name}</p>
               </div>
             </div>
           </div>
@@ -127,7 +131,7 @@ const experiences = await Promise.all(
                 <Icon name={item.icon} size="2em" />
               </a>
               <div class="flex items-center gap-x-2">
-                <p class="text-main-foreground font-bold">{item.name}</p>
+                <p class="font-bold text-main-foreground">{item.name}</p>
               </div>
             </div>
           </div>
