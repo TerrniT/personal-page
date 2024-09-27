@@ -4,6 +4,8 @@ import CircleIcon from "./CircleIcon.astro";
 import DotIcon from "./DotIcon.astro";
 import MoonIcon from "./MoonIcon.astro";
 import SunIcon from "./SunIcon.astro";
+import LoadingIcon from "./LoadingIcon.astro";
+import EyeIcon from "./EyeIcon.astro";
 
 export {
 	CheckIcon,
@@ -11,5 +13,7 @@ export {
 	CircleIcon,
 	DotIcon,
 	MoonIcon,
-	SunIcon
+	SunIcon,
+	LoadingIcon,
+	EyeIcon
 }

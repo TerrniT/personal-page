@@ -1,5 +1,7 @@
 ---
-import { getSlugItem, type PeopleInfo, resolveAuthor } from '@lib/mdx'
+export const prerender = true
+
+import { getSlugItem, resolveAuthor } from '@lib/mdx'
 import type { LanguageLocales } from '@lib/i18n'
 
 import { ArticleShell } from '@components/astro/modules/article'

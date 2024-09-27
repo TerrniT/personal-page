@@ -4,9 +4,11 @@ import { useI18n } from '@lib/i18n'
 import { BackToPrev } from '@components/astro/layout'
 import { ReadingTimeBadge } from '@components/astro/modules/article'
 
+import { EyeIcon, LoadingIcon } from '@components/astro/icons'
+
 import ContentLayout from '@layouts/ContentLayout.astro'
-import type { CollectionEntry } from 'astro:content'
-import type { InferEntrySchema } from 'astro:content'
+import type { CollectionEntry, InferEntrySchema } from 'astro:content'
+import { ArticleViewCounter } from '@components/svelte/modules/article'
 
 const { url } = Astro
 const { t, p } = useI18n(url)
@@ -30,12 +32,15 @@ const image = article.data.cover_url
     <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
   </div>
   <div class="my-10 space-y-1">
-    <p class="animate text-2xl font-semibold text-main-foreground">
+    <p class="animate text-2x mb-2 font-semibold text-main-foreground">
       {article.data.title}
     </p>
-    <div class="animate flex items-center gap-1.5">
-      <div class="text-disabled">&bull;</div>
+    <div class="animate flex items-center gap-4">
       <ReadingTimeBadge text={article.body} />
+      <ArticleViewCounter slug={article.slug} client:load>
+        <EyeIcon class="text-muted-foreground" />
+        <LoadingIcon slot="loading" class="text-muted-foreground" />
+      </ArticleViewCounter>
     </div>
 
     <div class="my-2 flex flex-row gap-x-2">
