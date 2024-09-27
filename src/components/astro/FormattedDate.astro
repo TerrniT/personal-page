@@ -1,22 +1,26 @@
 ---
 import { useI18n } from '@lib/i18n'
+import { undefined } from 'astro:schema'
 
 interface Props {
   date: Date
+  short?: boolean
 }
-
-const { date } = Astro.props
 
 const { url } = Astro
 const { t } = useI18n(url)
+
+const { date, short } = Astro.props
+
+function parseDate(config: Intl.DateTimeFormatOptions) {
+  return date.toLocaleDateString(t('date_locale'), config)
+}
+
+const parsedDate = parseDate(
+  short ? { month: 'short', day: 'numeric' } : { month: 'short', day: 'numeric', year: 'numeric' },
+)
 ---
 
 <time datetime={date.toISOString()}>
-  {
-    date.toLocaleDateString(t('date_locale'), {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    })
-  }
+  {parsedDate}
 </time>

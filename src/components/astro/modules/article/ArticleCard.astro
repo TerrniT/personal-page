@@ -14,34 +14,17 @@ type Props = {
 }
 
 const { item, openInNewTab } = Astro.props
-
-const hasCover = !!item.cover_url && item.type === 'article'
 ---
 
 <li
-  class:list={['col-span-1 h-fit', { 'h-full': hasCover, 'col-span-2': !hasCover }]}
-  class="group flex w-full flex-nowrap items-center rounded-lg border border-border/20 transition-colors duration-200 ease-in-out hover:bg-secondary hover:text-main-foreground md:col-span-2"
+  class="group col-span-1 flex h-fit w-full flex-nowrap items-center rounded-lg border border-border/20 transition-colors duration-200 ease-in-out hover:bg-secondary hover:text-main-foreground md:col-span-2"
 >
   <article class="w-full">
     <a
       target={openInNewTab ? '_blank' : '_self'}
       href={p(item.href)}
-      class="flex w-full justify-between p-3 no-underline"
-      class:list={['flex-row', { 'flex-col': hasCover }, { 'items-center': !hasCover }]}
+      class="flex w-full flex-row items-center justify-between p-3 no-underline"
     >
-      {
-        hasCover && item.cover_url && (
-          <div class="mb-3 w-full rounded-md group-hover:cursor-pointer">
-            <Image
-              src={'/articles/' + item.cover_url}
-              alt={item.title}
-              class="animate max-h-56 w-full rounded-md object-cover"
-              height={236}
-              width={320}
-            />
-          </div>
-        )
-      }
       <div class="flex flex-col flex-wrap truncate">
         <div class="text-sm font-semibold text-main-foreground">
           {item.title}
@@ -52,13 +35,9 @@ const hasCover = !!item.cover_url && item.type === 'article'
           {item.description}
         </div>
       </div>
-      {
-        !hasCover && (
-          <div class="mx-2 hidden min-w-fit flex-col flex-wrap truncate md:flex">
-            <div class="text-sm text-muted-foreground">{item.topic}</div>
-          </div>
-        )
-      }
+      <div class="mx-1 hidden min-w-fit flex-col flex-wrap truncate md:flex">
+        <div class="text-sm text-muted-foreground">{item.topic}</div>
+      </div>
     </a>
   </article>
 </li>
