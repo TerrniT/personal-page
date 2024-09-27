@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte'
-
+  import Spinner from './Spinner.svelte'
   /**
    * @type {string}
    */
@@ -35,6 +35,10 @@
 </script>
 
 <div class="flex items-center animate">
-  <slot />
-  <span class="px-1 mx-1 text-sm text-muted-foreground">{views}</span>
+  {#if isLoading}
+    <Spinner class="text-sm text-muted-foreground" />
+  {:else}
+    <slot />
+    <span class=" px-1 mx-1 text-sm text-muted-foreground">{views}</span>
+  {/if}
 </div>
