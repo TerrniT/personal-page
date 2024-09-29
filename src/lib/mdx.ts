@@ -2,14 +2,13 @@ import { type CollectionEntry, getCollection } from 'astro:content'
 
 import { getLangFromSlug, type Language } from '@lib/i18n'
 
-import { isDev } from './utils'
 import { SITE } from '@consts'
 
 export type CollectionsType = 'articles' | 'uses' | 'about' | 'experiences' | 'projects' | 'people'
 export type SlugItemType = CollectionEntry<CollectionsType>
 
 export const isPublished = (item: CollectionEntry<CollectionsType>) => {
-  return isDev || !item.data.draft
+  return !item.data.draft
 }
 
 export const filterByLocale = (item: CollectionEntry<CollectionsType>, locale: Language) => {

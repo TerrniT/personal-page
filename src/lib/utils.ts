@@ -196,6 +196,16 @@ export const devIconResolver: Record<
     description: "Chakra UI",
     link: "https://chakra-ui.com",
   },
+  bun: {
+    icon: "devicon:bun",
+    description: "The fast JavaScript bundler",
+    link: "https://bun.sh",
+  },
+  elysiajs: {
+    icon: "skill-icons:elysia-dark",
+    description: "The ergonomic web framework for building backend servers with Bun",
+    link: "https://elysiajs.com",
+  },
   "redux toolkit": {
     icon: "devicon:redux",
     description: "Redux Toolkit",

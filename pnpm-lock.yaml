@@ -195,6 +195,9 @@ importers:
       '@iconify-json/simple-icons':
         specifier: ^1.1.114
         version: 1.2.1
+      '@iconify-json/skill-icons':
+        specifier: ^1.2.0
+        version: 1.2.0
       '@iconify-json/twemoji':
         specifier: ^1.2.0
         version: 1.2.0
@@ -727,6 +730,9 @@ packages:
 
   '@iconify-json/simple-icons@1.2.1':
     resolution: {integrity: sha512-eBXREU+jazfOBTl944Uq/ZpOJnbx1/IBw1MpLw0VmmNk0HSvmnvhdcz+3obja7uAp25yNtVcKo3I04ppnuv3NQ==}
+
+  '@iconify-json/skill-icons@1.2.0':
+    resolution: {integrity: sha512-5zlPrzF5pelV1wut7C88zmAiYONvGxvFw11dXW1Pr1oIhUOtYhC7x3zkErSTFkyZ3m5fEgcEUrcO1W3UhNJVpw==}
 
   '@iconify-json/twemoji@1.2.0':
     resolution: {integrity: sha512-yYm2hNTDeaeKqLUKSoCGpzjPwX6EjkUFsCfSyNDedsg5iaEhlBZGPCUjOdt/Z4CVsONBWSY7gv9RORuA+CStmQ==}
@@ -5371,6 +5377,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/simple-icons@1.2.1':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/skill-icons@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
