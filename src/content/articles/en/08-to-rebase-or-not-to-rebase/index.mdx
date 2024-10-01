@@ -1,0 +1,85 @@
+---
+title: 'To Rebase, or Not to Rebase?'
+date: "Jan 27 2022"
+description: "The Git rebase command achieves its aims in a completely different way"
+tags: ["git"]
+topic: "Software Development"
+cover_url: "/git-rebase.png"
+type: 'article'
+author: TerrniT
+draft: true
+---
+
+### What is `git rebase`?
+
+The Git `rebase` command achieves its aims in a completely different way. It takes all of the commits from the branch you’re going to rebase and replays them onto the end of the branch you’re rebasing onto.
+
+Taking our previous example, before we performed any action our Git repository looks like this. We have a branch called `dev-branch` and we want to move those changes to the `master` branch.
+
+![Untitled](/posts/git-rebase/Untitled.png)
+
+The `dev-branch`has been removed, and the commits in the `dev-branch`
+ have been added to the master branch. The end result is the same as if the commits in the `dev-branch`had actually been directly committed to the `master`branch in the first place. The commits aren’t just tacked onto the `master` branch, they’re “replayed” and added fresh.
+
+This is why the `rebase`command is considered destructive. The rebased branch no longer exists as a separate branch, and the Git history of your project has been rewritten. You can’t determine at some later point which commits were originally made to the `dev-branch`
+
+However, it does leave you with a simplified, linear, history. Compared to a repository with dozens or even hundreds of branches and merges, reading the Git log or using a graphical git GUI to look at a graph of the repository, a rebased repository is a breeze to understand.
+
+### \***\*How to Rebase Onto Another Branch\*\***
+
+First, we check that the `master`branch has no outstanding changes.
+
+```bash
+git status
+```
+
+We checkout the `new-feature` branch
+
+```bash
+git checkout new-feature
+```
+
+We can see that we have still got two branches
+
+```bash
+git branch
+```
+
+We swap back to teh `master` branch
+
+```bash
+git checkout master
+```
+
+We merge the `new-feature` branch into the current branch, which in our case is the `master` branch
+
+```bash
+git merge new-feature
+```
+
+![Untitled](/posts/git-rebase/Untitled%201.png)
+
+<aside>
+📎 After that, we’ve still got two branches after the final merge
+
+</aside>
+
+<aside>
+📎 Don’t use `rebase`on shared branches where others are likely to work. Your changes to your repository are going to cause problems to a lot of people when you push your rebased code to your remote repository.
+
+</aside>
+
+<aside>
+📎 If your project has multiple contributors, the safe thing to do is only use `rebase`on your *local* repository, and not on public branches
+
+</aside>
+
+### Summary
+
+**So still, To Rebase, or Not to Rebase ?**
+
+`Rebase` might be outlawed in your project. There may be local, cultural objections. Some projects or organizations consider `rebase` as a form of heresy, and an act of desecration. Some people believe the Git history should be an inviolable, permanent record of what has happened. So, `rebase` might be off the table.
+
+But, used locally, on private branches, `rebase` is a useful tool.
+
+Push *after* you’ve rebased, and restrict it to branches where you’re the only developer. Or at least, where all development has stopped, and no one else has based any other work off your branch’s commits.
