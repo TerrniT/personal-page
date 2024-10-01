@@ -1,0 +1,182 @@
+---
+title: 'React Virtual DOM'
+date: "Jan 27 2022"
+description: "The virtual DOM is a fundamental React concept. You have probably heard of it if you have written React code in the last few years"
+tags: ["react", "javascript"]
+topic: "Software Development"
+cover_url: "/react-virtual-dom.png"
+type: 'article'
+author: TerrniT
+draft: true
+---
+
+
+# **What is the virtual DOM in React?**
+
+<aside>
+📎 The virtual DOM is a fundamental React concept. You have probably heard of it if you have written React code in the last few years. However, you may not understand how it works and why React uses it.
+
+</aside>
+
+## **Concept review: What is the DOM?**
+
+To understand the virtual DOM and learn why React implements it, let us refresh our knowledge of the actual browser DOM.
+
+Normally, whenever a web page is requested by a user, the browser receives an HTML document for that page from the server. The browser then constructs a logical tree-like structure from the HTML for the user to see the requested page in the client.
+
+This tree-like structure is called the Document Object Model, also known as the DOM. It is a structural representation of the web document — in this case, an HTML document — as nodes and objects.
+
+The DOM serves as an interface for the web document so that JavaScript and other scripting languages can access and programmatically interact with and manipulate the document’s content.
+
+For instance, developers can use the DOM APIs to add or remove elements, modify their appearance, and perform user actions on the web elements.
+
+### **The Problem**
+
+DOM manipulation is the heart of the modern, interactive web. Unfortunately, it is also a lot slower than most JavaScript operations.
+
+This slowness is made worse by the fact that **most JavaScript frameworks update [the DOM](https://www.codecademy.com/resources/blog/what-is-dom/) much more than they have to.**
+
+As an example, let’s say that you have a list that contains ten items. You check off the first item. Most JavaScript frameworks would rebuild *the entire list*. That’s ten times more work than necessary! Only one item changed, but the remaining nine get rebuilt exactly how they were before.
+
+Rebuilding a list is no big deal to a web browser, but modern websites can use huge amounts of DOM manipulation. Inefficient updating has become a serious problem.
+
+To address this problem, the people at React popularized something called the *virtual DOM.*
+
+### The Virtual DOM
+
+In React, for every [DOM object](http://eloquentjavascript.net/13_dom.html), there is a corresponding “virtual DOM object.” A virtual DOM object is a *representation* of a DOM object, like a lightweight copy.
+
+A virtual DOM object has the same properties as a real DOM object, but it lacks the real thing’s power to directly change what’s on the screen.
+
+Manipulating the DOM is slow. Manipulating the virtual DOM is much faster, because nothing gets drawn onscreen. Think of manipulating the virtual DOM as editing a blueprint, as opposed to moving rooms in an actual house.
+
+### **How React implements the virtual DOM**
+
+To understand the virtual DOM strategy, we need to understand the two major phases that are involved: rendering and reconciliation.
+
+When we render an application user interface, React creates a virtual DOM tree representing that UI and keeps it in memory. On the next update — in other words, when the data that renders the app changes — React will automatically create a new virtual DOM tree for the update.
+
+To help explain this further, let’s visually represent the virtual DOM like so:
+
+![https://blog.logrocket.com/wp-content/uploads/2022/08/img1-Initial-vs-updated-virtual-DOM.png](https://blog.logrocket.com/wp-content/uploads/2022/08/img1-Initial-vs-updated-virtual-DOM.png)
+
+The image on the left is the initial render. As the time changes, React creates a new tree with the updated node, as seen on the right side.
+
+Remember, virtual DOM is just an object representing the UI; nothing gets drawn on the screen.
+
+After React creates the new virtual DOM tree, it compares it to the previous snapshot [using a diffing algorithm](https://reactjs.org/docs/reconciliation.html#the-diffing-algorithm) to figure out what changes are necessary. This [process is called reconciliation](https://reactjs.org/docs/reconciliation.html).
+
+After the reconciliation process, React then uses [a renderer library like ReactDOM](https://blog.logrocket.com/managing-dom-components-reactdom/), which takes the differ information to update the rendered app. This library ensures the actual DOM only receives and repaints the updated node or nodes:
+
+![https://blog.logrocket.com/wp-content/uploads/2022/08/img2-Initial-vs-virtual-vs-actual-DOM.png](https://blog.logrocket.com/wp-content/uploads/2022/08/img2-Initial-vs-virtual-vs-actual-DOM.png)
+
+As seen in the image above, only the node whose data changes gets repainted in the actual DOM. The GIF below further proves this statement:
+
+![https://blog.logrocket.com/wp-content/uploads/2022/08/img6-Inspecting-React-component-only-changed-node-repainted-on-re-render.gif](https://blog.logrocket.com/wp-content/uploads/2022/08/img6-Inspecting-React-component-only-changed-node-repainted-on-re-render.gif)
+
+As we can also see, we are not losing the input value when a state change occurs in the UI.
+
+In summary, on every render, React has a virtual DOM tree it compares with the previous version to determine what node content gets updated and ensure the updated node matches up with the actual DOM.
+
+### **How re-rendering impacts performance**
+
+DOM operations are lighter operations and very fast. However, when the app data changes and triggers an update, re-rendering can be expensive.
+
+Let’s simulate a re-rendering page with the JavaScript code below:
+
+```
+const update = () => {
+ const element = `
+  <h3>JavaScript:</h3>
+  <form>
+   <input type="text"/>
+  </form>
+  <span>Time: ${new Date().toLocaleTimeString()}</span>
+ `;
+
+ document.getElementById("root1").innerHTML = element;
+};
+
+setInterval(update, 1000);
+```
+
+The DOM tree representing the document looks like so:
+
+![https://blog.logrocket.com/wp-content/uploads/2022/08/img1-DOM-tree-representing-example-JavaScript-document.png](https://blog.logrocket.com/wp-content/uploads/2022/08/img1-DOM-tree-representing-example-JavaScript-document.png)
+
+The `setInterval()` callback in the code lets us trigger a simulated re-render of the UI after every second. As we can see in the GIF below, the document DOM elements are rebuilt and repainted on each update. The text input in the UI also loses its state due to this re-rendering:
+
+![https://blog.logrocket.com/wp-content/uploads/2022/08/img2-Demonstration-of-full-page-re-rendering-after-manipulating-DOM.gif](https://blog.logrocket.com/wp-content/uploads/2022/08/img2-Demonstration-of-full-page-re-rendering-after-manipulating-DOM.gif)
+
+As we can see above, the text field loses the input value when an update occurs in the UI. This calls for optimization.
+
+Different JavaScript frameworks have different solutions and strategies to optimize re-rendering. React, however, implements the concept of virtual DOM.
+
+---
+
+## **How the virtual DOM is different from the shadow DOM**
+
+Before we round up, here’s a question that often comes up: Is the shadow DOM the same as the virtual DOM? The short answer is that their behavior is different.
+
+The shadow DOM is a tool for implementing web components. Take, for instance, the HTML `input` element `range`:
+
+```
+<input type="range" />
+```
+
+That gives us this result:
+
+![https://blog.logrocket.com/wp-content/uploads/2022/08/img3-HTML-range-element-UI.png](https://blog.logrocket.com/wp-content/uploads/2022/08/img3-HTML-range-element-UI.png)
+
+If we inspect the element using the browser‘s developer tools, we will only see a simple input element. However, internally, browsers encapsulate and hide other elements and styles that make up the input slider.
+
+Using Chrome DevTools, we can enable the “Show user agent shadow DOM” option from “Settings” to see the shadow DOM like so:
+
+![https://blog.logrocket.com/wp-content/uploads/2022/08/img4-Chrome-DevTools-shadow-DOM.png](https://blog.logrocket.com/wp-content/uploads/2022/08/img4-Chrome-DevTools-shadow-DOM.png)
+
+In the image above, the structured tree of elements from the
+
+```
+#shadow-root
+```
+
+inside the input element is called the shadow DOM tree. It provides a way to isolate components, including styles from the actual DOM.
+
+That way, we are sure that a widget or component’s style — like the above input range — is preserved no matter where they are rendered. In other words, their behavior or appearance is never affected by other element’s style from the actual DOM.
+
+## **Comparison chart: Real DOM vs. virtual DOM vs. shadow DOM**
+
+The table below summarizes the differences between the real DOM, virtual DOM, and shadow DOM:
+
+|                         | Real DOM                                                                    | Virtual DOM                                                                                                                                         | Shadow DOM                                                                                                                                                                                                    |
+| ----------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Description             | An interface for web documents; allow scripts to interact with the document | An in-memory replica of the actual DOM                                                                                                              | A tool for implementing web components; an isolated DOM tree within an actual DOM for scoping purposes                                                                                                        |
+| Relevance to developers | Developers manually perform DOM operations to manipulate the DOM            | Developers don’t have to worry about state transitions. It abstracts DOM manipulation away from the developer, thereby providing additional comfort | It lets developers create reusable web components without worrying about style conflicts from the hosting document. For example, it lets us create widgets like Twitter “follow” button to embed on web pages |
+| Who uses them           | Implemented in browsers                                                     | Used by libraries or frameworks like React.js, Vue.js, etc.                                                                                         | Implemented in browsers                                                                                                                                                                                       |
+
+## **Conclusion & Q&A**
+
+**What is the Virtual DOM?**
+
+> The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called [reconciliation](https://reactjs.org/docs/reconciliation.html)
+
+<aside>
+<img src="https://www.notion.so/icons/bookmark_green.svg" alt="https://www.notion.so/icons/bookmark_green.svg" width="40px" /> [Reconciliation](https://reactjs.org/docs/reconciliation.html) - is the process through which **React** updates the Browser DOM. Important concepts behind the working of the **Reconciliation** process are: Virtual DOM Diffing Algorithm
+
+</aside>
+
+This approach enables the declarative API of React: You tell React what state you want the UI to be in, and it makes sure the DOM matches that state. This abstracts out the attribute manipulation, event handling, and manual DOM updating that you would otherwise have to use to build your app.
+
+Since “virtual DOM” is more of a pattern than a specific technology, people sometimes say it to mean different things. In React world, the term “virtual DOM” is usually associated with [React elements](https://reactjs.org/docs/rendering-elements.html) since they are the objects representing the user interface. React, however, also uses internal objects called “fibers” to hold additional information about the component tree. They may also be considered a part of “virtual DOM” implementation in React.\*\*\*\*
+
+---
+
+**Is the Shadow DOM the same as the Virtual DOM?**
+
+> No, they are different. The Shadow DOM is a browser technology designed primarily for scoping variables and CSS in web components. The virtual DOM is a concept implemented by libraries in JavaScript on top of browser APIs.\*\*\*\*
+
+---
+
+**What is “React Fiber”?**
+
+> [Fiber](https://blog.logrocket.com/deep-dive-react-fiber/) is the new reconciliation engine in React 16. Its main goal is to enable incremental rendering of the virtual DOM
