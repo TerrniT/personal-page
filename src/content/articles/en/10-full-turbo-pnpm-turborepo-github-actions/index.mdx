@@ -1,0 +1,49 @@
+---
+title: 'Full Turbo = PNPM + Turborepo + GitHub Actions '
+date: "Oct 3 2024"
+tags: ["pnpm", "turborepo", "github actions"]
+topic: "Software Development"
+type: 'note'
+author: TerrniT
+---
+
+# Full Turbo = PNPM + Turborepo + GitHub Actions  
+This note will be useful for those who use PNPM + Turborepo on GitHub Actions.
+Thanks to this action I managed to speed up the build several times “ FULL TURBO.   
+I attach an example below   
+
+### Example   
+```yaml
+  jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup turborepo cache
+        uses: dtinth/setup-github-actions-caching-for-turbo@v1
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build apps
+        run: pnpm build
+
+```
+   
+### Resources
+[1) https://github.com/dtinth/setup-github-actions-caching-for-turbo](https://github.com/dtinth/setup-github-actions-caching-for-turbo) 
+   
+   
