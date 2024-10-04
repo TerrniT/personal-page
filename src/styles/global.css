@@ -74,8 +74,8 @@
     --background: hsl(240 10% 3.9%);
     --foreground: hsl(0 0% 98%);
 
-    --primary: hsl(162, 78%, 45%);
-    --primary-foreground: hsl(147, 89%, 39%);
+    --primary: hsl(72, 100%, 51%);
+    --primary-foreground: hsl(72, 100%, 44%);
 
     --secondary: hsl(240 3.7% 15.9%);
     --secondary-foreground: hsl(0 0% 98%);
