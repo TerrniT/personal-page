@@ -16,7 +16,7 @@ A TypeScript type mapper leverages the index signature syntax to transform a uni
    
 ### Example of a Mapped Type   
 Let's say you have an interface representing user profile:   
-```
+```typescript
 interface User {
     id: number;
     name: string;
@@ -25,7 +25,7 @@ interface User {
 
 ```
 Now, if you want to create a new type where all the properties of the `User` interface are optional, you can use a mapped type like this:   
-```
+```typescript
 type Partial<T> = {
     [K in keyof T]?: T[K];
 };
@@ -34,7 +34,7 @@ type OptionalUser = Partial<User>;
 
 ```
    
-Partial Type was added to the utility types since [2.1](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick) typescript version   
+> Partial Type was added to the utility types since [2.1](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick) typescript version   
 ### Explanation:   
 1. **User Interface**: Defines the structure of a user with `id`, `name`, and `email`.   
 2. **Mapped Type**: `Partial<T>` takes a type `T` and creates a new type where all properties of `T` are optional. Here:   
@@ -44,7 +44,7 @@ Partial Type was added to the utility types since [2.1](https://www.typescriptla
    
 ### Usage:   
 You can use the `OptionalUser` type like this:   
-```
+```typescript
 const user1: OptionalUser = {}; // Valid, all properties are optional
 const user2: OptionalUser = { name: "Alice" }; // Also valid
 const user3: OptionalUser = { id: 1, email: "alice@example.com" }; // Valid too
