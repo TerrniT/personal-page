@@ -5,13 +5,13 @@
 /* -- colors --- */
 @layer base {
   :root {
-    --background: hsl(9 0% 100%);
+    --background: hsl(60, 24%, 88%);
     --foreground: hsl(9 0% 10%);
 
     --primary: hsl(9 96.4% 55.9%);
     --primary-foreground: hsl(9, 74%, 60%);
 
-    --secondary: hsl(9 10% 90%);
+    --secondary: hsl(55, 13%, 63%);
     --secondary-foreground: hsl(0 0% 0%);
 
     --destructive: hsl(0 50% 50%);
