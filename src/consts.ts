@@ -136,7 +136,7 @@ export const EXPERTISE = [
 export const THEME_MAP = {
   Light: 'light',
   Dark: 'dark',
-  'Dark Green': 'dark-green',
+  'Nike Pro Dark Theme': 'dark-green',
   System: 'system',
 } as const
 
