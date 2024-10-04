@@ -1,0 +1,58 @@
+---
+title: 'Mapped Types in Typescript'
+date: "Oct 4 2024"
+tags: ["typescript"]
+topic: "Software Development"
+type: 'note'
+author: TerrniT
+---
+   
+A mapped type in TypeScript is a new type created from a base type using a custom type mapping utility.
+
+   
+Creating new types using a custom type mapper is a common practice that promotes DRY (Don't Repeat Yourself) principles in a TypeScript codebase. There are various methods for deriving new types in TypeScript, and custom mapping is one of them.   
+A TypeScript type mapper leverages the index signature syntax to transform a union type and generate a new type.   
+   
+### Example of a Mapped Type   
+Let's say you have an interface representing user profile:   
+```
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+
+```
+Now, if you want to create a new type where all the properties of the `User` interface are optional, you can use a mapped type like this:   
+```
+type Partial<T> = {
+    [K in keyof T]?: T[K];
+};
+
+type OptionalUser = Partial<User>;
+
+```
+   
+Partial Type was added to the utility types since [2.1](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick) typescript version   
+### Explanation:   
+1. **User Interface**: Defines the structure of a user with `id`, `name`, and `email`.   
+2. **Mapped Type**: `Partial<T>` takes a type `T` and creates a new type where all properties of `T` are optional. Here:   
+    - `K in keyof T` iterates over each key of `T`.   
+    - `T[K]` gets the type of each property, and the `?` makes them optional.   
+3. **OptionalUser Type**: `OptionalUser` is now a new type based on `User` where all the properties (`id`, `name`, `email`) are optional.   
+   
+### Usage:   
+You can use the `OptionalUser` type like this:   
+```
+const user1: OptionalUser = {}; // Valid, all properties are optional
+const user2: OptionalUser = { name: "Alice" }; // Also valid
+const user3: OptionalUser = { id: 1, email: "alice@example.com" }; // Valid too
+
+```
+   
+### Resources   
+1) [Typescript 2.1 Release](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick)    
+2) [Mapped types in Typescript docs](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html)
+3) [Great Article about Mapped types by Matt Pocock](https://www.totaltypescript.com/concepts/mapped-type)
+4) [Refine Blog Post with cool examples](https://refine.dev/blog/typescript-mapped-types/#introduction)
+   
