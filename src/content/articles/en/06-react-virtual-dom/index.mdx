@@ -67,7 +67,8 @@ After the component is first rendered and the state is `count: 0`, the actual DO
    
 ## How the Virtual DOM Works:   
 Here's a simple example to illustrate the Virtual DOM in a React component, starting with the component definition:   
-## 1. Component Definition   
+## 1. Component Definition
+   
 ```javascript
 import React, { useState } from 'react';
 
@@ -93,7 +94,8 @@ When the component is first rendered, React calls the `Counter` function.
 `useState(0)` initializes the component's state to `0`.   
 ### 2.3 Creating the Virtual DOM   
 React generates a Virtual DOM tree using the component's returned JSX structure. This tree is a lightweight representation of the UI.   
-For the initial render, the Virtual DOM might look like this:   
+For the initial render, the Virtual DOM might look like this:  
+ 
 ```javascript
 {
   "type": "div",
@@ -128,6 +130,7 @@ The component's state is updated, which causes React to know that it needs to re
 React calls the `Counter` function again due to the state change.   
 ### 4.2 New Virtual DOM Creation   
 A new Virtual DOM tree is created reflecting the updated state:   
+
 ```javascript
 {
   "type": "div",
@@ -144,7 +147,8 @@ A new Virtual DOM tree is created reflecting the updated state:
 ### 4.3 Diffing the Virtual DOM   
 React compares the new Virtual DOM with the previous Virtual DOM. It identifies what has changed—in this case, the text in the `<p>` tag has changed from "Count: 0" to "Count: 1".   
 ### 4.4 Reconciliation   
-Only the parts of the real DOM that have changed are updated. In this case, React updates the real DOM to reflect the new count:   
+Only the parts of the real DOM that have changed are updated. In this case, React updates the real DOM to reflect the new count:  
+ 
 ```javascript
 <div>
   <h1>Counter</h1>
@@ -171,7 +175,7 @@ Absolutely! Here are the common problems with the React Virtual DOM, along with 
     - **Issue**: Excessive re-renders can occur even with the Virtual DOM.   
     - **Solution**: Use `React.memo` to memoize functional components.   
    
-    ```javascript
+```javascript
 const MyComponent = React.memo(({ value }) => {
   console.log('Rendered: ', value);
   return <div>{value}</div>;
@@ -180,7 +184,7 @@ const MyComponent = React.memo(({ value }) => {
 ```
     - ***Legacy: ***Use `shouldComponentUpdate` in class components:   
    
-    ```javascript
+```javascript
 class MyClassComponent extends React.Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.value !== this.props.value;
@@ -196,22 +200,21 @@ class MyClassComponent extends React.Component {
     - **Issue**: Improper handling of keys in lists can lead to bugs.   
     - **Solution**: Use unique and stable keys, not array indices.   
    
-    ```javascript
-const items = ['Apple', 'Banana', 'Cherry'];
-return (
-  <ul>
-    {items.map(item => (
-      <li key={item}>{item}</li> // Prefer unique values as keys
-    ))}
-  </ul>
-);
-
+```javascript
+   const items = ['Apple', 'Banana', 'Cherry'];
+      return (
+        <ul>
+          {items.map(item => (
+            <li key={item}>{item}</li> // Prefer unique values as keys
+          ))}
+        </ul>
+      );
 ```
 3. **Overusing State and Updates**   
     - **Issue**: Too many state updates lead to performance issues.   
-    - **Solution**: Combine related states.   
-   
-    ```javascript
+    - **Solution**: Combine related states
+
+```javascript
 const [state, setState] = useState({
   name: '',
   age: 0,
@@ -226,7 +229,7 @@ const updateAge = (newAge) => {
     - **Issue**: Inline functions create new instances on every render.   
     - **Solution**: Use `useCallback` to memoize functions.   
    
-    ```javascript
+```javascript
 const increment = useCallback(() => {
   setCount(c => c + 1);
 }, []); // Only recreate the function if dependencies change
@@ -236,7 +239,7 @@ const increment = useCallback(() => {
     - **Issue**: Deeply nested components trigger multiple re-renders.   
     - **Solution**: Use context.   
    
-    ```javascript
+```javascript
 const CountContext = React.createContext();
 
 const ParentComponent = () => {
@@ -259,7 +262,7 @@ const ChildComponent = () => {
     - **Issue**: Child components re-render when parents update.   
     - **Solution**: Memoize child components.   
    
-    ```javascript
+```javascript
 const ChildComponent = React.memo(({ count }) => {
   return <div>Count: {count}</div>;
 });
@@ -269,7 +272,7 @@ const ChildComponent = React.memo(({ count }) => {
     - **Issue**: Expensive components can slow down the app.   
     - **Solution**: Use `React.lazy` and `React.Suspense`.   
    
-    ```javascript
+```javascript
 const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
 const App = () => (
@@ -283,7 +286,7 @@ const App = () => (
     - **Issue**: Side effects can cause bugs if not managed properly.   
     - **Solution**: Use `useEffect` with proper dependencies.   
    
-    ```javascript
+```javascript
 useEffect(() => {
   const timer = setTimeout(() => {
     console.log('Time elapsed');
@@ -297,7 +300,7 @@ useEffect(() => {
     - **Issue**: Misunderstanding when to use state vs. props.   
     - **Solution**: Use props for externally managed data and state for local data.   
    
-    ```javascript
+```javascript
 const ParentComponent = () => {
   const [name, setName] = useState('John');
 
