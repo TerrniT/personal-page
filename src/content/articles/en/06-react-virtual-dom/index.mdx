@@ -160,16 +160,7 @@ Only the parts of the real DOM that have changed are updated. In this case, Reac
 ## 5. Performance Optimization   
 ### 5.1 Batching Updates   
 If multiple state updates occur in rapid succession (e.g., multiple button clicks), React may batch these updates together for efficiency, minimizing the number of re-renders and DOM updates.   
-   
-## Comparison chart: Real DOM vs. virtual DOM vs. shadow DOM   
-The table below summarizes the differences between the real DOM, virtual DOM, and shadow DOM:   
-|                         |                                                                    Real DOM |                                                                                                                                           Virtual DOM |                                                                                                                                                                                                        Shadow DOM |
-|:------------------------|:----------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|             Description | An interface for web documents; allow scripts to interact with the document |                                                                                                                An in-memory replica of the actual DOM |                                                                                                            A tool for implementing web components; an isolated DOM tree within an actual DOM for scoping purposes |
-| Relevance to developers |            Developers manually perform DOM operations to manipulate the DOM |   Developers don’t have to worry about state transitions. It abstracts DOM manipulation away from the developer, thereby providing additional comfort |     It lets developers create reusable web components without worrying about style conflicts from the hosting document. For example, it lets us create widgets like Twitter “follow” button to embed on web pages |
-|           Who uses them |                                                     Implemented in browsers |                                                                                           Used by libraries or frameworks like React.js, Vue.js, etc. |                                                                                                                                                                                           Implemented in browsers |
-
-Absolutely! Here are the common problems with the React Virtual DOM, along with code examples added to the solutions.   
+     
 ### Common Problems with React Virtual DOM and How to Avoid Them   
 1. **Performance Bottlenecks**   
     - **Issue**: Excessive re-renders can occur even with the Virtual DOM.   
@@ -182,7 +173,8 @@ const MyComponent = React.memo(({ value }) => {
 });
 
 ```
-    - ***Legacy: ***Use `shouldComponentUpdate` in class components:   
+
+> **Legacy:**  Use `shouldComponentUpdate` in class components:   
    
 ```javascript
 class MyClassComponent extends React.Component {
