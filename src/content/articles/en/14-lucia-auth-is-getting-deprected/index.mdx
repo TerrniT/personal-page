@@ -1,0 +1,29 @@
+---
+title: 'Lucia Auth is getting deprected'
+date: "Oct 21 2024"
+description: " The current state of the Lucia library is not effective for their needs, leading to a decision to deprecate it early next year"
+tags: ["auth", "lucia", "sveltekit"]
+topic: "Software Development"
+cover_url: "/lucia-auth-is-getting-deprected.png"
+type: 'article'
+author: TerrniT
+draft: true   
+---
+
+> [pilcrowonpaper](https://github.com/pilcrowonpaper) - author of Lucia Auth package   
+   
+In conclusion, [pilcrowonpaper](https://github.com/pilcrowonpaper) acknowledges that the current state of the Lucia library is not effective for their needs, leading to a decision to deprecate it early next year.    
+The new direction focuses on providing an open-source resource that teaches users how to implement authentication in JavaScript from scratch, making it more educational than just a conventional package. While the library's complex database adapters have contributed to challenges, the shift aims to simplify the experience and enhance maintainability.    
+Although Lucia could evolve into a framework similar to Auth.js, pilcrowonpaper prefers it to remain a standalone package. With a commitment to providing valuable learning resources, he plans to maintain version 3 for six more months (until march 2025), ensuring a smooth migration process for users without significant changes to the database schema.   
+At this point, lucia auth can be used as a guide to building authorization from scratch.   
+   
+## Opinion    
+I think the real issue is in trying to tackle every possible use case. People who need more complex solutions should just build their own authentication system from scratch.   
+For those who want something simple—like being able to support a few OAuth providers, having a `validateRequest()` function, and not stressing too much about session management—Lucia has been a fantastic, lightweight choice. It delivers the key features without all the extra madness.   
+Big thanks to @pilcrowonpaper for all the hard work put into the library and resources! 
+
+
+### Resource
+1) [pilcrowonpaper twitter account](https://x.com/pilcrowonpaper)
+2) [github discussion](https://github.com/lucia-auth/lucia/discussions/1707)
+3) [lucia auth website with great example of auth implementation](https://lucia-auth.com/)
