@@ -1,7 +1,7 @@
 ---
 title: 'To Rebase, or Not to Rebase?'
-date: "Jan 27 2022"
-description: "The Git rebase command achieves its aims in a completely different way"
+date: "Oct 21 2024"
+description: "At its essence, `git rebase` is a method to reposition or merge a series of commits onto a new base commit"
 tags: ["git"]
 topic: "Software Development"
 cover_url: "/git-rebase.png"
@@ -10,76 +10,134 @@ author: TerrniT
 draft: true
 ---
 
-### What is `git rebase`?
+Hi, Gleb Kotovsky is here!
+Today, we’re diving into one of the most powerful features of Git: git rebase.
 
-The Git `rebase` command achieves its aims in a completely different way. It takes all of the commits from the branch you’re going to rebase and replays them onto the end of the branch you’re rebasing onto.
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/riuxy09zyip2ngjko0bt.png)
 
-Taking our previous example, before we performed any action our Git repository looks like this. We have a branch called `dev-branch` and we want to move those changes to the `master` branch.
+### What is Git Rebase?
+At its essence, `git rebase` is a method to reposition or merge a series of commits onto a new base commit. Unlike git merge, which generates a merge commit, rebasing alters the commit history. This enables you to tidy up your project history, presenting it in a more linear and straightforward manner.
 
-![Untitled](/posts/git-rebase/Untitled.png)
+`git rebase` serves two main purposes:
+1. **Streamlining the History:** It allows you to create a cleaner linear project history by removing unnecessary merge commits that typically occur when merging branches.
+2. **Updating a Feature Branch:** It helps you incorporate changes from one branch (usually the `main` or `master` branch) into another branch (your `feature` branch), making it easier to manage ongoing work.
 
-The `dev-branch`has been removed, and the commits in the `dev-branch`
- have been added to the master branch. The end result is the same as if the commits in the `dev-branch`had actually been directly committed to the `master`branch in the first place. The commits aren’t just tacked onto the `master` branch, they’re “replayed” and added fresh.
+#### How Does It Work?
+When you perform a rebase, Git essentially takes the commits from your current branch and adds them on top of another branch. This process can be visualized as follows:
+1. You start with two branches: `feature` and `main`.
+2. The feature branch has diverged from main, with several commits unique to it.
+3. When you rebase feature onto main, Git takes the commits from `feature`, temporarily saves them, moves `feature` to the tip of `main`, and re-applies those commits one by one.
 
-This is why the `rebase`command is considered destructive. The rebased branch no longer exists as a separate branch, and the Git history of your project has been rewritten. You can’t determine at some later point which commits were originally made to the `dev-branch`
+Assume the commits look like this:
+``` 
+        A---B---C (main)
+       /
+      D---E (feature)
+```
+Let's say commits `A`, `B`, and `C` represent changes made to the main branch, while `D` and `E` are your changes on the feature branch.
 
-However, it does leave you with a simplified, linear, history. Compared to a repository with dozens or even hundreds of branches and merges, reading the Git log or using a graphical git GUI to look at a graph of the repository, a rebased repository is a breeze to understand.
+When you run:
+```bash
+git checkout feature
+git rebase main
+```
 
-### \***\*How to Rebase Onto Another Branch\*\***
+Git will take commits `D` and `E` and replay them on top of commit C. After running this command, your commit history will look like:
+```
+            A---B---C---D'---E' (feature)
+           /
+          main
+```
+In this result, `D'` and `E'` are new commits with different hashes, because they are applied on top of `C` instead of `B`.
 
-First, we check that the `master`branch has no outstanding changes.
 
+### When to Use Git Rebase
+#### 1. Keeping a Clean History
+When working in teams, you often find yourself merging branches. Instead of using git merge, which can clutter your history with merge commits, consider using git rebase. This creates a more linear representation of changes, making it easier to follow the project history.
+#### 2. Updating Feature Branches
+You can use git rebase to stay up-to-date with the main branch while working on your feature branch. Regularly rebasing your feature branch against main helps you resolve conflicts incrementally, preventing a large merge conflict later.
+#### 3. Squashing Commits
+Rebase can also be used to squash multiple commits into one. This is useful for cleaning up your commit history before merging to the main branch. For example:
+```bash
+git rebase -i HEAD~3
+```
+This opens an interactive rebase  window, allowing you to pick, squash, or fix commits.
+Let's talk about it interactive rebase more:
+
+
+#### 4. Interactive Git Rebase
+This feature allows you to take control of individual commits, giving you options to edit, reorder, and squash them. You can initiate an interactive rebase with:
+```bash
+git rebase -i HEAD~3
+
+```
+This command opens an interactive editor showing the last 3 commits. You can then choose actions for each commit, such as:
+- **pick**: Use the commit as-is.
+- **squash**: Combine this commit with the previous one.
+- **edit**: Stop to allow you to make changes to this commit.
+- **reword**: Change the commit message.
+- and more
+
+#### 5. Lost in interactive Rebase-land: Finding Your Way Back to Git Reality
+If you get lost while using `git rebase -i`, here are some helpful tips to regain your bearings:
+- **Check the Terminal Output:** After you run `git rebase -i`, Git provides instructions in the terminal. Look closely at the output for any messages or prompts indicating what to do next.
+- **Interactive Editor:** When the interactive rebase editor opens, take a moment to read the instructions at the top. They explain how to pick, squash, edit, or drop commits. You can always exit the editor (usually by typing `:q` (or rebooting PC) for Vim or `Ctrl + X` for Nano) to cancel and return to the command line.
+- **Abort the Rebase:** If you're unsure about the changes you've made, you can always abort the rebase by running:
+```bash
+git rebase --abort
+```
+_This command will take you back to the state of your branch before the rebase started._
+
+- **View Commit History:** If you're not sure about the commits you are working with, you can open another terminal window or tab and check your commit history using:
+```bash
+git log
+```
+_This will give you context about the commits in your branch._
+
+- **Read the Documentation:** If you need comprehensive guidance, you can check the Git documentation online or simply run:
+```bash
+git help rebase
+```
+_This provides detailed explanations and examples._
+
+- **Ask for Help:** If you're working in a team and still feel stuck, don't hesitate to reach out to a colleague for assistance. Sometimes a fresh perspective helps clarify the situation.
+- Practice: If you’re unsure about rebasing, consider practicing in a test repository where you can experiment without affecting important code.
+
+> Remember, it’s perfectly fine to feel a bit overwhelmed during the process. Take your time, and don’t hesitate to revert if needed!
+
+### Best Practices
+#### 1. Use Rebase for Local Changes
+It's best to use `git rebase` for local branches that haven’t been pushed to a remote repository yet. Rewriting commit history after pushing can lead to problems for others who have based their work on the original commits.
+#### 2. Always Communicate with Your Team
+Before rewriting history on shared branches, communicate with your team. Let them know that a rebase has occurred so they can synchronize their local branches accordingly:
+```bash
+git pull --rebase
+```
+#### 3. Handle Conflicts Carefully
+During a rebase, conflicts may occur. Git will pause and allow you to resolve conflicts before continuing with the rebase. Be careful to review and test your changes before completing the rebase:
 ```bash
 git status
 ```
-
-We checkout the `new-feature` branch
-
+Once resolved, you can continue rebasing:
 ```bash
-git checkout new-feature
+git rebase --continue
 ```
+#### 4. Use Interactive Rebase for Cleanup
+To tidy up your commit history, use interactive rebase to review and modify commits before merging into the main branch, combining related changes in a meaningful way.
+#### 5. Be Mindful of Commit Messages
+When rebasing, pay attention to your commit messages. A good commit message should be concise and convey the essence of the changes made.
 
-We can see that we have still got two branches
+### When to Use Git Rebase
+1. **Updating Your Branch:** When you want to update your feature branch with the latest changes from the main branch without creating unnecessary merge commits.
+2. **Cleaning Up Your Commit History:** If you have many small or irrelevant commits, rebasing allows you to squash them into a single commit that is more representative of the changes made.
+3. **Before Merging:** To ensure that your feature branch is compatible with the main branch, it’s a good habit to rebase before merging your changes.
 
-```bash
-git branch
-```
 
-We swap back to teh `master` branch
+### Conclusion
 
-```bash
-git checkout master
-```
+Git rebase is a handy command that helps keep your Git history clean and easy to follow. Whether you're bringing in updates from the main branch or tidying up your commit history before a merge, knowing how to use rebase well is super important for every developer.
+So, "To rebase or not to rebase?" The answer often depends on the context. Rebase is fantastic for maintaining a linear history and simplifying merges, making it ideal for feature branches and collaborative workflows. However, it’s essential to avoid rebasing publicly shared branches, as this can lead to confusion and conflicts for your teammates.
+By following some best practices and using rebase thoughtfully, you can make the most of its benefits to improve your workflow and work better with your team.
+Now that you have a clearer understanding of git rebase, why not give it a shot in your next project? 
 
-We merge the `new-feature` branch into the current branch, which in our case is the `master` branch
-
-```bash
-git merge new-feature
-```
-
-![Untitled](/posts/git-rebase/Untitled%201.png)
-
-<aside>
-📎 After that, we’ve still got two branches after the final merge
-
-</aside>
-
-<aside>
-📎 Don’t use `rebase`on shared branches where others are likely to work. Your changes to your repository are going to cause problems to a lot of people when you push your rebased code to your remote repository.
-
-</aside>
-
-<aside>
-📎 If your project has multiple contributors, the safe thing to do is only use `rebase`on your *local* repository, and not on public branches
-
-</aside>
-
-### Summary
-
-**So still, To Rebase, or Not to Rebase ?**
-
-`Rebase` might be outlawed in your project. There may be local, cultural objections. Some projects or organizations consider `rebase` as a form of heresy, and an act of desecration. Some people believe the Git history should be an inviolable, permanent record of what has happened. So, `rebase` might be off the table.
-
-But, used locally, on private branches, `rebase` is a useful tool.
-
-Push *after* you’ve rebased, and restrict it to branches where you’re the only developer. Or at least, where all development has stopped, and no one else has based any other work off your branch’s commits.
+Happy Hacking and i'll see u in the next chapter of git series
