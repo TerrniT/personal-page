@@ -10,4 +10,114 @@ author: TerrniT
 draft: true
 ---
 
-Hello
+Hi, Gleb Kotovsky is here!
+Welcome to my Git series again, where we’ll explore various features and best practices of Git to help you become a more efficient developer. In this post, we’ll dive into Git Stash, a powerful tool for managing your work "on the fly"
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ldg3m1hl3va8d8kf8bwu.jpg)
+
+As a developer, juggling multiple tasks or features at once can sometimes feel like a game of whack-a-mole. You're in the middle of working on a new feature when, suddenly, you're interrupted by the urgent need to fix a bug. This is where Git Stash comes to your rescue! In this post, we'll explore what Git Stash is, how to effectively use it, and some practical examples that will make you wonder how you ever coded without it.
+
+### What is Git Stash?
+In the simplest terms, Git Stash is a way to save your uncommitted changes without committing them. Think of it as a temporary holding area for your work in progress. When you stash your changes, Git takes your modified tracked files, saves the changes, and cleans your working directory. This allows you to switch branches or pull updates without the risk of losing your current work.
+
+### 3 Reasons to use Git Stash
+#### 1) "Quick Fix" Interruptions
+Let's remember our common process when working with codebase and git. We made something (a function, a small module), performed add, then commit and push. Hooray - the task is done, let's move on to the next one.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pyykzcdcj8x310mmlw4u.png)
+
+But what do you do in a situation where the context changes and you need to switch urgently?
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/lek3sde1z32zw796rkyr.png)
+
+It will take a long time to finish writing this task, but your manager said that you should do another task now. You don't want to leave the commit unfinished. That's where stash comes to the rescue.
+
+#### 2) Experimenting
+You want to try out a different approach or idea but don't want to commit half-finished work. Stash your changes first!
+
+#### 3) Keeping a Clean History
+Stashing allows you to avoid unnecessary WIP commits, making your version history cleaner and more meaningful.
+
+
+### How to Use Git Stash
+Let’s dive into some common commands and scenarios where git stash shines.
+#### Basic Stashing
+To stash your changes, simply run:
+```bash
+git stash
+```
+This command will take all modified tracked files and stash them away. If you have untracked files and want them included as well, you can use:
+```bash
+git stash -u
+```
+And if you wish to include ignored files too:
+```bash
+git stash -a
+```
+
+#### Viewing Stashed Changes
+You can check what you've stashed at any time with:
+```bash
+git stash list
+```
+This command will display a list of stashed entries, each with a unique identifier (like stash@{0}, stash@{1}, etc.).
+
+#### Applying Stashed Changes
+When you’re ready to retrieve your stashed changes, use:
+```bash
+git stash apply
+```
+This will apply the most recent stash without removing it from the stash list. If you want to apply a specific stash, you can refer to it directly:
+```bash
+git stash apply stash@{1}
+```
+
+#### Cleaning Up the Stash
+Once you're done with a stash, you may want to clean it up. You can drop a specific stash with:
+```bash
+git stash drop stash@{0}
+```
+Alternatively, if you want to clear all stashed changes, use:
+```bash
+git stash clear
+```
+
+#### Pop Stash
+If you want to apply a stash and remove it from the stash list in one command, use:
+```bash
+git stash pop
+```
+This is a great way to quickly retrieve your stashed changes while keeping your stash list tidy.
+
+#### Create named stash
+To create a named stash so that we don't forget what changes we've save, we can use:
+```bash
+git push push -m "Our very informative description of the stash"
+```
+
+### Real-World Scenarios
+#### Scenario 1: Quick Fix
+A critical bug needs immediate attention?. Alright, you can stash changes Instead of committing half-baked:
+```bash
+git stash
+# Switch to the bug-fix branch
+git checkout main
+# Fix the bug
+git commit -m "Fix critical bug"
+# Return to your feature branch
+git checkout feature-branch
+git stash pop
+```
+#### Scenario 2: Experimenting
+You’re trying out new ideas, but you want to experiment without committing every little change. Stash your changes, explore, and then retrieve your stash later:
+```bash
+git stash
+# Try out new ideas
+# Stash may be cleared or maintained based on preference
+git stash pop
+```
+
+### Conclusion
+Git Stash is an invaluable tool for developers, providing a convenient mechanism to manage work in progress without cluttering your commit history. By using stashing effectively, you can stay focused on your tasks without the worry of losing your changes.
+So next time you find yourself caught in a coding conundrum, remember: it’s okay to stash things away for a while. After all, sometimes, you just need to hide!
