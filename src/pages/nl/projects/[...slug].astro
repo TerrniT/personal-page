@@ -1,0 +1,22 @@
+---
+export const prerender = true
+
+import { getSlugItem } from '@lib/mdx'
+import type { LanguageLocales } from '@lib/i18n'
+
+import { ProjectShell } from '@components/astro/modules/project'
+import type { CollectionEntry } from 'astro:content'
+
+export const getStaticPaths = async () => {
+  return await getSlugItem('projects', 'nl')
+}
+
+interface Props {
+  lang: LanguageLocales
+  data: CollectionEntry<'projects'>
+}
+
+const { data } = Astro.props
+---
+
+<ProjectShell {data} />

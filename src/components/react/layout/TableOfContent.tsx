@@ -1,18 +1,18 @@
-import { throttle } from 'lodash-es';
-import { useEffect, useState } from 'react';
+import type { MarkdownHeading } from 'astro'
+import { cn } from '@lib/utils'
 
-import { cn } from '@lib/utils';
-import type { MarkdownHeading } from 'astro';
+import { throttle } from 'lodash-es'
+import { useEffect, useState } from 'react'
 
 export default function TableOfContent({
   toc,
   className,
   ...props
 }: {
-  toc: MarkdownHeading[];
-  className?: string;
+  toc: MarkdownHeading[]
+  className?: string
 }) {
-  const { currentSectionSlug } = useTocScroll(toc);
+  const { currentSectionSlug } = useTocScroll(toc)
 
   return (
     <ul {...props} className={cn('space-y-2.5 font-sans text-sm', className)}>
@@ -30,61 +30,62 @@ export default function TableOfContent({
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
-const useTocScroll = (tableOfContents: MarkdownHeading[]) => {
-  const [currentSectionSlug, setCurrentSectionSlug] = useState<string>();
+function useTocScroll(tableOfContents: MarkdownHeading[]) {
+  const [currentSectionSlug, setCurrentSectionSlug] = useState<string>()
 
   useEffect(() => {
-    if (tableOfContents.length === 0) return;
+    if (tableOfContents.length === 0)
+      return
 
-    let headings: { id: string; top: number }[];
-    let pageTop = 0;
-
+    let headings: { id: string, top: number }[]
+    let pageTop = 0
 
     const onResize = () => {
       headings = Array.from(
         document.querySelectorAll<HTMLElement>('.mdx h2'),
-      ).map((element) => ({
+      ).map(element => ({
         id: element.id,
         top: element.offsetTop,
-      }));
+      }))
 
-      pageTop = parseFloat(
+      pageTop = Number.parseFloat(
         window
           .getComputedStyle(document.documentElement)
           .getPropertyValue('--page-top')
           .match(/[\d.]+/)?.[0] ?? '0',
-      );
-    };
+      )
+    }
 
     const onScroll = throttle(() => {
-      if (!headings) return;
+      if (!headings)
+        return
 
-      let current: typeof currentSectionSlug = undefined;
-      const top = window.scrollY + pageTop;
-      const HEADING_OFFSET = 10;
+      let current: typeof currentSectionSlug
+      const top = window.scrollY + pageTop
+      const HEADING_OFFSET = 10
 
       headings.forEach((heading) => {
         if (top >= heading.top - HEADING_OFFSET) {
-          current = heading.id;
+          current = heading.id
         }
-      });
+      })
 
-      setCurrentSectionSlug(current);
-    }, 10);
+      setCurrentSectionSlug(current)
+    }, 10)
 
-    onResize();
-    onScroll();
-    window.addEventListener('scroll', onScroll, { capture: true });
-    window.addEventListener('resize', onResize, { capture: true });
+    onResize()
+    onScroll()
+    window.addEventListener('scroll', onScroll, { capture: true })
+    window.addEventListener('resize', onResize, { capture: true })
 
     return () => {
-      window.removeEventListener('scroll', onScroll, { capture: true });
-      window.removeEventListener('resize', onResize, { capture: true });
-    };
-  }, [tableOfContents]);
+      window.removeEventListener('scroll', onScroll, { capture: true })
+      window.removeEventListener('resize', onResize, { capture: true })
+    }
+  }, [tableOfContents])
 
-  return { currentSectionSlug };
-};
+  return { currentSectionSlug }
+}

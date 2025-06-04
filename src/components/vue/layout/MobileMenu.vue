@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Button } from '@components/vue/ui/button'
-
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@components/vue/ui/sheet'
+
+import { ref } from 'vue'
 
 const sheetModal = ref(false)
 </script>
@@ -27,7 +27,7 @@ const sheetModal = ref(false)
         <SheetTitle>
           <span class="hidden"> Navbar menu </span>
         </SheetTitle>
-		<slot name="navigation"/>
+        <slot name="navigation" />
       </SheetHeader>
     </SheetContent>
   </Sheet>

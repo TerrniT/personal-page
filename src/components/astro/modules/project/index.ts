@@ -1,7 +1,7 @@
-import ProjectCard from "./ProjectCard.astro";
-import ProjectShell from "./ProjectShell.astro";
+import ProjectCard from './ProjectCard.astro'
+import ProjectShell from './ProjectShell.astro'
 
 export {
-	ProjectCard,
-	ProjectShell
+  ProjectCard,
+  ProjectShell,
 }

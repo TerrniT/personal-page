@@ -1,4 +1,4 @@
-import type { Site, Socials, Navigation } from '@types'
+import type { Navigation, Site, Socials } from '@types'
 
 export const SITE: Site = {
   TITLE: 'TerrniT',
@@ -134,10 +134,10 @@ export const EXPERTISE = [
 ]
 
 export const THEME_MAP = {
-  Light: 'light',
-  Dark: 'dark',
+  'Light': 'light',
+  'Dark': 'dark',
   'Nike Pro Dark Theme': 'dark-green',
-  System: 'system',
+  'System': 'system',
 } as const
 
 export const STORAGE_THEME_KEY = 'theme' as const

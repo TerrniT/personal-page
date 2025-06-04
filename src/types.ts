@@ -1,6 +1,6 @@
 import type { PeopleInfo } from '@lib/mdx'
 
-export type Locales = 'ru' | 'en'
+export type Locales = 'ru' | 'en' | 'ko' | 'da' | 'zh' | 'nl'
 
 export interface Author {
   name: string
@@ -19,7 +19,7 @@ export type Site = {
   NUM_PROJECTS_ON_HOMEPAGE: number
 } & { AUTHOR: PeopleInfo | Author } & Metadata
 
-export type Metadata = {
+export interface Metadata {
   TITLE: string
   DESCRIPTION: string
   OG_IMAGE_URL?: string
@@ -42,7 +42,7 @@ export type NavigationKeys =
   | 'photos'
   | 'playlist'
 
-export type Navigation = {
+export interface Navigation {
   key: NavigationKeys
   href: string | unknown
 }

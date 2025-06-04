@@ -1,0 +1,24 @@
+---
+export const prerender = true
+
+import { getSlugItem, type PeopleInfo, resolveAuthor } from '@lib/mdx'
+import type { LanguageLocales } from '@lib/i18n'
+
+import { ArticleShell } from '@components/astro/modules/article'
+import type { CollectionEntry, InferEntrySchema } from 'astro:content'
+
+export const getStaticPaths = async () => {
+  return await getSlugItem('articles', 'ko')
+}
+
+interface Props {
+  lang: LanguageLocales
+  data: CollectionEntry<'articles'>
+}
+
+const { data } = Astro.props
+
+const author = await resolveAuthor(data.data.author, 'ko')
+---
+
+<ArticleShell {data} author={author as InferEntrySchema<'people'> & { href?: string }} />

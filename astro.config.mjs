@@ -1,20 +1,20 @@
-import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
-import icon from 'astro-icon'
-
-import tailwind from '@astrojs/tailwind'
-import vue from '@astrojs/vue'
 import react from '@astrojs/react'
 import svelte from '@astrojs/svelte'
 
+import tailwind from '@astrojs/tailwind'
+import vercel from '@astrojs/vercel/serverless'
+import vue from '@astrojs/vue'
+import icon from 'astro-icon'
+
+import { defineConfig } from 'astro/config'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import remarkToc from 'remark-toc'
 import rehypeExternalLinks from 'rehype-external-links'
 import rehypeSlug from 'rehype-slug'
 import remarkBreaks from 'remark-breaks'
 import remarkGfm from 'remark-gfm'
 
-import vercel from "@astrojs/vercel/serverless";
+import remarkToc from 'remark-toc'
 
 // https://astro.build/config
 export default defineConfig({
@@ -33,8 +33,8 @@ export default defineConfig({
       shikiConfig: {
         theme: 'solarized-dark',
         themes: {
-          light: 'solarized-light',
-          dark: 'solarized-dark',
+          'light': 'solarized-light',
+          'dark': 'solarized-dark',
           'dark-green': 'catppuccin-macchiato',
         },
 
@@ -69,5 +69,5 @@ export default defineConfig({
       ],
     }),
   ],
-  adapter: vercel()
+  adapter: vercel(),
 })

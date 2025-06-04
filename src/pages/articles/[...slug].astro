@@ -5,8 +5,7 @@ import { getSlugItem, resolveAuthor } from '@lib/mdx'
 import type { LanguageLocales } from '@lib/i18n'
 
 import { ArticleShell } from '@components/astro/modules/article'
-import type { CollectionEntry } from 'astro:content'
-import type { InferEntrySchema } from 'astro:content'
+import type { CollectionEntry, InferEntrySchema } from 'astro:content'
 
 export const getStaticPaths = async () => {
   return await getSlugItem('articles')

@@ -25,20 +25,22 @@
 
         const stats = await response.json()
         views = stats.views
-      } catch (e) {
+      }
+      catch (e) {
         console.error('[Error]: ArticleViewCounter', e)
-      } finally {
+      }
+      finally {
         isLoading = false
       }
     }
   })
 </script>
 
-<div class="flex items-center animate">
+<div class='flex items-center animate'>
   {#if isLoading}
-    <Spinner class="text-sm text-muted-foreground" />
+    <Spinner class='text-sm text-muted-foreground' />
   {:else}
     <slot />
-    <span class=" px-1 mx-1 text-sm text-muted-foreground">{views}</span>
+    <span class=' px-1 mx-1 text-sm text-muted-foreground'>{views}</span>
   {/if}
 </div>

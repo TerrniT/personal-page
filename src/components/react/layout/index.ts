@@ -1,5 +1,5 @@
-import LanguageSwitcher from "./LanguageSwitcher";
-import ThemeSwitcher from "./ThemeSwitcher";
-import TableOfContent from "./TableOfContent";
+import LanguageSwitcher from './LanguageSwitcher'
+import TableOfContent from './TableOfContent'
+import ThemeSwitcher from './ThemeSwitcher'
 
-export { LanguageSwitcher, ThemeSwitcher, TableOfContent }
+export { LanguageSwitcher, TableOfContent, ThemeSwitcher }

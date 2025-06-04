@@ -1,6 +1,6 @@
 {
   "layout": {
-	"back_to_top": "Back to top"
+    "back_to_top": "Back to top"
   },
   "about": {
     "title": "About",
@@ -13,10 +13,10 @@
       "heading": "Bio"
     },
 
-	"experience": {
-	  "heading": "Experiences"
-	},
-	
+    "experience": {
+      "heading": "Experiences"
+    },
+
     "hard_skills": {
       "heading": "Hard skills",
       "paragraph": "In my day-to-day work, I’m using a variety of technologies, including but not limited to the following:"
@@ -36,7 +36,7 @@
     "heading": "Articles",
     "paragraph": "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order",
 
-	"back_to": "Back to articles"
+    "back_to": "Back to articles"
   },
   "contact": {
     "title": "Contact",
@@ -127,7 +127,7 @@
 
     "heading": "Projects",
 
-	"back_to": "Back to projects"
+    "back_to": "Back to projects"
   },
   "404": {
     "title": "404",

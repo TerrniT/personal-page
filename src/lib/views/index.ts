@@ -1,7 +1,7 @@
-import { getViewsBySlugFromMock } from './in-memory';
-import { getViewsBySlugFromDB } from './db';
-import { isDev } from '@lib/utils';
+import { isDev } from '@lib/utils'
+import { getViewsBySlugFromDB } from './db'
+import { getViewsBySlugFromMock } from './in-memory'
 
-export const getViewsBySlug = async (slug: string) => {
-	return isDev ? await getViewsBySlugFromMock(slug) : await getViewsBySlugFromDB(slug);
+export async function getViewsBySlug(slug: string) {
+  return isDev ? await getViewsBySlugFromMock(slug) : await getViewsBySlugFromDB(slug)
 }

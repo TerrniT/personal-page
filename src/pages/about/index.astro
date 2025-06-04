@@ -16,17 +16,6 @@ const { url } = Astro
 const { t } = useI18n(url)
 const lang = getLangFromUrl(url)
 
-// const data = (await getCollection('about', ({ slug }) => slug.split('/')[0] === getLocale()))
-//   .filter((post) => !post.data.draft)
-//   .sort((a, b) => a.data.year.valueOf() - b.data.year.valueOf())
-
-// const bio = await Promise.all(
-//   data.map(async (item) => {
-//     const { Content } = await item.render()
-//     return { ...item, Content }
-//   }),
-// )
-
 const dataExperiences = (await getCollection('experiences'))
   .filter((post) => !post.data.draft)
   .filter((item) => getLangFromSlug(item.slug) === lang)

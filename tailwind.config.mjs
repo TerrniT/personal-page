@@ -1,6 +1,6 @@
-import animate from 'tailwindcss-animate'
 import forms from '@tailwindcss/forms'
 import typography from '@tailwindcss/typography'
+import animate from 'tailwindcss-animate'
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 /**
@@ -39,10 +39,10 @@ export default {
           DEFAULT: parseHslColorToHsla('--background'),
           foreground: parseHslColorToHsla('--foreground'),
         },
-		primary: {
-			DEFAULT: parseHslColorToHsla('--primary'),
-			foreground: parseHslColorToHsla('--primary-foreground'),
-		},
+        primary: {
+          DEFAULT: parseHslColorToHsla('--primary'),
+          foreground: parseHslColorToHsla('--primary-foreground'),
+        },
         secondary: {
           DEFAULT: parseHslColorToHsla('--secondary'),
           foreground: parseHslColorToHsla('--secondary-foreground'),

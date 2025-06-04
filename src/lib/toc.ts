@@ -1,11 +1,11 @@
-import type { MarkdownHeading } from "astro"
+import type { MarkdownHeading } from 'astro'
 
 /** table-of-content */
 export type TOCSection = TOCSubSection & {
   subSections: TOCSubSection[]
 } | MarkdownHeading[]
 
-export type TOCSubSection = {
+export interface TOCSubSection {
   slug: string
   text: string
 }
@@ -43,11 +43,11 @@ export type TOCSubSection = {
 //     }, [])
 // }
 
-export const contentToDescription = (content: string) => {
+export function contentToDescription(content: string) {
   const parsedContent = content
     .replace(/(?<=\])\((.*?)\)/g, '')
     .replace(/(?<!\S)((http)(s?):\/\/|www\.).+?(?=\s)/g, '')
-    .replace(/[#*\|\[\]]|(\-{3,})|(`{3})(\S*)(?=\s)/g, '')
+    .replace(/[#*|[\]]|(-{3,})|(`{3})(\S*)(?=\s)/g, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 157)
