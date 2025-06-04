@@ -1,0 +1,61 @@
+---
+title: 'Настройка CI/CD для Tauri-приложения в монорепозитории'
+date: "Oct 9 2024"
+tags: ["monorepo", "tauri", "github actions"]
+topic: "Software Development"
+type: 'note'
+author: TerrniT
+---
+
+### Пример рабочего процесса  
+```yaml
+name: publish
+'on':
+  push:
+    branches:
+      - release  # Запуск только при пуше в ветку release
+jobs:
+  publish-tauri:
+    strategy:
+      fail-fast: false  # Не останавливать всю сборку при ошибке на одной платформе
+      matrix:
+        platform:  # Сборка для трёх ОС
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+    env:
+      working-directory: ./tauri-app  # Путь к приложению в монорепозитории
+    runs-on: '${{ matrix.platform }}'  # Запуск на выбранной платформе
+    steps:
+      - uses: actions/checkout@v2  # Клонирование репозитория
+      - name: Установка Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16  # Конкретная версия Node
+      - name: Установка Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable  # Стабильная версия Rust
+      - name: Установка webkit2gtk (только для Ubuntu)
+        if: matrix.platform == 'ubuntu-latest'
+        run: |  # Установка зависимостей для Linux
+          sudo apt-get update
+          sudo apt-get install -y webkit2gtk-4.0
+      - name: Сборка приложения
+        run: yarn && yarn build  # Установка зависимостей и сборка
+        working-directory: '${{env.working-directory}}'  # Рабочая директория
+      - uses: tauri-apps/tauri-action@v0  # Деплой через официальное действие
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'  # Токен для доступа к релизам
+        with:
+          tagName: app-v__VERSION__  # Шаблон имени тега
+          releaseName: App v__VERSION__  # Название релиза
+          releaseBody: See the assets to download this version and install. # Описание
+          releaseDraft: true  # Создавать как черновик
+          prerelease: false  # Не пререлиз
+          projectPath: '${{env.working-directory}}'  # Путь к проекту
+```
+   
+### Ресурсы
+- [Исходная статья](https://dev.to/bayswaterpc/setting-up-ci-cd-for-tauri-in-a-monorepo-1fa3)
+

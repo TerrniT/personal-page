@@ -1,0 +1,57 @@
+```markdown
+---
+title: 'Mapped Types в TypeScript'
+date: "Oct 4 2024"
+tags: ["typescript"]
+topic: "Software Development"
+type: 'article'
+cover_url: "/typescript-series-mapped-types-en.png"
+author: TerrniT
+---
+
+Mapped Type в TypeScript — это новый тип, созданный из базового типа с помощью пользовательской утилиты для маппинга типов.
+
+Создание новых типов через кастомный маппер — распространённая практика, соответствующая принципу DRY (Don't Repeat Yourself). В TypeScript есть различные методы вывода новых типов, и кастомный маппинг один из них.  
+Маппер типов использует синтаксис индексной сигнатуры для преобразования юнион-типа и генерации нового типа.
+
+### Пример Mapped Type
+Допустим, у нас есть интерфейс профиля пользователя:
+```typescript
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+```
+
+Чтобы создать тип, где все свойства `User` становятся опциональными:
+```typescript
+type Partial<T> = {
+    [K in keyof T]?: T[K];
+};
+
+type OptionalUser = Partial<User>;
+```
+
+> Тип Partial был добавлен в утилиты в [версии 2.1](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick)
+
+### Объяснение:
+1. **Интерфейс User**: Определяет структуру пользователя с `id`, `name` и `email`.
+2. **Mapped Type**: `Partial<T>` берёт тип `T` и создаёт новый тип, где все свойства `T` становятся опциональными:
+   - `K in keyof T` итерирует по ключам `T`
+   - `T[K]` получает тип каждого свойства, а `?` делает их опциональными
+3. **Тип OptionalUser**: Теперь все свойства (`id`, `name`, `email`) стали опциональными
+
+### Использование:
+```typescript
+const user1: OptionalUser = {}; // Корректно - все свойства опциональны
+const user2: OptionalUser = { name: "Alice" }; // Корректно
+const user3: OptionalUser = { id: 1, email: "alice@example.com" }; // Корректно
+```
+
+### Ресурсы
+1) [Релиз TypeScript 2.1](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick)    
+2) [Mapped Types в документации](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html)
+3) [Отличная статья о Mapped Types от Matt Pocock](https://www.totaltypescript.com/concepts/mapped-type)
+4) [Подробный пост с крутыми примерами](https://refine.dev/blog/typescript-mapped-types/#introduction)
+```

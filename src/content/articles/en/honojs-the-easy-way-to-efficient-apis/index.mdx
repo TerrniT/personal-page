@@ -1,0 +1,253 @@
+---
+title: 'Hono.js: The Easy Path to Efficient APIs'
+description: 'First article about Hono.js in the Russian IT community'
+date: 'Aug 26 2024'
+tags: ['hono.js', 'bun', 'backend', 'testing', 'middleware']
+topic: "Software Development"
+author: 'GoGagoo'
+cover_url: '/honojs-the-easy-way-to-efficient-apis.png'
+type: 'article'
+---
+
+# Hono.js: The Easy Path to Efficient APIs
+
+When it comes to simple backend development, Express.js comes to mind. However, in 2024 it's considered outdated as faster alternatives exist. Greetings dear readers! Today I'll introduce you to Hono.js.
+
+Hono.js is a tiny, simple, and ultra-fast framework built on web standards. Under the hood, it offers TypeScript support and comfortable local development. Hono.js works across different JavaScript runtimes: *Cloudflare Workers, Deno, Bun, Vercel, Netlify*, and even *Node.js*.
+
+Hono.js solves the problem of developing high-performance lightweight web applications by minimizing overhead and complexity. Many developers find that popular frameworks like Express.js or Koa.js, while feature-rich, can be bloated and heavy for simple tasks—especially in projects where performance and minimalism matter. Hono.js specifically targets these issues, offering an ultralight framework that enables rapid server application development without unnecessary dependencies and with minimal code.
+
+## Key Features of Hono.js
+
+### Lightweight
+
+Hono.js stands out for its featherweight size—it's one of the most compact web frameworks available. Its minimal source code significantly reduces overhead. Unlike larger frameworks, Hono.js isn't loaded with built-in modules that might be redundant for small projects. For comparison: while Express.js weighs 2MB, Hono.js is just 14KB.
+
+### Ease of Use
+
+Hono.js is built on simple and intuitive concepts, making it easy to learn even for beginners. It's minimalist yet provides all core features needed for web development: routing, request handling, responses, middleware support, and URL parameters.
+
+Here's a minimal Hono.js application example:
+
+```ts
+import { Hono } from 'hono'
+const app = new Hono()
+
+app.get('/', (c) => c.text('Hono!'))
+
+export default app
+```
+
+The equivalent Express.js implementation is noticeably heavier:
+
+```js
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+```
+
+I think you're liking Hono.js already, but there's more! Now let's move to installation and setup. We'll use Bun.js as our runtime.
+
+---
+
+## Installation and Initial Setup
+
+1. **Project Initialization and Basic Server**  
+   Start by using Bun to initialize your project:
+
+```bash
+bun init
+```
+
+Before implementing Hono.js, let's create a simple HTTP server with Bun in `index.tsx`:
+
+```ts
+// index.tsx
+Bun.serve({
+  fetch: (req) => {
+    return new Response('Hello from Bun!')
+  },
+  port: process.env.PORT || 3030,
+})
+```
+
+![Response output on port 3030](https://habrastorage.org/r/w1560/getpro/habr/upload_files/8c5/669/7f9/8c56697f9089d3f06137a436ba8a2c84.png)
+
+## Installing and Integrating Hono.js
+
+Install Hono.js after project initialization:
+
+```bash
+bun i hono
+```
+
+Import Hono and create a GET endpoint returning simple JSON:
+
+```ts
+// index.tsx
+import { Hono } from 'hono'
+
+const app = new Hono()
+
+app.get('/hello', (c) => {
+  return c.json({ hello: 'world' })
+})
+
+Bun.serve({
+  fetch: app.fetch,
+  port: process.env.PORT || 3030,
+})
+```
+
+We've replaced the custom function by handing control to Hono. Now Bun will process HTTP requests through Hono's API:
+![Response on the same port](https://habrastorage.org/r/w1560/getpro/habr/upload_files/3e3/aeb/82a/3e3aeb82a4e3d4f41eed60ed168c9a9d.png)
+
+## Group Routing in Hono.js
+
+Hono.js documentation introduces group routing via `route()`. Let's create `books.ts`:
+
+```ts
+// routes/books.ts
+import { Hono } from 'hono'
+
+const book = new Hono()
+
+book.get('/', (c) => c.text('List Books')) // GET /book
+book.get('/:id', (c) => {
+  // GET /book/:id
+  const id = c.req.param('id')
+  return c.text('Get Book: ' + id)
+})
+book.post('/', (c) => c.text('Create Book')) // POST /book
+
+export default book
+```
+
+Import and mount the router in `index.tsx`:
+
+```ts
+// index.tsx
+app.route('/book', bookRouter)
+```
+
+!["Book list" at /book](https://habrastorage.org/r/w1560/getpro/habr/upload_files/21b/fae/f89/21bfaef897d2745cf8be2522bfa442d8.png)
+
+## What is "c" in the arguments?
+
+You might have noticed `c` instead of `req`—this is short for **context object** (documented [here](https://hono.dev/api/context)). This object handles all incoming/outgoing data. Hono allows returning responses not just as JSON, but also HTML, streams, etc.
+
+## Middleware
+
+Middleware executes before/after handlers. We can intercept requests pre-dispatch or modify responses post-dispatch:
+
+```ts
+// index.tsx
+import { logger } from 'hono/logger'
+
+app.use('*', logger())
+```
+
+Executing requests shows detailed logs in VS Code:
+![Request/response logging with status codes](https://habrastorage.org/r/w1560/getpro/habr/upload_files/0f9/250/207/0f9250207779e7a701ca92e5d383b848.png)
+
+## JSX Rendering
+
+While hono/jsx works client-side, it also supports server-side rendering:
+
+```tsx
+// page.tsx
+import { Hono } from 'hono'
+import type { FC } from 'hono/jsx'
+
+const Layout: FC = (props) => {
+  return (
+    <html>
+      <body>{props.children}</body>
+    </html>
+  )
+}
+
+const Top: FC<{ messages: string[] }> = (props) => {
+  return (
+    <Layout>
+      <h1>Hello Hono!</h1>
+      <ul>
+        {props.messages.map((message) => (
+          <li>{message}!!</li>
+        ))}
+      </ul>
+    </Layout>
+  )
+}
+
+export default Top
+```
+
+Update `tsconfig.json` for JSX support:
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx"
+  }
+}
+```
+
+Render the component in your route:
+
+```ts
+// index.tsx
+import Top from './page.tsx'
+
+app.get('/', (c) => {
+  const messages = ['Good Morning', 'Good Evening', 'Good Night']
+  return c.html(<Top messages={messages} />)
+})
+```
+
+![Server-side rendering output](https://habrastorage.org/r/w1560/getpro/habr/upload_files/5fe/e49/771/5fee497714c7232321c6d1cca0e7a8fd.png)
+
+This resembles SSR in Next.js/Remix but is significantly lighter. Hono also supports async components, Suspense, and more.
+
+## Testing
+
+Testing Hono applications is straightforward. First, extract core logic to `app.ts`:
+
+```ts
+// index.test.ts
+import { expect, test, describe } from 'bun:test'
+import app from './app'
+
+describe('Example', () => {
+  test('GET /hello', async () => {
+    const res = await app.request('/hello')
+    expect(res.status).toBe(200)
+    expect(await res.json()).toEqual({ hello: 'world' })
+  })
+})
+```
+
+Run tests with:
+```bash
+bun test
+```
+
+![Passed tests output](https://habrastorage.org/r/w1560/getpro/habr/upload_files/b61/d83/2ca/b61d832ca33b3cb0aa3b5d42c17505c8.png)
+
+---
+
+Surprisingly, despite its popularity this year, Hono.js remains largely uncovered in the Russian tech sphere. I encourage you to reconsider this excellent Express.js alternative.
+
+Hono.js offers much more: validation, RPC, best practices, and more. Check the official resources below!
+
+Useful links:  
+Official Hono.js site — https://hono.dev
