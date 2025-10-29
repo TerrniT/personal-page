@@ -22,19 +22,14 @@ export const SITE: Site = {
 
 export const SOCIALS: Socials = [
   {
-    ICON: 'fa6-brands:square-x-twitter',
-    NAME: 'Twitter-x',
-    HREF: 'https://twitter.com/gaundergod',
+    ICON: 'fa6-brands:vercel',
+    NAME: 'VC RU',
+    HREF: 'https://vc.ru/id5106677',
   },
   {
     ICON: 'fa6-brands:github',
     NAME: 'Github',
     HREF: 'https://github.com/terrnit',
-  },
-  {
-    ICON: 'fa6-brands:linkedin',
-    NAME: 'Linkedin',
-    HREF: 'https://www.linkedin.com/in/terrnit',
   },
   {
     ICON: 'fa6-brands:dev',
