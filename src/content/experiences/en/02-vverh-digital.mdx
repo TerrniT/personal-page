@@ -9,56 +9,91 @@ location: 'Ekaterinburg, Russia'
 date: "Sep 17 2024"
 ---
 
-### Project 1: ERP/CRM System for Real Estate Developer  
-**Description**:  
-Enterprise resource planning and customer relationship management system for a major real estate developer.
+## Experience
 
-**Tech Stack**:  
-TypeScript, Vue 3 (Composition API), Quasar Framework, Naive UI, Tailwind CSS, Docker, ESLint, Husky, lint-staged, commitizen
+### **Role**: Lead Frontend Developer
 
-**Responsibilities**:  
-- Developed system from scratch  
-- Created design system (UI Kit)  
-- Implemented modules using FSD methodology  
-- Built vacation management and task tracking modules with custom Gantt charts  
+**Team (including me)**: 1 Frontend, 1 Backend, 1 QA, 1 PM
+**Process**: Lightweight Easy-Agile (no retrospectives). Tasks tracked in Notion and Excel.
 
-**Achievements**:  
-- Engineered custom Gantt chart visualization library  
-- Implemented unified design system across 20+ modules  
-- Established CI/CD pipeline: Docker builds with pre-commit hooks (ESLint + Husky + commitizen)  
+### Project
 
+**ERP / CRM system for an engineering & design company (Avalon, avln.ru)** — a leading regional engineering firm delivering design and BIM-based digital modeling for large real estate developers.
 
-### Project 2: Door Configuration Calculator (https://calc.psk-ural.ru/)  
-**Description**:  
-Online calculator for door structure cost/parameter estimation with commercial proposal generation.
+### Description
 
-**Tech Stack**:  
-Nuxt 2, Vue 2, Vuetify 2
+Designed and developed a corporate SPA from scratch to automate key business processes of an engineering company.
+The system includes project management (with BIM models), HR management, vacation planning, and document workflow within a single interface, replacing fragmented Excel files and legacy tools.
 
-**Responsibilities**:  
-- Feature enhancement and functionality expansion  
-- System refactoring and optimization  
+The solution became a centralized digital hub used by **400+ specialists**, directly improving operational efficiency and project transparency.
 
-**Achievements**:  
-- Implemented PDF export for commercial proposals covering 150+ product types  
+**Tech Stack**: TypeScript, Vue 3 (Composition API), WebSocket, Storybook, Quasar Framework, Pinia, Naive UI, Tailwind CSS, Docker, ESLint
+
+### Responsibilities
+
+* Led the full system lifecycle from business process analysis (BIM project management, vacation planning, document flow) to frontend architecture and implementation.
+* Designed and maintained a custom **design system (UI Kit)** with **100+ reusable components**, based on Naive UI and custom Tailwind CSS components.
+* Introduced and maintained **Feature-Sliced Design (FSD)** architecture, forming a scalable and maintainable codebase with **20+ functional modules**.
+* Developed HR planning and task management modules, including **high-performance custom Gantt charts** for visualizing vacations and project stages, optimized for interactivity and large datasets.
+
+### Achievements
+
+* Built a private **headless UI npm package** for a custom Gantt chart component, saving the client approximately **€700/year** by replacing third-party solutions.
+* Automated CI/CD and developer workflow (CI pipelines, pre-commit hooks, Commitizen), eliminating critical errors in the main branch and ensuring stable deployments.
 
 ---
 
-### Project 3: Real Estate & Services Platform  
-**Description**:  
-End-to-end property search solution with ancillary services and administrative control panel.
+### **Role**: Frontend Developer
 
-**Tech Stack**:  
-**Frontend**: Nuxt 2, Vue 2, Vuetify 2, Yandex Maps API v2  
-**Backend**: Express.js  
-**Infrastructure**: Docker, PostgreSQL, Nginx  
+### Project
 
-**Responsibilities**:  
-- Full development lifecycle for frontend and admin panel  
-- Backend module implementation for database integration  
+**Online door construction cost calculator with commercial offer generation**
+[https://calc.psk-ural.ru/](https://calc.psk-ural.ru/)
 
-**Achievements**:  
-- Built client-facing platform and admin portal from scratch  
-- Developed advanced geo-filters including:  
-  - Polygon-based "Lasso" selection tool  
-  - Map-area filtering functionality  
+### Description
+
+Developed and maintained a commercial SPA calculator embedded as an iframe widget into a Bitrix-based website.
+The system calculated prices for complex constructions across **150+ product variations** and automatically generated technical-commercial proposals.
+
+**Tech Stack**: JavaScript, Sass, Vue 2.7, Nuxt 2, Vuetify 2, Bitrix
+
+### Responsibilities
+
+* Developed and supported complex calculator business logic, including product configuration, option dependencies, and dynamic pricing.
+* Refactored and stabilized the application by fixing broken Vue 2 reactivity and optimizing rendering of heavy configuration forms.
+* Implemented a document workflow module for generating and exporting commercial proposals in multiple formats with print-ready layouts.
+
+### Achievements
+
+* Refactored reactive calculation chains, eliminating critical pricing bugs.
+* Implemented a **print-ready mode** for commercial proposals, removing UI elements, adapting layouts for physical printing, and controlling output via the Print API.
+* Improved configurator performance by introducing lazy rendering and memoized calculations, reducing UI response time by **~40%**.
+
+---
+
+### **Role**: Junior Fullstack Developer
+
+**Team**: 1 Frontend, 1 Backend, 1 QA, 1 Tech Lead
+
+### Project
+
+**Marketplace platform for real estate listings and services**
+
+### Description
+
+Migrated a legacy monolithic system (PHP + Vue Blade templates) to a Nuxt 2 stack with full client-side SSR and an admin panel for managing listings related to real estate sales, searches, services, and goods.
+
+**Tech Stack**:
+JavaScript, Vue 2.7, Nuxt 2, PHP 7, Vuetify 2, Yandex Maps API v2, DaData, Express.js, Sequelize ORM, Docker, Docker Swarm / Docker Compose, PostgreSQL / PostGIS, Nginx
+
+### Responsibilities
+
+* Led full migration and refactoring from a legacy PHP + Vue Blade architecture to Nuxt 2 (Vue 2.7).
+* Full-stack development: client-side features (listings, search, maps, filters), admin panel, and backend modules (REST APIs, database operations).
+* Worked extensively with geospatial data: integration and customization of Yandex Maps API and implementation of complex geo-based logic.
+
+### Achievements
+
+* Developed a high-performance map module using Vue and Yandex Maps API with custom clustering logic, virtualization, and lazy tile loading, smoothly rendering **1000+ objects**.
+* Implemented advanced map-based filters using Yandex Maps and PostGIS, including interactive client-side selection (“lasso”) and accurate server-side querying.
+* Integrated smart address suggestions (DaData) with debouncing and predictive search, significantly reducing user input errors.

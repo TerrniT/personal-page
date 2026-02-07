@@ -22,11 +22,6 @@ export const SITE: Site = {
 
 export const SOCIALS: Socials = [
   {
-    ICON: 'fa6-brands:vercel',
-    NAME: 'VC RU',
-    HREF: 'https://vc.ru/id5106677',
-  },
-  {
     ICON: 'fa6-brands:github',
     NAME: 'Github',
     HREF: 'https://github.com/terrnit',
@@ -36,11 +31,11 @@ export const SOCIALS: Socials = [
     NAME: 'Devto',
     HREF: 'https://dev.to/gaundergod',
   },
-  {
-    ICON: 'fa6-brands:youtube',
-    NAME: 'Youtube',
-    HREF: 'https://www.youtube.com/channel/UC-Xu_hPhWucbV06VeyyIZig',
-  },
+  // {
+  //   ICON: 'fa6-brands:youtube',
+  //   NAME: 'Youtube',
+  //   HREF: 'https://www.youtube.com/channel/UC-Xu_hPhWucbV06VeyyIZig',
+  // },
   {
     ICON: 'fa6-brands:telegram',
     NAME: 'Telegram',

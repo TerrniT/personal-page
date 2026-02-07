@@ -10,47 +10,72 @@ location: 'Екатеринбург, Россия'
 date: "Sep 17 2024"
 ---
 
-In the company, I went from an intern to a middle developer. In addition to the frontend, there were backend tasks
-.
+## Опыт
 
-## Middle Frontend-developer
-###1. ERP/CRM system for Avalon Engineering and Design Company (avln.ru )
-(a leading regional developer that performs the design and digital
-modeling of facilities according to BIM standards)
-Description: Development of a SPA application for managing projects, tasks, vacations,
-contracts and personnel for 400+ specialists
-Stack: TypeScript, Vue 3 (Composition API), Quasar Framework, Pinia, Naive UI, Tailwind CSS, Docker,
-Eslint
-Responsibilities:
-- System development from scratch
-- Creation of a design system (UI Kit)
-- Implementation of FSD modules
-- Development of vacation modules and tasks with custom Gantt schedules
-Progress:
-- Developed my own npm package of Gantt graphs component for vue3, typescript;
-- Implemented a unified design system for 20+ modules;
-- Configured CI/CD: Docker build, pre-commit (eslint + husky + commitzen);
+**Роль**: Ведущий frontend-разработчик
+Команда (включая меня):  1 фронт, 1 бэк, 1 QA и PM. Easy-Agile без ретро. Задачи в Notion, Excel
 
-## Fullstack-developer
-### 2. Door Design Calculator (https://calc.psk-ural.ru /)
-Description: An online calculator for calculating the cost and parameters of door structures and
-generating a TAP.
-Stack: JavaScript, Sass, Vue 2.7, Nuxt 2, Vuetify 2
-Responsibilities:
-- Refinement and increase of functionality
-- Refactoring
-Progress:
-- Implemented the export of TCP to PDF for 150+ types of products
+### Проект:
+ERP/CRM-система для инженерно-проектной компании Авалон (avln.ru)
+ - ведущего регионального проектировщика, выполняющего проектирование и цифровое моделирование объектов по BIM-стандартам для крупных застройщиков
 
-###3. Real estate and services search platform
-Description: A comprehensive solution for searching for real estate and related services with
-an administrative control panel.
-Stack: JavaScript, Vue 2.7, Vuetify 2, YandexMapV2, DaData
+### Описание: 
+Разработал с нуля корпоративное SPA для автоматизации ключевых бизнес-процессов инженерно-проектной компании. Система содержит в себе управление проектами (включая BIM-модели), кадровый учет, планирование отпусков и документооборот в едином интерфейсе, заменив набор разрозненных Excel-таблиц и legacy-инструментов. Решение стало цифровым хабом для 400+ специалистов, напрямую влияя на операционную эффективность и прозрачность выполнения проектов.
+
+**Стек**: TypeScript, Vue 3 (Composition API), WebSocket, Storybook, Quasar Framework, Pinia, Naive UI, Tailwind CSS, Docker, Eslint
+
+### Обязанности:
+-  Полный цикл проектирования и разработки системы с нуля: от анализа бизнес-процессов проектной компании (управление BIM-проектами, планирование отпусков, документооборот) до архитектуры и реализации
+- Создание дизайн-системы (UI Kit): создал и поддерживал дизайн-систему из 100+ компонентов на основе Naive UI и кастомных Tailwind CSS компонентов
+- Внедрил и поддерживал архитектурную методологию Feature-Sliced Design (FSD). Это заложило основу для масштабируемой и поддерживаемой кодовой базы с 20+ модулями.
+- Разработал модули кадрового планирования и управления задачами, включая высокопроизводительные кастомные графики Ганта для визуализации отпусков и этапов проектов, с учетом требований к интерактивности и работе с большими объемами данных.   
+
+### Достижения:
+- Создал приватный headless ui npm-пакет компонента графика Ганта: Написав своё кастомное решение сэкомил заказчику ~65 тыс. руб./год
+- Автоматизация пайплайна (CI/CD, pre-commit, commitizen) – исключение критических ошибок в master, стабильный деплой.
+
+--------
+
+**Роль**: Frontend-разработчик
+
+### Проект:
+Онлайн-калькулятор дверных конструкций с генерацией КП (https://calc.psk-ural.ru/)
+
+### Описание:
+Разрабатывал и поддерживал SPA коммерческий калькулятор, встроенный как iframe-виджет в Bitrix-сайт. Система рассчитывала стоимость сложных конструкций из 150+ вариантов продукции, автоматически генерируя технико-коммерческие предложения (ТКП).
+
+**Стек**: JavaScript, Sass, Vue 2.7, Nuxt 2, Vuetify 2, Bitrix 
+
+### Обязанности: 
+- Разработка и поддержка бизнес-логики калькулятора: работа со сложной конфигурацией товаров, зависимостями опций и динамическим расчётом стоимости.
+- Рефакторинг и стабилизация приложения: исправление сломанной реактивности Vue 2, оптимизация рендеринга тяжёлых форм конфигуратора.
+- Разработка модуля документооборота: реализация генерации и экспорта ТКП в различных форматах с учётом требований к печати. 
+
+### Достижения: 
+- Провёл рефакторинг реактивности калькулятора, устранив критические баги в цепочках вычислений
+- Разработал механизм «готовности к печати» - специальный режим просмотра ТКП с удалением UI-элементов, адаптацией вёрстки под физический носитель и управлением через Print API.
+- Оптимизировал производительность конфигуратора: внедрил lazy-рендеринг опций и мемоизацию расчётов, что сократило время отклика интерфейса при выборе параметров на 40%.
+
+---------
+
+**Роль**:  Junior Fullstack-разработчик
+Команда: 1 фронт, 1 бэк, 1 QA и техлид
+
+### Проект:
+Платформа для поиска недвижимости и услуг
+
+### Описание:
+Провел миграцию устаревшего монолита (PHP + Vue blade шаблоны) на Nuxt 2 стек с полноценной клиентской SSR-частью и админ панелью для управления личным кабинетом с объявлениями по продаже / поиске недвижимости, услуг и товаров. 
+
+**Стек**: JavaScript, Vue 2.7, PHP 7,  Vuetify 2, YandexMapV2, DaData
 Express.js, Sequelize ORM, Docker, Docker Swarm / Docker Compose, PostgreSQL / Postgis, Nginx
 
-Responsibilities:
-- Full cycle of frontend and administrative panel development
-- Implementation of backend modules for integration with the database
-Progress:
-- Created the client and admin part of the platform from scratch
-- Implemented a sophisticated geo filter
+### Обязанности:
+- Полный цикл миграции и рефакторинга: перевод legacy-проекта (PHP + Vue blade) на Nuxt2 (Vue 2.7).
+- Сквозная разработка: от клиентской части (объявления, поиск, карты, фильтры) до админ-панели и backend-модулей (REST API, работа с БД).
+- Работа с геоданными и картами: интеграция и кастомизация Yandex Maps API, реализация сложной гео-логики. 
+
+### Достижения:
+- Разработал высокопроизводительный модуль карты на Vue + Yandex Maps API с кастомной логикой кластеризации меток, виртуализацией и lazy-loading тайлов, что позволило плавно отображать 1000+ объектов.
+- Внедрил картографические фильтры (Yandex Maps + PostGIS) с интерактивным выделением объектов («лассо») на клиенте и корректной выборкой на сервере
+- Внедрил систему умных подсказок (DaData) с дебаунсом и предикативным поиском, которая снизила количество ошибок при вводе адресов

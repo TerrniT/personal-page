@@ -61,6 +61,7 @@ export const ui = {
     'about.bio.heading': 'Bio',
 
     'about.experience.heading': 'Experiences',
+    'about.experience.total.heading': 'Total experience',
 
     'about.hard_skills.heading': 'Hard skills',
     'about.hard_skills.paragraph':
@@ -193,6 +194,7 @@ export const ui = {
     'about.bio.heading': 'Биография',
 
     'about.experience.heading': 'Опыт работы',
+    'about.experience.total.heading': 'Общий опыт',
 
     'about.hard_skills.heading': 'Хард-скиллы',
     'about.hard_skills.paragraph':
@@ -325,6 +327,7 @@ export const ui = {
     'about.bio.heading': '약력',
 
     'about.experience.heading': '경력',
+    'about.experience.total.heading': '총 경력',
 
     'about.hard_skills.heading': '하드 스킬',
     'about.hard_skills.paragraph': '일상 업무에서 다음과 같은 다양한 기술을 사용합니다:',
@@ -455,6 +458,7 @@ export const ui = {
     'about.bio.heading': '个人简介',
 
     'about.experience.heading': '工作经验',
+    'about.experience.total.heading': '总经验',
 
     'about.hard_skills.heading': '硬技能',
     'about.hard_skills.paragraph': '在日常工作中，我使用各种技术，包括但不限于以下内容：',
@@ -585,6 +589,7 @@ export const ui = {
     'about.bio.heading': 'Biografie',
 
     'about.experience.heading': 'Ervaring',
+    'about.experience.total.heading': 'Totale ervaring',
 
     'about.hard_skills.heading': 'Hard skills',
     'about.hard_skills.paragraph': 'In mijn dagelijkse werk gebruik ik verschillende technologieën, waaronder men niet beperkt tot:',
@@ -715,6 +720,7 @@ export const ui = {
     'about.bio.heading': 'Biografi',
 
     'about.experience.heading': 'Erfaring',
+    'about.experience.total.heading': 'Samlet erfaring',
 
     'about.hard_skills.heading': 'Hard skills',
     'about.hard_skills.paragraph': 'I mit daglige arbejde bruger jeg forskellige teknologier, herunder men ikke begrænset til:',

@@ -5,12 +5,13 @@ import { HARD_SKILLS, EXPERTISE } from '@consts'
 
 import { getCollection } from 'astro:content'
 
-import FormattedDate from '@components/astro/FormattedDate.astro'
 import { ExperienceCard } from '@components/astro/modules/about'
 
 import PageLayout from '@layouts/PageLayout.astro'
 
 import { Icon } from 'astro-icon/components'
+
+import { calculateTotalExperienceMonths, formatTotalExperience } from '@lib/experience/totalExperience.js'
 
 const { url } = Astro
 const { t } = useI18n(url)
@@ -19,6 +20,11 @@ const lang = getLangFromUrl(url)
 const dataExperiences = (await getCollection('experiences'))
   .filter((post) => !post.data.draft)
   .filter((item) => getLangFromSlug(item.slug) === lang)
+
+const totalExperienceMonths = calculateTotalExperienceMonths(
+  dataExperiences.map(item => ({ duration: item.data.duration })),
+)
+const totalExperience = formatTotalExperience(totalExperienceMonths, lang)
 
 const experiences = await Promise.all(
   dataExperiences.map(async (item) => {
@@ -72,6 +78,12 @@ const image = `/og/about-${lang}.png`
       }
     </ul>
   </div> -->
+  <div class="mt-14 space-y-2">
+    <h2 class="animate font-semibold">{t('about.experience.total.heading')}</h2>
+    <div class="animate rounded-md bg-secondary p-4 text-main-foreground">
+      <p class="text-lg font-bold">{totalExperience}</p>
+    </div>
+  </div>
   <div class="mt-14 space-y-6">
     <h2 class="animate font-semibold">{t('about.experience.heading')}</h2>
     <ul class="flex flex-col">
