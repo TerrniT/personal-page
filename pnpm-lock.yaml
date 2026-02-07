@@ -65,6 +65,9 @@ importers:
       astro-icon:
         specifier: ^1.1.1
         version: 1.1.1
+      astro-ym:
+        specifier: ^1.1.0
+        version: 1.1.0(astro@4.15.4(@types/node@22.5.4)(rollup@4.21.2)(typescript@5.6.2))
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -2000,6 +2003,11 @@ packages:
 
   astro-icon@1.1.1:
     resolution: {integrity: sha512-HKBesWk2Faw/0+klLX+epQVqdTfSzZz/9+5vxXUjTJaN/HnpDf608gRPgHh7ZtwBPNJMEFoU5GLegxoDcT56OQ==}
+
+  astro-ym@1.1.0:
+    resolution: {integrity: sha512-bB+3vu+Pu6ctDGsDutXMsmR8h/r0n7f6cbpPPi7kaalNkqMYaDZMH/bXQyK8ib3TZfQGH/ut1fa83xs1FI4V/g==}
+    peerDependencies:
+      astro: ^4.0.0 || ^5.0.0
 
   astro@4.15.4:
     resolution: {integrity: sha512-wqy+m3qygt9DmCSqMsckxyK4ccCUFtti2d/WlLkEpAlqHgyDIg20zRTLHO2v/H4YeSlJ8sAcN0RW2FhOeYbINg==}
@@ -7137,6 +7145,10 @@ snapshots:
     transitivePeerDependencies:
       - debug
       - supports-color
+
+  astro-ym@1.1.0(astro@4.15.4(@types/node@22.5.4)(rollup@4.21.2)(typescript@5.6.2)):
+    dependencies:
+      astro: 4.15.4(@types/node@22.5.4)(rollup@4.21.2)(typescript@5.6.2)
 
   astro@4.15.4(@types/node@22.5.4)(rollup@4.21.2)(typescript@5.6.2):
     dependencies:

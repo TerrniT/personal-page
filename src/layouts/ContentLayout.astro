@@ -1,4 +1,6 @@
 ---
+import { YandexMetrika } from 'astro-ym';
+
 import { type Language, getLangFromUrl } from '@lib/i18n'
 
 import { SITE } from '@consts'
@@ -33,6 +35,17 @@ const htmlLang = lang ?? getLangFromUrl(Astro.url)
     <Head title={`${title} | ${SITE.NAME}`} {description} {image} author={author?.name} />
   </head>
   <body>
+    <YandexMetrika
+      clickmap={true}
+      trackLinks={true}
+      accurateTrackBounce={true}
+      webvisor={true}
+      lazy={true}
+      timeout={2000}
+      ecommerce="dataLayer"
+      params={{ source: "astro" }}
+      counterId={106701987}
+    />
     <div class="relative flex w-full flex-col md:flex-row">
       <Header />
       <Sidebar />
