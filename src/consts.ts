@@ -5,7 +5,7 @@ export const SITE: Site = {
   DESCRIPTION: 'TerrniT',
   NAME: 'Gleb Kotovsky',
   OG_IMAGE_URL: '/avatars/avatar.png',
-  EMAIL: 'terrnitllc.work@gmail.com',
+  EMAIL: 'terrnit.work@gmail.com',
   DOMAIN: 'terrnit.vercel.app',
   NUM_POSTS_ON_HOMEPAGE: 4,
   NUM_WORKS_ON_HOMEPAGE: 2,
@@ -124,10 +124,9 @@ export const EXPERTISE = [
 ]
 
 export const THEME_MAP = {
-  'Light': 'light',
-  'Dark': 'dark',
-  'Nike Pro Dark Theme': 'dark-green',
-  'System': 'system',
+  Light: 'light',
+  Dark: 'dark',
+  System: 'system',
 } as const
 
 export const STORAGE_THEME_KEY = 'theme' as const

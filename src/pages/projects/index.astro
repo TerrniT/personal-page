@@ -2,27 +2,141 @@
 import { useI18n, getLangFromUrl } from '@lib/i18n'
 
 import { getProjectsInfoList } from '@lib/mdx'
+import { getProjectFilterState } from '@lib/project-filters.js'
+import { devIconResolver } from '@lib/utils'
 
 import { ProjectCard } from '@components/astro/modules/project'
+import ProjectsFilters from '@components/vue/modules/project/ProjectsFilters.vue'
 
 import PageLayout from '@layouts/PageLayout.astro'
 
 const { url } = Astro
-const { t } = useI18n(url)
+const { t, p } = useI18n(url)
 const lang = getLangFromUrl(url)
 
 const projects = await getProjectsInfoList(lang)
+const filterState = getProjectFilterState(projects, url.searchParams)
 
 const title = t('projects.title')
 const description = t('projects.description')
 const image = `/og/projects-${lang}.png`
+
+const projectTypeLabels = {
+  'commercial': t('projects.type.commercial'),
+  'open-source': t('projects.type.open_source'),
+}
+
+function formatStackLabel(stack: string) {
+  return devIconResolver[stack]?.description ?? stack
+}
+
+function buildFilterHref(key: 'type' | 'stack', value: string) {
+  const nextParams = new URLSearchParams(url.searchParams)
+  const values = new Set(nextParams.getAll(key))
+
+  if (values.has(value)) {
+    values.delete(value)
+  }
+  else {
+    values.add(value)
+  }
+
+  nextParams.delete(key)
+
+  for (const item of [...values].sort((left, right) => left.localeCompare(right))) {
+    nextParams.append(key, item)
+  }
+
+  const query = nextParams.toString()
+  const pathname = p('/projects')
+  return query ? `${pathname}?${query}` : pathname
+}
+
+const filterGroups = [
+  {
+    label: t('projects.filters.type'),
+    options: filterState.availableTypes.map(type => ({
+      active: filterState.selectedTypes.includes(type),
+      href: buildFilterHref('type', type),
+      label: projectTypeLabels[type],
+    })),
+  },
+  {
+    label: t('projects.filters.stack'),
+    options: filterState.availableStacks.map(stack => ({
+      active: filterState.selectedStacks.includes(stack),
+      href: buildFilterHref('stack', stack),
+      label: formatStackLabel(stack),
+    })),
+  },
+]
+
+const filterSummary = t('projects.filters.summary')
+  .replace('{visible}', String(filterState.totalProjects))
+  .replace('{total}', String(projects.length))
 ---
 
 <PageLayout {title} {description} {image}>
-  <div class="space-y-10">
-    <h1 class="animate text-xl font-semibold">{t('projects.heading')}</h1>
-    <ul class="animate flex flex-col gap-4">
-      {projects.map((project) => <ProjectCard item={project} />)}
-    </ul>
+  <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4">
+      <div class="animate flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div class="flex flex-col gap-2">
+          <h1 class="text-xl font-semibold">{t('projects.heading')}</h1>
+          <p class="max-w-2xl text-sm text-muted-foreground">{t('projects.filters.description')}</p>
+        </div>
+      </div>
+
+      <div class="animate">
+        <ProjectsFilters
+          client:load
+          groups={filterGroups}
+          clearHref={p('/projects')}
+          clearLabel={t('projects.filters.clear')}
+          summary={filterSummary}
+          triggerLabel={t('projects.filters.trigger')}
+        />
+      </div>
+    </div>
+
+    {
+      filterState.sections.length > 0
+        ? (
+            <div class="flex flex-col gap-8">
+              {filterState.sections.map(section => (
+                <section class="animate flex flex-col gap-4">
+                  <div class="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
+                    <h2 class="text-lg font-semibold text-main-foreground">
+                      {projectTypeLabels[section.type]}
+                    </h2>
+                    <span class="rounded-full border border-border/60 bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+                      {section.items.length}
+                    </span>
+                  </div>
+                  <ul class="flex flex-col gap-4">
+                    {section.items.map(project => (
+                      <ProjectCard item={project} typeLabel={projectTypeLabels[project.data.type]} />
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          )
+        : (
+            <section class="animate rounded-3xl border border-dashed border-border/70 bg-main/5 p-6">
+              <div class="flex flex-col gap-3">
+                <h2 class="text-lg font-semibold text-main-foreground">{t('projects.empty.title')}</h2>
+                <p class="text-sm text-muted-foreground">{t('projects.empty.description')}</p>
+                <div>
+                  <a
+                    class="inline-flex rounded-md border border-border/60 bg-background px-3 py-2 text-sm font-medium text-main-foreground transition-colors hover:bg-secondary"
+                    href={p('/projects')}
+                  >
+                    {t('projects.filters.clear')}
+                  </a>
+                </div>
+              </div>
+            </section>
+          )
+    }
   </div>
 </PageLayout>

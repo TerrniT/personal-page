@@ -200,12 +200,12 @@ export const devIconResolver: Record<
   },
   'bun': {
     icon: 'devicon:bun',
-    description: 'The fast JavaScript bundler',
+    description: 'Bun',
     link: 'https://bun.sh',
   },
   'elysiajs': {
     icon: 'skill-icons:elysia-dark',
-    description: 'The ergonomic web framework for building backend servers with Bun',
+    description: 'Elysia',
     link: 'https://elysiajs.com',
   },
   'redux toolkit': {

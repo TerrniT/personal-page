@@ -1,44 +1,62 @@
 ---
 import { useI18n } from '@lib/i18n'
 import { type ProjectInfo } from '@lib/mdx'
-import { devIconResolver } from '@lib/utils'
-
-import { Icon } from 'astro-icon/components'
 
 const { url } = Astro
 const { p } = useI18n(url)
 
 type Props = {
   item: ProjectInfo
+  typeLabel: string
 }
 
-const { item } = Astro.props
+const { item, typeLabel } = Astro.props
 ---
 
 <li
-  class="flex w-full flex-nowrap rounded-lg border border-border px-4 py-3 pr-4 transition-colors duration-300 ease-in-out hover:border-border/55 hover:bg-secondary md:pr-10"
+  class="flex w-full flex-nowrap rounded-3xl border border-border/70 bg-background/80 px-4 py-4 transition-colors duration-300 ease-in-out hover:border-border/55 hover:bg-secondary/60 md:px-6"
 >
   <a href={p(item.href)} class="group relative w-full hover:text-main-foreground">
-    <div class="flex w-full flex-1 flex-col gap-y-3">
-      <div class="font-semibold text-main-foreground">
-        {item.data.title}
-      </div>
+    <div class="flex w-full flex-col gap-4 md:flex-row md:items-start md:gap-5">
+      {
+        item.data.imageUrl && (
+          <div class="overflow-hidden rounded-2xl border border-border/60 bg-main/5 md:w-[13rem] md:flex-none">
+            <img
+              src={item.data.imageUrl}
+              alt={`Preview of ${item.data.title}`}
+              loading="lazy"
+              class="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            />
+          </div>
+        )
+      }
 
-      <div class="flex w-full flex-1 flex-col gap-y-3">
-        <div class="w-full truncate text-wrap text-sm text-muted-foreground">
-          {item.data.description}
+      <div class="flex min-w-0 flex-1 flex-col gap-4">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <div class="flex min-w-0 flex-1 flex-col gap-2">
+            <div class="font-semibold text-main-foreground">
+              {item.data.title}
+            </div>
+            <div class="w-full text-sm text-muted-foreground">
+              {item.data.description}
+            </div>
+          </div>
+          <span class="rounded-full border border-border/60 bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+            {typeLabel}
+          </span>
         </div>
-        <div class="self-end">
-          {
-            item.data.stack && item.data.stack.length > 0 && (
-              <div class="mb-3 flex w-fit flex-wrap gap-2 rounded-lg bg-secondary p-1">
-                {item.data.stack.map((entry) => (
-                  <Icon name={devIconResolver[entry].icon} size="1.3rem" />
-                ))}
-              </div>
-            )
-          }
-        </div>
+
+        {
+          item.data.stack && item.data.stack.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {item.data.stack.map((entry) => (
+                <span class="rounded-full border border-border/60 bg-main/5 px-3 py-1 text-xs font-medium text-muted-foreground">
+                  {entry}
+                </span>
+              ))}
+            </div>
+          )
+        }
       </div>
     </div>
   </a>

@@ -35,10 +35,13 @@ const image = `/og/project-${lang}.png`
     <BackToPrev href={p('/projects')}> {t('projects.back_to')}</BackToPrev>
   </div>
   <div class="my-10">
-    <div class="animate flex items-center gap-1.5">
+    <div class="animate flex flex-wrap items-center gap-2">
       <div class="font-base text-sm">
         <FormattedDate date={project.data.date} />
       </div>
+      <span class="rounded-full border border-border/60 bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+        {project.data.type === 'commercial' ? t('projects.type.commercial') : t('projects.type.open_source')}
+      </span>
     </div>
     <div class="animate my-3 text-2xl font-semibold text-main-foreground">
       {project.data.title}
