@@ -14,7 +14,7 @@ interface Props {
   side: 'left' | 'right' | 'bottom' | 'top'
 }
 export default function LanguageSwitcher({ url, side }: Props) {
-  const { lang, p } = useI18n(url)
+  const { lang, p, t } = useI18n(url)
 
   const pathname = getDefaultPathname(url)
 
@@ -23,7 +23,7 @@ export default function LanguageSwitcher({ url, side }: Props) {
       <DropdownMenuTrigger asChild>
         <button className="group flex h-10 w-10 items-center justify-center rounded-full">
           <HeroiconsLanguage className="h-5 w-5" />
-          <span className="sr-only">select language</span>
+          <span className="sr-only">{t('navigation.select_language')}</span>
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" side={side} alignOffset={40}>

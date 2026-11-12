@@ -1,7 +1,7 @@
 ---
 import { useI18n } from '@lib/i18n'
 
-import { SITE, NAVIGATION } from '@consts'
+import { NAVIGATION } from '@consts'
 
 import { Link } from '@components/astro/layout'
 
@@ -14,7 +14,7 @@ const { t, p } = useI18n(url)
     {
       NAVIGATION.map((item) => (
         <li class="hover:text-foreground text-muted-foreground transition-colors duration-150 ease-linear">
-          <Link href={p(`${item.href}`)} aria-label={`${SITE.NAME} on ${item.key}`} underline={false}>
+          <Link href={p(`${item.href}`)} underline={false}>
             {t(`navigation.${item.key}`)}
           </Link>
         </li>

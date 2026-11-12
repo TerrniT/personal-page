@@ -1,3 +1,5 @@
+import { ENV } from '@lib/env'
+
 export type SiteLang = 'ru' | 'en'
 
 export interface HeroContent {
@@ -114,7 +116,6 @@ export interface SiteContent {
     resetLabel: string
     emptyTitle: string
     emptyDescription: string
-    audienceLabel: string
     moreLabel: string
     cta: CtaContent
   }
@@ -204,7 +205,6 @@ export interface SiteContent {
     description: string
     updated: string
     sections: { title: string, paragraphs: string[] }[]
-    todo: string
   }
 }
 
@@ -219,7 +219,7 @@ const ru: SiteContent = {
   meta: {
     home: {
       title: 'Внедрение ИИ в бизнес-процессы',
-      description: 'AI-интегратор: аудит, ИИ-агенты, RAG по базе знаний, чат-боты и автоматизация процессов. Помогаю запустить ИИ в работе команды от идеи до поддержки.',
+      description: 'AI-интегратор: аудит, ИИ-агенты, RAG по базе знаний, чат-боты и автоматизация процессов. Помогаю запустить ИИ в работе команды и остаюсь на поддержке.',
     },
     services: {
       title: 'Услуги',
@@ -243,7 +243,7 @@ const ru: SiteContent = {
     },
     contact: {
       title: 'Контакты',
-      description: 'Расскажите о задаче в Telegram, по почте или через короткую форму — отвечу и предложу следующий шаг.',
+      description: 'Расскажите о задаче в Telegram, по почте или через короткую форму. Отвечу и предложу следующий шаг.',
     },
     policy: {
       title: 'Политика конфиденциальности',
@@ -257,13 +257,13 @@ const ru: SiteContent = {
   home: {
     hero: {
       eyebrow: 'AI-интегратор · разработка и консалтинг',
-      title: 'Внедряю ИИ в бизнес-процессы — от идеи до работающего сервиса',
+      title: 'Внедряю ИИ в бизнес-процессы и довожу идею до работающего сервиса',
       subtitle: 'Помогаю автоматизировать рутину, извлекать данные из документов и запускать ИИ-ассистентов, которые экономят время команды.',
-      description: 'Беру на себя весь путь: разбираюсь в процессе, проверяю данные, собираю прототип, довожу до продакшена и остаюсь на поддержке. Без «магии» и обещаний заменить всё одним промптом.',
+      description: 'Беру на себя весь путь: разбираюсь в процессе, проверяю данные, собираю прототип, довожу до продакшена и остаюсь на поддержке. Один промпт процесс не заменит.',
       primaryCta: 'Заказать разработку',
       secondaryCta: 'Написать на почту',
       tertiaryCta: 'Смотреть кейсы',
-      note: 'Работаю официально как самозанятый. Небольшие задачи — от нескольких дней, полноценные внедрения — от нескольких недель.',
+      note: 'Работаю официально как самозанятый. Небольшие задачи беру от нескольких дней, полноценные внедрения от нескольких недель.',
     },
     services: {
       title: 'Чем могу помочь',
@@ -272,12 +272,12 @@ const ru: SiteContent = {
     },
     cases: {
       title: 'Избранные кейсы',
-      description: 'Небольшая выборка проектов. Результаты в описаниях — примерные ориентиры, а не гарантия.',
+      description: 'Небольшая выборка проектов. Результаты в описаниях приведены как примерные ориентиры, а не как гарантия.',
       link: 'Все кейсы',
     },
     process: {
       title: 'Как строится работа',
-      description: 'Прозрачный процесс: вы понимаете, что происходит на каждом этапе и за что платите.',
+      description: 'Вы понимаете, что происходит на каждом этапе и за что платите.',
       steps: [
         {
           title: 'Аудит и цели',
@@ -293,13 +293,13 @@ const ru: SiteContent = {
         },
         {
           title: 'Поддержка',
-          description: 'Передаю документацию, обучаю команду и сопровождаю решение: обновления моделей, метрики, доработки.',
+          description: 'Передаю документацию и обучаю команду. Дальше сопровождаю решение: обновления моделей, метрики, доработки.',
         },
       ],
     },
     stack: {
       title: 'Стек и инструменты',
-      description: 'Выбираю технологии под задачу, а не наоборот. Ниже — то, с чем работаю чаще всего.',
+      description: 'Выбираю технологии под задачу, а не наоборот. Ниже то, с чем работаю чаще всего.',
       groups: [
         { title: 'Модели и AI', items: ['OpenAI', 'Anthropic', 'YandexGPT', 'GigaChat', 'Ollama', 'Whisper'] },
         { title: 'Оркестрация', items: ['n8n', 'LangChain', 'LlamaIndex', 'MCP', 'RAG'] },
@@ -314,7 +314,7 @@ const ru: SiteContent = {
     },
     cta: {
       title: 'Обсудим вашу задачу?',
-      description: 'Опишите процесс, который хочется автоматизировать, — предложу реалистичный следующий шаг и оценку по срокам.',
+      description: 'Опишите процесс, который хочется автоматизировать. Предложу реалистичный следующий шаг и оценку по срокам.',
       telegram: 'Написать в Telegram',
       email: 'Отправить письмо',
       note: 'Отвечаю в течение рабочего дня.',
@@ -323,7 +323,7 @@ const ru: SiteContent = {
   servicesPage: {
     eyebrow: 'Услуги',
     title: 'ИИ, который встраивается в работу, а не в презентацию',
-    description: 'Помогаю выбрать задачу, собрать решение и довести его до эксплуатации. Формат — от короткого аудита до полноценного проекта под ключ.',
+    description: 'Помогаю выбрать задачу, собрать решение и довести его до эксплуатации. Формат: от короткого аудита до полноценного проекта под ключ.',
     listTitle: 'Направления работы',
     listDescription: 'Можно начать с одной услуги или собрать комбинацию под ваш процесс.',
     faqTitle: 'Частые вопросы',
@@ -335,11 +335,11 @@ const ru: SiteContent = {
       },
       {
         question: 'Сколько времени занимает проект?',
-        answer: 'Аудит — от нескольких дней. Прототип — обычно 1–3 недели. Полноценное внедрение с интеграциями и поддержкой — от нескольких недель до нескольких месяцев, в зависимости от объёма данных и систем.',
+        answer: 'Аудит занимает от нескольких дней. Прототип обычно 1–3 недели. Полноценное внедрение с интеграциями и поддержкой: от нескольких недель до нескольких месяцев, в зависимости от объёма данных и систем.',
       },
       {
         question: 'Сколько это стоит?',
-        answer: 'Стоимость зависит от сложности данных, количества интеграций и требований к надёжности. После короткого обсуждения даю вилку по этапам — без скрытых платежей и «сюрпризов» в середине проекта.',
+        answer: 'Стоимость зависит от сложности данных, количества интеграций и требований к надёжности. После короткого обсуждения даю вилку по этапам, без скрытых платежей и «сюрпризов» в середине проекта.',
       },
       {
         question: 'Можно ли работать с нашими внутренними системами?',
@@ -351,20 +351,20 @@ const ru: SiteContent = {
       },
       {
         question: 'Нужно ли соблюдать 152-ФЗ?',
-        answer: 'Если в данных есть персональные данные — да. Закладываю обработку по требованиям закона: согласия, сроки хранения, обезличивание и хранение на территории РФ там, где это обязательно. Юридическую оценку лучше делать вместе с вашим юристом.',
+        answer: 'Если в данных есть персональные данные, да. Закладываю обработку по требованиям закона: согласия, сроки хранения, обезличивание и хранение на территории РФ там, где это обязательно. Юридическую оценку лучше делать вместе с вашим юристом.',
       },
       {
         question: 'Что будет после запуска?',
-        answer: 'Передаю документацию и обучаю команду. Дальше — поддержка по договорённости: мониторинг качества, обновление моделей и промптов, доработки под новые сценарии.',
+        answer: 'Передаю документацию и обучаю команду. Дальше идёт поддержка по договорённости: мониторинг качества, обновление моделей и промптов, доработки под новые сценарии.',
       },
       {
         question: 'Вы гарантируете, что ИИ не будет ошибаться?',
-        answer: 'Нет, и никто не может. Поэтому проектирую решение с проверками, ограничениями и понятным сценарием, когда человек подтверждает результат. Задача — снизить рутину и риск, а не убрать контроль.',
+        answer: 'Нет, и никто не может. Поэтому проектирую решение с проверками, ограничениями и понятным сценарием, когда человек подтверждает результат. Задача в том, чтобы снизить рутину и риск, а не убрать контроль.',
       },
     ],
     cta: {
       title: 'Не уверены, с чего начать?',
-      description: 'Расскажите о процессе — подскажу, где ИИ даст эффект быстрее всего, а где пока лучше обойтись без него.',
+      description: 'Расскажите о процессе: подскажу, где ИИ даст эффект быстрее всего, а где пока лучше обойтись без него.',
       telegram: 'Обсудить задачу в Telegram',
       email: 'Написать на почту',
     },
@@ -372,15 +372,14 @@ const ru: SiteContent = {
   casesPage: {
     eyebrow: 'Кейсы',
     title: 'Проекты, где ИИ решает конкретную задачу',
-    description: 'Подборка примеров: извлечение данных из документов, контент для e-commerce и работа с проектной документацией. Цифры результатов — ориентировочные.',
+    description: 'Подборка примеров: извлечение данных из документов, контент для e-commerce и работа с проектной документацией. Цифры результатов ориентировочные.',
     allLabel: 'Все',
     industryLabel: 'Индустрия',
     taskTypeLabel: 'Тип задачи',
     clearLabel: 'Сбросить фильтры',
     resetLabel: 'Показать все кейсы',
     emptyTitle: 'По этим фильтрам кейсов нет',
-    emptyDescription: 'Попробуйте убрать один из фильтров или посмотреть все проекты.',
-    audienceLabel: 'Кому',
+    emptyDescription: 'Уберите один из фильтров.',
     moreLabel: 'Подробнее',
     cta: {
       title: 'Хотите похожий проект?',
@@ -399,7 +398,7 @@ const ru: SiteContent = {
     resultsNote: 'Значения приведены как ориентир по похожим проектам и не являются гарантией результата.',
     cta: {
       title: 'Обсудим ваш сценарий',
-      description: 'Расскажите, какие документы, данные или процессы нужно автоматизировать, — предложу план первого этапа.',
+      description: 'Расскажите, какие документы, данные или процессы нужно автоматизировать. Предложу план первого этапа.',
       telegram: 'Обсудить в Telegram',
       email: 'Написать на почту',
     },
@@ -407,7 +406,7 @@ const ru: SiteContent = {
   articlesPage: {
     eyebrow: 'Статьи',
     title: 'Заметки о разработке и внедрении ИИ',
-    description: 'Практика, разборы и инструкции — без новостного шума.',
+    description: 'Практика, разборы и инструкции. Без новостного шума.',
     categoriesTitle: 'Категории',
     categories: {
       'all': 'Все',
@@ -417,7 +416,7 @@ const ru: SiteContent = {
       'guides': 'Инструкции',
     },
     emptyTitle: 'В этой категории пока пусто',
-    emptyDescription: 'Попробуйте выбрать другую категорию или посмотреть все статьи.',
+    emptyDescription: 'Выберите другую категорию.',
   },
   articlePage: {
     back: 'Назад к статьям',
@@ -430,9 +429,9 @@ const ru: SiteContent = {
     description: 'Помогаю бизнесу применять ИИ там, где это действительно экономит время и деньги.',
     headline: 'Меня зовут Глеб Котовский. Я соединяю продуктовую разработку и практическое внедрение ИИ.',
     paragraphs: [
-      'Несколько лет делаю веб-продукты и внутренние системы: от интерфейсов и дизайн-систем до интеграций и автоматизации процессов. Этот опыт научил главному — ИИ полезен только тогда, когда он встроен в реальный рабочий сценарий.',
+      'Несколько лет делаю веб-продукты и внутренние системы: от интерфейсов и дизайн-систем до интеграций и автоматизации процессов. Этот опыт научил главному: ИИ полезен только тогда, когда он встроен в реальный рабочий сценарий.',
       'Поэтому начинаю не с выбора модели, а с вопроса «где именно теряется время». Дальше проверяю гипотезу на данных, собираю прототип и довожу решение до состояния, в котором им пользуется команда.',
-      'Работаю прозрачно: фиксирую этапы, показываю промежуточные результаты и заранее говорю о ограничениях. Если задача решается без ИИ — скажу об этом прямо.',
+      'Работаю прозрачно: фиксирую этапы, показываю промежуточные результаты и заранее говорю о ограничениях. Если задача решается без ИИ, скажу об этом прямо.',
     ],
     focusTitle: 'На чём фокусируюсь',
     focus: [
@@ -461,11 +460,11 @@ const ru: SiteContent = {
       'Решение должно быть понятно команде, а не только разработчику.',
     ],
     hireTitle: 'Ищете AI-интегратора в команду?',
-    hireDescription: 'Открыт к проектной работе, part-time и постоянным ролям. Подробности — на странице найма.',
+    hireDescription: 'Открыт к проектной работе, part-time и постоянным ролям. Подробности на странице найма.',
     hireCta: 'Условия и опыт',
     cta: {
       title: 'Познакомимся?',
-      description: 'Напишите пару слов о компании и задаче — отвечу и предложу, с чего начать.',
+      description: 'Напишите пару слов о компании и задаче: отвечу и предложу, с чего начать.',
       telegram: 'Написать в Telegram',
       email: 'Отправить письмо',
     },
@@ -473,7 +472,7 @@ const ru: SiteContent = {
   hirePage: {
     eyebrow: 'Найм',
     title: 'AI-интегратор в вашу команду',
-    description: 'Помогаю компаниям запускать ИИ-функции и выстраивать процессы вокруг них. Ниже — формат работы, ожидания и опыт.',
+    description: 'Помогаю компаниям запускать ИИ-функции и выстраивать процессы вокруг них. Ниже формат работы, ожидания и опыт.',
     offerTitle: 'Что я ищу',
     offerDescription: 'Интересны задачи, где ИИ меняет реальный процесс, а не только демо.',
     offer: [
@@ -510,15 +509,15 @@ const ru: SiteContent = {
   contactPage: {
     eyebrow: 'Контакты',
     title: 'Расскажите о задаче',
-    description: 'Выберите удобный канал или заполните короткую форму — она откроет ваш почтовый клиент с готовым письмом.',
-    intro: 'Помогу понять, нужен ли вам ИИ, какой сценарий проверить первым и сколько времени это займёт. Если задача не моя — подскажу, к кому обратиться.',
+    description: 'Выберите удобный канал или заполните короткую форму.',
+    intro: 'Помогу понять, нужен ли вам ИИ, какой сценарий проверить первым и сколько времени это займёт. Если задача не моя, подскажу, к кому обратиться.',
     telegramTitle: 'Telegram',
     telegramDescription: 'Самый быстрый способ: коротко опишите задачу и приложите примеры данных, если есть.',
     emailTitle: 'Почта',
     emailDescription: 'Для подробных описаний, документов и официальных запросов.',
     form: {
       title: 'Заявка через почту',
-      description: 'Заполните три поля — откроется почтовый клиент с готовым письмом. Ничего не отправляется автоматически.',
+      description: 'Заполните три поля, и откроется почтовый клиент с готовым письмом.',
       name: 'Имя',
       namePlaceholder: 'Как к вам обращаться',
       company: 'Компания',
@@ -526,7 +525,7 @@ const ru: SiteContent = {
       task: 'Задача',
       taskPlaceholder: 'Что хотите автоматизировать или улучшить? Какие данные и системы уже есть?',
       submit: 'Сформировать письмо',
-      hint: 'Кнопка откроет ваш почтовый клиент. Если он не настроен — напишите напрямую на почту или в Telegram.',
+      hint: 'Ничего не отправляется автоматически. Если почтовый клиент не настроен, напишите напрямую на почту или в Telegram.',
       required: 'Заполните все поля, чтобы продолжить.',
       subjectPrefix: 'Заявка с сайта',
       bodyIntro: 'Новая заявка с сайта kotovsky.',
@@ -543,7 +542,7 @@ const ru: SiteContent = {
         title: '1. Общие положения',
         paragraphs: [
           'Настоящая политика описывает, какие данные собирает сайт kotovsky (далее — Сайт), как они используются и какие права есть у пользователя. Политика действует в отношении всех страниц Сайта.',
-          'Оператор персональных данных — самозанятый Котовский Глеб [ФИО уточняется], ИНН [ИНН уточняется]. Контакт для вопросов: terrnit.work@gmail.com.',
+          `Оператор персональных данных — самозанятый ${ENV.legalName}, ИНН ${ENV.taxId}. Контакт для вопросов: terrnit.work@gmail.com.`,
         ],
       },
       {
@@ -605,8 +604,8 @@ const ru: SiteContent = {
         title: 'Исполнитель',
         paragraphs: [
           'Статус: самозанятый (плательщик налога на профессиональный доход).',
-          'ФИО: [ФИО]',
-          'ИНН: [ИНН]',
+          `ФИО: ${ENV.legalName}`,
+          `ИНН: ${ENV.taxId}`,
           'Регион постановки на учёт: Свердловская область.',
         ],
       },
@@ -631,7 +630,6 @@ const ru: SiteContent = {
         ],
       },
     ],
-    todo: 'TODO: заменить плейсхолдеры [ФИО] и [ИНН] реальными данными перед публикацией.',
   },
 }
 
@@ -646,7 +644,7 @@ const en: SiteContent = {
   meta: {
     home: {
       title: 'AI integration for business processes',
-      description: 'AI integrator: audits, AI agents, RAG over knowledge bases, chat assistants and workflow automation. From idea to a working service.',
+      description: 'AI integrator: audits, AI agents, RAG over knowledge bases, chat assistants and workflow automation. I help teams launch AI in their workflow and stay on support.',
     },
     services: {
       title: 'Services',
@@ -670,7 +668,7 @@ const en: SiteContent = {
     },
     contact: {
       title: 'Contact',
-      description: 'Tell me about your task on Telegram, by email or through a short form — I will reply with a next step.',
+      description: 'Tell me about your task on Telegram, by email or through a short form. I will reply with a next step.',
     },
     policy: {
       title: 'Privacy policy',
@@ -684,9 +682,9 @@ const en: SiteContent = {
   home: {
     hero: {
       eyebrow: 'AI integrator · development and consulting',
-      title: 'I put AI into business processes — from idea to a working service',
+      title: 'I put AI into business processes and take an idea through to a working service',
       subtitle: 'I help teams automate routine work, extract data from documents and launch AI assistants that actually save time.',
-      description: 'I cover the whole path: understanding the process, checking the data, building a prototype, shipping it to production and staying for support. No magic and no promise that one prompt replaces everything.',
+      description: 'I cover the whole path: understanding the process, checking the data, building a prototype, shipping it to production and staying for support. One prompt will not replace a process.',
       primaryCta: 'Start a project',
       secondaryCta: 'Send an email',
       tertiaryCta: 'See cases',
@@ -704,7 +702,7 @@ const en: SiteContent = {
     },
     process: {
       title: 'How the work is structured',
-      description: 'A transparent process: you always know what is happening and what you are paying for.',
+      description: 'You always know what is happening and what you are paying for.',
       steps: [
         {
           title: 'Audit and goals',
@@ -720,7 +718,7 @@ const en: SiteContent = {
         },
         {
           title: 'Support',
-          description: 'I hand over documentation, train the team and support the solution: model updates, metrics, improvements.',
+          description: 'I hand over documentation and train the team. Then I support the solution: model updates, metrics, improvements.',
         },
       ],
     },
@@ -741,7 +739,7 @@ const en: SiteContent = {
     },
     cta: {
       title: 'Shall we discuss your task?',
-      description: 'Describe the process you want to automate — I will suggest a realistic next step and a timeline estimate.',
+      description: 'Describe the process you want to automate. I will suggest a realistic next step and a timeline estimate.',
       telegram: 'Message on Telegram',
       email: 'Send an email',
       note: 'I usually reply within one business day.',
@@ -766,7 +764,7 @@ const en: SiteContent = {
       },
       {
         question: 'How much does it cost?',
-        answer: 'The cost depends on data complexity, the number of integrations and reliability requirements. After a short conversation I give a range per stage — no hidden payments or mid-project surprises.',
+        answer: 'The cost depends on data complexity, the number of integrations and reliability requirements. After a short conversation I give a range per stage, with no hidden payments or mid-project surprises.',
       },
       {
         question: 'Can you work with our internal systems?',
@@ -791,7 +789,7 @@ const en: SiteContent = {
     ],
     cta: {
       title: 'Not sure where to start?',
-      description: 'Describe your process — I will point out where AI can help fastest and where it is better to skip it for now.',
+      description: 'Describe your process. I will point out where AI can help fastest and where it is better to skip it for now.',
       telegram: 'Discuss on Telegram',
       email: 'Send an email',
     },
@@ -806,8 +804,7 @@ const en: SiteContent = {
     clearLabel: 'Clear filters',
     resetLabel: 'Show all cases',
     emptyTitle: 'No cases match these filters',
-    emptyDescription: 'Try removing a filter or viewing all projects.',
-    audienceLabel: 'For',
+    emptyDescription: 'Remove one of the filters.',
     moreLabel: 'Read more',
     cta: {
       title: 'Want a similar project?',
@@ -834,7 +831,7 @@ const en: SiteContent = {
   articlesPage: {
     eyebrow: 'Articles',
     title: 'Notes on development and AI adoption',
-    description: 'Practice, breakdowns and guides — without the news noise.',
+    description: 'Practice, breakdowns and guides without the news noise.',
     categoriesTitle: 'Categories',
     categories: {
       'all': 'All',
@@ -844,7 +841,7 @@ const en: SiteContent = {
       'guides': 'Guides',
     },
     emptyTitle: 'Nothing in this category yet',
-    emptyDescription: 'Try another category or view all articles.',
+    emptyDescription: 'Pick another category.',
   },
   articlePage: {
     back: 'Back to articles',
@@ -857,7 +854,7 @@ const en: SiteContent = {
     description: 'I help businesses apply AI where it actually saves time and money.',
     headline: 'My name is Gleb Kotovsky. I combine product engineering with practical AI adoption.',
     paragraphs: [
-      'For several years I have been building web products and internal systems: from interfaces and design systems to integrations and process automation. That experience taught me the main lesson — AI is useful only when it is embedded in a real workflow.',
+      'For several years I have been building web products and internal systems: from interfaces and design systems to integrations and process automation. That experience taught me the main lesson: AI is useful only when it is embedded in a real workflow.',
       'That is why I start not with model selection but with the question “where exactly is time lost”. Then I validate the hypothesis on data, build a prototype and bring it to a state the team actually uses.',
       'I work transparently: fixed stages, visible intermediate results and honest limitations. If a task can be solved without AI, I will say so.',
     ],
@@ -892,7 +889,7 @@ const en: SiteContent = {
     hireCta: 'Terms and experience',
     cta: {
       title: 'Shall we get acquainted?',
-      description: 'Send a few words about your company and task — I will reply and suggest where to start.',
+      description: 'Send a few words about your company and task. I will reply and suggest where to start.',
       telegram: 'Message on Telegram',
       email: 'Send an email',
     },
@@ -900,7 +897,7 @@ const en: SiteContent = {
   hirePage: {
     eyebrow: 'Hire',
     title: 'An AI integrator for your team',
-    description: 'I help companies launch AI features and build processes around them. Below are the working format, expectations and experience.',
+    description: 'I help companies launch AI features and build processes around them. The working format, expectations and experience.',
     offerTitle: 'What I am looking for',
     offerDescription: 'I am interested in tasks where AI changes a real process, not just a demo.',
     offer: [
@@ -937,7 +934,7 @@ const en: SiteContent = {
   contactPage: {
     eyebrow: 'Contact',
     title: 'Tell me about your task',
-    description: 'Choose a convenient channel or fill in a short form — it will open your email client with a ready message.',
+    description: 'Choose a convenient channel or fill in a short form.',
     intro: 'I will help you understand whether you need AI, which scenario to validate first and how long it may take. If the task is outside my scope, I will point you to someone who can help.',
     telegramTitle: 'Telegram',
     telegramDescription: 'The fastest way: briefly describe the task and attach data samples if you have them.',
@@ -945,7 +942,7 @@ const en: SiteContent = {
     emailDescription: 'For detailed descriptions, documents and official requests.',
     form: {
       title: 'Request by email',
-      description: 'Fill in three fields — your email client will open with a ready message. Nothing is sent automatically.',
+      description: 'Fill in three fields and your email client will open with a ready message.',
       name: 'Name',
       namePlaceholder: 'How should I address you',
       company: 'Company',
@@ -953,7 +950,7 @@ const en: SiteContent = {
       task: 'Task',
       taskPlaceholder: 'What do you want to automate or improve? What data and systems do you already have?',
       submit: 'Compose the email',
-      hint: 'The button opens your email client. If it is not configured, write directly by email or on Telegram.',
+      hint: 'Nothing is sent automatically. If your email client is not configured, write by email or on Telegram.',
       required: 'Fill in all fields to continue.',
       subjectPrefix: 'Website request',
       bodyIntro: 'New request from the kotovsky website.',
@@ -970,7 +967,7 @@ const en: SiteContent = {
         title: '1. General provisions',
         paragraphs: [
           'This policy describes what data the kotovsky site (the “Site”) collects, how it is used and what rights the user has. The policy applies to all pages of the Site.',
-          'The personal data operator is self-employed Gleb Kotovsky [NAME pending], tax ID [TAX ID pending]. Contact: terrnit.work@gmail.com.',
+          `The personal data operator is self-employed ${ENV.legalNameEn}, tax ID ${ENV.taxIdEn}. Contact: terrnit.work@gmail.com.`,
         ],
       },
       {
@@ -1032,8 +1029,8 @@ const en: SiteContent = {
         title: 'Contractor',
         paragraphs: [
           'Status: self-employed (professional income tax payer).',
-          'Full name: [NAME]',
-          'Tax ID: [TAX ID]',
+          `Full name: ${ENV.legalNameEn}`,
+          `Tax ID: ${ENV.taxIdEn}`,
           'Registration region: Sverdlovsk Oblast, Russia.',
         ],
       },
@@ -1058,7 +1055,6 @@ const en: SiteContent = {
         ],
       },
     ],
-    todo: 'TODO: replace the [NAME] and [TAX ID] placeholders with real data before publishing.',
   },
 }
 

@@ -7,11 +7,11 @@ const { url } = Astro
 const { p, t } = useI18n(url)
 ---
 
-<Link href={p('/')} underline={false} classes="group flex w-fit items-center gap-x-2" aria-label={`${t('navigation.home')} — Kotovsky`}>
+<Link href={p('/')} underline={false} classes="group flex w-fit items-center gap-x-2" aria-label={t('navigation.home')}>
   <img
     src="/cat_logo.png"
     class="h-11 w-11 cursor-pointer sepia-0 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:sepia"
-    alt="Kotovsky cat logo"
+    alt=""
     width="44"
     height="47"
   />

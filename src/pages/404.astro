@@ -3,8 +3,6 @@ export const prerender = false
 
 import { useI18n } from '@lib/i18n'
 
-import { SITE } from '@consts'
-
 import { Link, Container } from '@components/astro/layout'
 
 import ErrorLayout from '@layouts/ErrorLayout.astro'
@@ -26,7 +24,7 @@ const description = t('404.description')
           <p class="text-foreground my-4 text-3xl font-semibold">{t('404.heading')}</p>
           <p class="mb-6 mt-2 text-xl font-light text-secondary-foreground">{t('404.paragraph')}</p>
 
-          <Link href={p('/')} aria-label={`${SITE.NAME} on Home`}> {t('404.back_to')} </Link>
+          <Link href={p('/')} aria-label={t('404.back_to')}> {t('404.back_to')} </Link>
         </div>
         <div class="relative flex size-72 items-center justify-center">
           <img src="/404_mockup.png" alt="404 mockup" />

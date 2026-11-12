@@ -20,7 +20,7 @@ const ctaHref = SITE.TELEGRAM
 
     <div class="flex items-center gap-x-1">
       <LanguageSwitcher client:load side={'bottom'} url={url} />
-      <ThemeSwitcher client:load side={'bottom'} />
+      <ThemeSwitcher client:load side={'bottom'} url={url} />
 
       <a
         href={ctaHref}
@@ -32,7 +32,7 @@ const ctaHref = SITE.TELEGRAM
       </a>
 
       <div class="md:hidden">
-        <MobileMenu client:visible>
+        <MobileMenu client:visible title={t('navigation.menu')}>
           <Navigation slot="navigation" />
           <a
             slot="cta"

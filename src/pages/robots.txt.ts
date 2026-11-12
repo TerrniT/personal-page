@@ -1,13 +1,19 @@
 import type { APIRoute } from 'astro'
 
-const site = import.meta.env.SITE ?? 'https://terrnit.com'
+import { SITE } from '@consts'
+
+const origin = `https://${SITE.DOMAIN}`
 
 const robotsTxt = `
 User-agent: *
 Allow: /
 
-Host: ${new URL(site).host}
+Host: ${SITE.DOMAIN}
+
+Sitemap: ${origin}/sitemap-index.xml
 `.trim()
+
+export const prerender = true
 
 export const GET: APIRoute = () => {
   return new Response(robotsTxt, {

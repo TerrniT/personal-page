@@ -8,7 +8,7 @@ const lang = getLangFromUrl(Astro.url)
 const site = getSiteContent(lang)
 const labels = site.legalPage
 
-// TODO: заменить плейсхолдеры [ФИО] и [ИНН] реальными данными перед публикацией.
+// ФИО и ИНН берутся из env: LEGAL_NAME, LEGAL_NAME_EN, LEGAL_TAX_ID.
 const meta = site.meta.legal
 ---
 
@@ -32,7 +32,4 @@ const meta = site.meta.legal
       ))
     }
   </div>
-
-  <!-- TODO: заменить [ФИО] и [ИНН] реальными данными перед публикацией. -->
-  <p class="mt-10 text-xs text-muted-foreground/60">{labels.todo}</p>
 </PageLayout>

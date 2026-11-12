@@ -136,9 +136,11 @@ export const ui = {
     '404.back_to': 'Go back',
 
     '505.title': '505',
-    '505.description': 'Something went wrong((',
+    '505.description': 'Something went wrong',
+    '505.back_to': 'Go back',
 
     'navigation.elsewhere': 'Elsewhere',
+    'navigation.menu': 'Menu',
     'navigation.select_language': 'Select a language',
     'navigation.select_theme': 'Select a theme',
     'navigation.theme_light': 'Light',
@@ -302,14 +304,16 @@ export const ui = {
     '404.description': 'Страница не найдена',
 
     '404.heading': 'Страница не найдена',
-    '404.paragraph': 'Кажись такой страницы не существует..',
+    '404.paragraph': 'Кажется такой страницы не существует.',
 
-    '404.back_to': 'Вернутся обратно',
+    '404.back_to': 'Вернуться назад',
 
     '505.title': '505',
-    '505.description': 'Блен, что то пошло не так((',
+    '505.description': 'Блен, что-то пошло не так',
+    '505.back_to': 'Вернуться назад',
 
     'navigation.elsewhere': 'Другие ссылки',
+    'navigation.menu': 'Меню',
     'navigation.select_language': 'Выберите язык',
     'navigation.select_theme': 'Выберите тему',
     'navigation.theme_light': 'Светлая',

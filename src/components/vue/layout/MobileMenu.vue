@@ -4,13 +4,17 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@com
 
 import { ref } from 'vue'
 
+const props = defineProps<{
+  title: string
+}>()
+
 const sheetModal = ref(false)
 </script>
 
 <template>
   <Sheet :open="sheetModal" @update:open="sheetModal = $event">
     <SheetTrigger as-child as="div">
-      <Button size="lg-icon" variant="ghost" aria-describedby="mobile-menu">
+      <Button size="lg-icon" variant="ghost" :aria-label="props.title">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
           <path
             fill="none"
@@ -25,7 +29,7 @@ const sheetModal = ref(false)
     <SheetContent side="bottom">
       <SheetHeader>
         <SheetTitle>
-          <span class="hidden"> Navbar menu </span>
+          <span class="sr-only">{{ props.title }}</span>
         </SheetTitle>
         <slot name="navigation" />
         <slot name="cta" />

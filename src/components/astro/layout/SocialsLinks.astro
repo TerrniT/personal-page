@@ -1,7 +1,7 @@
 ---
 import { useI18n } from '@lib/i18n'
 
-import { SITE, SOCIALS } from '@consts'
+import { SOCIALS } from '@consts'
 
 import { Link } from '@components/astro/layout'
 
@@ -20,7 +20,6 @@ const { t } = useI18n(url)
           <Link
             href={item.HREF}
             external
-            aria-label={`${SITE.NAME} on ${item.HREF}`}
             classes="flex gap-x-1 items-center"
             underline={false}
           >

@@ -13,7 +13,7 @@ const { url } = Astro
   </div>
 
   <div class="flex gap-x-1 px-2">
-    <ThemeSwitcher client:load side={'right'} />
+    <ThemeSwitcher client:load side={'right'} url={url} />
     <LanguageSwitcher client:load url={url} side={'right'} />
   </div>
 </div>

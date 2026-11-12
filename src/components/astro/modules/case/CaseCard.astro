@@ -8,11 +8,11 @@ interface Props {
   taskType?: string
   href: string
   image?: string
-  audienceLabel: string
+  industryLabel: string
   moreLabel: string
 }
 
-const { title, description, industry, taskType, href, image, audienceLabel, moreLabel } = Astro.props
+const { title, description, industry, taskType, href, image, industryLabel, moreLabel } = Astro.props
 
 const { p } = useI18n(Astro.url)
 ---
@@ -44,9 +44,13 @@ const { p } = useI18n(Astro.url)
     </div>
 
     <div class="flex flex-1 flex-col gap-3 p-4">
-      <div class="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-        <span class="rounded-md bg-primary/10 px-2 py-0.5 text-primary-foreground">{taskType ?? industry}</span>
-      </div>
+      {
+        image && (
+          <div class="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+            <span class="rounded-md bg-primary/10 px-2 py-0.5 text-primary-foreground">{taskType ?? industry}</span>
+          </div>
+        )
+      }
 
       <h3 class="text-lg font-semibold text-main-foreground">
         {title}
@@ -58,7 +62,7 @@ const { p } = useI18n(Astro.url)
 
       <div class="mt-auto flex items-end justify-between gap-3 pt-2">
         <div class="text-xs text-muted-foreground">
-          <span class="opacity-70">{audienceLabel}: </span>
+          <span class="opacity-70">{industryLabel}: </span>
           <span>{industry}</span>
         </div>
         <span class="flex items-center gap-1 text-sm font-medium text-main-foreground transition-transform duration-200 ease-in-out group-hover:translate-x-0.5">
