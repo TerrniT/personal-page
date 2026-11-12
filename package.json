@@ -5,12 +5,15 @@
   "scripts": {
     "dev": "astro dev",
     "dev:network": "astro dev --host",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && node scripts/patch-vercel-runtime.mjs",
     "preview": "astro preview",
     "preview:network": "astro preview --host",
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
+  },
+  "engines": {
+    "node": "26.x"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",
