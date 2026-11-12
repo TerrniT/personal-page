@@ -1,24 +1,22 @@
 ---
-import { YandexMetrika } from 'astro-ym';
-
 import { type Language, getLangFromUrl } from '@lib/i18n'
 
 import { SITE } from '@consts'
 
-import { Head, Header, Footer, Sidebar, Container, Aside } from '@components/astro/layout'
+import { Head, Header, Footer, Sidebar, Container, Aside, CookieConsent } from '@components/astro/layout'
 import { TableOfContent } from '@components/react/layout'
 
 import { ArticleAuthor } from '@components/astro/modules/article'
 
 import type { CollectionEntry } from 'astro:content'
 import type { MarkdownHeading } from 'astro'
-import type { InferEntrySchema } from 'astro:content'
 
 type Props = {
   title: string
   description: string
   publishedAt: Date
-  author?: InferEntrySchema<'people'> & { href?: string }
+  // eslint-disable-next-line ts/no-explicit-any
+  author?: any
   image?: string
   lang?: Language
   content: CollectionEntry<'articles'>
@@ -35,29 +33,24 @@ const htmlLang = lang ?? getLangFromUrl(Astro.url)
     <Head title={`${title} | ${SITE.NAME}`} {description} {image} author={author?.name} />
   </head>
   <body>
-    <YandexMetrika
-      clickmap={true}
-      trackLinks={true}
-      accurateTrackBounce={true}
-      webvisor={true}
-      lazy={true}
-      timeout={2000}
-      ecommerce="dataLayer"
-      params={{ source: "astro" }}
-      counterId={106701987}
-    />
-    <div class="relative flex w-full flex-col md:flex-row">
+    <div class="relative flex min-h-screen w-full flex-col">
       <Header />
-      <Sidebar />
 
-      <Container>
-        <slot />
-        <Footer />
-      </Container>
-      <Aside>
-        <TableOfContent data-animate className="hidden px-2 text-sm md:block" toc={headings} client:visible />
-        {author && <ArticleAuthor {author} {publishedAt} />}
-      </Aside>
+      <div class="flex w-full flex-1 flex-col md:flex-row">
+        <Sidebar />
+
+        <Container>
+          <slot />
+          <Footer />
+        </Container>
+
+        <Aside>
+          <TableOfContent data-animate className="hidden px-2 text-sm md:block" toc={headings} client:visible />
+          <ArticleAuthor {publishedAt} />
+        </Aside>
+      </div>
     </div>
+
+    <CookieConsent />
   </body>
 </html>

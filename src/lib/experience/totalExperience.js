@@ -23,6 +23,34 @@ const MONTHS = {
   november: 10,
   dec: 11,
   december: 11,
+  январь: 0,
+  января: 0,
+  февраль: 1,
+  февраля: 1,
+  март: 2,
+  марта: 2,
+  апрель: 3,
+  апреля: 3,
+  май: 4,
+  мая: 4,
+  июнь: 5,
+  июня: 5,
+  июль: 6,
+  июля: 6,
+  август: 7,
+  августа: 7,
+  сентябрь: 8,
+  сентября: 8,
+  октябрь: 9,
+  октября: 9,
+  ноябрь: 10,
+  ноября: 10,
+  декабрь: 11,
+  декабря: 11,
+}
+
+function isPresentLabel(input) {
+  return /^(?:present|настоящее время|н\.?\s?в\.?)$/i.test(input.trim())
 }
 
 function monthIndexFromDate(date) {
@@ -31,7 +59,7 @@ function monthIndexFromDate(date) {
 
 function parseMonthYear(input) {
   const trimmed = input.trim()
-  const match = /^([A-Za-z]+)\s+(\d{4})$/.exec(trimmed)
+  const match = /^([\p{L}.]+)\s+(\d{4})$/u.exec(trimmed)
   if (!match)
     return null
 
@@ -48,7 +76,8 @@ function parseMonthYear(input) {
 }
 
 function parseDurationToMonthRange(duration, now) {
-  const parts = duration.split('-').map(part => part.trim()).filter(Boolean)
+  const normalized = duration.replace(/\s+по\s+/gi, ' - ')
+  const parts = normalized.split(/\s*[-–—]\s*/).map(part => part.trim()).filter(Boolean)
   if (parts.length !== 2)
     return null
 
@@ -57,8 +86,8 @@ function parseDurationToMonthRange(duration, now) {
     return null
 
   const endRaw = parts[1]
-  const end = /^present$/i.test(endRaw) ? null : parseMonthYear(endRaw)
-  if (endRaw && !end && !/^present$/i.test(endRaw))
+  const end = isPresentLabel(endRaw) ? null : parseMonthYear(endRaw)
+  if (endRaw && !end && !isPresentLabel(endRaw))
     return null
 
   const startIndex = start.year * 12 + start.month
@@ -173,4 +202,3 @@ export function formatTotalExperience(totalMonths, lang) {
 
   return parts.join(' ')
 }
-

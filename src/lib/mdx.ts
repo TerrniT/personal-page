@@ -6,7 +6,7 @@ import { SITE } from '@consts'
 import { getLangFromSlug } from '@lib/i18n'
 import { getCollection } from 'astro:content'
 
-export type CollectionsType = 'articles' | 'uses' | 'about' | 'experiences' | 'projects' | 'people'
+export type CollectionsType = 'articles' | 'about' | 'experiences' | 'cases' | 'services'
 export type SlugItemType = CollectionEntry<CollectionsType>
 
 export function isPublished(item: CollectionEntry<CollectionsType>) {
@@ -32,6 +32,7 @@ export function sortCollectionDateAsc(a: CollectionEntry<CollectionsType>, b: Co
 /**
  * @example ko/articles/svelte-useEffect -> svelte-useEffect
  * @example ru/articles/svelte-useEffect -> svelte-useEffect
+ * @example en/ai-audit -> ai-audit
  */
 export function resolveSlug(slug: string) {
   const [_lang, type, ..._slugList] = slug.split('/')
@@ -44,6 +45,7 @@ export interface ArticleInfo {
   date: Date
   tags?: string[]
   topic?: string
+  category: string
   author?: string
   cover_url?: string
   type?: 'article' | 'note'
@@ -53,7 +55,7 @@ export interface ArticleInfo {
   lang: Language
 }
 
-export async function getPostInfoList(locale: Language = 'en', author?: string) {
+export async function getPostInfoList(locale: Language = 'ru', author?: string) {
   const posts = (await getCollection('articles'))
     .filter(isPublished)
     .filter(item => filterByLocale(item, locale))
@@ -65,6 +67,7 @@ export async function getPostInfoList(locale: Language = 'en', author?: string) 
     date: item.data.date,
     tags: item.data.tags,
     topic: item.data.topic,
+    category: item.data.category ?? 'development',
     author: item.data.author,
     cover_url: item.data.cover_url,
     type: item.data.type ?? 'article',
@@ -79,65 +82,44 @@ export async function getPostInfoList(locale: Language = 'en', author?: string) 
   return result
 }
 
-export type UsesInfo = CollectionEntry<'uses'> & {
+export type CaseInfo = CollectionEntry<'cases'> & {
   href: string
 }
 
-export type PeopleInfo = CollectionEntry<'people'> & {
-  href?: string
-}
-
-export async function getUsesInfoList(locale: Language = 'en') {
-  const useses = (await getCollection('uses'))
+export async function getCasesInfoList(locale: Language = 'ru') {
+  const cases = (await getCollection('cases'))
     .filter(isPublished)
     .filter(item => filterByLocale(item, locale))
     .sort(sortCollectionDateDesc)
 
-  return useses.map<UsesInfo>(item => ({ ...item, href: `/uses/${resolveSlug(item.slug)}` }))
+  return cases.map<CaseInfo>(item => ({ ...item, href: `/cases/${resolveSlug(item.slug)}` }))
 }
 
-export async function getPeopleInfoList(locale: Language = 'en') {
-  const peoples = (await getCollection('people'))
+export async function getServicesInfoList(locale: Language = 'ru') {
+  const services = (await getCollection('services'))
     .filter(isPublished)
     .filter(item => filterByLocale(item, locale))
-    .sort(sortCollectionDateDesc)
+    .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0))
 
-  return peoples.map<PeopleInfo>(item => ({ ...item, href: `/people/${resolveSlug(item.slug)}` }))
+  return services
 }
 
-export async function resolveAuthor(author: string, locale: Language = 'en') {
-  const authors = await getPeopleInfoList(locale)
-  const resolvedAuthor = authors.find(item => item.data.nickname === author)
+/**
+ * Resolves an article author. The people collection was removed,
+ * so the site author is always returned.
+ */
+export async function resolveAuthor(author: string, locale: Language = 'ru') {
+  void author
+  void locale
 
-  if (resolvedAuthor) {
-    return {
-      ...resolvedAuthor.data,
-      href: `/people/${resolveSlug(resolvedAuthor.slug)}`,
-    }
-  }
-  else {
-    return SITE.AUTHOR
-  }
+  return SITE.AUTHOR
 }
 
-export type ProjectInfo = CollectionEntry<'projects'> & {
-  href: string
-}
-
-export async function getProjectsInfoList(locale: Language = 'en') {
-  const projects = (await getCollection('projects'))
-    .filter(isPublished)
-    .filter(item => filterByLocale(item, locale))
-    .sort(sortCollectionDateDesc)
-
-  return projects.map<ProjectInfo>(item => ({ ...item, href: `/projects/${resolveSlug(item.slug)}` }))
-}
-
-export async function getSlugItem(collection: CollectionsType, locale: Language = 'en') {
+export async function getSlugItem<T extends CollectionsType>(collection: T, locale: Language = 'ru') {
   const items = (await getCollection(collection)).filter(isPublished)
 
   const result = items
-    .filter(item => filterByLocale(item, locale))
+    .filter(item => filterByLocale(item as CollectionEntry<CollectionsType>, locale))
     .map((data) => {
       return {
         params: { slug: resolveSlug(data.slug) },
@@ -148,11 +130,11 @@ export async function getSlugItem(collection: CollectionsType, locale: Language 
       }
     })
 
-  return result as unknown as {
+  return result as {
     params: { slug: string }
     props: {
       lang: Language
-      data: CollectionEntry<CollectionsType>
+      data: CollectionEntry<T>
     }
-  }
+  }[]
 }

@@ -28,6 +28,7 @@ const sheetModal = ref(false)
           <span class="hidden"> Navbar menu </span>
         </SheetTitle>
         <slot name="navigation" />
+        <slot name="cta" />
       </SheetHeader>
     </SheetContent>
   </Sheet>

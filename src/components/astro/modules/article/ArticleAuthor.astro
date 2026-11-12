@@ -1,18 +1,14 @@
 ---
 import FormattedDate from '@components/astro/FormattedDate.astro'
-import type { PeopleInfo } from '@lib/mdx'
-
 import { useI18n } from '@lib/i18n'
-import type { InferEntrySchema } from 'astro:content'
-const { url } = Astro
-const { p, t } = useI18n(url)
+
+const { t } = useI18n(Astro.url)
 
 interface Props {
-  author: InferEntrySchema<'people'> & { href?: string }
   publishedAt: Date
 }
 
-const { author, publishedAt } = Astro.props
+const { publishedAt } = Astro.props
 ---
 
 <div class="mt-10 flex flex-col items-start px-2 text-sm">
@@ -20,8 +16,4 @@ const { author, publishedAt } = Astro.props
   <div class="mb-4 font-semibold text-main-foreground">
     <FormattedDate date={publishedAt} />
   </div>
-  <div class="mb-1 text-muted-foreground">{t('articles.author')}</div>
-  <a href={author.href && p(author.href)} class="font-semibold text-main-foreground underline-offset-2 hover:underline">
-    {author.name}
-  </a>
 </div>

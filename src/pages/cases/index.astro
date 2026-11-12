@@ -1,0 +1,126 @@
+---
+import { useI18n, getLangFromUrl } from '@lib/i18n'
+import { getCasesInfoList, type CaseInfo } from '@lib/mdx'
+import { SITE } from '@consts'
+import { getSiteContent } from '@data/site'
+import { buildCaseFilterHref, CASE_FILTER_ALL, getCaseFilterState } from '@lib/case-filters.js'
+
+import { CaseCard } from '@components/astro/modules/case'
+import { CtaBlock } from '@components/astro/modules/shared'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+const { url } = Astro
+const { p } = useI18n(url)
+const lang = getLangFromUrl(url)
+const site = getSiteContent(lang)
+const labels = site.casesPage
+
+const cases = await getCasesInfoList(lang)
+const filterState = getCaseFilterState(cases, url.searchParams)
+const filteredCases = filterState.items as CaseInfo[]
+
+const meta = site.meta.cases
+---
+
+<PageLayout title={meta.title} description={meta.description}>
+  <section class="animate max-w-2xl space-y-4">
+    <p class="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">{labels.eyebrow}</p>
+    <h1 class="text-xl font-semibold text-main-foreground md:text-2xl">{labels.title}</h1>
+    <p class="text-muted-foreground">{labels.description}</p>
+  </section>
+
+  <section class="mt-10 space-y-4" aria-label={labels.industryLabel}>
+    <div class="animate space-y-2">
+      <div class="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{labels.industryLabel}</div>
+      <div class="flex flex-wrap gap-2">
+        <a
+          href={buildCaseFilterHref(p('/cases'), url.searchParams, 'industry', CASE_FILTER_ALL)}
+          class:list={['chip', filterState.industry === CASE_FILTER_ALL && 'chip-active']}
+        >
+          {labels.allLabel}
+        </a>
+        {
+          filterState.industries.map(industry => (
+            <a
+              href={buildCaseFilterHref(p('/cases'), url.searchParams, 'industry', industry)}
+              class:list={['chip', filterState.industry === industry && 'chip-active']}
+            >
+              {industry}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="animate space-y-2">
+      <div class="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{labels.taskTypeLabel}</div>
+      <div class="flex flex-wrap gap-2">
+        <a
+          href={buildCaseFilterHref(p('/cases'), url.searchParams, 'taskType', CASE_FILTER_ALL)}
+          class:list={['chip', filterState.taskType === CASE_FILTER_ALL && 'chip-active']}
+        >
+          {labels.allLabel}
+        </a>
+        {
+          filterState.taskTypes.map(taskType => (
+            <a
+              href={buildCaseFilterHref(p('/cases'), url.searchParams, 'taskType', taskType)}
+              class:list={['chip', filterState.taskType === taskType && 'chip-active']}
+            >
+              {taskType}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    {
+      filterState.isFiltered && (
+        <div class="animate">
+          <a class="text-sm text-muted-foreground underline underline-offset-2 hover:text-main-foreground" href={p('/cases')}>
+            {labels.clearLabel}
+          </a>
+        </div>
+      )
+    }
+  </section>
+
+  {
+    filterState.items.length > 0
+      ? (
+          <ul class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+            {filteredCases.map(item => (
+              <CaseCard
+                title={item.data.title}
+                description={item.data.description}
+                industry={item.data.industry}
+                taskType={item.data.taskType}
+                image={item.data.image}
+                href={item.href}
+                audienceLabel={labels.audienceLabel}
+                moreLabel={labels.moreLabel}
+              />
+            ))}
+          </ul>
+        )
+      : (
+          <section class="animate mt-10 rounded-md border border-dashed border-border p-6">
+            <h2 class="text-lg font-semibold text-main-foreground">{labels.emptyTitle}</h2>
+            <p class="mt-2 text-sm text-muted-foreground">{labels.emptyDescription}</p>
+            <a class="chip mt-4" href={p('/cases')}>{labels.resetLabel}</a>
+          </section>
+        )
+  }
+
+  <div class="mt-16">
+    <CtaBlock
+      title={labels.cta.title}
+      description={labels.cta.description}
+      primaryLabel={labels.cta.telegram}
+      primaryHref={SITE.TELEGRAM}
+      secondaryLabel={labels.cta.email}
+      secondaryHref={`mailto:${SITE.EMAIL}`}
+    />
+  </div>
+</PageLayout>

@@ -1,0 +1,121 @@
+---
+import { useI18n } from '@lib/i18n'
+
+const { url } = Astro
+const { t } = useI18n(url)
+---
+
+<div
+  id="cookie-consent"
+  class="fixed inset-x-0 bottom-0 z-50 hidden px-3 pb-3"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Cookie"
+>
+  <div
+    class="mx-auto flex max-w-3xl flex-col gap-3 rounded-lg border border-border bg-main/95 p-4 shadow-lg backdrop-blur-md"
+  >
+    <p class="text-sm leading-relaxed text-muted-foreground">{t('cookie.text')}</p>
+    <div class="flex flex-wrap gap-2">
+      <button
+        type="button"
+        data-cookie-accept
+        class="rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-primary/85"
+      >
+        {t('cookie.accept')}
+      </button>
+      <button
+        type="button"
+        data-cookie-decline
+        class="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground transition-colors duration-300 ease-in-out hover:bg-secondary/50 hover:text-main-foreground"
+      >
+        {t('cookie.decline')}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = 'cookie-consent'
+  const COUNTER_ID = 106701987
+
+  type MetrikaFn = ((...args: unknown[]) => void) & { a?: unknown[]; l?: number }
+  type YmWindow = Window & { ym?: MetrikaFn; __ymLoaded?: boolean }
+
+  function loadMetrika() {
+    const w = window as YmWindow
+    if (w.__ymLoaded) return
+    w.__ymLoaded = true
+
+    if (!w.ym) {
+      const queue = function (...args: unknown[]) {
+        ;(queue.a = queue.a || []).push(args)
+      } as MetrikaFn
+      queue.a = []
+      queue.l = Number(new Date())
+      w.ym = queue
+    }
+
+    const script = document.createElement('script')
+    script.async = true
+    script.src = 'https://mc.yandex.ru/metrika/tag.js'
+    document.head.appendChild(script)
+
+    w.ym?.(COUNTER_ID, 'init', {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true,
+    })
+  }
+
+  function syncConsent() {
+    const banner = document.getElementById('cookie-consent')
+    if (!banner) return
+
+    const choice = localStorage.getItem(STORAGE_KEY)
+
+    if (choice === 'accepted') loadMetrika()
+    if (choice === null) banner.classList.remove('hidden')
+    else banner.classList.add('hidden')
+  }
+
+  function showConsent() {
+    const banner = document.getElementById('cookie-consent')
+    if (!banner) return
+    localStorage.removeItem(STORAGE_KEY)
+    banner.classList.remove('hidden')
+  }
+
+  function bindEvents() {
+    const banner = document.getElementById('cookie-consent')
+    if (!banner || banner.dataset.bound === 'true') return
+    banner.dataset.bound = 'true'
+
+    banner.querySelector('[data-cookie-accept]')?.addEventListener('click', () => {
+      localStorage.setItem(STORAGE_KEY, 'accepted')
+      banner.classList.add('hidden')
+      loadMetrika()
+    })
+
+    banner.querySelector('[data-cookie-decline]')?.addEventListener('click', () => {
+      localStorage.setItem(STORAGE_KEY, 'necessary')
+      banner.classList.add('hidden')
+    })
+  }
+
+  function init() {
+    bindEvents()
+    syncConsent()
+  }
+
+  document.addEventListener('click', (event) => {
+    const target = event.target as Element | null
+    if (target?.closest('[data-cookie-consent-open]')) showConsent()
+  })
+
+  document.addEventListener('astro:page-load' as keyof DocumentEventMap, init)
+  document.addEventListener('DOMContentLoaded', init)
+
+  if (document.readyState !== 'loading') init()
+</script>

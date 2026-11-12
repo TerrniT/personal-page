@@ -1,5 +1,6 @@
 ---
 import { SITE } from '@consts'
+import { useI18n } from '@lib/i18n'
 
 import { Link, Container } from '@components/astro/layout'
 
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const { error } = Astro.props
+const { p } = useI18n(Astro.url)
 ---
 
 <div class="relative flex h-screen w-full items-center justify-center bg-background">
@@ -25,7 +27,7 @@ const { error } = Astro.props
         <p class="my-2 text-xl font-light text-secondary-foreground">It looks like something broke.</p>
         <p class="mb-6 mt-2 text-xl font-light text-secondary-foreground">Sorry about that.</p>
 
-        <Link href="/" aria-label={`${SITE.NAME} on Home`}> Go back </Link>
+        <Link href={p('/')} aria-label={`${SITE.NAME} on Home`}> Go back </Link>
       </div>
       <div class="relative flex size-72 items-center justify-center">
         <img src="/404_mockup.png" alt="404 mockup" />

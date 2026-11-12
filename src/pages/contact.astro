@@ -1,52 +1,146 @@
 ---
-import { useI18n, getLangFromUrl } from '@lib/i18n'
-
-import { SITE, SOCIALS } from '@consts'
-
-import { Link } from '@components/astro/layout'
+import { getLangFromUrl } from '@lib/i18n'
+import { SITE } from '@consts'
+import { getSiteContent } from '@data/site'
 
 import PageLayout from '@layouts/PageLayout.astro'
 
-const { url } = Astro
-const { t } = useI18n(url)
+const lang = getLangFromUrl(Astro.url)
+const site = getSiteContent(lang)
+const labels = site.contactPage
+const form = labels.form
 
-const lang = getLangFromUrl(url)
-
-const title = t('contact.title')
-const description = t('contact.description')
-const image = `/og/contact-${lang}.png`
+const meta = site.meta.contact
 ---
 
-<PageLayout {title} {description} {image}>
-  <div class="space-y-16">
-    <section class="animate space-y-4">
-      <h4 class="text-xl font-semibold">{t('contact.title')}</h4>
-      <article>
-        <p>
-          {t('contact.paragraph')}
-        </p>
-      </article>
-      <ul class="flex flex-wrap gap-2">
-        {
-          SOCIALS.map((SOCIAL) => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
-              </Link>
-              {'/'}
-            </li>
-          ))
-        }
-        {
-          SITE.EMAIL && (
-            <li class="line-clamp-1">
-              <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-                {SITE.EMAIL}
-              </Link>
-            </li>
-          )
-        }
-      </ul>
-    </section>
+<PageLayout title={meta.title} description={meta.description}>
+  <section class="animate max-w-2xl space-y-4">
+    <p class="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">{labels.eyebrow}</p>
+    <h1 class="text-xl font-semibold text-main-foreground md:text-2xl">{labels.title}</h1>
+    <p class="text-muted-foreground">{labels.description}</p>
+    <p class="text-sm leading-6 text-muted-foreground/80">{labels.intro}</p>
+  </section>
+
+  <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
+    <a
+      class="animate surface group flex flex-col gap-2 p-5 transition-colors hover:bg-secondary/50"
+      href={SITE.TELEGRAM}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="text-xs uppercase tracking-[0.14em] text-muted-foreground">{labels.telegramTitle}</span>
+      <span class="font-semibold text-main-foreground">{SITE.TELEGRAM.replace('https://t.me/', '@')}</span>
+      <span class="text-sm text-muted-foreground">{labels.telegramDescription}</span>
+    </a>
+
+    <a
+      class="animate surface group flex flex-col gap-2 p-5 transition-colors hover:bg-secondary/50"
+      href={`mailto:${SITE.EMAIL}`}
+    >
+      <span class="text-xs uppercase tracking-[0.14em] text-muted-foreground">{labels.emailTitle}</span>
+      <span class="font-semibold text-main-foreground">{SITE.EMAIL}</span>
+      <span class="text-sm text-muted-foreground">{labels.emailDescription}</span>
+    </a>
   </div>
+
+  <section class="animate mt-14 max-w-2xl space-y-4">
+    <div class="space-y-1">
+      <h2 class="font-semibold text-main-foreground">{form.title}</h2>
+      <p class="text-sm text-muted-foreground">{form.description}</p>
+    </div>
+
+    <form id="contact-form" class="flex flex-col gap-4" novalidate>
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm text-muted-foreground" for="contact-name">{form.name}</label>
+        <input
+          class="field"
+          id="contact-name"
+          name="name"
+          type="text"
+          required
+          autocomplete="name"
+          placeholder={form.namePlaceholder}
+        />
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm text-muted-foreground" for="contact-company">{form.company}</label>
+        <input
+          class="field"
+          id="contact-company"
+          name="company"
+          type="text"
+          required
+          autocomplete="organization"
+          placeholder={form.companyPlaceholder}
+        />
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm text-muted-foreground" for="contact-task">{form.task}</label>
+        <textarea
+          class="field min-h-28 resize-y"
+          id="contact-task"
+          name="task"
+          required
+          rows="5"
+          placeholder={form.taskPlaceholder}
+        ></textarea>
+      </div>
+
+      <p id="contact-form-status" class="hidden rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive-foreground" hidden></p>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <button class="btn btn-primary" type="submit">{form.submit}</button>
+        <span class="text-xs text-muted-foreground">{form.hint}</span>
+      </div>
+    </form>
+
+    <p class="text-xs text-muted-foreground/60">{labels.note}</p>
+  </section>
 </PageLayout>
+
+<script is:inline define:vars={{
+  email: SITE.EMAIL,
+  requiredMessage: form.required,
+  subjectPrefix: form.subjectPrefix,
+  bodyIntro: form.bodyIntro,
+  nameLabel: form.name,
+  companyLabel: form.company,
+  taskLabel: form.task,
+}}>
+  const form = document.getElementById('contact-form')
+  const status = document.getElementById('contact-form-status')
+
+  if (form && status && form instanceof HTMLFormElement) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault()
+
+      if (!form.checkValidity()) {
+        status.textContent = requiredMessage
+        status.hidden = false
+        form.reportValidity()
+        return
+      }
+
+      const data = new FormData(form)
+      const name = String(data.get('name') ?? '').trim()
+      const company = String(data.get('company') ?? '').trim()
+      const task = String(data.get('task') ?? '').trim()
+
+      const subject = `${subjectPrefix}: ${company || name}`
+      const body = [
+        bodyIntro,
+        '',
+        `${nameLabel}: ${name}`,
+        `${companyLabel}: ${company}`,
+        '',
+        `${taskLabel}:`,
+        task,
+      ].join('\n')
+
+      status.hidden = true
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    })
+  }
+</script>

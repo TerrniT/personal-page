@@ -1,0 +1,51 @@
+---
+interface Props {
+  title: string
+  description?: string
+  primaryLabel: string
+  primaryHref: string
+  secondaryLabel?: string
+  secondaryHref?: string
+  note?: string
+}
+
+const { title, description, primaryLabel, primaryHref, secondaryLabel, secondaryHref, note } = Astro.props
+
+function isExternal(href?: string) {
+  return Boolean(href && /^https?:\/\//.test(href))
+}
+---
+
+<section class="animate rounded-md border border-border bg-secondary/30 p-6 md:p-8">
+  <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div class="max-w-xl space-y-2">
+      <h2 class="text-xl font-semibold text-main-foreground">{title}</h2>
+      {description && <p class="text-sm text-muted-foreground">{description}</p>}
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      <a
+        class="btn btn-primary"
+        href={primaryHref}
+        target={isExternal(primaryHref) ? '_blank' : '_self'}
+        rel={isExternal(primaryHref) ? 'noopener noreferrer' : undefined}
+      >
+        {primaryLabel}
+      </a>
+      {
+        secondaryLabel && secondaryHref && (
+          <a
+            class="btn btn-outline"
+            href={secondaryHref}
+            target={isExternal(secondaryHref) ? '_blank' : '_self'}
+            rel={isExternal(secondaryHref) ? 'noopener noreferrer' : undefined}
+          >
+            {secondaryLabel}
+          </a>
+        )
+      }
+    </div>
+  </div>
+
+  {note && <p class="mt-4 text-xs text-muted-foreground/70">{note}</p>}
+</section>

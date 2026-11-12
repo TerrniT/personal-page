@@ -1,14 +1,46 @@
 <script is:inline>
-  function onAnimate() {
-    const animateElements = document.querySelectorAll('.animate')
+  let animateObserver = null
 
-    animateElements.forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.add('show')
-      }, index * 150)
+  function revealElement(element, delay) {
+    if (element.classList.contains('show'))
+      return
+
+    window.setTimeout(() => {
+      element.classList.add('show')
+    }, delay)
+  }
+
+  function onAnimate() {
+    const elements = Array.from(document.querySelectorAll('.animate:not(.show)'))
+
+    if (!elements.length)
+      return
+
+    if (typeof IntersectionObserver === 'undefined') {
+      elements.forEach(element => element.classList.add('show'))
+      return
+    }
+
+    if (animateObserver)
+      animateObserver.disconnect()
+
+    animateObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (!entry.isIntersecting)
+          return
+
+        revealElement(entry.target, Math.min(index, 4) * 80)
+        animateObserver?.unobserve(entry.target)
+      })
+    }, {
+      rootMargin: '0px 0px -5% 0px',
+      threshold: 0.01,
     })
+
+    elements.forEach(element => animateObserver.observe(element))
   }
 
   document.addEventListener('DOMContentLoaded', () => onAnimate())
+  document.addEventListener('astro:page-load', () => onAnimate())
   document.addEventListener('astro:after-swap', () => onAnimate())
 </script>

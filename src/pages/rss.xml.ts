@@ -8,22 +8,19 @@ interface Context {
 }
 
 export async function GET(context: Context) {
-  const articles = await getPostInfoList('en')
+  const posts = await getPostInfoList('ru')
 
-  const items = [...articles]
+  const articles = posts.filter(item => (item.type ?? 'article') === 'article')
 
   return rss({
-    title: SITE.TITLE,
+    title: `${SITE.NAME} — статьи`,
     description: SITE.DESCRIPTION,
-    site: context.site,
-    items: items.map(item => ({
+    site: context.site ?? 'https://terrnit.com',
+    items: articles.map(item => ({
       title: item.title,
       description: item.description,
       pubDate: item.date,
       link: item.href,
-      author: item.author,
-      // TODO: Specify source
-      // source: item.source
     })),
   })
 }

@@ -4,13 +4,18 @@ import { useI18n } from '@lib/i18n'
 import { Link } from '@components/astro/layout'
 
 const { url } = Astro
-const { p } = useI18n(url)
+const { p, t } = useI18n(url)
 ---
 
-<Link href={p('/')}>
+<Link href={p('/')} underline={false} classes="group flex w-fit items-center gap-x-2" aria-label={`${t('navigation.home')} — Kotovsky`}>
   <img
     src="/cat_logo.png"
-    class="h-16 w-16 cursor-pointer sepia-0 transition-all duration-300 ease-in-out hover:scale-110 hover:sepia"
-    alt="cat logo"
+    class="h-11 w-11 cursor-pointer sepia-0 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:sepia"
+    alt="Kotovsky cat logo"
+    width="44"
+    height="47"
   />
+  <span class="font-mono text-[10px] uppercase leading-none tracking-widest text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-main-foreground">
+    KOTOVSKY
+  </span>
 </Link>

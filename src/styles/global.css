@@ -193,7 +193,7 @@
     @apply text-main-foreground text-opacity-80;
   }
 
-  header {
+  .site-header {
     @apply fixed left-0 right-0 top-0 z-50 py-5;
     @apply bg-main bg-opacity-75;
     @apply block saturate-200 backdrop-blur-sm md:hidden;
@@ -234,6 +234,70 @@
     @apply text-main-foreground;
     @apply decoration-main-foreground/50;
   }
+}
+
+/* ---- shared page primitives ---- */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium;
+    @apply transition-colors duration-200 ease-in-out;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-main;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-popover hover:bg-primary/90;
+  }
+
+  .btn-outline {
+    @apply border border-border bg-main/5 text-main-foreground hover:bg-secondary/60;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .btn-ghost {
+    @apply text-muted-foreground hover:bg-secondary/50 hover:text-main-foreground;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-md border border-border bg-main/5 px-3 py-1.5 text-sm text-muted-foreground;
+    @apply transition-colors duration-150 ease-in-out hover:border-border hover:bg-secondary/60 hover:text-main-foreground;
+  }
+
+  .chip-active {
+    @apply border-primary/50 bg-primary/10 text-main-foreground;
+  }
+
+  .surface {
+    @apply rounded-md border border-border bg-secondary/30;
+  }
+
+  .field {
+    @apply w-full rounded-md border border-border bg-main/40 px-3 py-2 text-sm text-main-foreground;
+    @apply placeholder:text-muted-foreground/60;
+    @apply focus:border-primary/60 focus:outline-none focus:ring-1 focus:ring-primary/40;
+  }
+
+  .case-placeholder {
+    background-image:
+      radial-gradient(circle at 20% 20%, color-mix(in hsl, var(--primary) 28%, transparent), transparent 55%),
+      radial-gradient(circle at 80% 75%, color-mix(in hsl, var(--secondary) 80%, transparent), transparent 60%),
+      linear-gradient(135deg, color-mix(in hsl, var(--secondary) 45%, transparent), transparent);
+  }
+}
+
+/* Case body headings should not inherit the full page-top offset. */
+.mdx.case-body > :where(h1, h2) {
+  margin-top: 2rem;
+}
+
+.mdx.case-body > :where(h3, h4) {
+  margin-top: 1.5rem;
+}
+
+summary::-webkit-details-marker {
+  display: none;
 }
 
 /* animate intro stage */

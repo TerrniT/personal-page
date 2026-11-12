@@ -1,24 +1,23 @@
 ---
 import { useI18n } from '@lib/i18n'
 
+import { SITE } from '@consts'
+
 import { BackToPrev } from '@components/astro/layout'
 import { ReadingTimeBadge } from '@components/astro/modules/article'
 
-import { EyeIcon, LoadingIcon } from '@components/astro/icons'
-
 import ContentLayout from '@layouts/ContentLayout.astro'
-import type { CollectionEntry, InferEntrySchema } from 'astro:content'
-import { ArticleViewCounter } from '@components/svelte/modules/article'
+import type { CollectionEntry } from 'astro:content'
 
 const { url } = Astro
 const { t, p } = useI18n(url)
 
 interface Props {
   data: CollectionEntry<'articles'>
-  author?: InferEntrySchema<'people'> & { href?: string }
+  categoryLabel?: string
 }
 
-const { data: article, author } = Astro.props
+const { data: article, categoryLabel } = Astro.props
 
 const { Content, headings } = await article.render()
 
@@ -27,27 +26,33 @@ const description = article.data.description ?? ''
 const image = article.data.cover_url
 ---
 
-<ContentLayout {title} {description} {author} {image} content={article} {headings} publishedAt={article.data.date}>
+<ContentLayout
+  {title}
+  {description}
+  {image}
+  content={article}
+  {headings}
+  publishedAt={article.data.date}
+  author={SITE.AUTHOR}
+>
   <div class="animate">
-    <BackToPrev href={p('/articles')}> {t('articles.back_to')}</BackToPrev>
+    <BackToPrev href={p('/articles')}>{t('articles.back_to')}</BackToPrev>
   </div>
   <div class="my-10 space-y-1">
-    <p class="animate text-2x mb-2 font-semibold text-main-foreground">
+    <p class="animate mb-2 text-2xl font-semibold text-main-foreground">
       {article.data.title}
     </p>
-    <div class="animate flex items-center gap-4">
+    <div class="animate flex flex-wrap items-center gap-4">
       <ReadingTimeBadge text={article.body} />
-      <ArticleViewCounter slug={article.slug} client:load>
-        <EyeIcon class="text-muted-foreground" />
-      </ArticleViewCounter>
+      {categoryLabel && <span class="text-sm text-muted-foreground">{categoryLabel}</span>}
     </div>
 
-    <div class="my-2 flex flex-row gap-x-2">
+    <div class="my-2 flex flex-row flex-wrap gap-2">
       {
         article.data.tags &&
           article.data.tags.length > 0 &&
           article.data.tags.map((tag) => (
-            <span class="animate w-fit rounded-sm bg-muted-foreground/10 px-1 py-0.5 text-xs text-muted-foreground">
+            <span class="animate w-fit rounded bg-muted-foreground/10 px-1 py-0.5 text-xs text-muted-foreground">
               {tag}
             </span>
           ))

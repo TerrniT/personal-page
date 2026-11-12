@@ -7,7 +7,7 @@ export const languages: Record<LanguageLocales, string> = {
 
 export type Language = keyof typeof languages
 
-export const defaultLang = 'en'
+export const defaultLang = 'ru'
 
 export const ui = {
   en: {
@@ -45,6 +45,12 @@ export const ui = {
     'articles.back_to': 'Back to articles',
     'articles.author': 'Author',
     'articles.published': 'Published at',
+
+    'articles.category.all': 'All',
+    'articles.category.development': 'Development',
+    'articles.category.ai-for-business': 'AI for business',
+    'articles.category.case-studies': 'Case studies',
+    'articles.category.guides': 'Guides',
 
     'about.title': 'About',
     'about.description':
@@ -148,6 +154,27 @@ export const ui = {
     'navigation.photos': 'Photos',
     'navigation.playlist': 'Playlist',
     'navigation.uses': 'Uses',
+    'navigation.services': 'Services',
+    'navigation.cases': 'Cases',
+    'navigation.hire': 'Hire',
+
+    'cta.order': 'Start a project',
+    'cta.email': 'Email me',
+    'cta.telegram': 'Telegram',
+    'cta.cases': 'View cases',
+    'cta.discuss': 'Discuss a project',
+    'cta.more': 'Learn more',
+    'cta.all_cases': 'All cases',
+    'cta.back': 'Back',
+
+    'footer.policy': 'Privacy policy',
+    'footer.legal': 'Legal',
+    'footer.cookies': 'Cookie settings',
+
+    'cookie.text':
+      'I use cookies and Yandex.Metrika to understand how the site is used. You can accept analytics or keep only the necessary cookies.',
+    'cookie.accept': 'Accept',
+    'cookie.decline': 'Only necessary',
 
     'layout.back_to_top': 'Back to top',
 
@@ -189,6 +216,12 @@ export const ui = {
     'articles.back_to': 'Назад к статьям',
     'articles.author': 'Автор',
     'articles.published': 'Опубликовано',
+
+    'articles.category.all': 'Все',
+    'articles.category.development': 'Разработка',
+    'articles.category.ai-for-business': 'ИИ для бизнеса',
+    'articles.category.case-studies': 'Кейсы и разборы',
+    'articles.category.guides': 'Инструкции',
 
     'about.title': 'Обо мне',
     'about.description':
@@ -292,6 +325,27 @@ export const ui = {
     'navigation.photos': 'Галерея',
     'navigation.playlist': 'Плейлист',
     'navigation.uses': 'Мои инструменты',
+    'navigation.services': 'Услуги',
+    'navigation.cases': 'Кейсы',
+    'navigation.hire': 'Найм',
+
+    'cta.order': 'Заказать разработку',
+    'cta.email': 'Написать на почту',
+    'cta.telegram': 'Написать в Telegram',
+    'cta.cases': 'Смотреть кейсы',
+    'cta.discuss': 'Обсудить задачу',
+    'cta.more': 'Подробнее',
+    'cta.all_cases': 'Все кейсы',
+    'cta.back': 'Назад',
+
+    'footer.policy': 'Политика конфиденциальности',
+    'footer.legal': 'Правовая информация',
+    'footer.cookies': 'Настройки cookie',
+
+    'cookie.text':
+      'Я использую cookie и Яндекс.Метрику, чтобы понимать, как используется сайт. Можно принять аналитику или оставить только необходимые cookie.',
+    'cookie.accept': 'Принять',
+    'cookie.decline': 'Только необходимые',
 
     'layout.back_to_top': 'Наверх',
 

@@ -1,0 +1,27 @@
+---
+export const prerender = true
+
+import { getSlugItem } from '@lib/mdx'
+import type { LanguageLocales } from '@lib/i18n'
+import { getSiteContent, type ArticleCategoryLabels } from '@data/site'
+
+import { ArticleShell } from '@components/astro/modules/article'
+import type { CollectionEntry } from 'astro:content'
+
+export const getStaticPaths = async () => {
+  return await getSlugItem('articles', 'en')
+}
+
+interface Props {
+  lang: LanguageLocales
+  data: CollectionEntry<'articles'>
+}
+
+const { data } = Astro.props as Props
+
+const labels = getSiteContent('en').articlesPage
+const category = (data.data.category ?? 'development') as keyof ArticleCategoryLabels
+const categoryLabel = labels.categories[category] ?? labels.categories.development
+---
+
+<ArticleShell {data} {categoryLabel} />

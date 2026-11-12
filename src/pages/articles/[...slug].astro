@@ -1,14 +1,15 @@
 ---
 export const prerender = true
 
-import { getSlugItem, resolveAuthor } from '@lib/mdx'
+import { getSlugItem } from '@lib/mdx'
 import type { LanguageLocales } from '@lib/i18n'
+import { getSiteContent, type ArticleCategoryLabels } from '@data/site'
 
 import { ArticleShell } from '@components/astro/modules/article'
-import type { CollectionEntry, InferEntrySchema } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 
 export const getStaticPaths = async () => {
-  return await getSlugItem('articles')
+  return await getSlugItem('articles', 'ru')
 }
 
 interface Props {
@@ -16,9 +17,11 @@ interface Props {
   data: CollectionEntry<'articles'>
 }
 
-const { data } = Astro.props
+const { data } = Astro.props as Props
 
-const author = await resolveAuthor(data.data.author)
+const labels = getSiteContent('ru').articlesPage
+const category = (data.data.category ?? 'development') as keyof ArticleCategoryLabels
+const categoryLabel = labels.categories[category] ?? labels.categories.development
 ---
 
-<ArticleShell {data} author={author as InferEntrySchema<'people'> & { href?: string }} />
+<ArticleShell {data} {categoryLabel} />

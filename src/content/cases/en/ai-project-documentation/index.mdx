@@ -1,0 +1,31 @@
+---
+title: 'AI for project documentation'
+description: 'A project documentation assistant: fast answers, completeness checks and excerpts for the engineering team.'
+industry: 'Construction'
+taskType: 'Knowledge base'
+client: 'Engineering and design company'
+stack: ['Python', 'FastAPI', 'pgvector', 'OpenAI', 'Docker']
+results:
+  - 'Finding a section or requirement takes minutes instead of manually scanning volumes (an estimate).'
+  - 'Completeness checks become reproducible: rules are fixed rather than dependent on memory.'
+  - 'Answers include references to source documents so engineers can verify the original.'
+date: 'Sep 10 2026'
+---
+
+## Task
+
+The project team worked with a large volume of regulatory and project documentation. To find a requirement or check section completeness, engineers paged through hundreds of pages and relied on personal experience. New employees struggled to get up to speed.
+
+## Solution
+
+I built a RAG assistant over the internal document base: regulations, templates, project decisions and checklists. The system answers natural-language questions and always shows sources — specific documents and fragments.
+
+Access is separated by roles and projects. Completeness checks use dedicated scenarios with formal rules: the assistant does not “invent” a document's presence but checks it against the base. Low-confidence answers are marked for review.
+
+## Results
+
+Engineers find requirements faster and spend less time on repetitive questions. The speed-up estimate is indicative and depends on how complete and up to date the knowledge base is.
+
+## Limitations
+
+Answer quality depends directly on document quality and freshness. The base needs an update process, and answers need spot checks by a specialist. Legally significant decisions remain with responsible engineers.

@@ -5,30 +5,6 @@ const DEFAULT_FIELDS = {
   draft: z.boolean().optional(),
 }
 
-const people = defineCollection({
-  type: 'content',
-  schema: z.object({
-    name: z.string().optional(),
-    nickname: z.string().optional(),
-    description: z.string().optional(),
-    avatar: z.string().optional(),
-    url: z.string().optional(),
-    github_url: z.string().optional(),
-    isShowAuthor: z.boolean().optional(),
-    tags: z
-      .array(
-        z
-          .union([
-            z.object({ name: z.string(), color: z.string() }).optional(),
-            z.object({ name: z.string(), color: z.string(), icon: z.string().optional() }).optional(),
-          ])
-          .optional(),
-      )
-      .optional(),
-    ...DEFAULT_FIELDS,
-  }),
-})
-
 const articles = defineCollection({
   type: 'content',
   schema: z.object({
@@ -37,7 +13,8 @@ const articles = defineCollection({
     tags: z.array(z.string()).optional(),
     topic: z.string(),
     cover_url: z.string().optional(),
-    type: z.enum(['article', 'note']),
+    type: z.enum(['article', 'note']).default('article'),
+    category: z.enum(['development', 'ai-for-business', 'case-studies', 'guides']).default('development'),
     author: z.string(),
     ...DEFAULT_FIELDS,
   }),
@@ -68,30 +45,30 @@ const experiences = defineCollection({
   }),
 })
 
-const projects = defineCollection({
+const cases = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    type: z.enum(['commercial', 'open-source']),
+    image: z.string().optional(),
+    industry: z.string(),
+    taskType: z.string().optional(),
+    client: z.string().optional(),
     stack: z.array(z.string()).optional(),
-    tags: z.array(z.string()).optional(),
-    imageUrl: z.string().optional(),
-    demoURL: z.string().optional(),
-    repoURL: z.string().optional(),
+    results: z.array(z.string()).optional(),
     ...DEFAULT_FIELDS,
   }),
 })
 
-const uses = defineCollection({
+const services = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    link: z.string().optional(),
-    type: z.enum(['workstation', 'devtools', 'other_software', 'misc']),
+    icon: z.string().optional(),
+    order: z.number().optional(),
     ...DEFAULT_FIELDS,
   }),
 })
 
-export const collections = { articles, about, projects, uses, experiences, people }
+export const collections = { articles, about, experiences, cases, services }

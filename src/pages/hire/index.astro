@@ -1,0 +1,128 @@
+---
+import { getLangFromSlug, getLangFromUrl, useI18n } from '@lib/i18n'
+import { SITE } from '@consts'
+import { getSiteContent } from '@data/site'
+
+import { calculateTotalExperienceMonths, formatTotalExperience } from '@lib/experience/totalExperience.js'
+
+import { getCollection } from 'astro:content'
+
+import { ExperienceCard } from '@components/astro/modules/about'
+import { CtaBlock } from '@components/astro/modules/shared'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+const { url } = Astro
+const { p } = useI18n(url)
+const lang = getLangFromUrl(url)
+const site = getSiteContent(lang)
+const labels = site.hirePage
+
+const experiences = (await getCollection('experiences'))
+  .filter(item => !item.data.draft && getLangFromSlug(item.slug) === lang)
+  .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf())
+
+const totalExperience = formatTotalExperience(
+  calculateTotalExperienceMonths(experiences.map(item => ({ duration: item.data.duration }))),
+  lang,
+)
+
+const meta = site.meta.hire
+---
+
+<PageLayout title={meta.title} description={meta.description}>
+  <section class="animate max-w-2xl space-y-4">
+    <p class="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">{labels.eyebrow}</p>
+    <h1 class="text-xl font-semibold text-main-foreground md:text-2xl">{labels.title}</h1>
+    <p class="text-muted-foreground">{labels.description}</p>
+  </section>
+
+  <section class="mt-12 space-y-5">
+    <div class="animate space-y-1">
+      <h2 class="font-semibold text-main-foreground">{labels.offerTitle}</h2>
+      <p class="text-sm text-muted-foreground">{labels.offerDescription}</p>
+    </div>
+    <dl class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {
+        labels.offer.map(item => (
+          <div class="animate surface p-4">
+            <dt class="text-xs uppercase tracking-[0.14em] text-muted-foreground">{item.label}</dt>
+            <dd class="mt-1 text-sm text-main-foreground">{item.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="mt-12 space-y-4">
+    <h2 class="animate font-semibold text-main-foreground">{labels.lookingTitle}</h2>
+    <ul class="flex flex-col gap-2">
+      {
+        labels.looking.map(point => (
+          <li class="animate surface flex gap-2 p-3 text-sm text-muted-foreground">
+            <span class="text-primary-foreground">•</span>
+            <span>{point}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-16 space-y-5">
+    <div class="animate flex flex-wrap items-end justify-between gap-3">
+      <div class="space-y-1">
+        <h2 class="font-semibold text-main-foreground">{labels.experienceTitle}</h2>
+        <p class="text-sm text-muted-foreground">{labels.experienceDescription}</p>
+      </div>
+      <div class="rounded-md bg-secondary px-3 py-2 text-sm">
+        <span class="text-muted-foreground">{labels.totalLabel}: </span>
+        <span class="font-semibold text-main-foreground">{totalExperience}</span>
+      </div>
+    </div>
+
+    <ul class="flex flex-col gap-3">
+      {
+        experiences.map(entry => (
+          <ExperienceCard experience={entry.data} />
+        ))
+      }
+    </ul>
+
+    <p class="text-xs text-muted-foreground/60">
+      <a href={p('/about')} class="underline underline-offset-2 hover:text-main-foreground">{site.meta.about.title}</a>
+    </p>
+  </section>
+
+  <section class="mt-16 space-y-5">
+    <div class="animate space-y-1">
+      <h2 class="font-semibold text-main-foreground">{labels.stackTitle}</h2>
+      <p class="text-sm text-muted-foreground">{labels.stackDescription}</p>
+    </div>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      {
+        labels.stack.map(group => (
+          <div class="animate surface p-4">
+            <h3 class="mb-2 text-sm font-medium text-main-foreground">{group.title}</h3>
+            <div class="flex flex-wrap gap-1.5">
+              {group.items.map(item => (
+                <span class="rounded bg-muted-foreground/10 px-2 py-0.5 text-xs text-muted-foreground">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <div class="mt-16">
+    <CtaBlock
+      title={labels.cta.title}
+      description={labels.cta.description}
+      primaryLabel={labels.cta.telegram}
+      primaryHref={SITE.TELEGRAM}
+      secondaryLabel={labels.cta.email}
+      secondaryHref={`mailto:${SITE.EMAIL}`}
+      note={labels.cta.note}
+    />
+  </div>
+</PageLayout>

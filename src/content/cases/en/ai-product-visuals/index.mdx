@@ -1,0 +1,31 @@
+---
+title: 'AI product card generator AI Product Visuals'
+description: 'Generating product descriptions, attributes and visual ideas for product cards: channel-ready content in a consistent brand voice.'
+industry: 'E-commerce'
+taskType: 'Content generation'
+client: 'Home goods store'
+stack: ['TypeScript', 'Astro', 'OpenAI', 'n8n', 'PostgreSQL']
+results:
+  - 'Drafting a product card drops from hours to minutes (an estimate on a flow of dozens of SKUs).'
+  - 'Descriptions follow a consistent structure and brand tone without manual template editing.'
+  - 'A human still verifies facts and prices before publishing.'
+date: 'Sep 28 2026'
+---
+
+## Task
+
+The catalogue grew faster than the team could prepare product cards. Managers assembled descriptions from attributes, wrote copy by hand and adapted it for different marketplaces. As a result, pages varied in style and some products waited weeks for publication.
+
+## Solution
+
+I built a generator that takes raw attributes and product photos and outputs a structured card: title, short and full description, benefit list, visual hints and copy variants for different channels.
+
+Prompts and rules live in configuration so the team can change tone and structure without a developer. Drafts go to a review queue instead of being published automatically. Generation is connected to an n8n scenario: a new product in the spreadsheet starts card preparation.
+
+## Results
+
+The team gets a ready draft faster and spends time verifying facts instead of typing copy. The time-saving estimate is indicative: it depends on how complete the initial attributes are and on marketplace requirements.
+
+## Limitations
+
+AI does not know the real properties of a product unless they are in the input data. Fact, price and legal wording checks before publication are mandatory.

@@ -1,0 +1,134 @@
+---
+import { useI18n, getLangFromUrl } from '@lib/i18n'
+
+import { SITE } from '@consts'
+import { getSiteContent } from '@data/site'
+
+import { BackToPrev } from '@components/astro/layout'
+import { CtaBlock } from '@components/astro/modules/shared'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  data: CollectionEntry<'cases'>
+}
+
+const { data: caseItem } = Astro.props
+
+const { p } = useI18n(Astro.url)
+const lang = getLangFromUrl(Astro.url)
+const labels = getSiteContent(lang).casePage
+
+const { Content } = await caseItem.render()
+
+const results = caseItem.data.results ?? []
+---
+
+<PageLayout title={caseItem.data.title} description={caseItem.data.description} image={caseItem.data.image}>
+  <div class="animate">
+    <BackToPrev href={p('/cases')}>{labels.back}</BackToPrev>
+  </div>
+
+  <header class="my-8 flex flex-col gap-4">
+    <div class="animate flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+      <span class="rounded-md bg-primary/10 px-2 py-0.5 text-primary-foreground">{caseItem.data.industry}</span>
+      {caseItem.data.taskType && <span class="rounded-md bg-muted-foreground/10 px-2 py-0.5">{caseItem.data.taskType}</span>}
+    </div>
+
+    <h1 class="animate max-w-3xl text-xl font-semibold text-main-foreground md:text-2xl">
+      {caseItem.data.title}
+    </h1>
+
+    <p class="animate max-w-2xl text-muted-foreground">{caseItem.data.description}</p>
+  </header>
+
+  <div class="animate overflow-hidden rounded-md border border-border">
+    {
+      caseItem.data.image
+        ? (
+            <img
+              src={caseItem.data.image}
+              alt={caseItem.data.title}
+              class="aspect-[16/8] w-full object-cover"
+            />
+          )
+        : (
+            <div class="case-placeholder flex aspect-[16/8] w-full items-center justify-center">
+              <span class="rounded-md border border-border/50 bg-main/30 px-4 py-2 font-serif text-main-foreground/80 backdrop-blur-sm">
+                {caseItem.data.taskType ?? caseItem.data.industry}
+              </span>
+            </div>
+          )
+    }
+  </div>
+
+  <dl class="animate my-8 grid grid-cols-1 gap-4 text-sm sm:grid-cols-3">
+    <div class="surface p-3">
+      <dt class="text-muted-foreground">{labels.industryLabel}</dt>
+      <dd class="mt-1 font-medium text-main-foreground">{caseItem.data.industry}</dd>
+    </div>
+    {
+      caseItem.data.taskType && (
+        <div class="surface p-3">
+          <dt class="text-muted-foreground">{labels.taskTypeLabel}</dt>
+          <dd class="mt-1 font-medium text-main-foreground">{caseItem.data.taskType}</dd>
+        </div>
+      )
+    }
+    {
+      caseItem.data.client && (
+        <div class="surface p-3">
+          <dt class="text-muted-foreground">{labels.clientLabel}</dt>
+          <dd class="mt-1 font-medium text-main-foreground">{caseItem.data.client}</dd>
+        </div>
+      )
+    }
+  </dl>
+
+  <article class="mdx case-body animate">
+    <Content />
+  </article>
+
+  {
+    results.length > 0 && (
+      <section class="animate mt-12 space-y-3">
+        <h2 class="font-semibold text-main-foreground">{labels.resultsLabel}</h2>
+        <ul class="flex flex-col gap-2">
+          {results.map(result => (
+            <li class="surface flex gap-2 p-3 text-sm text-muted-foreground">
+              <span class="text-primary-foreground">•</span>
+              <span>{result}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="text-xs text-muted-foreground/80">{labels.resultsNote}</p>
+      </section>
+    )
+  }
+
+  {
+    caseItem.data.stack && caseItem.data.stack.length > 0 && (
+      <section class="animate mt-12 space-y-3">
+        <h2 class="font-semibold text-main-foreground">{labels.stackLabel}</h2>
+        <div class="flex flex-wrap gap-2">
+          {caseItem.data.stack.map(item => (
+            <span class="rounded-md bg-muted-foreground/10 px-2.5 py-1 text-xs text-muted-foreground">{item}</span>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <div class="mt-14">
+    <CtaBlock
+      title={labels.cta.title}
+      description={labels.cta.description}
+      primaryLabel={labels.cta.telegram}
+      primaryHref={SITE.TELEGRAM}
+      secondaryLabel={labels.cta.email}
+      secondaryHref={`mailto:${SITE.EMAIL}`}
+    />
+  </div>
+</PageLayout>

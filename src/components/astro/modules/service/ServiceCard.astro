@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  title: string
+  description: string
+  icon?: string
+  href?: string
+  order?: number
+}
+
+const { title, description, icon, href, order } = Astro.props
+---
+
+<div class="animate group flex h-full flex-col gap-3 rounded-md border border-border bg-secondary/20 p-5 transition-colors duration-200 ease-in-out hover:bg-secondary/40">
+  <div class="flex items-center justify-between">
+    <span class="flex size-10 items-center justify-center rounded-md bg-primary/10 text-primary-foreground">
+      <Icon name={icon ?? 'heroicons:sparkles'} size="1.5em" />
+    </span>
+    {
+      typeof order === 'number' && (
+        <span class="font-mono text-xs text-muted-foreground/60">
+          {String(order).padStart(2, '0')}
+        </span>
+      )
+    }
+  </div>
+
+  <h3 class="font-semibold text-main-foreground">
+    {href
+      ? <a href={href} class="underline-offset-4 hover:underline">{title}</a>
+      : title}
+  </h3>
+
+  <p class="text-sm text-muted-foreground">{description}</p>
+</div>

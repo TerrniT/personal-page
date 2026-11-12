@@ -1,5 +1,3 @@
-import type { PeopleInfo } from '@lib/mdx'
-
 export type Locales = 'ru' | 'en' | 'ko' | 'da' | 'zh' | 'nl'
 
 export interface Author {
@@ -13,11 +11,12 @@ export interface Author {
 export type Site = {
   NAME: string
   EMAIL: string
+  TELEGRAM: string
   DOMAIN: string
   NUM_POSTS_ON_HOMEPAGE: number
   NUM_WORKS_ON_HOMEPAGE: number
   NUM_PROJECTS_ON_HOMEPAGE: number
-} & { AUTHOR: PeopleInfo | Author } & Metadata
+} & { AUTHOR: Author } & Metadata
 
 export interface Metadata {
   TITLE: string
@@ -33,12 +32,12 @@ export type Socials = {
 
 export type NavigationKeys =
   | 'home'
-  | 'about'
+  | 'services'
+  | 'cases'
   | 'articles'
-  | 'projects'
-  | 'uses'
+  | 'about'
+  | 'hire'
   | 'contact'
-  | 'people'
   | 'photos'
   | 'playlist'
 

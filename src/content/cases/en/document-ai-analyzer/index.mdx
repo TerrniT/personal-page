@@ -1,0 +1,33 @@
+---
+title: 'AI document analyzer'
+description: 'A solution that extracts data from invoices, waybills and contracts and turns it into structured CSV/JSON for accounting systems.'
+industry: 'Logistics'
+taskType: 'Data extraction'
+client: 'Mid-sized logistics company'
+stack: ['Python', 'FastAPI', 'OpenAI', 'PostgreSQL', 'Docker']
+results:
+  - 'About 80% of documents are processed without manual entry (estimate on a pilot sample).'
+  - 'Checking a document set takes minutes instead of tens of minutes of manual reconciliation.'
+  - 'Extraction errors go to a separate queue and never reach accounting automatically.'
+date: 'Oct 12 2026'
+---
+
+## Task
+
+The company received hundreds of PDF and scanned documents from carriers and suppliers. Employees manually copied numbers, dates, amounts and line items into spreadsheets and then reconciled them with the accounting system. The process was slow, tedious and depended on individual attention.
+
+The goal was to automate data extraction while keeping control over ambiguous cases.
+
+## Solution
+
+I built a service that accepts a document, identifies its type and extracts key fields into a structured form. Every field keeps a model confidence score and a link to the source fragment.
+
+Low-confidence documents go to a manual review queue. The result is exported to CSV/JSON and passed to the accounting system only after confirmation. Logging, reprocessing and access restrictions are configured separately.
+
+## Results
+
+The pilot showed that most typical documents are processed without manual entry, so employees focus on exceptions instead of retyping every line. Exact numbers depend on scan quality and format variety.
+
+## Limitations
+
+The model does not guarantee error-free extraction. The solution is designed for a controlled process with review and does not replace the employee's responsibility for final data.

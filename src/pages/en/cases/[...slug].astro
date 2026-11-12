@@ -1,0 +1,22 @@
+---
+export const prerender = true
+
+import { getSlugItem } from '@lib/mdx'
+import type { LanguageLocales } from '@lib/i18n'
+
+import { CaseShell } from '@components/astro/modules/case'
+import type { CollectionEntry } from 'astro:content'
+
+export const getStaticPaths = async () => {
+  return await getSlugItem('cases', 'en')
+}
+
+interface Props {
+  lang: LanguageLocales
+  data: CollectionEntry<'cases'>
+}
+
+const { data } = Astro.props
+---
+
+<CaseShell {data} />

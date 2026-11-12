@@ -1,7 +1,5 @@
 ---
-import { YandexMetrika } from 'astro-ym';
-
-import { Head, Header, Footer, Sidebar, Container } from '@components/astro/layout'
+import { Head, Header, Footer, Sidebar, Container, CookieConsent } from '@components/astro/layout'
 
 import { SITE } from '@consts'
 
@@ -32,25 +30,19 @@ const htmlLang = lang ?? getLangFromUrl(Astro.url)
     />
   </head>
   <body>
-    <YandexMetrika
-      clickmap={true}
-      trackLinks={true}
-      accurateTrackBounce={true}
-      webvisor={true}
-      lazy={true}
-      timeout={2000}
-      ecommerce="dataLayer"
-      params={{ source: "astro" }}
-      counterId={106701987}
-    />
-    <div class="relative flex w-full flex-col md:flex-row">
+    <div class="relative flex min-h-screen w-full flex-col">
       <Header />
-      <Sidebar />
 
-      <Container>
-        <slot />
-        <Footer />
-      </Container>
+      <div class="flex w-full flex-1 flex-col md:flex-row">
+        <Sidebar />
+
+        <Container>
+          <slot />
+          <Footer />
+        </Container>
+      </div>
     </div>
+
+    <CookieConsent />
   </body>
 </html>

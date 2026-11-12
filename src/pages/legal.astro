@@ -1,0 +1,38 @@
+---
+import { getLangFromUrl } from '@lib/i18n'
+import { getSiteContent } from '@data/site'
+
+import PageLayout from '@layouts/PageLayout.astro'
+
+const lang = getLangFromUrl(Astro.url)
+const site = getSiteContent(lang)
+const labels = site.legalPage
+
+// TODO: заменить плейсхолдеры [ФИО] и [ИНН] реальными данными перед публикацией.
+const meta = site.meta.legal
+---
+
+<PageLayout title={meta.title} description={meta.description}>
+  <section class="animate max-w-2xl space-y-3">
+    <p class="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">{labels.eyebrow}</p>
+    <h1 class="text-xl font-semibold text-main-foreground">{labels.title}</h1>
+    <p class="text-sm text-muted-foreground">{labels.description}</p>
+    <p class="text-xs text-muted-foreground/60">{labels.updated}</p>
+  </section>
+
+  <div class="animate mt-10 flex max-w-2xl flex-col gap-8">
+    {
+      labels.sections.map(section => (
+        <section class="space-y-2">
+          <h2 class="font-semibold text-main-foreground">{section.title}</h2>
+          {section.paragraphs.map(paragraph => (
+            <p class="text-sm leading-6 text-muted-foreground">{paragraph}</p>
+          ))}
+        </section>
+      ))
+    }
+  </div>
+
+  <!-- TODO: заменить [ФИО] и [ИНН] реальными данными перед публикацией. -->
+  <p class="mt-10 text-xs text-muted-foreground/60">{labels.todo}</p>
+</PageLayout>

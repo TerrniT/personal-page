@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+// eslint-disable-next-line test/no-import-node-test
 import test from 'node:test'
 
 import { calculateTotalExperienceMonths, formatTotalExperience } from './totalExperience.js'
@@ -20,4 +21,3 @@ test('calculateTotalExperienceMonths merges ranges and does not double count ove
 test('formatTotalExperience formats months into years+months (ru)', () => {
   assert.equal(formatTotalExperience(47, 'ru'), '3 года 11 месяцев')
 })
-

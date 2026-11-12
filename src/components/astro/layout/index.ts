@@ -4,6 +4,7 @@ import Aside from './Aside.astro'
 import BackToPrev from './BackToPrev.astro'
 import BackToTop from './BackToTop.astro'
 import Container from './Container.astro'
+import CookieConsent from './CookieConsent.astro'
 import FontPreloadProvider from './FontPreloadProvider.astro'
 import Footer from './Footer.astro'
 // Analytics
@@ -25,6 +26,7 @@ export {
   BackToPrev,
   BackToTop,
   Container,
+  CookieConsent,
   FontPreloadProvider,
   Footer,
   GoogleAnalytics,

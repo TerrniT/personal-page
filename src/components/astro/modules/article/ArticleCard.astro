@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets'
-
 import { useI18n } from '@lib/i18n'
 
 import { type ArticleInfo } from '@lib/mdx'
@@ -10,32 +8,36 @@ const { p } = useI18n(url)
 
 type Props = {
   item: ArticleInfo
+  categoryLabel?: string
   openInNewTab?: boolean
 }
 
-const { item, openInNewTab } = Astro.props
+const { item, categoryLabel, openInNewTab } = Astro.props
 ---
 
 <li
-  class="group col-span-1 flex h-fit w-full flex-nowrap items-center rounded-lg border border-border/20 transition-colors duration-200 ease-in-out hover:bg-secondary hover:text-main-foreground md:col-span-2"
+  class="group col-span-1 flex h-fit w-full flex-nowrap items-center rounded-md border border-border/40 transition-colors duration-200 ease-in-out hover:bg-secondary hover:text-main-foreground md:col-span-2"
 >
   <article class="w-full">
     <a
       target={openInNewTab ? '_blank' : '_self'}
       href={p(item.href)}
-      class="flex w-full flex-row items-center justify-between p-3 no-underline"
+      class="flex w-full flex-row items-center justify-between gap-3 p-3 no-underline"
     >
-      <div class="flex flex-col flex-wrap truncate">
-        <div class="text-sm font-semibold text-main-foreground">
+      <div class="flex min-w-0 flex-col">
+        <div class="w-full min-w-0 truncate text-sm font-semibold text-main-foreground">
           {item.title}
         </div>
-        <div
-          class="max-w-[90%] truncate text-sm text-muted-foreground/50 transition-colors duration-150 ease-linear group-hover:text-muted-foreground"
-        >
-          {item.description}
-        </div>
+        {
+          item.description && (
+            <div class="max-w-[90%] truncate text-sm text-muted-foreground/60 transition-colors duration-150 ease-linear group-hover:text-muted-foreground">
+              {item.description}
+            </div>
+          )
+        }
       </div>
-      <div class="mx-1 hidden min-w-fit flex-col flex-wrap truncate md:flex">
+      <div class="mx-1 hidden min-w-fit flex-col items-end gap-1 md:flex">
+        {categoryLabel && <div class="text-xs text-muted-foreground/70">{categoryLabel}</div>}
         <div class="text-sm text-muted-foreground">{item.topic}</div>
       </div>
     </a>

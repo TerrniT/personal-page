@@ -1,29 +1,50 @@
 ---
 import { MobileMenu } from '@components/vue/layout'
 
-import { Link, Navigation } from '@components/astro/layout'
+import { Logo, Navigation } from '@components/astro/layout'
 
 import { LanguageSwitcher, ThemeSwitcher } from '@components/react/layout'
 
+import { SITE } from '@consts'
+import { useI18n } from '@lib/i18n'
+
 const { url } = Astro
+const { t } = useI18n(url)
+
+const ctaHref = SITE.TELEGRAM
 ---
 
-<header>
-  <div class="flex flex-wrap justify-between gap-y-2 px-2">
-    <Link href="/">
-      <img
-        src="/cat_logo.png"
-        class="h-12 w-12 cursor-pointer sepia-0 transition-all duration-300 ease-in-out hover:scale-110 hover:sepia"
-        alt="cat logo"
-      />
-    </Link>
-    <div class="flex items-center gap-x-3">
+<header class="site-header sticky top-0 z-30 w-full border-b border-border/40 bg-main/85 px-2 py-2 backdrop-blur-md">
+  <div class="flex items-center justify-between gap-x-3">
+    <Logo />
+
+    <div class="flex items-center gap-x-1">
       <LanguageSwitcher client:load side={'bottom'} url={url} />
       <ThemeSwitcher client:load side={'bottom'} />
 
-      <MobileMenu client:visible>
-        <Navigation slot="navigation" />
-      </MobileMenu>
+      <a
+        href={ctaHref}
+        target="_blank"
+        rel="noopener"
+        class="ml-2 hidden rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-primary/85 md:inline-flex"
+      >
+        {t('cta.order')}
+      </a>
+
+      <div class="md:hidden">
+        <MobileMenu client:visible>
+          <Navigation slot="navigation" />
+          <a
+            slot="cta"
+            href={ctaHref}
+            target="_blank"
+            rel="noopener"
+            class="mt-3 inline-flex w-full items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-primary/85"
+          >
+            {t('cta.order')}
+          </a>
+        </MobileMenu>
+      </div>
     </div>
   </div>
 </header>

@@ -1,80 +1,210 @@
 ---
-import { useI18n, getLangFromUrl } from '@lib/i18n'
-
-import { getPostInfoList } from '@lib/mdx'
-
+import { getLangFromSlug, getLangFromUrl, useI18n } from '@lib/i18n'
+import { getCasesInfoList, getServicesInfoList, resolveSlug } from '@lib/mdx'
 import { SITE } from '@consts'
+import { getSiteContent, type ArticleCategoryLabels } from '@data/site'
 
-import { Link } from '@components/astro/layout'
+import { getCollection } from 'astro:content'
 
 import { ArticleCard } from '@components/astro/modules/article'
-
-import { Button } from '@components/vue/ui/button'
+import { CaseCard } from '@components/astro/modules/case'
+import { ServiceCard } from '@components/astro/modules/service'
+import { CtaBlock } from '@components/astro/modules/shared'
 
 import PageLayout from '@layouts/PageLayout.astro'
 
 const { url } = Astro
-const { t, p } = useI18n(url)
-
+const { p } = useI18n(url)
 const lang = getLangFromUrl(url)
+const site = getSiteContent(lang)
+const labels = site.home
 
-const posts = await getPostInfoList(lang)
+const services = (await getServicesInfoList(lang)).slice(0, 6)
+const cases = (await getCasesInfoList(lang)).slice(0, 3)
 
-const articles = posts.filter((post) => post.type === 'article').slice(0, SITE.NUM_POSTS_ON_HOMEPAGE)
-const notes = posts.filter((post) => post.type === 'note').slice(0, SITE.NUM_POSTS_ON_HOMEPAGE)
+const articles = (await getCollection('articles'))
+  .filter(item => !item.data.draft)
+  .filter(item => item.data.type !== 'note')
+  .filter(item => getLangFromSlug(item.slug) === lang)
+  .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf())
+  .slice(0, 3)
+  .map(item => ({
+    title: item.data.title,
+    description: item.data.description,
+    date: item.data.date,
+    tags: item.data.tags,
+    topic: item.data.topic,
+    author: item.data.author,
+    cover_url: item.data.cover_url,
+    type: item.data.type,
+    href: `/articles/${resolveSlug(item.slug)}`,
+    lang,
+    category: (item.data.category ?? 'development') as keyof ArticleCategoryLabels,
+  }))
 
-const title = t('home.title')
-const description = t('home.description')
+const meta = site.meta.home
 ---
 
-<PageLayout {title} {description}>
-  <h1 class="animate text-xl font-semibold">{t('home.heading')}</h1>
-  <h4 class="animate text-sm font-medium italic text-muted-foreground/80">{t('home.legenda')}</h4>
-  <div class="space-y-16">
-    <section>
-      <article class="space-y-4">
-        <p class="animate">
-          {t('home.paragraph')}
-        </p>
-      </article>
-      <Button to={p('/projects')} variant="secondary" classes="animate">
-        {t('home.cta.explore')}
-      </Button>
-      <Button to={p('/about')} variant="ghost" classes="animate">
-        {t('home.cta.about')}
-      </Button>
-    </section>
+<PageLayout title={meta.title} description={meta.description}>
+  <section class="animate max-w-2xl space-y-5">
+    <div class="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+      <span class="rounded-md bg-primary/10 px-2 py-1 text-primary-foreground">{labels.hero.eyebrow}</span>
+      <span class="rounded-md bg-muted-foreground/10 px-2 py-1">{site.brand.availability}</span>
+    </div>
 
-    {
-      notes && notes.length > 0 && (
-        <section class="animate space-y-6">
-          <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h5 class="font-semibold">{t('home.latest_notes.h5')}</h5>
-            <Link href={p('/articles')}> {t('home.latest_notes.link')}</Link>
-          </div>
-          <ul class="animate grid grid-cols-1 gap-2 md:grid-cols-2">
-            {notes.map((note) => (
-              <ArticleCard item={note} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
+    <h1 class="text-xl font-semibold leading-tight text-main-foreground md:text-2xl">
+      {labels.hero.title}
+    </h1>
 
-    {
-      articles && articles.length > 0 && (
-        <section class="animate space-y-6">
-          <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h5 class="font-semibold">{t('home.latest_articles.h5')}</h5>
-            <Link href={p('/articles')}> {t('home.latest_articles.link')}</Link>
+    <p class="text-base text-muted-foreground md:text-lg">{labels.hero.subtitle}</p>
+    <p class="text-sm leading-6 text-muted-foreground/80">{labels.hero.description}</p>
+
+    <div class="flex flex-wrap items-center gap-2 pt-2">
+      <a class="btn btn-primary" href={SITE.TELEGRAM} target="_blank" rel="noopener noreferrer">
+        {labels.hero.primaryCta}
+      </a>
+      <a class="btn btn-outline" href={`mailto:${SITE.EMAIL}`}>{labels.hero.secondaryCta}</a>
+      <a class="btn btn-ghost" href={p('/cases')}>{labels.hero.tertiaryCta}</a>
+    </div>
+
+    <p class="text-xs text-muted-foreground/70">{labels.hero.note}</p>
+  </section>
+
+  <section class="mt-16 space-y-5">
+    <div class="animate flex flex-wrap items-end justify-between gap-2">
+      <div class="space-y-1">
+        <h2 class="font-semibold text-main-foreground">{labels.services.title}</h2>
+        <p class="text-sm text-muted-foreground">{labels.services.description}</p>
+      </div>
+      <a class="text-sm text-muted-foreground underline underline-offset-2 hover:text-main-foreground" href={p('/services')}>
+        {labels.services.link}
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map(service => (
+          <ServiceCard
+            title={service.data.title}
+            description={service.data.description}
+            icon={service.data.icon}
+            order={service.data.order}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    cases.length > 0 && (
+      <section class="mt-16 space-y-5">
+        <div class="animate flex flex-wrap items-end justify-between gap-2">
+          <div class="space-y-1">
+            <h2 class="font-semibold text-main-foreground">{labels.cases.title}</h2>
+            <p class="text-sm text-muted-foreground">{labels.cases.description}</p>
           </div>
-          <ul class="animate grid grid-cols-1 gap-2 md:grid-cols-2">
-            {articles.map((article) => (
-              <ArticleCard item={article} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
+          <a class="text-sm text-muted-foreground underline underline-offset-2 hover:text-main-foreground" href={p('/cases')}>
+            {labels.cases.link}
+          </a>
+        </div>
+
+        <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {cases.map(item => (
+            <CaseCard
+              title={item.data.title}
+              description={item.data.description}
+              industry={item.data.industry}
+              taskType={item.data.taskType}
+              image={item.data.image}
+              href={item.href}
+              audienceLabel={site.casesPage.audienceLabel}
+              moreLabel={site.casesPage.moreLabel}
+            />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="mt-16 space-y-5">
+    <div class="animate space-y-1">
+      <h2 class="font-semibold text-main-foreground">{labels.process.title}</h2>
+      <p class="text-sm text-muted-foreground">{labels.process.description}</p>
+    </div>
+
+    <ol class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {
+        labels.process.steps.map((step, index) => (
+          <li class="animate surface flex gap-4 p-4">
+            <span class="flex size-8 flex-none items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary-foreground">
+              {index + 1}
+            </span>
+            <div class="space-y-1">
+              <h3 class="font-medium text-main-foreground">{step.title}</h3>
+              <p class="text-sm text-muted-foreground">{step.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="mt-16 space-y-5">
+    <div class="animate space-y-1">
+      <h2 class="font-semibold text-main-foreground">{labels.stack.title}</h2>
+      <p class="text-sm text-muted-foreground">{labels.stack.description}</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {
+        labels.stack.groups.map(group => (
+          <div class="animate surface p-4">
+            <h3 class="mb-2 text-sm font-medium text-main-foreground">{group.title}</h3>
+            <div class="flex flex-wrap gap-1.5">
+              {group.items.map(item => (
+                <span class="rounded bg-muted-foreground/10 px-2 py-0.5 text-xs text-muted-foreground">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    articles.length > 0 && (
+      <section class="mt-16 space-y-5">
+        <div class="animate flex flex-wrap items-end justify-between gap-2">
+          <div class="space-y-1">
+            <h2 class="font-semibold text-main-foreground">{labels.articles.title}</h2>
+            <p class="text-sm text-muted-foreground">{labels.articles.description}</p>
+          </div>
+          <a class="text-sm text-muted-foreground underline underline-offset-2 hover:text-main-foreground" href={p('/articles')}>
+            {labels.articles.link}
+          </a>
+        </div>
+
+        <ul class="grid grid-cols-1 gap-2 md:grid-cols-2">
+          {articles.map(article => (
+            <ArticleCard
+              item={article}
+              categoryLabel={site.articlesPage.categories[article.category]}
+            />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <div class="mt-16">
+    <CtaBlock
+      title={labels.cta.title}
+      description={labels.cta.description}
+      primaryLabel={labels.cta.telegram}
+      primaryHref={SITE.TELEGRAM}
+      secondaryLabel={labels.cta.email}
+      secondaryHref={`mailto:${SITE.EMAIL}`}
+      note={labels.cta.note}
+    />
   </div>
 </PageLayout>

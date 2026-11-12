@@ -1,0 +1,71 @@
+---
+import { useI18n } from '@lib/i18n'
+
+interface Props {
+  title: string
+  description: string
+  industry: string
+  taskType?: string
+  href: string
+  image?: string
+  audienceLabel: string
+  moreLabel: string
+}
+
+const { title, description, industry, taskType, href, image, audienceLabel, moreLabel } = Astro.props
+
+const { p } = useI18n(Astro.url)
+---
+
+<li class="animate group h-full">
+  <a
+    href={p(href)}
+    class="flex h-full flex-col overflow-hidden rounded-md border border-border bg-secondary/20 transition-colors duration-200 ease-in-out hover:border-border hover:bg-secondary/40"
+  >
+    <div class="relative aspect-[16/10] w-full overflow-hidden border-b border-border/60">
+      {
+        image
+          ? (
+              <img
+                src={image}
+                alt={title}
+                loading="lazy"
+                class="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+              />
+            )
+          : (
+              <div class="case-placeholder flex size-full items-center justify-center">
+                <span class="rounded-md border border-border/50 bg-main/30 px-3 py-1 font-serif text-sm text-main-foreground/80 backdrop-blur-sm">
+                  {taskType ?? industry}
+                </span>
+              </div>
+            )
+      }
+    </div>
+
+    <div class="flex flex-1 flex-col gap-3 p-4">
+      <div class="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+        <span class="rounded-md bg-primary/10 px-2 py-0.5 text-primary-foreground">{taskType ?? industry}</span>
+      </div>
+
+      <h3 class="text-lg font-semibold text-main-foreground">
+        {title}
+      </h3>
+
+      <p class="line-clamp-3 text-sm text-muted-foreground">
+        {description}
+      </p>
+
+      <div class="mt-auto flex items-end justify-between gap-3 pt-2">
+        <div class="text-xs text-muted-foreground">
+          <span class="opacity-70">{audienceLabel}: </span>
+          <span>{industry}</span>
+        </div>
+        <span class="flex items-center gap-1 text-sm font-medium text-main-foreground transition-transform duration-200 ease-in-out group-hover:translate-x-0.5">
+          {moreLabel}
+          <span aria-hidden="true">→</span>
+        </span>
+      </div>
+    </div>
+  </a>
+</li>
